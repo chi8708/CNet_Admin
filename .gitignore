@@ -1,0 +1,10 @@
+/src/CNet.Web.Api/bin
+/src/CNet.Web.Api/obj
+/src/CNet.Model/obj
+/src/CNet.Model/bin
+/src/CNet.DBUtility/*
+/src/CNet.DAL/*
+/src/CNet.Common/bin
+/src/CNet.Common/obj
+/src/CNet.BLL/bin
+/src/CNet.BLL/obj
