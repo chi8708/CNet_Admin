@@ -1,0 +1,71 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <TargetFramework>net5.0</TargetFramework>
+    <OutputType>Library</OutputType>
+    <RootNamespace>CNet.BLL</RootNamespace>
+    <AssemblyName>CNet.BLL</AssemblyName>
+    <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Update="T4.DapperExt\Pub_DepartmentBLL.cs">
+      <DependentUpon>Service.tt</DependentUpon>
+    </Compile>
+    <Compile Update="T4.DapperExt\Pub_FunctionBLL.cs">
+      <DependentUpon>Service.tt</DependentUpon>
+    </Compile>
+    <Compile Update="T4.DapperExt\Pub_RoleBLL.cs">
+      <DependentUpon>Service.tt</DependentUpon>
+    </Compile>
+    <Compile Update="T4.DapperExt\Pub_RoleFunctionBLL.cs">
+      <DependentUpon>Service.tt</DependentUpon>
+    </Compile>
+    <Compile Update="T4.DapperExt\Pub_UserBLL.cs">
+      <DependentUpon>Service.tt</DependentUpon>
+    </Compile>
+    <Compile Update="T4.DapperExt\Pub_UserFunctionBLL.cs">
+      <DependentUpon>Service.tt</DependentUpon>
+    </Compile>
+    <Compile Update="T4.DapperExt\Pub_UserRoleBLL.cs">
+      <DependentUpon>Service.tt</DependentUpon>
+    </Compile>
+    <Compile Update="T4.DapperExt\V_PubDept_ParentBLL.cs">
+      <DependentUpon>Service.tt</DependentUpon>
+    </Compile>
+    <Compile Update="T4.DapperExt\V_PubFunction_ParentBLL.cs">
+      <DependentUpon>Service.tt</DependentUpon>
+    </Compile>
+    <Compile Update="T4.DapperExt\V_PubUser_DeptBLL.cs">
+      <DependentUpon>Service.tt</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\CNet.Common\CNet.Common.csproj" />
+    <ProjectReference Include="..\CNet.DAL\CNet.DAL.csproj" />
+    <ProjectReference Include="..\CNet.Model\CNet.Model.csproj" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="Microsoft.CSharp" Version="4.7.0" />
+    <PackageReference Include="System.Data.DataSetExtensions" Version="4.5.0" />
+    <PackageReference Include="Microsoft.DotNet.UpgradeAssistant.Extensions.Default.Analyzers" Version="0.3.310801">
+      <PrivateAssets>all</PrivateAssets>
+    </PackageReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="T4.DapperExt\Service.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>Service1.txt</LastGenOutput>
+    </Content>
+    <Content Include="T4.DapperExt\Service.txt" />
+    <Content Include="T4.DapperExt\Service1.txt">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Service.tt</DependentUpon>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="Dapper.Contrib" Version="1.60.1" />
+  </ItemGroup>
+</Project>

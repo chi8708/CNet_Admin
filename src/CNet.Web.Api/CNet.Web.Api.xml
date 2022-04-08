@@ -1,0 +1,218 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>CNet.Web.Api</name>
+    </assembly>
+    <members>
+        <member name="T:CNet.Web.Api.WebApiExceptionAttribute">
+            <summary>
+            异常捕获
+            </summary>
+        </member>
+        <member name="T:CNet.Web.Api.Controllers.AuthroizeController">
+            <summary>
+            认证
+            </summary>
+        </member>
+        <member name="M:CNet.Web.Api.Controllers.AuthroizeController.Post(CNet.Web.Api.LoginViewModel)">
+            <summary>
+            登录获取token
+            </summary>
+            <param name="loginViewModel">登录实体信息</param>
+            <returns></returns>
+        </member>
+        <member name="M:CNet.Web.Api.Controllers.PubDeptController.GetChildList(System.String)">
+            <summary>
+            获取子部门列表
+            </summary>
+            <param name="id"></param>
+            <returns></returns>
+        </member>
+        <member name="M:CNet.Web.Api.Controllers.PubDeptController.Add(CNet.Model.Pub_Department)">
+            <summary>
+            添加
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:CNet.Web.Api.Controllers.PubDeptController.Edit(CNet.Model.Pub_Department)">
+            <summary>
+            编辑
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:CNet.Web.Api.Controllers.PubDeptController.Delete(System.String)">
+            <summary>
+            删除
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:CNet.Web.Api.Controllers.PubFunctionController.GetChildList(System.String)">
+            <summary>
+            获取子权限列表
+            </summary>
+            <param name="id"></param>
+            <returns></returns>
+        </member>
+        <member name="M:CNet.Web.Api.Controllers.PubFunctionController.Add(CNet.Model.Pub_Function)">
+            <summary>
+            添加
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:CNet.Web.Api.Controllers.PubFunctionController.Edit(CNet.Model.Pub_Function)">
+            <summary>
+            编辑
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:CNet.Web.Api.Controllers.PubFunctionController.Delete(System.String)">
+            <summary>
+            删除
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:CNet.Web.Api.Controllers.PubRoleController.GetPage(CNet.Web.Api.Model.Request.PageDataReq)">
+            <summary>
+            获取角色分页
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:CNet.Web.Api.Controllers.PubRoleController.Add(CNet.Model.Pub_Role)">
+            <summary>
+            添加角色
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:CNet.Web.Api.Controllers.PubRoleController.Edit(CNet.Model.Pub_Role)">
+            <summary>
+            编辑角色
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:CNet.Web.Api.Controllers.PubRoleController.Delete(System.Int64)">
+            <summary>
+            删除角色
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:CNet.Web.Api.Controllers.PubRoleController.GetFunctions(System.String)">
+            <summary>
+            获取角色权限
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:CNet.Web.Api.Controllers.PubRoleController.SaveFunctions(System.String,System.Collections.Generic.List{System.String})">
+            <summary>
+            保存角色权限
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:CNet.Web.Api.Controllers.PubUserController.GetPage(CNet.Web.Api.Model.Request.PageDataReq)">
+            <summary>
+            获取用户分页
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:CNet.Web.Api.Controllers.PubUserController.Add(CNet.Model.V_PubUser_Dept)">
+            <summary>
+            添加用户
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:CNet.Web.Api.Controllers.PubUserController.Edit(CNet.Model.V_PubUser_Dept)">
+            <summary>
+            编辑用户
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:CNet.Web.Api.Controllers.PubUserController.Delete(System.Int64)">
+            <summary>
+            删除用户
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:CNet.Web.Api.Controllers.PubUserController.GetFunctions(System.String)">
+            <summary>
+            获取用户权限
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:CNet.Web.Api.Controllers.PubUserController.SaveFunctions(System.String,System.Collections.Generic.List{System.String})">
+            <summary>
+            保存用户权限
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="P:CNet.Web.Api.JwtSeetings.Issuer">
+            <summary>
+            谁颁发的jwt
+            </summary>
+        </member>
+        <member name="P:CNet.Web.Api.JwtSeetings.Audience">
+            <summary>
+            谁使用这个jwt
+            </summary>
+        </member>
+        <member name="P:CNet.Web.Api.JwtSeetings.SecretKey">
+            <summary>
+            secret是保存在服务器端的，jwt的签发生成也是在服务器端的，secret就是用来进行jwt的签发和jwt的验证，
+            所以，它就是你服务端的私钥，在任何场景都不应该流露出去。一旦客户端得知这个secret, 那就意味着客户端是可以自我签发jwt了
+            通过jwt header中声明的加密方式进行加盐secret组合加密，然后就构成了jwt的第三部分
+            </summary>
+        </member>
+        <member name="P:CNet.Web.Api.LoginViewModel.Name">
+            <summary>
+            用户名
+            </summary>
+        </member>
+        <member name="P:CNet.Web.Api.LoginViewModel.Password">
+            <summary>
+            密码
+            </summary>
+        </member>
+        <member name="P:CNet.Web.Api.ResponseObj`1.Code">
+            <summary>
+            0请求数据错误 1 成功 -1失败
+            </summary>
+        </member>
+        <member name="T:CNet.Web.Api.QueryHelper">
+            <summary>
+            搜索条件
+            </summary>
+        </member>
+        <member name="M:CNet.Web.Api.QueryHelper.GetWhereStr(Microsoft.AspNetCore.Http.HttpContext)">
+            <summary>
+            获取搜索query
+            </summary>
+        </member>
+        <member name="M:CNet.Web.Api.QueryHelper.SqlFilter(System.String)">
+            <summary>
+            过滤危险的字符（SQL注入）
+            </summary>
+            <param name="str"></param>
+            <returns></returns>
+        </member>
+        <member name="M:CNet.Web.Api.QueryHelper.GenerateIncrementCodeSQLStr(System.Int32,System.String,System.String,System.String,System.Int32)">
+            <summary>
+            生成自增编号的SQL执行字符
+            如审批流自增编号AP00000001
+            最后一个编号是  AP00000009
+            本方法生成的SQL执行字符执行后反回AP00000010
+            本方法生成的SQL字符，只做计算，不做存储。计算返回自增后的编号
+            </summary>
+            <param name="increment">增量, 最后一个编号需要相加的数字, 如AP00000010 + 1 ＝ AP00000011，1就是增量</param>
+            <param name="field">需要增量的字段名称，如审批流表M3_ApprovalSetting的ApprovalCode</param>
+            <param name="table">表名称</param>
+            <param name="prefix">前缀, 如AP00000011，前缀AP</param>
+            <param name="digitBit">位数,如AP00000011,数字位8位</param>
+            <returns></returns>
+        </member>
+        <member name="M:CNet.Web.Api.Startup.JWTConfig(Microsoft.Extensions.DependencyInjection.IServiceCollection)">
+            <summary>
+            使用 Microsoft.AspNetCore.Authentication.JwtBearer
+            </summary>
+            <param name="services"></param>
+        </member>
+        <!-- Badly formed XML comment ignored for member "T:AuthTokenHeaderParameter" -->
+    </members>
+</doc>
