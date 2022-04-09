@@ -1,28 +1,28 @@
-﻿using System;
+﻿using log4net;
+using log4net.Config;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.AspNetCore.Builder;
+using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.HttpsPolicy;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Hosting;
+using Microsoft.Extensions.Logging;
+using Microsoft.IdentityModel.Tokens;
+using Microsoft.OpenApi.Models;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using log4net;
-using log4net.Config;
-using Microsoft.AspNetCore.Authentication.JwtBearer;
-using Microsoft.AspNetCore.Builder;
-using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.Http;
-using Microsoft.Extensions.Configuration;
-using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.Logging;
-using Microsoft.Extensions.Options;
-using Microsoft.IdentityModel.Tokens;
-using Microsoft.OpenApi.Models;
-using Newtonsoft.Json.Converters;
-using Swashbuckle.AspNetCore.Swagger;
 
 namespace CNet.Web.Api
 {
     public class Startup
     {
+        public readonly string anyAllowSpecificOrigins = "any";//解决跨域
         public Startup(IConfiguration configuration)
         {
             Configuration = configuration;
@@ -33,7 +33,6 @@ namespace CNet.Web.Api
             XmlConfigurator.Configure(repository, new FileInfo("log4net.config"));
 
         }
-
 
 
         public IConfiguration Configuration { get; }
@@ -55,6 +54,40 @@ namespace CNet.Web.Api
             JWTConfig(services);
 
             SwaggerConfig(services);
+
+            services.AddCors(options =>
+            {
+
+                // this defines a CORS policy called "default"
+
+                options.AddPolicy("default", policy =>
+                {
+
+                    policy.WithOrigins("*").AllowAnyHeader().AllowAnyMethod();
+
+                });
+
+            });
+            //services.AddControllers();
+
+            services.AddControllers(options =>
+            {
+                //options.Filters.Add(typeof(ApiExceptionFilter));
+            });
+
+            //解决跨域
+            //services.AddCors(options =>
+            //{
+            //    options.AddPolicy(anyAllowSpecificOrigins, corsbuilder =>
+            //    {
+            //        var corsPath = Configuration.GetSection("CorsPaths").GetChildren().Select(p => p.Value).ToArray();
+            //        corsbuilder.WithOrigins(corsPath)
+            //        .AllowAnyMethod()
+            //        .AllowAnyHeader()
+            //        .AllowCredentials();//指定处理cookie
+            //    });
+            //});
+
 
             //services.AddIdentityServer(options => options.Authentication.CookieAuthenticationScheme = "Cookies")
             //    .AddDeveloperSigningCredential()
@@ -159,33 +192,30 @@ namespace CNet.Web.Api
 
         //中间件
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IHostingEnvironment env)
+        public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
                 app.UseSwagger();
-                app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "WebApplication1 v1"));
+                app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "CNet.Web.Api v1"));
             }
 
-            app.UseHttpsRedirection();
+            //app.UseHttpsRedirection();//会跳转跨域时不要使用
 
             app.UseRouting();
-
-            ////jwt认证 需要在app.UseMvc()前调用
-            app.UseAuthentication();
-            app.UseAuthorization();
-
-            //core 2.2 跨域
-            //app.UseCors("cors");
-
-            app.UseMvc();
+            // app.UseMvc();
 
             app.UseStaticFiles();
-
+            ////jwt认证 需要在app.UseMvc()前调用
+            app.UseAuthentication();//不添加报401
+           app.UseCors("default");
+          // app.UseCors(anyAllowSpecificOrigins);//支持跨域：允许特定来源的主机访问
+            app.UseAuthorization();
+           
             app.UseEndpoints(endpoints =>
             {
-                endpoints.MapControllers();
+                endpoints.MapControllers().RequireCors("default");
             });
 
         }

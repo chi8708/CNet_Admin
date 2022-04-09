@@ -13,7 +13,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CNet.BLL", "CNet.BLL\CNet.B
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CNet.Common", "CNet.Common\CNet.Common.csproj", "{F331C30C-341D-4408-908D-8F47AC17E1DC}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CNet.Web.Api", "CNet.Web.Api\CNet.Web.Api.csproj", "{EFFEF55B-6C73-4E62-86A1-DDFDDCD04E28}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CNet.Web.Api", "CNet.Web.Api\CNet.Web.Api.csproj", "{EFFEF55B-6C73-4E62-86A1-DDFDDCD04E28}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

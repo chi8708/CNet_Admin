@@ -71,6 +71,62 @@
             </summary>
             <returns></returns>
         </member>
+        <member name="M:CNet.Web.Api.Controllers.PubFunctionController.GetMenu">
+            <summary>
+            获取左侧菜单
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:CNet.Web.Api.Controllers.PubFunctionController.GetMenuItem(CNet.Model.Pub_Function)">
+            <summary>
+            菜单明细项
+            </summary>
+            <param name="item"></param>
+            <returns></returns>
+        </member>
+        <member name="M:CNet.Web.Api.Controllers.PubFunctionController.GetMenuChild(System.Collections.Generic.List{CNet.Model.Pub_Function},System.String)">
+            <summary>
+            菜单子项
+            </summary>
+            <param name="functions"></param>
+            <param name="parentCode"></param>
+            <returns></returns>
+        </member>
+        <member name="P:CNet.Web.Api.Controllers.PubFunctionController.Menu.path">
+            <summary>
+            路由路径
+            </summary>
+        </member>
+        <member name="P:CNet.Web.Api.Controllers.PubFunctionController.Menu.name">
+            <summary>
+            名称
+            </summary>
+        </member>
+        <member name="P:CNet.Web.Api.Controllers.PubFunctionController.Menu.children">
+            <summary>
+            子组件
+            </summary>
+        </member>
+        <member name="P:CNet.Web.Api.Controllers.PubFunctionController.Menu.Meta.icon">
+            <summary>
+            图标
+            </summary>
+        </member>
+        <member name="P:CNet.Web.Api.Controllers.PubFunctionController.Menu.Meta.notCache">
+            <summary>
+            不缓存 
+            </summary>
+        </member>
+        <member name="P:CNet.Web.Api.Controllers.PubFunctionController.Menu.Meta.title">
+            <summary>
+            标题
+            </summary>
+        </member>
+        <member name="P:CNet.Web.Api.Controllers.PubFunctionController.Menu.Meta.access">
+            <summary>
+            权限列表
+            </summary>
+        </member>
         <member name="M:CNet.Web.Api.Controllers.PubRoleController.GetPage(CNet.Web.Api.Model.Request.PageDataReq)">
             <summary>
             获取角色分页
