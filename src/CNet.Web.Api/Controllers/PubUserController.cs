@@ -198,5 +198,19 @@ namespace CNet.Web.Api.Controllers
             return res;
         }
 
+        /// <summary>
+        /// 注销登录
+        /// </summary>
+        /// <returns></returns>
+
+        [HttpPost, Route("Logout")]
+        public dynamic Logout()
+        {
+            //User = null;
+            DataRes<bool> res = new DataRes<bool>() { code = ResCode.Success, data = true };
+
+            return res;
+        }
+
     }
 }

@@ -10,7 +10,7 @@ using Microsoft.AspNetCore.Mvc.Filters;
 namespace CNet.Web.Api.Controllers
 {
     [Produces("application/json")]
-    public class BaseController : Controller
+    public class BaseController:Controller
     {
        
     }

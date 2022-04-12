@@ -199,6 +199,12 @@
             </summary>
             <returns></returns>
         </member>
+        <member name="M:CNet.Web.Api.Controllers.PubUserController.Logout">
+            <summary>
+            注销登录
+            </summary>
+            <returns></returns>
+        </member>
         <member name="P:CNet.Web.Api.JwtSeetings.Issuer">
             <summary>
             谁颁发的jwt

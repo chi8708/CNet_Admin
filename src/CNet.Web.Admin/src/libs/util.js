@@ -5,7 +5,7 @@ import { forEach, hasOneOf, objEqual } from '@/libs/tools'
 import Main from '@/components/main'
 const { title, cookieExpires, useI18n } = config
 
-export const TOKEN_KEY = 'tokenNBCZ'
+export const TOKEN_KEY = 'tokenCNet'
 
 export const setToken = (token) => {
   Cookies.set(TOKEN_KEY, token, { expires: cookieExpires || 1 })

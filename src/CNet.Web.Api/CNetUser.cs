@@ -37,7 +37,7 @@ namespace CNet.Web.Api
             get
             {
 
-                var id = Identity.FindFirst(p => p.Type == "Id").Value;
+                var id = Identity.Claims.FirstOrDefault(p => p.Type == "Id").Value;
                 return Convert.ToInt32(id);
             }
             
@@ -47,7 +47,7 @@ namespace CNet.Web.Api
             get
             {
 
-                var userCode = Identity.FindFirst(p => p.Type == ClaimTypes.NameIdentifier).Value;
+                var userCode = Identity.Claims.FirstOrDefault(p => p.Type == "UserCode").Value;
                 return userCode;               
             }
         }
@@ -56,7 +56,7 @@ namespace CNet.Web.Api
         {
             get
             {
-                var userName = Identity.FindFirst(p => p.Type == ClaimTypes.Name).Value;
+                var userName = Identity.Claims.FirstOrDefault(p => p.Type == ClaimTypes.Name).Value;
                 return userName;   
             }
         }
@@ -65,17 +65,17 @@ namespace CNet.Web.Api
         {
             get
             {
-                var deptCode = Identity.FindFirst(p => p.Type == ClaimTypes.GroupSid).Value;
+                var deptCode = Identity.Claims.FirstOrDefault(p => p.Type == "DeptCode").Value;
                 return deptCode; 
             }
         }
 
 
-        public  string MobilePhone
+        public string Tel
         {
             get
             {
-                var mobile = Identity.FindFirst(p => p.Type == ClaimTypes.MobilePhone).Value;
+                var mobile = Identity.Claims.FirstOrDefault(p => p.Type == "Tel").Value;
                 return mobile;
             }
         }

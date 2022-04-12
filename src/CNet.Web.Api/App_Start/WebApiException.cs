@@ -45,7 +45,7 @@ namespace CNet.Web.Api
                
             }
 
-            var log = LogFactory.GetLogger(path);
+            var log = LogFactory.GetLogger(LogFactory.repositoryName);
             log.Error($"path:{path},method:{request.Method},data:{postData}\r\n error:{context.Exception.Message}\r\n stack:{context.Exception.StackTrace}");
         }
     }

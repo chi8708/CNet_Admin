@@ -112,13 +112,12 @@ namespace CNet.Web.Api.Controllers
         /// <returns></returns>
         [Route("GetMenu")]
         [HttpPost]
-        [AllowAnonymous]
+        //[AllowAnonymous]//添加这个属性后获取不到User
         public DataRes<List<Menu>> GetMenu()
         {
             List<Menu> menus = new List<Menu>();
 
             DataRes<List<Menu>> res = new DataRes<List<Menu>>() { code = ResCode.Success, data = menus };
-           // List<Pub_Function> functions= bll.GetMenu(User.GetCNetUser().UserCode);
             List<Pub_Function> functions = bll.GetMenu(User.GetCNetUser().UserCode);
             List<Pub_Function> functionsRoot = functions.Where(p=>p.FunctionCode.Length==5).ToList();
             foreach (var item in functionsRoot)

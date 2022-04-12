@@ -20,7 +20,7 @@ namespace CNet.Web.Api.Controllers
     /// </summary>
     [Route("api/[controller]")]
     //jwt1 身份认证
-    public class AuthroizeController : ControllerBase
+    public class AuthroizeController:Controller
     {
         private readonly JwtSeetings _jwtSeetings;
 
@@ -39,10 +39,10 @@ namespace CNet.Web.Api.Controllers
         {
             
 
-            if (!ModelState.IsValid)
-            {
-                return BadRequest();
-            }
+            //if (!ModelState.IsValid)
+            //{
+            //    return BadRequest();
+            //}
             var users = new Pub_UserBLL().GetList($"StopFlag=0 AND UserName='{loginViewModel.Name}' AND UserPwd='{loginViewModel.Password}'", limits: 1);
             
             if (users.Count>0)
@@ -55,11 +55,10 @@ namespace CNet.Web.Api.Controllers
                 var claims = new Claim[]
                 {
                     new Claim(ClaimTypes.Name,user.UserName),
-                    new Claim(ClaimTypes.Sid,user.Id.ToString()),
-                    new Claim(ClaimTypes.NameIdentifier,user.UserCode),
-                   // new Claim(ClaimTypes.UserData,functionsStr),
-                    new Claim(ClaimTypes.MobilePhone,user.Tel),
-                    new Claim(ClaimTypes.GroupSid,user.DeptCode)
+                    new Claim("Id",user.Id.ToString()),
+                    new Claim("UserCode",user.UserCode),
+                    new Claim("Tel",user.Tel),
+                    new Claim("DeptCode",user.DeptCode)
                 };
                 var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_jwtSeetings.SecretKey));
                 var creds = new SigningCredentials(key, SecurityAlgorithms.HmacSha256);

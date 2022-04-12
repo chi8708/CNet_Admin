@@ -7,7 +7,7 @@
           <img v-show="!collapsed" :src="maxLogo" key="max-logo" />
           <img v-show="collapsed" :src="minLogo" key="min-logo" />
         </div> -->
-        <h1 style="color:#fff;text-align:center;">NBCZ</h1>
+        <h1 style="color:#fff;text-align:center;">CNet</h1>
       </side-menu>
     </Sider>
     <Layout>

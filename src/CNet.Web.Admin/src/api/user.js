@@ -22,9 +22,10 @@ export const getUserInfo = (token) => {
 
 export const logout = (token) => {
   return axios.request({
-    url: 'logout',
+    url: 'api/PubUser/logout',
     method: 'post'
   })
+  //return new Promise(()=>{},()=>{});
 }
 
 export const getUnreadCount = () => {
