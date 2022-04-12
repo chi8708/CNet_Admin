@@ -3,8 +3,10 @@ using log4net.Config;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Server.Kestrel.Core;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
@@ -74,7 +76,10 @@ namespace CNet.Web.Api
             {
                 //options.Filters.Add(typeof(ApiExceptionFilter));
             });
-
+            
+            //同步读取body的方式需要ConfigureServices中配置允许同步读取IO流，否则可能会抛出异常 Synchronous operations are disallowed. Call ReadAsync or set AllowSynchronousIO to true instead.
+            services.Configure<KestrelServerOptions>(x => x.AllowSynchronousIO = true)
+                        .Configure<IISServerOptions>(x => x.AllowSynchronousIO = true);
             //解决跨域
             //services.AddCors(options =>
             //{
@@ -87,15 +92,6 @@ namespace CNet.Web.Api
             //        .AllowCredentials();//指定处理cookie
             //    });
             //});
-
-
-            //services.AddIdentityServer(options => options.Authentication.CookieAuthenticationScheme = "Cookies")
-            //    .AddDeveloperSigningCredential()
-            //    .AddInMemoryIdentityResources(Config.GetIdentityResources())
-            //    .AddInMemoryApiResources(Config.GetApis())
-            //    .AddInMemoryClients(Config.GetClients())
-            //    .AddTestUsers(Config.GetUsers());
-            // configure identity server with in-memory stores, keys, clients and scopes
         }
 
         private static void SwaggerConfig(IServiceCollection services)
@@ -170,24 +166,6 @@ namespace CNet.Web.Api
                     IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(jwtSeetings.SecretKey))
                 };
             });
-
-            //绑定jwtSeetings
-            //Configuration.Bind("JwtSeetings", jwtSeetings);
-            //services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
-            //.AddJwtBearer(options =>
-            //{
-            //    options.TokenValidationParameters = new TokenValidationParameters
-            //    {
-            //        ValidateIssuerSigningKey = true,
-            //        ValidIssuer = jwtSeetings.Issuer,
-            //        ValidAudience = jwtSeetings.Audience,
-            //        IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(jwtSeetings.SecretKey)),
-            //        ValidateIssuer = true,
-            //        ValidateAudience = true,
-            //        ValidateLifetime = true,
-            //       // ClockSkew = TimeSpan.FromMinutes(60)
-            //    };
-            //});
         }
 
         //中间件
@@ -212,7 +190,14 @@ namespace CNet.Web.Api
            app.UseCors("default");
           // app.UseCors(anyAllowSpecificOrigins);//支持跨域：允许特定来源的主机访问
             app.UseAuthorization();
-           
+
+            //request.body的长度总是为0
+            app.Use(next => context =>
+            {
+                context.Request.EnableBuffering();
+                return next(context);
+            });
+
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllers().RequireCors("default");

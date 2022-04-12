@@ -254,21 +254,6 @@
             <param name="str"></param>
             <returns></returns>
         </member>
-        <member name="M:CNet.Web.Api.QueryHelper.GenerateIncrementCodeSQLStr(System.Int32,System.String,System.String,System.String,System.Int32)">
-            <summary>
-            生成自增编号的SQL执行字符
-            如审批流自增编号AP00000001
-            最后一个编号是  AP00000009
-            本方法生成的SQL执行字符执行后反回AP00000010
-            本方法生成的SQL字符，只做计算，不做存储。计算返回自增后的编号
-            </summary>
-            <param name="increment">增量, 最后一个编号需要相加的数字, 如AP00000010 + 1 ＝ AP00000011，1就是增量</param>
-            <param name="field">需要增量的字段名称，如审批流表M3_ApprovalSetting的ApprovalCode</param>
-            <param name="table">表名称</param>
-            <param name="prefix">前缀, 如AP00000011，前缀AP</param>
-            <param name="digitBit">位数,如AP00000011,数字位8位</param>
-            <returns></returns>
-        </member>
         <member name="M:CNet.Web.Api.Startup.JWTConfig(Microsoft.Extensions.DependencyInjection.IServiceCollection)">
             <summary>
             使用 Microsoft.AspNetCore.Authentication.JwtBearer
