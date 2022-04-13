@@ -1,4 +1,5 @@
-﻿using log4net;
+﻿using CNet.Common;
+using log4net;
 using log4net.Config;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Builder;
@@ -29,10 +30,15 @@ namespace CNet.Web.Api
         {
             Configuration = configuration;
 
-            //log4Net
+            // //log4Net
+            
+            
             var repository = LogManager.CreateRepository(Common.LogFactory.repositoryName);
             // 指定配置文件
-            XmlConfigurator.Configure(repository, new FileInfo("log4net.config"));
+            XmlConfigurator.Configure(repository, new FileInfo(Environment.CurrentDirectory + "/log4net.config"));
+
+            var repositoryReq = LogManager.CreateRepository(Common.LogType.RequestLog.ToString());
+            XmlConfigurator.Configure(repositoryReq, new FileInfo(Environment.CurrentDirectory + "/log4net.config"));
 
         }
 
@@ -170,7 +176,7 @@ namespace CNet.Web.Api
 
         //中间件
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
+        public void Configure(IApplicationBuilder app, IWebHostEnvironment env, ILoggerFactory loggerFactory)
         {
             if (env.IsDevelopment())
             {
@@ -178,9 +184,11 @@ namespace CNet.Web.Api
                 app.UseSwagger();
                 app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "CNet.Web.Api v1"));
             }
-
+            //Microsfot.Extensions.Logging.Log4Net.AspNetCore 需添加
+            //loggerFactory.AddLog4Net(Environment.CurrentDirectory + "//log4net.config");
             //app.UseHttpsRedirection();//会跳转跨域时不要使用
 
+            
             app.UseRouting();
             // app.UseMvc();
 

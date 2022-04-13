@@ -11,6 +11,7 @@ using Microsoft.AspNetCore.Mvc;
 using CNet.BLL;
 using CNet.Common;
 using CNet.Model;
+using Microsoft.Extensions.Logging;
 
 namespace CNet.Web.Api.Controllers
 {
@@ -18,16 +19,28 @@ namespace CNet.Web.Api.Controllers
     //[Authorize]
     public class ValuesController : Controller
     {
+        //public ILogger<ValuesController> _logger;
+        //public ValuesController(ILogger<ValuesController> logger)
+        //{
+        //    _logger = logger;
+
+        //}
         // GET api/values
         [HttpGet]
-        public IEnumerable<Pub_User> Get()
+        public string Get()
         {
             //var log= LogFactory.GetLogger(Request.Path);
             //log.Info("info");
             //log.Warning("ok");
             //log.Error("error");
-           
-            return new Pub_UserBLL().GetList("");
+            //_logger.LogError("ssss");
+            LogHelper.WrtieRequestLog(Common.LogLevel.Info, "1111");
+            int a = 0;
+            int b = 1 / a;
+
+            return "1111";
+            //return new Pub_UserBLL().GetList("");
+            //return new Pub_UserBLL().GetList("");
         }
 
         // GET api/values/5
