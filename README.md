@@ -1,6 +1,6 @@
 一、框架概述 
 -------------
-1. CNet_Admin_Vue是一个前后端分离通用权限系统， 用vs2019开发工具。
+1. CNet_Admin_Vue是一个.Net5+Vue前后端分离通用权限系统， 用vs2019开发工具。
 2. 后端标准三层结构：
    1. Repository（DAL仓储层）使用Dapper.Contrib+Dapper开发。
    2. api使用asp.net webapi,jwt身份认证。
@@ -31,7 +31,7 @@
 
 三、主界面如下：
 ---------------
-<img src="https://github.com/chi8708/CNet_Admin_NetCore/blob/master/main.png" width="900px;">
+<img src="https://github.com/chi8708/NBCZ_Admin_NetCore/blob/master/main.png" width="900px;">
 
 四、版本
 ---------------
@@ -57,7 +57,7 @@
 </tr>
 <tr>
 	<td>.Net5</td>
-	<td><a href="https://github.com/chi8708/CNet_Admin_" >.net core+iview+dapper.contrib</a> </td>
+	<td><a href="https://github.com/chi8708/CNet_Admin_" >.net5+iview+dapper.contrib</a> </td>
 	<td></td>
 	<td>前后端分离</td>
 </tr>
@@ -84,7 +84,7 @@ QQ群:851743573
 
 给Aigu赞赏
 -----------------
-<img src="https://github.com/chi8708/CNet/blob/master/zs.jpg" />
+<img src="https://github.com/chi8708/NBCZ/blob/master/zs.jpg" />
 
 
 
