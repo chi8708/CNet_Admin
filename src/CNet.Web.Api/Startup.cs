@@ -30,18 +30,21 @@ namespace CNet.Web.Api
         {
             Configuration = configuration;
 
-            // //log4Net
-            
-            
-            var repository = LogManager.CreateRepository(Common.LogFactory.repositoryName);
-            // 指定配置文件
-            XmlConfigurator.Configure(repository, new FileInfo(Environment.CurrentDirectory + "/log4net.config"));
-
-            var repositoryReq = LogManager.CreateRepository(Common.LogType.RequestLog.ToString());
-            XmlConfigurator.Configure(repositoryReq, new FileInfo(Environment.CurrentDirectory + "/log4net.config"));
+            LogConfig();
 
         }
-
+        
+        //日志配置
+        private static void LogConfig()
+        {
+            // //log4Net
+            var logTypes = Enum.GetValues(typeof(LogType));
+            foreach (LogType logType in logTypes)
+            {
+                var repository = LogManager.CreateRepository(logType.ToString());
+                XmlConfigurator.Configure(repository, new FileInfo(Environment.CurrentDirectory + "/log4net.config"));
+            }
+        }
 
         public IConfiguration Configuration { get; }
 

@@ -116,41 +116,21 @@ namespace CNet.Common
      }
 
     /// <summary>
-    /// 单例模式初始化
+    /// 日志帮助类工厂
     /// </summary>
-    public class Singleton
-    {
-        private ILog Log;
-        private static Singleton instance;
-        private Singleton() { }
-        public static Singleton getInstance()
-        {
-            if (instance == null)
-            {
-                instance = new Singleton();
-            }
-            return instance;
-        }
-        /// <summary>
-        /// 获取日志初始化器
-        /// </summary>
-        /// <param name="type">类名 方法名</param>
-        /// <returns></returns>
-        public ILog Init(string type)
-        {
-            Log = LogManager.GetLogger(LogFactory.repositoryName, type);
-            return Log;
-        }
-
-    }
-
       public class LogFactory
       {
-        public static readonly string repositoryName = "CNetRepository";
+        private static readonly string repositoryName = LogType.GlobalLog.ToString();
+        private static LogHelper logHelperSingleton;
         static LogFactory()
         {
+            logHelperSingleton= GetLogger(repositoryName);
         }
-
+        public static LogHelper GetLoggerSingleton()
+        {
+            logHelperSingleton =logHelperSingleton?? GetLogger(repositoryName);
+            return logHelperSingleton;
+        }
 
         public static LogHelper GetLogger(Type type)
         {
@@ -159,7 +139,7 @@ namespace CNet.Common
 
         public static LogHelper GetLogger(string str)
         {
-            return new LogHelper(Singleton.getInstance().Init(str));
+            return new LogHelper(LogManager.GetLogger(str));
         }
 
         public static LogHelper GetLogger(LogType logType)

@@ -47,6 +47,9 @@ namespace CNet.Web.Api.Controllers
         [HttpGet("{id}")]
         public string Get(int id)
         {
+            LogHelper.WrtieRequestLog(Common.LogLevel.Info, "222");
+              int a = 0;
+            int b = 1 / a;
             return "value";
         }
 
