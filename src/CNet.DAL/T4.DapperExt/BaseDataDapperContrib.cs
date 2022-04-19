@@ -14,7 +14,7 @@ using T4;
 
 namespace CNet.DAL
 {
-    public partial class BaseDataDapperContrib<T> where T : class ,new()
+    public partial class BaseDataDapperContrib<T> : IBaseDataDapperContrib<T> where T : class ,new()
     {
         /// <summary>
         /// 插入
@@ -123,25 +123,6 @@ namespace CNet.DAL
             {
                 cn.Open();
                 r = cn.Delete(model);
-                cn.Close();
-            }
-
-            return r;
-        }
-
-
-        /// <summary>
-        /// 根据条件删除
-        /// </summary>
-        /// <param name="model"></param>
-        /// <returns></returns>
-        public dynamic Delete(object predicate)
-        {
-            dynamic r = null;
-            using (SqlConnection cn = new SqlConnection(DapperHelper.ConnStr))
-            {
-                cn.Open();
-                r = cn.Delete(predicate);
                 cn.Close();
             }
 

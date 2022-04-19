@@ -68,4 +68,7 @@
   <ItemGroup>
     <PackageReference Include="Dapper.Contrib" Version="1.60.1" />
   </ItemGroup>
+  <Target Name="PostBuild" AfterTargets="PostBuildEvent">
+    <Exec Command="xcopy &quot;$(TargetDir)CNet.DAL.dll&quot; &quot;$(SolutionDir)CNet.Web.Api\lib\&quot; /y&#xD;&#xA;xcopy &quot;$(TargetDir)CNet.BLL.dll&quot; &quot;$(SolutionDir)CNet.Web.Api\lib\&quot; /y" />
+  </Target>
 </Project>

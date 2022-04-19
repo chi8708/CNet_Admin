@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Web;
 using CNet.DAL;
 using CNet.Model;
 
@@ -9,7 +8,12 @@ namespace CNet.BLL
 {
     public partial class BaseServiceDapperContrib<T> where T : class, new()
     {
-        BaseDataDapperContrib<T> dal = new BaseDataDapperContrib<T>();
+        public IBaseDataDapperContrib<T> dal;
+        //public IBaseDataDapperContrib<T> dal;
+        public BaseServiceDapperContrib()
+        {
+            dal = BaseDataDapperContribFactory.GetInstance<T>();
+        }
         /// <summary>
         /// 插入
         /// </summary>
@@ -59,17 +63,6 @@ namespace CNet.BLL
         public dynamic Delete(T model)
         {
             return dal.Delete(model);
-        }
-
-
-        /// <summary>
-        /// 根据条件删除
-        /// </summary>
-        /// <param name="model"></param>
-        /// <returns></returns>
-        public dynamic Delete(object predicate)
-        {
-            return dal.Delete(predicate);
         }
 
         /// <summary>

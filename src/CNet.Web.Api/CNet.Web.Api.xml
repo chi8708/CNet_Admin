@@ -254,6 +254,12 @@
             <param name="str"></param>
             <returns></returns>
         </member>
+        <member name="M:CNet.Web.Api.Startup.ConfigureContainer(Autofac.ContainerBuilder)">
+            <summary>
+            这段代码必须放在Startup类里面
+            </summary>
+            <param name="builder"></param>
+        </member>
         <member name="M:CNet.Web.Api.Startup.JWTConfig(Microsoft.Extensions.DependencyInjection.IServiceCollection)">
             <summary>
             使用 Microsoft.AspNetCore.Authentication.JwtBearer

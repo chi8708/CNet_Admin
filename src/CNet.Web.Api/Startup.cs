@@ -1,4 +1,10 @@
-﻿using CNet.Common;
+﻿using Autofac;
+using Autofac.Extensions.DependencyInjection;
+using CNet.BLL;
+using CNet.Common;
+using CNet.DAL;
+using CNet.Model;
+using CNet.Web.Api.Controllers;
 using log4net;
 using log4net.Config;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
@@ -18,6 +24,7 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -47,6 +54,43 @@ namespace CNet.Web.Api
         }
 
         public IConfiguration Configuration { get; }
+        /// <summary>
+        /// 这段代码必须放在Startup类里面
+        /// </summary>
+        /// <param name="builder"></param>
+        public void ConfigureContainer(ContainerBuilder builder)
+        {
+
+            //构造函数注入
+            //builder.RegisterType<IBaseDataDapperContrib>().As<BaseDataDapperContrib>();
+            //属性注入：
+            //builder.RegisterType<EmployeeService>().As<IEmployeeService>().PropertiesAutowired();//只能在当前的EmployeeService类，使用属性注入
+            //Autofac批量
+            //需要 using 命名空间 System.Reflection  Straup.cs 文件中的 ConfigureContainer() 方法 
+            //约定接口（Interface）和实现（class）都是以 Service 【或者其他】结尾的。
+            //泛型注册
+
+            //builder.RegisterGeneric(typeof(BaseDataDapperContrib<>)).As(typeof(IBaseDataDapperContrib<>));
+            //builder.RegisterGeneric(typeof(BaseServiceDapperContrib<>)).AsSelf().PropertiesAutowired();//属性注册服务//假如要注册就用从控制器开始注册
+            ////var basedir = Path.Combine(Directory.GetCurrentDirectory(), "lib");
+
+            ////var assemblysBLL = Assembly.Load($"{basedir}/CNet.BLL.dll");//Service是继承接口的实现方法类库名称
+            ////var assemblysDAL = Assembly.LoadFile($"{basedir}/CNet.DAL.dll");//Service是继承接口的实现方法类库名称
+            //var assemblysBLL = Assembly.Load($"CNet.BLL");
+            //var assemblysDAL = Assembly.Load($"CNet.DAL");
+            //////var baseType = typeof(IBaseService<>);//IDependency 是一个接口（所有要实现依赖注入的借口都要继承该接口）
+
+            //builder.RegisterAssemblyTypes(assemblysBLL)
+            //     .Where(t => (t.BaseType != null && t.BaseType.Name.StartsWith("BaseService")))
+            //     .AsSelf().InstancePerLifetimeScope();
+
+            //builder.RegisterAssemblyTypes(assemblysDAL)
+            //     .Where(t => (t.BaseType != null && t.BaseType.Name.StartsWith("BaseDataDapperContrib")))
+            //    .AsSelf().InstancePerLifetimeScope();
+
+        }
+
+
 
         //依赖注入服务
         // This method gets called by the runtime. Use this method to add services to the container.

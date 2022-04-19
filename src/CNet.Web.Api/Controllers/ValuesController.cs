@@ -26,6 +26,11 @@ namespace CNet.Web.Api.Controllers
 
         //}
         // GET api/values
+        Pub_UserBLL bll = null;
+        public ValuesController(Pub_UserBLL pubbll)
+        {
+            bll = pubbll;
+        }
         [HttpGet]
         public string Get()
         {
@@ -34,10 +39,10 @@ namespace CNet.Web.Api.Controllers
             //log.Warning("ok");
             //log.Error("error");
             //_logger.LogError("ssss");
-            LogHelper.WrtieRequestLog(Common.LogLevel.Info, "1111");
-            int a = 0;
-            int b = 1 / a;
-
+            //LogHelper.WrtieRequestLog(Common.LogLevel.Info, "1111");
+            //int a = 0;
+            //int b = 1 / a;
+            var users = bll.GetList(" 1=1 ");
             return "1111";
             //return new Pub_UserBLL().GetList("");
             //return new Pub_UserBLL().GetList("");
