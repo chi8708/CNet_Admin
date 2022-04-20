@@ -2,10 +2,13 @@
 /src/CNet.Web.Api/obj
 /src/CNet.Model/obj
 /src/CNet.Model/bin
-/src/CNet.DBUtility/*
-/src/CNet.DAL/*
+/src/CNet.DBUtility/obj
+/src/CNet.DBUtility/bin
+/src/CNet.DAL/obj
+/src/CNet.DAL/bin
 /src/CNet.Common/bin
 /src/CNet.Common/obj
 /src/CNet.BLL/bin
 /src/CNet.BLL/obj
 /src/.vs
+/src/packages
