@@ -15,6 +15,14 @@ const router = new Router({
 })
 const LOGIN_PAGE_NAME = 'login'
 
+//解决 NavigationDuplicated: Avoided redundant navigation to current location: 
+//获取原型对象上的push函数
+const originalPush = Router.prototype.push
+//修改原型对象中的push方法
+Router.prototype.push = function push(location) {
+   return originalPush.call(this, location).catch(err => err)
+}
+
 const initRouters = (store) => {
   //这个人登录了已经
   if (store.state.user.hasGetInfo) {
