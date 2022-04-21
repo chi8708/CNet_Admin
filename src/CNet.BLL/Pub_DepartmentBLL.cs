@@ -30,5 +30,12 @@ namespace CNet.BLL
 
             return code;
         }
+
+        public List<V_PubDept_Parent> GetChildList(string code = "D000001") 
+        {
+            var depts = dal.SearchChildDept(code);
+
+            return depts;
+        }
     }
 }

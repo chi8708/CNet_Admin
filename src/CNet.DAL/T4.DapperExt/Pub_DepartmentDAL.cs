@@ -9,12 +9,17 @@
 //------------------------------------------------------------------------------
 
 using CNet.Model;
+using System;
+using System.Collections.Generic;
 
 namespace CNet.DAL
-{	
-	public partial class Pub_DepartmentDAL:BaseDataDapperContrib<Pub_Department>
-    { 
-		
+{
+    public partial class Pub_DepartmentDAL : BaseDataDapperContrib<Pub_Department>
+    {
+        public List<V_PubDept_Parent> SearchChildDept(string code = "D000001")
+        {
+            return DapperHelperFactory.GetInstance().Query<V_PubDept_Parent>("p_SearchChildDept",new { deptCodeIn =code}, commandType: System.Data.CommandType.StoredProcedure);
+        }
     }
 }
 

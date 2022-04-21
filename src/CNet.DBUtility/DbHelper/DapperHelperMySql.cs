@@ -11,9 +11,9 @@ using MySql.Data.MySqlClient;
 
 namespace CNet
 {
-    public  class DapperHelperMySql
+    public  class DapperHelperMySql: IDapperHelper
     {
-        private static readonly string connStr = AppConfigurtaionServices.Configuration.GetConnectionString("connMySql");
+        private static  readonly string connStr = AppConfigurtaionServices.Configuration.GetConnectionString("connMySql");
         //ConfigurationManager.ConnectionStrings["connStr"].ConnectionString;
 
         public static string ConnStr { get { return connStr; } }
@@ -23,7 +23,7 @@ namespace CNet
         /// <param name="sql"></param>
         /// <param name="param"></param>
         /// <returns></returns>
-        public static int Excute(string sql, object param=null, 
+        public  int Excute(string sql, object param=null, 
             IDbTransaction transaction = null, int? commandTimeout = null, CommandType? commandType = null)
         {
             using (IDbConnection conn = new MySqlConnection(connStr))
@@ -37,7 +37,7 @@ namespace CNet
         ///返回table数据
         /// </summary>
         /// <returns></returns>
-        public static DataTable ExecuteReaderToTable(string sql, object param = null, IDbTransaction transaction = null, int? commandTimeout = null, CommandType? commandType = null)
+        public  DataTable ExecuteReaderToTable(string sql, object param = null, IDbTransaction transaction = null, int? commandTimeout = null, CommandType? commandType = null)
         {
             using (IDbConnection conn = new MySqlConnection(connStr))
             {
@@ -55,7 +55,7 @@ namespace CNet
         /// <param name="sql"></param>
         /// <param name="param"></param>
         /// <returns></returns>
-        public static List<T> Query<T>(string sql, object param=null,
+        public  List<T> Query<T>(string sql, object param=null,
            IDbTransaction transaction = null, bool buffered = true, int? commandTimeout = null, CommandType? commandType = null)
         {
             using (IDbConnection conn = new MySqlConnection(connStr))
@@ -71,7 +71,7 @@ namespace CNet
         /// <param name="sql"></param>
         /// <param name="param"></param>
         /// <returns></returns>
-        public static T QueryFirst<T>(string sql, object param = null, IDbTransaction transaction = null, int? commandTimeout = null, CommandType? commandType = null)
+        public  T QueryFirst<T>(string sql, object param = null, IDbTransaction transaction = null, int? commandTimeout = null, CommandType? commandType = null)
         {
             using (IDbConnection conn = new MySqlConnection(connStr))
             {
@@ -89,7 +89,7 @@ namespace CNet
         /// <param name="commandTimeout"></param>
         /// <param name="commandType"></param>
         /// <returns></returns>
-        public static SqlMapper.GridReader QueryMultiple(string sql, object param=null,
+        public  SqlMapper.GridReader QueryMultiple(string sql, object param=null,
          IDbTransaction transaction = null, bool buffered = true, int? commandTimeout = null, CommandType? commandType = null)
         {
             using (IDbConnection conn = new MySqlConnection(connStr))
@@ -104,7 +104,7 @@ namespace CNet
         /// <param name="sql"></param>
         /// <param name="param"></param>
         /// <returns></returns>
-        public static object ExecuteScalar(string sql, object param=null,
+        public  object ExecuteScalar(string sql, object param=null,
            IDbTransaction transaction = null, int? commandTimeout = null, CommandType? commandType = null)
         {
             using (IDbConnection conn = new MySqlConnection(connStr))
@@ -120,7 +120,7 @@ namespace CNet
         /// <param name="sql"></param>
         /// <param name="param"></param>
         /// <returns></returns>
-        public static T FirstOrDefault<T>(string sql, object param=null) where T : class
+        public  T FirstOrDefault<T>(string sql, object param=null) where T : class
         {
             return Query<T>(sql,param).FirstOrDefault();
         }
@@ -132,7 +132,7 @@ namespace CNet
         /// <param name="dic"></param>
         /// <param name="proName"></param>
         /// <returns></returns>
-        public static bool ExecTransaction(Dictionary<string, object> dic, List<string> proName = null)
+        public  bool ExecTransaction(Dictionary<string, object> dic, List<string> proName = null)
         {
             using (IDbConnection conn = new MySqlConnection(connStr))
             {

@@ -319,7 +319,7 @@ namespace CNet.DAL
 
             sql += " where " + where;
 
-            return DapperHelperMySql.Excute(sql) > 0;
+            return new DapperHelperMySql().Excute(sql) > 0;
         }
     }
 }

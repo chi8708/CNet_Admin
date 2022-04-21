@@ -316,7 +316,7 @@ namespace CNet.DAL
 
             sql += " where " + where;
 
-            return DapperHelper.Excute(sql) > 0;
+            return new DapperHelper().Excute(sql) > 0;
         }
     }
 }

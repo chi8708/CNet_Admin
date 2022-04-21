@@ -36,8 +36,8 @@ namespace CNet.Web.Api.Controllers
         public DataRes<List<V_PubFunction_Parent>> GetChildList(string code = "FC001")
         {
 
-            var depts = functionParentBLL.GetList(string.Format(" StopFlag=0 And FunctionCode IN (Select FunctionCode From f_SearchChildFunction('{0}'))", code), " FunctionCode ");
-
+            // var depts = functionParentBLL.GetList(string.Format(" StopFlag=0 And FunctionCode IN (Select FunctionCode From f_SearchChildFunction('{0}'))", code), " FunctionCode ");
+            var depts = bll.GetChildFunction(code);
             return new DataRes<List<V_PubFunction_Parent>>() { data = depts };
         }
 

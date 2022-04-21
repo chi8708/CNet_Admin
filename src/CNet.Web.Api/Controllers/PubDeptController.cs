@@ -37,7 +37,7 @@ namespace CNet.Web.Api.Controllers
         public DataRes<List<V_PubDept_Parent>> GetChildList(string code= "D000001")
         {
 
-            var depts = deptParentBLL.GetList(string.Format(" StopFlag=0 And DeptCode IN (Select DeptCode From f_SearchChildDept('{0}'))", code), " DeptCode ");
+            var depts = bll.GetChildList(code).Where(p=>p.StopFlag==false).ToList();
 
             return new DataRes<List<V_PubDept_Parent>>() { data = depts };
         }

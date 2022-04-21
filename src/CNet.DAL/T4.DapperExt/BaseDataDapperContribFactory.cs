@@ -7,15 +7,30 @@ using System.Threading.Tasks;
 
 namespace CNet.DAL
 {
-    public class BaseDataDapperContribFactory
+    public class BaseDataDapperContribFactory<T> where T : class, new()
     {
-        public static IBaseDataDapperContrib<T> GetInstance<T>() where T:  class,new()
+        private static IBaseDataDapperContrib<T> iBaseDataDapperContrib;
+        public static IBaseDataDapperContrib<T> GetInstance() 
         {
-            return new BaseDataDapperContribMySql<T>();
-            //ICustomeContainer container = new CustomeContainer();//创建容器 
-            //container.RegisterType<IBaseDataDapperContrib<T>, BaseDataDapperContrib<T>>();
-            //IBaseDataDapperContrib<T> baseDataDapperContrib = container.Resolve<IBaseDataDapperContrib<T>>();
-            //return baseDataDapperContrib;
+            if (iBaseDataDapperContrib!=null)
+            {
+                return iBaseDataDapperContrib;
+            }
+            var defatultDBType = DBTypeConfig.DefatultDBType;
+            switch (defatultDBType)
+            {
+                case DBType.SqlServer:
+                    iBaseDataDapperContrib = new BaseDataDapperContrib<T>();
+                    break;
+                case DBType.MySql:
+                    iBaseDataDapperContrib = new BaseDataDapperContribMySql<T>();
+                    break;
+                default:
+                    break;
+            }
+
+            return iBaseDataDapperContrib;
+
         }
     }
 }

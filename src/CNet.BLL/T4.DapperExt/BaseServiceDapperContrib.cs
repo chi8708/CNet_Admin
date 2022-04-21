@@ -12,7 +12,7 @@ namespace CNet.BLL
         //public IBaseDataDapperContrib<T> dal;
         public BaseServiceDapperContrib()
         {
-            dal = BaseDataDapperContribFactory.GetInstance<T>();
+            dal = BaseDataDapperContribFactory<T>.GetInstance();
         }
         /// <summary>
         /// 插入

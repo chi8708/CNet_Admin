@@ -16,7 +16,7 @@ namespace CNet.DAL
         /// <returns></returns>
         public List<Pub_Function> GetMenu(string userCode)
         {
-            return DapperHelper.Query<Pub_Function>("P_GetMenu", new { userCode = userCode }, commandType: System.Data.CommandType.StoredProcedure);
+            return DapperHelperFactory.GetInstance().Query<Pub_Function>("P_GetMenu", new { userCode = userCode }, commandType: System.Data.CommandType.StoredProcedure);
         }
 
         /// <summary>
@@ -25,7 +25,17 @@ namespace CNet.DAL
         /// <returns></returns>
         public List<string> GetUserAccess(string userCode)
         {
-            return DapperHelper.Query<string>("P_GetUserAccess", new { userCode = userCode }, commandType: System.Data.CommandType.StoredProcedure);
+            return DapperHelperFactory.GetInstance().Query<string>("P_GetUserAccess", new { userCode = userCode }, commandType: System.Data.CommandType.StoredProcedure);
+        }
+
+
+        /// <summary>
+        /// 获取自己或子级
+        /// </summary>
+        /// <returns></returns>
+        public List<V_PubFunction_Parent> GetChildFunction(string code)
+        {
+            return DapperHelperFactory.GetInstance().Query<V_PubFunction_Parent>("p_SearchChildFunction", new { functionCodeIn = code }, commandType: System.Data.CommandType.StoredProcedure);
         }
     }
 }

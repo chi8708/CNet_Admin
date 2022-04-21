@@ -50,5 +50,14 @@ namespace CNet.BLL
         {
             return dal.GetMenu(userCode);
         }
-    }
+
+        /// <summary>
+        /// 获取自己或子级
+        /// </summary>
+        /// <returns></returns>
+        public List<V_PubFunction_Parent> GetChildFunction(string code)
+        {
+            return dal.GetChildFunction(code);
+        }
+      }
 }
