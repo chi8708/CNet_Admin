@@ -10,6 +10,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Remove="DbHelperSQL.cs" />
+    <Compile Remove="DbHelper\MySqlDbHelper.cs" />
     <Compile Remove="OracleHelper.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -27,6 +28,12 @@
     <FrameworkReference Include="Microsoft.AspNetCore.App" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="DbHelper\Db.CS\MySqlDbHelper.cs" />
+  </ItemGroup>
+  <ItemGroup>
     <ProjectReference Include="..\CNet.Common\CNet.Common.csproj" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349b6-6b84-4df5-91f0-309beebad82d}" />
   </ItemGroup>
 </Project>

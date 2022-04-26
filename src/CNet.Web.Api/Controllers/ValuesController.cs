@@ -12,6 +12,8 @@ using CNet.BLL;
 using CNet.Common;
 using CNet.Model;
 using Microsoft.Extensions.Logging;
+using MySql.Data.MySqlClient;
+using T4;
 
 namespace CNet.Web.Api.Controllers
 {
@@ -26,14 +28,17 @@ namespace CNet.Web.Api.Controllers
 
         //}
         // GET api/values
-        Pub_UserBLL bll = null;
-        public ValuesController(Pub_UserBLL pubbll)
-        {
-            bll = pubbll;
-        }
+        //Pub_UserBLL bll = null;
+        //public ValuesController(Pub_UserBLL pubbll)
+        //{
+            
+        //    bll = pubbll;
+        //}
         [HttpGet]
         public string Get()
         {
+            T4.MySqlDbHelper tt = new MySqlDbHelper();
+            tt.GetDbColumns("Pub_User");
             //var log= LogFactory.GetLogger(Request.Path);
             //log.Info("info");
             //log.Warning("ok");
@@ -42,7 +47,7 @@ namespace CNet.Web.Api.Controllers
             //LogHelper.WrtieRequestLog(Common.LogLevel.Info, "1111");
             //int a = 0;
             //int b = 1 / a;
-            var users = bll.GetList(" 1=1 ");
+           // var users = bll.GetList(" 1=1 ");
             return "1111";
             //return new Pub_UserBLL().GetList("");
             //return new Pub_UserBLL().GetList("");

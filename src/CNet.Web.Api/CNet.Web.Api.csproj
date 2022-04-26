@@ -31,6 +31,7 @@
   <ItemGroup>
     <ProjectReference Include="..\CNet.BLL\CNet.BLL.csproj" />
     <ProjectReference Include="..\CNet.Common\CNet.Common.csproj" />
+    <ProjectReference Include="..\CNet.DBUtility\CNet.DBUtility.csproj" />
     <ProjectReference Include="..\CNet.Model\CNet.Model.csproj" />
   </ItemGroup>
 
