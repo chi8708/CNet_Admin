@@ -1,11 +1,14 @@
-﻿<#@ assembly name="MySql.Data.dll" #>
-<#@ import namespace="System.Data" #>
-<#@ assembly name="System.Data.DataSetExtensions.dll" #>
-<#@ import namespace="MySql.Data.MySqlClient" #>
-<#+
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Data;
+using MySql.Data.MySqlClient;
+using System.Data.SqlClient;
 
-     //以下代码请勿修改
-      //以下代码请勿修改
+namespace T4
+{
+    //以下代码请勿修改
     public class MySqlDbHelper : BaseDbHelper
     {
         public override string PreParameter
@@ -38,7 +41,7 @@
                         ) AS b ON a.TABLE_NAME = b.TABLE_NAME
                         WHERE a.TABLE_SCHEMA = '{0}' {1}", Config.DbDatabase, tables);
             #endregion
-            DataTable dt = GetDataTableNew(sql);
+            DataTable dt = GetDataTable(sql);
             return dt.Rows.Cast<DataRow>().Select(row => new DbTable
             {
                 TableName = row.Field<string>("tablename"),
@@ -48,23 +51,25 @@
             }).ToList();
         }
 
-        public override List<DbColumn> GetDbColumns(string tableName, string schema)
+        public override List<DbColumn> GetDbColumns(string tableName, string schema = "dbo")
         {
+            #region SQL
             string sql = string.Format(@"SELECT ORDINAL_POSITION  ColumnID,COLUMN_KEY='PRI' IsPrimaryKey,COLUMN_NAME ColumnName,
-                    DATA_TYPE ColumnType,EXTRA='auto_increment' IsIdentity,IS_NULLABLE='YES' IsNullable,
-                    IF(CHARACTER_MAXIMUM_LENGTH IS NULL,0,CHARACTER_MAXIMUM_LENGTH ) ByteLength,
-                    IF(CHARACTER_OCTET_LENGTH IS NULL,0,CHARACTER_OCTET_LENGTH ) CharLength,
-                    IF(NUMERIC_SCALE IS NULL,0,NUMERIC_SCALE ) Scale,
-                    COLUMN_COMMENT Remark FROM information_schema.`COLUMNS` 
-                    where TABLE_SCHEMA='{0}'and TABLE_NAME='{1}'", Config.DbDatabase, tableName);
-            DataTable dt = GetDataTableNew(sql);
+                                DATA_TYPE ColumnType,EXTRA='auto_increment' IsIdentity,IS_NULLABLE='YES' IsNullable,
+                                IF(CHARACTER_MAXIMUM_LENGTH IS NULL,0,CHARACTER_MAXIMUM_LENGTH ) ByteLength,
+                                IF(CHARACTER_OCTET_LENGTH IS NULL,0,CHARACTER_OCTET_LENGTH ) CharLength,
+                                IF(NUMERIC_SCALE IS NULL,0,NUMERIC_SCALE ) Scale,
+                                COLUMN_COMMENT Remark FROM information_schema.`COLUMNS` 
+                                where TABLE_SCHEMA='{0}'and TABLE_NAME='{1}'", Config.DbDatabase, tableName);
+            #endregion
+            DataTable dt = GetDataTable(sql);
             return DtColToList(dt, new MySqlDbTypeMap());
         }
 
-        public  DataTable GetDataTableNew(string commandText)
+        public override DataTable GetDataTable(string commandText, params IDataParameter[] parms)
         {
-           using(var connection = new MySqlConnection(Config.ConnectionString))
-           {
+            using (var connection = new MySqlConnection(Config.ConnectionString))
+            {
                 MySqlCommand command = connection.CreateCommand();
                 command.CommandText = commandText;
                 MySqlDataAdapter adapter = new MySqlDataAdapter(command);
@@ -74,21 +79,7 @@
                 command.Dispose();
                 connection.Close();
                 return dt;
-           }
-        }
-
-        public override DataTable GetDataTable(string commandText, params IDataParameter[] parms)
-        {
-           using(var connection = new MySqlConnection(Config.ConnectionString))
-           {
-                MySqlCommand command = connection.CreateCommand();
-                command.CommandText = commandText;
-                command.Parameters.AddRange(parms);
-                MySqlDataAdapter adapter = new MySqlDataAdapter(command);
-                DataTable dt = new DataTable();
-                adapter.Fill(dt);
-                return dt;
-           }
+            }
         }
 
         public override string GetParStr(List<DbColumn> dbComList)
@@ -203,4 +194,5 @@
             }
         }
     }
-#>
+
+}
