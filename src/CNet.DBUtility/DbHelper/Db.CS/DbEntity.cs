@@ -46,6 +46,18 @@ namespace T4
         public abstract DataTable GetDataTable(string commandText, params IDataParameter[] parms);
         public abstract string GetParStr(List<DbColumn> dbComList);
 
+        public string ToCamelCase(string inputStr) 
+        {
+            var str = string.Empty;
+            var inputStrArr = inputStr.Split("_");
+            foreach (var item in inputStrArr)
+            {
+                str += item.Substring(0,1).ToUpper()+item.Substring(1)+"_";
+            }
+            str.TrimEnd('_');
+            return str;
+        }
+
         public string GetFileStr(List<DbColumn> dbColList)
         {
             StringBuilder fields = new StringBuilder();

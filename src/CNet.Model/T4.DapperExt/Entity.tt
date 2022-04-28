@@ -53,7 +53,8 @@ namespace <#=Config.Namespace#>.Model
 
 manager.EndBlock();   
 } 
-manager.Process(true);  
+//异步执行同步vs会卡死
+manager.Process(true,false); 
 #>
 
 

@@ -38,10 +38,10 @@
                         ) AS b ON a.TABLE_NAME = b.TABLE_NAME
                         WHERE a.TABLE_SCHEMA = '{0}' {1}", Config.DbDatabase, tables);
             #endregion
-            DataTable dt = GetDataTableNew(sql);
+            DataTable dt = GetDataTable(sql);
             return dt.Rows.Cast<DataRow>().Select(row => new DbTable
             {
-                TableName = row.Field<string>("tablename"),
+                TableName =ToCamelCase(row.Field<string>("tablename")),
                 SchemaName = row.Field<string>("schemname"),
                 Rows = int.Parse(row.Field<object>("rows").ToString()),
                 HasPrimaryKey = row.Field<Int64>("HasPrimaryKey") > 0
@@ -56,26 +56,11 @@
                     IF(CHARACTER_OCTET_LENGTH IS NULL,0,CHARACTER_OCTET_LENGTH ) CharLength,
                     IF(NUMERIC_SCALE IS NULL,0,NUMERIC_SCALE ) Scale,
                     COLUMN_COMMENT Remark FROM information_schema.`COLUMNS` 
-                    where TABLE_SCHEMA='{0}'and TABLE_NAME='{1}'", Config.DbDatabase, tableName);
-            DataTable dt = GetDataTableNew(sql);
+                    where TABLE_SCHEMA='{0}'and TABLE_NAME='{1}' order by ORDINAL_POSITION ", Config.DbDatabase, tableName);
+            DataTable dt = GetDataTable(sql);
             return DtColToList(dt, new MySqlDbTypeMap());
         }
 
-        public  DataTable GetDataTableNew(string commandText)
-        {
-           using(var connection = new MySqlConnection(Config.ConnectionString))
-           {
-                MySqlCommand command = connection.CreateCommand();
-                command.CommandText = commandText;
-                MySqlDataAdapter adapter = new MySqlDataAdapter(command);
-                DataTable dt = new DataTable();
-                adapter.Fill(dt);
-                adapter.Dispose();
-                command.Dispose();
-                connection.Close();
-                return dt;
-           }
-        }
 
         public override DataTable GetDataTable(string commandText, params IDataParameter[] parms)
         {
