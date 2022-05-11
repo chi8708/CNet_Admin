@@ -47,7 +47,10 @@ namespace CNet.Web.Api.Controllers
             //LogHelper.WrtieRequestLog(Common.LogLevel.Info, "1111");
             //int a = 0;
             //int b = 1 / a;
-           // var users = bll.GetList(" 1=1 ");
+            // var users = bll.GetList(" 1=1 ");
+            //RedisHelper rd = new RedisHelper();
+            //rd.HashSet("key1", "keyData1",new { id=1,value="2"});
+            //rd.HashSet("key1", "keyData2", new { id = 2, value = "2" });
             return "1111";
             //return new Pub_UserBLL().GetList("");
             //return new Pub_UserBLL().GetList("");
