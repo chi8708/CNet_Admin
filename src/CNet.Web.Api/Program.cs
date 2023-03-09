@@ -23,9 +23,14 @@ namespace CNet.Web.Api
         public static IHostBuilder CreateHostBuilder(string[] args) =>
             Host.CreateDefaultBuilder(args)
                 .UseServiceProviderFactory(new AutofacServiceProviderFactory())//添加Autofac服务
-                .ConfigureWebHostDefaults(webBuilder =>
-                {
-                    webBuilder.UseStartup<Startup>();
-                });
+                                                                               //.ConfigureWebHostDefaults(webBuilder =>
+                                                                               //{
+                                                                               //    webBuilder.UseStartup<Startup>();
+                                                                               //});
+                    .ConfigureWebHostDefaults(webBuilder =>
+                    {
+                        webBuilder.UseStartup<Startup>()
+                        .UseUrls("http://localhost:8916");
+                    });
     }
 }
