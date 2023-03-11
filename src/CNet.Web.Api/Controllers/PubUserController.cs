@@ -99,6 +99,15 @@ namespace CNet.Web.Api.Controllers
         {
             DataRes<bool> res = new DataRes<bool>() { code = ResCode.Success, data = true };
 
+            var oldUser = bll.GetUserByUserName(model.UserName);
+            if (oldUser!= null) 
+            {
+                res.code = ResCode.NoValidate;
+                res.data = false;
+                res.msg ="用户名已存在，请修改！";
+                return res;
+            }
+
             model.Crdt = model.Lmdt = DateTime.Now;
             var user = new CNetUser(User);
             model.Crid = model.Lmid = $"{user.UserCode}-{user.UserName}";
@@ -122,6 +131,15 @@ namespace CNet.Web.Api.Controllers
         public DataRes<bool> Edit([FromBody]V_PubUser_Dept model)
         {
             DataRes<bool> res = new DataRes<bool>() { code = ResCode.Success, data = true };
+
+            var oldUser = bll.GetUserByUserName(model.UserName);
+            if (oldUser != null&&oldUser.Id!=model.Id)
+            {
+                res.code = ResCode.NoValidate;
+                res.data = false;
+                res.msg = "用户名已存在，请修改！";
+                return res;
+            }
 
             model.Lmdt = DateTime.Now;
             var user = new CNetUser(User);

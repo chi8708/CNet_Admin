@@ -125,6 +125,10 @@ export default {
             let routers=backendMenusToRouters(res.data.data);
             let routersNew= backendMenusToRoutersNewBlank();
             routers= routers.concat(routersNew);
+            if(routers.length<=0){
+              reject("路由为空,检查权限");
+              return;
+            }
             commit('setRouters', routers)
             commit('setHasGetRouter', true)
             resolve(routers)

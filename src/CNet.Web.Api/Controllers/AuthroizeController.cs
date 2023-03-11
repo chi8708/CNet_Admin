@@ -57,8 +57,8 @@ namespace CNet.Web.Api.Controllers
                     new Claim(ClaimTypes.Name,user.UserName),
                     new Claim("Id",user.Id.ToString()),
                     new Claim("UserCode",user.UserCode),
-                    new Claim("Tel",user.Tel),
-                    new Claim("DeptCode",user.DeptCode)
+                    new Claim("Tel",user.Tel??""),
+                    new Claim("DeptCode",user.DeptCode??"")
                 };
                 var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_jwtSeetings.SecretKey));
                 var creds = new SigningCredentials(key, SecurityAlgorithms.HmacSha256);

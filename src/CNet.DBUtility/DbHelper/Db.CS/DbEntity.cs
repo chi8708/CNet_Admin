@@ -11,7 +11,7 @@ namespace T4
     {
         //数据库名
         public static readonly string Server = ".";//"127.0.0.1";
-        public static readonly string DbDatabase = "CNet";
+        public static readonly string DbDatabase = "cnet";
         public static readonly string Uid = "sa";
         public static readonly string Pwd = "123123";
         //数据库类型
@@ -20,7 +20,7 @@ namespace T4
         //数据库连接	
         //public static readonly string ConnectionString = string.Format("server={0};database={1};uid={2};pwd={3}", Server, DbDatabase, Uid, Pwd);
 
-        public static readonly string ConnectionString = string.Format("server=localhost;port=3306;database=CNet;SslMode=None;uid=root;pwd=123123;Allow User Variables=true;");
+        public static readonly string ConnectionString = string.Format("server=localhost;port=3306;database=cnet;SslMode=None;uid=root;pwd=123123;Allow User Variables=true;");
         //命名空间
         public static readonly string Namespace = "CNet";
         //需要生成的表名，多张表用,分割

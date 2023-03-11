@@ -11,7 +11,7 @@
  Target Server Version : 80028
  File Encoding         : 65001
 
- Date: 09/03/2023 22:01:44
+ Date: 11/03/2023 23:41:00
 */
 
 SET NAMES utf8mb4;
@@ -186,7 +186,7 @@ CREATE TABLE `pub_rolefunction`  (
   `Lmdt` datetime(0) NULL DEFAULT NULL COMMENT '最后编辑时间',
   `StopFlag` tinyint(0) NULL DEFAULT NULL COMMENT '停用状态 默认0 未停用 1 停用',
   PRIMARY KEY (`Id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 930 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 931 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of pub_rolefunction
@@ -230,24 +230,6 @@ INSERT INTO `pub_rolefunction` VALUES (600, 'RC000003', 'FC001002001', NULL, NUL
 INSERT INTO `pub_rolefunction` VALUES (601, 'RC000003', 'FC001002002', NULL, NULL, NULL);
 INSERT INTO `pub_rolefunction` VALUES (602, 'RC000010', 'FC001001005', NULL, NULL, NULL);
 INSERT INTO `pub_rolefunction` VALUES (603, 'RC000010', 'FC001001001', NULL, NULL, NULL);
-INSERT INTO `pub_rolefunction` VALUES (873, 'RC000002', 'FC001001002', NULL, NULL, NULL);
-INSERT INTO `pub_rolefunction` VALUES (874, 'RC000002', 'FC001001004', NULL, NULL, NULL);
-INSERT INTO `pub_rolefunction` VALUES (875, 'RC000002', 'FC001002', NULL, NULL, NULL);
-INSERT INTO `pub_rolefunction` VALUES (876, 'RC000002', 'FC001002001', NULL, NULL, NULL);
-INSERT INTO `pub_rolefunction` VALUES (877, 'RC000002', 'FC001002002', NULL, NULL, NULL);
-INSERT INTO `pub_rolefunction` VALUES (878, 'RC000002', 'FC001002003', NULL, NULL, NULL);
-INSERT INTO `pub_rolefunction` VALUES (879, 'RC000002', 'FC001002004', NULL, NULL, NULL);
-INSERT INTO `pub_rolefunction` VALUES (880, 'RC000002', 'FC001002005', NULL, NULL, NULL);
-INSERT INTO `pub_rolefunction` VALUES (881, 'RC000002', 'FC001003', NULL, NULL, NULL);
-INSERT INTO `pub_rolefunction` VALUES (882, 'RC000002', 'FC001003001', NULL, NULL, NULL);
-INSERT INTO `pub_rolefunction` VALUES (883, 'RC000002', 'FC001003002', NULL, NULL, NULL);
-INSERT INTO `pub_rolefunction` VALUES (884, 'RC000002', 'FC001003003', NULL, NULL, NULL);
-INSERT INTO `pub_rolefunction` VALUES (885, 'RC000002', 'FC001003004', NULL, NULL, NULL);
-INSERT INTO `pub_rolefunction` VALUES (886, 'RC000002', 'FC001004', NULL, NULL, NULL);
-INSERT INTO `pub_rolefunction` VALUES (887, 'RC000002', 'FC001004001', NULL, NULL, NULL);
-INSERT INTO `pub_rolefunction` VALUES (888, 'RC000002', 'FC001004002', NULL, NULL, NULL);
-INSERT INTO `pub_rolefunction` VALUES (889, 'RC000002', 'FC001004003', NULL, NULL, NULL);
-INSERT INTO `pub_rolefunction` VALUES (890, 'RC000002', 'FC001004004', NULL, NULL, NULL);
 INSERT INTO `pub_rolefunction` VALUES (908, 'RC000001', 'FC001', NULL, NULL, NULL);
 INSERT INTO `pub_rolefunction` VALUES (909, 'RC000001', 'FC001001', NULL, NULL, NULL);
 INSERT INTO `pub_rolefunction` VALUES (910, 'RC000001', 'FC001001001', NULL, NULL, NULL);
@@ -271,6 +253,14 @@ INSERT INTO `pub_rolefunction` VALUES (927, 'RC000001', 'FC001004001', NULL, NUL
 INSERT INTO `pub_rolefunction` VALUES (928, 'RC000001', 'FC001004002', NULL, NULL, NULL);
 INSERT INTO `pub_rolefunction` VALUES (929, 'RC000001', 'FC001004003', NULL, NULL, NULL);
 INSERT INTO `pub_rolefunction` VALUES (930, 'RC000001', 'FC001004004', NULL, NULL, NULL);
+INSERT INTO `pub_rolefunction` VALUES (931, 'RC000002', 'FC001001001', NULL, NULL, NULL);
+INSERT INTO `pub_rolefunction` VALUES (932, 'RC000002', 'FC001002001', NULL, NULL, NULL);
+INSERT INTO `pub_rolefunction` VALUES (933, 'RC000002', 'FC001002002', NULL, NULL, NULL);
+INSERT INTO `pub_rolefunction` VALUES (934, 'RC000002', 'FC001003001', NULL, NULL, NULL);
+INSERT INTO `pub_rolefunction` VALUES (935, 'RC000002', 'FC001004001', NULL, NULL, NULL);
+INSERT INTO `pub_rolefunction` VALUES (936, 'RC000002', 'FC001004002', NULL, NULL, NULL);
+INSERT INTO `pub_rolefunction` VALUES (937, 'RC000002', 'FC001004003', NULL, NULL, NULL);
+INSERT INTO `pub_rolefunction` VALUES (938, 'RC000002', 'FC001004004', NULL, NULL, NULL);
 
 -- ----------------------------
 -- Table structure for pub_user
@@ -304,21 +294,20 @@ CREATE TABLE `pub_user`  (
   `Wxcode` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL DEFAULT NULL COMMENT '微信openid',
   `HeadUrl` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL DEFAULT NULL COMMENT '头像地址',
   PRIMARY KEY (`Id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 26 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 27 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of pub_user
 -- ----------------------------
-INSERT INTO `pub_user` VALUES (1, '00000001', 'chi1', '迟', '123123', 0, NULL, NULL, 'D000001', 0, '152881331161', NULL, NULL, NULL, 0, NULL, NULL, '00000002-admin', '2022-04-21 14:22:24', NULL, NULL, NULL, NULL, NULL, NULL, NULL);
-INSERT INTO `pub_user` VALUES (2, '00000002', 'admin', 'admin', '123456', 0, NULL, NULL, 'D000002', 0, '15288133116', NULL, NULL, '                        \n                    ', 0, NULL, NULL, '00000002-admin', '2020-08-04 09:45:34', NULL, NULL, NULL, NULL, NULL, NULL, NULL);
-INSERT INTO `pub_user` VALUES (19, '00000003', 'zsx', 'chi', '123456', 1, NULL, NULL, 'D000001', 0, '1', NULL, NULL, NULL, 1, '00000002-admin', '2018-08-17 10:18:58', '00000002-admin', '2018-08-17 10:18:58', NULL, NULL, NULL, NULL, NULL, NULL, NULL);
-INSERT INTO `pub_user` VALUES (20, '00000004', 'cts', '迟1', '123123', 1, NULL, NULL, 'D000003', 0, '12345678901', NULL, NULL, '123456', 0, '00000002-admin', '2019-08-01 17:29:09', '00000002-admin', '2019-10-10 14:17:38', NULL, NULL, NULL, NULL, '123', NULL, NULL);
+INSERT INTO `pub_user` VALUES (1, '00000001', 'chi', '迟', '123123', 0, NULL, NULL, 'D000001', 0, '152881331161', NULL, NULL, NULL, 0, NULL, NULL, '00000001-chi', '2023-03-11 23:32:08', NULL, NULL, NULL, NULL, NULL, NULL, NULL);
+INSERT INTO `pub_user` VALUES (2, '00000002', 'admin', 'admin', '123456', 0, NULL, NULL, 'D000002', 0, '15288133116', NULL, NULL, '                        \n                    ', 0, NULL, NULL, '00000002-admin', '2023-03-11 23:18:42', NULL, NULL, NULL, NULL, NULL, NULL, NULL);
+INSERT INTO `pub_user` VALUES (20, '00000004', 'cts', '迟1', '123123', 1, NULL, NULL, 'D000003', 0, '12345678901', NULL, NULL, '123456', 0, '00000002-admin', '2019-08-01 17:29:09', '00000002-admin', '2023-03-11 22:03:57', NULL, NULL, NULL, NULL, '123', NULL, NULL);
 INSERT INTO `pub_user` VALUES (21, '00000005', 'cts2', '111', '1234567890', 1, NULL, NULL, 'D000047', 0, '123123457890', NULL, NULL, '2222', 1, '00000002-admin', '2019-08-01 17:33:36', '00000002-admin', '2019-08-02 15:35:19', NULL, NULL, NULL, NULL, '111', NULL, NULL);
 INSERT INTO `pub_user` VALUES (22, '00000006', 'jack', 'chi', '123456', 1, NULL, NULL, 'D000003', 0, '15288133116', NULL, NULL, NULL, 1, '00000002-admin', '2019-08-02 08:56:02', '00000002-admin', '2019-08-02 09:00:07', NULL, NULL, NULL, NULL, NULL, NULL, NULL);
 INSERT INTO `pub_user` VALUES (23, '00000007', '123', NULL, '11111111', 1, NULL, NULL, NULL, 0, NULL, NULL, NULL, NULL, 1, '00000002-admin', '2019-08-02 16:52:01', '00000002-admin', '2019-08-02 16:52:01', NULL, NULL, NULL, NULL, NULL, NULL, NULL);
 INSERT INTO `pub_user` VALUES (24, '00000008', '123', NULL, '11111111', 1, NULL, NULL, NULL, 0, NULL, NULL, NULL, NULL, 1, '00000002-admin', '2019-08-02 16:52:20', '00000002-admin', '2019-08-02 16:52:20', NULL, NULL, NULL, NULL, NULL, NULL, NULL);
-INSERT INTO `pub_user` VALUES (25, '00000009', 'chi', '111', '123123', 1, NULL, NULL, 'D000003', 0, '11', NULL, NULL, NULL, 1, '00000001-chi', '2019-10-12 14:08:31', '00000001-chi', '2019-10-12 14:08:31', NULL, NULL, NULL, NULL, NULL, NULL, NULL);
 INSERT INTO `pub_user` VALUES (26, '00000010', 'tt1', NULL, '123123', 1, NULL, NULL, NULL, 0, NULL, NULL, NULL, NULL, 1, '00000002-admin', '2022-04-21 15:09:12', '00000002-admin', '2022-04-21 15:09:12', NULL, NULL, NULL, NULL, NULL, NULL, NULL);
+INSERT INTO `pub_user` VALUES (30, '00000014', 'chi1', NULL, '123123', 1, NULL, NULL, NULL, 0, NULL, NULL, NULL, NULL, 0, '00000001-chi', '2023-03-11 23:34:27', '00000001-chi', '2023-03-11 23:34:27', NULL, NULL, NULL, NULL, NULL, NULL, NULL);
 
 -- ----------------------------
 -- Table structure for pub_userfunction
@@ -351,7 +340,7 @@ INSERT INTO `pub_userfunction` VALUES (141, '00000002', 'FC001005', NULL, NULL, 
 -- ----------------------------
 DROP TABLE IF EXISTS `pub_userrole`;
 CREATE TABLE `pub_userrole`  (
-  `Id` int(0) NOT NULL COMMENT '自增主键',
+  `Id` int(0) NOT NULL AUTO_INCREMENT COMMENT '自增主键',
   `UserCode` varchar(20) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL COMMENT '用户编号',
   `RoleCode` varchar(10) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL COMMENT '角色编号',
   `Lmid` varchar(15) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL DEFAULT NULL COMMENT '最后编辑人',
@@ -367,9 +356,11 @@ INSERT INTO `pub_userrole` VALUES (11, '00000003', 'RC000001', NULL, NULL, NULL)
 INSERT INTO `pub_userrole` VALUES (12, '00000003', 'RC000002', NULL, NULL, NULL);
 INSERT INTO `pub_userrole` VALUES (29, '00000006', 'RC000002', NULL, NULL, NULL);
 INSERT INTO `pub_userrole` VALUES (31, '00000005', 'RC000002', NULL, NULL, NULL);
-INSERT INTO `pub_userrole` VALUES (40, '00000002', 'RC000001', NULL, NULL, NULL);
-INSERT INTO `pub_userrole` VALUES (42, '00000004', 'RC000003', NULL, NULL, NULL);
 INSERT INTO `pub_userrole` VALUES (44, '00000009', 'RC000001', NULL, NULL, NULL);
+INSERT INTO `pub_userrole` VALUES (50, '00000004', 'RC000002', NULL, NULL, NULL);
+INSERT INTO `pub_userrole` VALUES (56, '00000002', 'RC000002', NULL, NULL, NULL);
+INSERT INTO `pub_userrole` VALUES (57, '00000001', 'RC000001', NULL, NULL, NULL);
+INSERT INTO `pub_userrole` VALUES (58, '00000001', 'RC000002', NULL, NULL, NULL);
 
 -- ----------------------------
 -- View structure for v_pubdept_parent
@@ -453,7 +444,8 @@ DROP PROCEDURE IF EXISTS `P_GetMenu`;
 delimiter ;;
 CREATE PROCEDURE `P_GetMenu`(in userCode VARCHAR(16))
 BEGIN
-	select DISTINCT * from (
+		WITH recursive f  -- recursive 加了就可以，否则报错Table 'cnet.f' doesn't exist
+	AS (
 
 		SELECT pf.* FROM Pub_Function AS pf
 		WHERE pf.StopFlag=0 AND  EXISTS(SELECT prf.Id FROM  Pub_RoleFunction prf WHERE pf.FunctionCode= prf.FunctionCode AND
@@ -461,8 +453,10 @@ BEGIN
 		UNION 
 		SELECT pf.* FROM Pub_Function AS pf
 		WHERE pf.StopFlag=0 AND EXISTS(SELECT puf.Id FROM Pub_UserFunction AS puf WHERE pf.FunctionCode=puf.FunctionCode AND puf.UserCode=userCode)
-	  ) t where t.MenuFlag=1;
-
+		UNION ALL
+	    SELECT  a.* from Pub_Function as a inner join f as b on b.parentCode=a.FunctionCode
+	)/*递归 f前后不能加;*/
+	SELECT DISTINCT  * FROM f WHERE MenuFlag=1 ORDER BY FunctionCode;
 END
 ;;
 delimiter ;

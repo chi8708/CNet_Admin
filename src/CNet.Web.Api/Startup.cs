@@ -32,7 +32,6 @@ namespace CNet.Web.Api
 {
     public class Startup
     {
-        public readonly string anyAllowSpecificOrigins = "any";//解决跨域
         public Startup(IConfiguration configuration)
         {
             Configuration = configuration;
@@ -235,7 +234,7 @@ namespace CNet.Web.Api
             //loggerFactory.AddLog4Net(Environment.CurrentDirectory + "//log4net.config");
             //app.UseHttpsRedirection();//会跳转跨域时不要使用
 
-            
+
             app.UseRouting();
             // app.UseMvc();
 
