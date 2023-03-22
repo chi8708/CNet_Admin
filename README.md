@@ -33,7 +33,7 @@
 
 三、主界面如下：
 ---------------
-<img src="https://github.com/chi8708/NBCZ_Admin_NetCore/blob/master/main.png" width="900px;">
+<img src="main.png" width="900px;">
 
 四、版本
 ---------------
@@ -85,7 +85,7 @@ QQ群:851743573
 
 给Aigu赞赏
 -----------------
-<img src="https://github.com/chi8708/NBCZ/blob/master/zs.jpg" />
+<img src="zs.jpg" />
 
 
 
