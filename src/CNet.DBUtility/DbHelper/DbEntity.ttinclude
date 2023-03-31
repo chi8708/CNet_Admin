@@ -20,7 +20,7 @@
         public static readonly string DbDatabase = "CNet";
         public static readonly string Uid = "root";
         public static readonly string Pwd = "123123";
-        public static readonly string ConnectionString = string.Format("server=localhost;port=3306;database=CNet;uid=root;pwd=123123;charset=utf8;");
+        public static readonly string ConnectionString = string.Format("server=localhost;database=CNet;uid=root;pwd=123123;charset=utf8;");
         //命名空间
        public static readonly string Namespace = "CNet";
 		//需要生成的表名，多张表用,分割

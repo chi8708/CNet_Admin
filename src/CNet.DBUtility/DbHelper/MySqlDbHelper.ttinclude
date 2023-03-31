@@ -1,4 +1,4 @@
-﻿<#@ assembly name="MySql.Data.dll" #>
+﻿<#@ assembly name="$(SolutionDir)\lib\MySql.Data.dll" #>
 <#@ import namespace="System.Data" #>
 <#@ assembly name="System.Data.DataSetExtensions.dll" #>
 <#@ import namespace="MySql.Data.MySqlClient" #>

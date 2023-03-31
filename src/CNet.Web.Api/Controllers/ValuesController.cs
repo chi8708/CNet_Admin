@@ -38,6 +38,7 @@ namespace CNet.Web.Api.Controllers
         public string Get()
         {
             T4.MySqlDbHelper tt = new MySqlDbHelper();
+            tt.GetDbTables();
             tt.GetDbColumns("Pub_User");
             //var log= LogFactory.GetLogger(Request.Path);
             //log.Info("info");
