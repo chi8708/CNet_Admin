@@ -5,7 +5,8 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using CNet.BLL;
+using CNet.Main.Model;
+using CNet.Main.BLL;
 using CNet.Model;
 
 namespace CNet.Web.Api.Controllers
@@ -16,7 +17,7 @@ namespace CNet.Web.Api.Controllers
     public class PubDeptController : Controller
     {
         Pub_DepartmentBLL bll = new Pub_DepartmentBLL();
-        V_PubDept_ParentBLL deptParentBLL = new V_PubDept_ParentBLL();
+        V_Pubdept_ParentBLL deptParentBLL = new V_Pubdept_ParentBLL();
         [HttpPost]
         [Route("GetList")]
         public DataRes<List<Pub_Department>> GetList()
@@ -34,12 +35,12 @@ namespace CNet.Web.Api.Controllers
         [HttpPost]
         [Route("GetChildList")]
         [Route("GetChildList/{code}")]
-        public DataRes<List<V_PubDept_Parent>> GetChildList(string code= "D000001")
+        public DataRes<List<V_Pubdept_Parent>> GetChildList(string code= "D000001")
         {
 
             var depts = bll.GetChildList(code).Where(p=>p.StopFlag==false).ToList();
 
-            return new DataRes<List<V_PubDept_Parent>>() { data = depts };
+            return new DataRes<List<V_Pubdept_Parent>>() { data = depts };
         }
 
 

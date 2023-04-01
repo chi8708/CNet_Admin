@@ -9,6 +9,13 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Model\Response\**" />
+    <Content Remove="Model\Response\**" />
+    <EmbeddedResource Remove="Model\Response\**" />
+    <None Remove="Model\Response\**" />
+  </ItemGroup>
+
+  <ItemGroup>
     <Content Include=".config\dotnet-tools.json" />
   </ItemGroup>
 
@@ -22,10 +29,6 @@
     <PackageReference Include="Swashbuckle.AspNetCore" Version="5.6.3" />
     <PackageReference Include="Swashbuckle.AspNetCore.Swagger" Version="6.3.0" />
     <PackageReference Include="System.IdentityModel.Tokens.Jwt" Version="6.17.0" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="Model\Response\" />
   </ItemGroup>
 
   <ItemGroup>

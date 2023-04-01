@@ -22,9 +22,9 @@
         public static readonly string Pwd = "123123";
         public static readonly string ConnectionString = string.Format("server=localhost;database=CNet;uid=root;pwd=123123;charset=utf8;");
         //命名空间
-       public static readonly string Namespace = "CNet";
+       public static readonly string Namespace = "CNet.Main";
 		//需要生成的表名，多张表用,分割
-        public static readonly string Tables = "Pub_User";//"users,rows,titles"
+        public static readonly string Tables = null;//"users,rows,titles"
     }
     public class DbFactory
     {

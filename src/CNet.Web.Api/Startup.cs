@@ -1,9 +1,9 @@
 ﻿using Autofac;
 using Autofac.Extensions.DependencyInjection;
-using CNet.BLL;
+using CNet.Main.BLL;
 using CNet.Common;
-using CNet.DAL;
-using CNet.Model;
+using CNet.Main.DAL;
+using CNet.Main.Model;
 using CNet.Web.Api.Controllers;
 using log4net;
 using log4net.Config;

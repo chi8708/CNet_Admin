@@ -46,7 +46,7 @@ namespace T4
             {
                 TableName = row.Field<string>("tablename"),
                 SchemaName = row.Field<string>("schemname"),
-                Rows = int.Parse(row.Field<object>("rows").ToString()),
+                Rows = row.Field<object>("rows")==null?0:Convert.ToInt32(row.Field<object>("rows")),
                 HasPrimaryKey = row.Field<Int64>("HasPrimaryKey") > 0
             }).ToList();
         }

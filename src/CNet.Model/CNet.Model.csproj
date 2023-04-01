@@ -7,34 +7,38 @@
     <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Update="T4.DapperExt\Pub_Department.cs">
+    <None Remove="T4.DapperExt\Main\Entity.tt" />
+    <None Remove="T4.DapperExt\Main\Entity.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Update="T4.DapperExt\Main\Pub_Department.cs">
       <DependentUpon>Entity.tt</DependentUpon>
     </Compile>
-    <Compile Update="T4.DapperExt\Pub_Function.cs">
+    <Compile Update="T4.DapperExt\Main\Pub_Function.cs">
       <DependentUpon>Entity.tt</DependentUpon>
     </Compile>
-    <Compile Update="T4.DapperExt\Pub_Role.cs">
+    <Compile Update="T4.DapperExt\Main\Pub_Role.cs">
       <DependentUpon>Entity.tt</DependentUpon>
     </Compile>
-    <Compile Update="T4.DapperExt\Pub_RoleFunction.cs">
+    <Compile Update="T4.DapperExt\Main\Pub_Rolefunction.cs">
       <DependentUpon>Entity.tt</DependentUpon>
     </Compile>
-    <Compile Update="T4.DapperExt\Pub_User.cs">
+    <Compile Update="T4.DapperExt\Main\Pub_User.cs">
       <DependentUpon>Entity.tt</DependentUpon>
     </Compile>
-    <Compile Update="T4.DapperExt\Pub_UserFunction.cs">
+    <Compile Update="T4.DapperExt\Main\Pub_Userrole.cs">
       <DependentUpon>Entity.tt</DependentUpon>
     </Compile>
-    <Compile Update="T4.DapperExt\Pub_UserRole.cs">
+    <Compile Update="T4.DapperExt\Main\V_Pubdept_Parent.cs">
       <DependentUpon>Entity.tt</DependentUpon>
     </Compile>
-    <Compile Update="T4.DapperExt\V_PubDept_Parent.cs">
+    <Compile Update="T4.DapperExt\Main\V_Pubfunction_Parent.cs">
       <DependentUpon>Entity.tt</DependentUpon>
     </Compile>
-    <Compile Update="T4.DapperExt\V_PubFunction_Parent.cs">
+    <Compile Update="T4.DapperExt\Main\V_Pubuser_Dept.cs">
       <DependentUpon>Entity.tt</DependentUpon>
     </Compile>
-    <Compile Update="T4.DapperExt\V_PubUser_Dept.cs">
+    <Compile Update="T4.DapperExt\ Pub_Userfunction.cs">
       <DependentUpon>Entity.tt</DependentUpon>
     </Compile>
   </ItemGroup>
@@ -49,24 +53,17 @@
     </PackageReference>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="T4.DapperExt\Entity.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
+    <Content Include="T4.DapperExt\Main\Entity.tt">
       <LastGenOutput>Entity.txt</LastGenOutput>
+      <Generator>TextTemplatingFileGenerator</Generator>
     </Content>
-    <Content Include="T4.DapperExt\Entity.txt">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
+    <Content Include="T4.DapperExt\Main\Entity.txt">
       <DependentUpon>Entity.tt</DependentUpon>
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
     </Content>
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="Dapper.Contrib" Version="1.60.1" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Update="T4.DapperExt\Entity.txt">
-      <DesignTime>True</DesignTime>
-      <AutoGen>True</AutoGen>
-      <DependentUpon>Entity.tt</DependentUpon>
-    </None>
   </ItemGroup>
 </Project>

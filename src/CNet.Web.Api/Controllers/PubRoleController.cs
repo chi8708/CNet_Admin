@@ -7,7 +7,8 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using CNet.Web.Api.Model.Request;
-using CNet.BLL;
+using CNet.Main.Model;
+using CNet.Main.BLL;
 using CNet.Model;
 
 namespace CNet.Web.Api.Controllers
@@ -18,7 +19,7 @@ namespace CNet.Web.Api.Controllers
     public class PubRoleController : Controller
     {
         Pub_RoleBLL bll = new Pub_RoleBLL();
-        Pub_RoleFunctionBLL roleFunctionBLL = new Pub_RoleFunctionBLL();
+        Pub_RolefunctionBLL roleFunctionBLL = new Pub_RolefunctionBLL();
 
         [Route("GetList")]
         [HttpPost]
@@ -76,7 +77,7 @@ namespace CNet.Web.Api.Controllers
             model.Lmdt = model.Lmdt = DateTime.Now;
             var user = CNetFactory.GetCNetUser(User);
             model.Lmid = $"{user.UserCode}-{user.UserName}";
-            model.StopFlag = false;
+            model.StopFlag = 0;
             var r = bll.Insert(model)>0;
 
             if (!r)
@@ -159,8 +160,8 @@ namespace CNet.Web.Api.Controllers
         {
             DataRes<bool> res = new DataRes<bool>() { code = ResCode.Success, data = true };
 
-            List<Pub_RoleFunction> list = new List<Pub_RoleFunction>();
-            functions.ForEach(p =>{ list.Add(new Pub_RoleFunction() {FunctionCode=p,RoleCode=code }); });
+            List<Pub_Rolefunction> list = new List<Pub_Rolefunction>();
+            functions.ForEach(p =>{ list.Add(new Pub_Rolefunction() {FunctionCode=p,RoleCode=code }); });
             var r = bll.SaveFunctions(code, list);
             if (!r.Item1)
             {

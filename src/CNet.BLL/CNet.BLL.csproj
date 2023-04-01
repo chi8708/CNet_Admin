@@ -7,34 +7,7 @@
     <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Update="T4.DapperExt\Pub_DepartmentBLL.cs">
-      <DependentUpon>Service.tt</DependentUpon>
-    </Compile>
-    <Compile Update="T4.DapperExt\Pub_FunctionBLL.cs">
-      <DependentUpon>Service.tt</DependentUpon>
-    </Compile>
-    <Compile Update="T4.DapperExt\Pub_RoleBLL.cs">
-      <DependentUpon>Service.tt</DependentUpon>
-    </Compile>
-    <Compile Update="T4.DapperExt\Pub_RoleFunctionBLL.cs">
-      <DependentUpon>Service.tt</DependentUpon>
-    </Compile>
-    <Compile Update="T4.DapperExt\Pub_UserBLL.cs">
-      <DependentUpon>Service.tt</DependentUpon>
-    </Compile>
-    <Compile Update="T4.DapperExt\Pub_UserFunctionBLL.cs">
-      <DependentUpon>Service.tt</DependentUpon>
-    </Compile>
-    <Compile Update="T4.DapperExt\Pub_UserRoleBLL.cs">
-      <DependentUpon>Service.tt</DependentUpon>
-    </Compile>
-    <Compile Update="T4.DapperExt\V_PubDept_ParentBLL.cs">
-      <DependentUpon>Service.tt</DependentUpon>
-    </Compile>
-    <Compile Update="T4.DapperExt\V_PubFunction_ParentBLL.cs">
-      <DependentUpon>Service.tt</DependentUpon>
-    </Compile>
-    <Compile Update="T4.DapperExt\V_PubUser_DeptBLL.cs">
+    <Compile Update="T4.DapperExt\ Pub_UserfunctionBLL.cs">
       <DependentUpon>Service.tt</DependentUpon>
     </Compile>
   </ItemGroup>
@@ -54,19 +27,23 @@
     </PackageReference>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="T4.DapperExt\Service.tt">
+    <Content Include="T4.DapperExt\Main\Service.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <LastGenOutput>Service1.txt</LastGenOutput>
-    </Content>
-    <Content Include="T4.DapperExt\Service.txt" />
-    <Content Include="T4.DapperExt\Service1.txt">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Service.tt</DependentUpon>
+      <LastGenOutput>Service.txt</LastGenOutput>
     </Content>
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="Dapper.Contrib" Version="1.60.1" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Update="T4.DapperExt\Main\Service.txt">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Service.tt</DependentUpon>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Main\" />
   </ItemGroup>
   <Target Name="PostBuild" AfterTargets="PostBuildEvent">
     <Exec Command="xcopy &quot;$(TargetDir)CNet.DAL.dll&quot; &quot;$(SolutionDir)CNet.Web.Api\lib\&quot; /y&#xD;&#xA;xcopy &quot;$(TargetDir)CNet.BLL.dll&quot; &quot;$(SolutionDir)CNet.Web.Api\lib\&quot; /y" />

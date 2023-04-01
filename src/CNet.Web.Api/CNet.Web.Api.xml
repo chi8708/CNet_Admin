@@ -169,13 +169,13 @@
             </summary>
             <returns></returns>
         </member>
-        <member name="M:CNet.Web.Api.Controllers.PubUserController.Add(CNet.Model.V_PubUser_Dept)">
+        <member name="M:CNet.Web.Api.Controllers.PubUserController.Add(CNet.Model.V_Pubuser_Dept)">
             <summary>
             添加用户
             </summary>
             <returns></returns>
         </member>
-        <member name="M:CNet.Web.Api.Controllers.PubUserController.Edit(CNet.Model.V_PubUser_Dept)">
+        <member name="M:CNet.Web.Api.Controllers.PubUserController.Edit(CNet.Model.V_Pubuser_Dept)">
             <summary>
             编辑用户
             </summary>

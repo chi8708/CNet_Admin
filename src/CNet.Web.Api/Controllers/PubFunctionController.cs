@@ -2,7 +2,8 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using CNet.BLL;
+using CNet.Main.BLL;
+using CNet.Main.Model;
 using CNet.Model;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
@@ -15,7 +16,7 @@ namespace CNet.Web.Api.Controllers
     public class PubFunctionController : BaseController
     {
         Pub_FunctionBLL bll = new Pub_FunctionBLL();
-        V_PubFunction_ParentBLL functionParentBLL = new V_PubFunction_ParentBLL();
+        V_Pubfunction_ParentBLL functionParentBLL = new V_Pubfunction_ParentBLL();
         [HttpPost]
         [Route("GetList")]
         public DataRes<List<Pub_Function>> GetList()
@@ -33,12 +34,12 @@ namespace CNet.Web.Api.Controllers
         [HttpPost]
         [Route("GetChildList")]
         [Route("GetChildList/{code}")]
-        public DataRes<List<V_PubFunction_Parent>> GetChildList(string code = "FC001")
+        public DataRes<List<V_Pubfunction_Parent>> GetChildList(string code = "FC001")
         {
 
             // var depts = functionParentBLL.GetList(string.Format(" StopFlag=0 And FunctionCode IN (Select FunctionCode From f_SearchChildFunction('{0}'))", code), " FunctionCode ");
             var depts = bll.GetChildFunction(code);
-            return new DataRes<List<V_PubFunction_Parent>>() { data = depts };
+            return new DataRes<List<V_Pubfunction_Parent>>() { data = depts };
         }
 
 
