@@ -7,20 +7,6 @@
     <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Update="T4.DapperExt\Main\Pub_DepartmentDAL.cs">
-      <DependentUpon>Repository.tt</DependentUpon>
-    </Compile>
-    <Compile Update="T4.DapperExt\Main\Pub_FunctionDAL.cs">
-      <DependentUpon>Repository.tt</DependentUpon>
-    </Compile>
-    <Compile Update="T4.DapperExt\Main\Pub_RoleDAL.cs">
-      <DependentUpon>Repository.tt</DependentUpon>
-    </Compile>
-    <Compile Update="T4.DapperExt\Main\Pub_UserDAL.cs">
-      <DependentUpon>Repository.tt</DependentUpon>
-    </Compile>
-  </ItemGroup>
-  <ItemGroup>
     <ProjectReference Include="..\CNet.Common\CNet.Common.csproj" />
     <ProjectReference Include="..\CNet.DBUtility\CNet.DBUtility.csproj" />
     <ProjectReference Include="..\CNet.Model\CNet.Model.csproj" />
@@ -39,19 +25,19 @@
     </PackageReference>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="T4.DapperExt\Main\Repository.tt">
+    <Content Include="T4.DapperExt\Main\1Repository.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <LastGenOutput>Repository.txt</LastGenOutput>
+      <LastGenOutput>1Repository.txt</LastGenOutput>
     </Content>
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="Dapper.Contrib" Version="1.60.1" />
   </ItemGroup>
   <ItemGroup>
-    <None Update="T4.DapperExt\Main\Repository.txt">
+    <None Update="T4.DapperExt\Main\1Repository.txt">
       <DesignTime>True</DesignTime>
       <AutoGen>True</AutoGen>
-      <DependentUpon>Repository.tt</DependentUpon>
+      <DependentUpon>1Repository.tt</DependentUpon>
     </None>
   </ItemGroup>
 </Project>

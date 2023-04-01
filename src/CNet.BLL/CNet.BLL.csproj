@@ -27,7 +27,7 @@
     </PackageReference>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="T4.DapperExt\Main\Service.tt">
+    <Content Include="T4.DapperExt\Main\1Service.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>Service.txt</LastGenOutput>
     </Content>
@@ -36,10 +36,10 @@
     <PackageReference Include="Dapper.Contrib" Version="1.60.1" />
   </ItemGroup>
   <ItemGroup>
-    <None Update="T4.DapperExt\Main\Service.txt">
+    <None Update="T4.DapperExt\Main\1Service.txt">
       <DesignTime>True</DesignTime>
       <AutoGen>True</AutoGen>
-      <DependentUpon>Service.tt</DependentUpon>
+      <DependentUpon>1Service.tt</DependentUpon>
     </None>
   </ItemGroup>
   <ItemGroup>
