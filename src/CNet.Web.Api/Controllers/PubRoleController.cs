@@ -77,7 +77,7 @@ namespace CNet.Web.Api.Controllers
             model.Lmdt = model.Lmdt = DateTime.Now;
             var user = CNetFactory.GetCNetUser(User);
             model.Lmid = $"{user.UserCode}-{user.UserName}";
-            model.StopFlag = 0;
+            model.StopFlag = false;
             var r = bll.Insert(model)>0;
 
             if (!r)

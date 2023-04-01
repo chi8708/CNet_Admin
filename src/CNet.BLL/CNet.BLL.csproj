@@ -7,6 +7,13 @@
     <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="T4.DapperExt\Main\1Service.txt">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>1Service.tt</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
     <Compile Update="T4.DapperExt\ Pub_UserfunctionBLL.cs">
       <DependentUpon>Service.tt</DependentUpon>
     </Compile>
@@ -27,23 +34,21 @@
     </PackageReference>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="T4.DapperExt\Main\Service.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <LastGenOutput>Service.txt</LastGenOutput>
-    </Content>
-  </ItemGroup>
-  <ItemGroup>
     <PackageReference Include="Dapper.Contrib" Version="1.60.1" />
   </ItemGroup>
   <ItemGroup>
-    <None Update="T4.DapperExt\Main\Service.txt">
-      <DesignTime>True</DesignTime>
-      <AutoGen>True</AutoGen>
-      <DependentUpon>Service.tt</DependentUpon>
-    </None>
+    <Folder Include="Main\" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Main\" />
+    <None Update="T4.DapperExt\Main\1Service.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>1Service.txt</LastGenOutput>
+    </None>
+    <None Update="T4.DapperExt\Main\1Service.txt">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>1Service.tt</DependentUpon>
+    </None>
   </ItemGroup>
   <Target Name="PostBuild" AfterTargets="PostBuildEvent">
     <Exec Command="xcopy &quot;$(TargetDir)CNet.DAL.dll&quot; &quot;$(SolutionDir)CNet.Web.Api\lib\&quot; /y&#xD;&#xA;xcopy &quot;$(TargetDir)CNet.BLL.dll&quot; &quot;$(SolutionDir)CNet.Web.Api\lib\&quot; /y" />

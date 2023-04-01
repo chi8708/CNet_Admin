@@ -8,36 +8,8 @@
   </PropertyGroup>
   <ItemGroup>
     <None Remove="T4.DapperExt\Main\Entity.tt" />
-    <None Remove="T4.DapperExt\Main\Entity.txt" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Update="T4.DapperExt\Main\Pub_Department.cs">
-      <DependentUpon>Entity.tt</DependentUpon>
-    </Compile>
-    <Compile Update="T4.DapperExt\Main\Pub_Function.cs">
-      <DependentUpon>Entity.tt</DependentUpon>
-    </Compile>
-    <Compile Update="T4.DapperExt\Main\Pub_Role.cs">
-      <DependentUpon>Entity.tt</DependentUpon>
-    </Compile>
-    <Compile Update="T4.DapperExt\Main\Pub_Rolefunction.cs">
-      <DependentUpon>Entity.tt</DependentUpon>
-    </Compile>
-    <Compile Update="T4.DapperExt\Main\Pub_User.cs">
-      <DependentUpon>Entity.tt</DependentUpon>
-    </Compile>
-    <Compile Update="T4.DapperExt\Main\Pub_Userrole.cs">
-      <DependentUpon>Entity.tt</DependentUpon>
-    </Compile>
-    <Compile Update="T4.DapperExt\Main\V_Pubdept_Parent.cs">
-      <DependentUpon>Entity.tt</DependentUpon>
-    </Compile>
-    <Compile Update="T4.DapperExt\Main\V_Pubfunction_Parent.cs">
-      <DependentUpon>Entity.tt</DependentUpon>
-    </Compile>
-    <Compile Update="T4.DapperExt\Main\V_Pubuser_Dept.cs">
-      <DependentUpon>Entity.tt</DependentUpon>
-    </Compile>
     <Compile Update="T4.DapperExt\ Pub_Userfunction.cs">
       <DependentUpon>Entity.tt</DependentUpon>
     </Compile>
@@ -53,17 +25,17 @@
     </PackageReference>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="T4.DapperExt\Main\Entity.tt">
-      <LastGenOutput>Entity.txt</LastGenOutput>
-      <Generator>TextTemplatingFileGenerator</Generator>
-    </Content>
-    <Content Include="T4.DapperExt\Main\Entity.txt">
-      <DependentUpon>Entity.tt</DependentUpon>
-      <DesignTime>True</DesignTime>
-      <AutoGen>True</AutoGen>
-    </Content>
+    <PackageReference Include="Dapper.Contrib" Version="1.60.1" />
   </ItemGroup>
   <ItemGroup>
-    <PackageReference Include="Dapper.Contrib" Version="1.60.1" />
+    <None Update="T4.DapperExt\Main\1Entity.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>1Entity.txt</LastGenOutput>
+    </None>
+    <None Update="T4.DapperExt\Main\1Entity.txt">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>1Entity.tt</DependentUpon>
+    </None>
   </ItemGroup>
 </Project>

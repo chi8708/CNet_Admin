@@ -11,8 +11,6 @@ namespace CNet.Main.BLL
 
     public partial class Pub_RoleBLL
     {
-
-        Pub_RoleDAL dal = new Pub_RoleDAL();
         Pub_RolefunctionBLL roleFunctionBLL = new Pub_RolefunctionBLL();
         /// <summary>
         /// 获取部门编号

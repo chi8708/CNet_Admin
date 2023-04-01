@@ -1,4 +1,4 @@
-<#@ template debug="false" hostspecific="true" language="C#" #>
+﻿<#@ template debug="false" hostspecific="true" language="C#" #>
 <#@ output extension=".txt" #>
 <#@ include file="EF.Utility.CS.ttinclude"#>
 <#@ include file="$(SolutionDir)\CNet.DBUtility\DbHelper\OutputHelper.ttinclude" #>
