@@ -1,5 +1,5 @@
-﻿using CNet.BLL;
-using CNet.Model;
+﻿using CNet.Main.BLL;
+using CNet.Main.Model;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -84,8 +84,8 @@ namespace CNet.Web.Api
         {
             get
             {
-                //var userFunctions = new Pub_UserFunctionBLL().GetList(string.Format("UserCode='{0}'", this.UserCode)).Select(p => p.FunctionCode);
-                //var roleFunctions = new Pub_RoleFunctionBLL().GetList(string.Format(" RoleCode IN(SELECT pur.RoleCode FROM Pub_UserRole AS pur WHERE pur.UserCode='{0}' )", this.UserCode)).Select(p => p.FunctionCode);
+                //var userFunctions = new  Pub_UserfunctionBLL().GetList(string.Format("UserCode='{0}'", this.UserCode)).Select(p => p.FunctionCode);
+                //var roleFunctions = new Pub_RolefunctionBLL().GetList(string.Format(" RoleCode IN(SELECT pur.RoleCode FROM Pub_Userrole AS pur WHERE pur.UserCode='{0}' )", this.UserCode)).Select(p => p.FunctionCode);
                 //var functions = userFunctions.Concat(roleFunctions).Distinct();
                 var functions = new Pub_FunctionBLL().GetUserAccess(this.UserCode);
 

@@ -11,7 +11,7 @@
  Target Server Version : 80028
  File Encoding         : 65001
 
- Date: 11/03/2023 23:41:00
+ Date: 01/04/2023 14:58:37
 */
 
 SET NAMES utf8mb4;
@@ -29,62 +29,63 @@ CREATE TABLE `pub_department`  (
   `DeptLevel` int(0) NOT NULL COMMENT '部门级别',
   `Lmid` varchar(15) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL DEFAULT NULL COMMENT '最后编辑人',
   `Lmdt` datetime(0) NULL DEFAULT NULL COMMENT '最后编辑时间',
-  `StopFlag` tinyint(0) NULL DEFAULT NULL COMMENT '停用状态 默认0 未停用 1 停用',
+  `StopFlag` bit(1) NULL DEFAULT NULL COMMENT '停用状态 默认0 未停用 1 停用',
   PRIMARY KEY (`DeptCode`) USING BTREE
 ) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of pub_department
 -- ----------------------------
-INSERT INTO `pub_department` VALUES ('D000001', '总部', NULL, '', 0, '-', '2018-05-11 17:35:06', 0);
-INSERT INTO `pub_department` VALUES ('D000002', 'cts', '1111', 'D000001', 0, '00000002-admin', '2019-08-09 15:37:16', 0);
-INSERT INTO `pub_department` VALUES ('D000003', 'It部', '22331', 'D000002', 0, '00000002-admin', '2019-10-08 09:44:16', 0);
-INSERT INTO `pub_department` VALUES ('D000004', 'CRM', NULL, 'D000002', 0, '00000002-admin', '2019-08-09 15:37:29', 0);
-INSERT INTO `pub_department` VALUES ('D000005', '博华', NULL, 'D000001', 0, '-', '2018-05-12 11:35:13', 0);
-INSERT INTO `pub_department` VALUES ('D000008', '订单', '搜索ss', 'D000001', 0, '-', '2018-04-19 15:47:06', 1);
-INSERT INTO `pub_department` VALUES ('D000009', '搜索', NULL, 'D000001', 0, '-', '2018-04-16 09:48:29', 1);
-INSERT INTO `pub_department` VALUES ('D000011', '试试', NULL, 'D000001', 0, '-', '2018-04-16 09:55:50', 1);
-INSERT INTO `pub_department` VALUES ('D000012', '订单', NULL, 'D000003', 0, '-', '2018-04-19 13:31:58', 1);
-INSERT INTO `pub_department` VALUES ('D000013', '订单', NULL, 'D000001', 0, '-', '2018-04-19 13:34:18', 1);
-INSERT INTO `pub_department` VALUES ('D000014', '是是是', NULL, 'D000001', 0, '-', '2018-04-19 13:34:22', 1);
-INSERT INTO `pub_department` VALUES ('D000015', 'dd', NULL, 'D000003', 0, '-', '2018-04-19 14:47:37', 1);
-INSERT INTO `pub_department` VALUES ('D000016', '1232', '123试试', 'D000003', 0, '-', '2018-04-19 15:23:51', 1);
-INSERT INTO `pub_department` VALUES ('D000017', 'ss', 'ff', 'D000001', 0, '-', '2018-04-20 13:15:47', 1);
-INSERT INTO `pub_department` VALUES ('D000018', 'sss', 'ddd', 'D000002', 0, '-', '2018-04-20 13:23:06', 1);
-INSERT INTO `pub_department` VALUES ('D000019', 'sssfsdf', NULL, 'D000002', 0, '-', '2018-04-20 13:36:28', 1);
-INSERT INTO `pub_department` VALUES ('D000020', 'ss', 'dd', '', 0, '-', '2018-04-23 13:17:30', 1);
-INSERT INTO `pub_department` VALUES ('D000021', 'ss4', 'dd', 'D000001', 0, '-', '2018-05-12 10:06:20', 1);
-INSERT INTO `pub_department` VALUES ('D000022', '试试', NULL, 'D000005', 0, '-', '2018-05-12 09:22:33', 0);
-INSERT INTO `pub_department` VALUES ('D000023', 'tt2', '试试', 'D000001', 0, '-', '2018-05-12 09:24:56', 0);
-INSERT INTO `pub_department` VALUES ('D000024', '订单', '搜索', 'D000001', 0, '-', '2018-04-27 10:02:32', 1);
-INSERT INTO `pub_department` VALUES ('D000025', '是是是', '订单', 'D000001', 0, '-', '2018-04-27 10:02:55', 1);
-INSERT INTO `pub_department` VALUES ('D000026', '搜索3', 's', 'D000001', 0, '-', '2018-05-12 09:20:14', 0);
-INSERT INTO `pub_department` VALUES ('D000027', 'dd', '1111', 'D000001', 0, '-', '2018-04-27 10:05:01', 1);
-INSERT INTO `pub_department` VALUES ('D000028', 'ss', NULL, 'D000001', 0, '-', '2018-04-27 10:07:46', 1);
-INSERT INTO `pub_department` VALUES ('D000029', '孙菲菲', NULL, 'D000001', 0, '-', '2018-04-27 10:08:11', 1);
-INSERT INTO `pub_department` VALUES ('D000030', 'd1', NULL, 'D000001', 0, '-', '2018-04-27 10:13:25', 1);
-INSERT INTO `pub_department` VALUES ('D000031', 'ss', '11', 'D000003', 0, '-', '2018-04-27 10:13:38', 1);
-INSERT INTO `pub_department` VALUES ('D000032', '111', NULL, 'D000001', 0, '-', '2018-04-27 10:13:49', 1);
-INSERT INTO `pub_department` VALUES ('D000033', 'ss2', 'dd', 'D000023', 0, '-', '2018-05-12 11:35:19', 0);
-INSERT INTO `pub_department` VALUES ('D000034', 'fff', 'ss', 'D000023', 0, '-', '2018-05-12 09:28:39', 0);
-INSERT INTO `pub_department` VALUES ('D000035', 'fsss', 'ddd', 'D000023', 0, '-', '2018-05-11 14:46:05', 1);
-INSERT INTO `pub_department` VALUES ('D000036', 'sf', 'ss', 'D000023', 0, '-', '2018-05-11 14:54:34', 1);
-INSERT INTO `pub_department` VALUES ('D000037', 'ss1', '1', 'D000003', 0, '00000002-admin', '2019-08-09 15:37:06', 0);
-INSERT INTO `pub_department` VALUES ('D000038', 'ss', '111', 'D000003', 0, '-', '2018-05-11 17:16:11', 1);
-INSERT INTO `pub_department` VALUES ('D000039', '111', NULL, 'D000003', 0, '-', '2018-05-12 10:16:00', 1);
-INSERT INTO `pub_department` VALUES ('D000040', '112', '22', 'D000023', 0, '00000002-admin', '2018-07-02 17:18:34', 1);
-INSERT INTO `pub_department` VALUES ('D000041', '11', '22', 'D000026', 0, '00000002-admin', '2018-07-02 17:23:57', 0);
-INSERT INTO `pub_department` VALUES ('D000042', '11', '22', 'D000026', 0, '00000002-admin', '2018-08-17 11:08:50', 0);
-INSERT INTO `pub_department` VALUES ('D000043', '1122', '22', 'D000026', 0, '00000002-admin', '2018-08-17 11:09:31', 0);
-INSERT INTO `pub_department` VALUES ('D000044', '12233', NULL, 'D000026', 0, '00000002-admin', '2018-08-17 11:11:00', 1);
-INSERT INTO `pub_department` VALUES ('D000045', '11', '33', 'D000026', 0, '00000002-admin', '2018-08-17 11:12:50', 1);
-INSERT INTO `pub_department` VALUES ('D000046', '2', '333', 'D000026', 0, '00000002-admin', '2018-08-17 11:13:42', 1);
-INSERT INTO `pub_department` VALUES ('D000047', '112', '222', 'D000003', 0, '00000002-admin', '2019-08-09 14:06:16', 1);
+INSERT INTO `pub_department` VALUES ('D000001', '总部', NULL, '', 0, '-', '2018-05-11 17:35:06', b'0');
+INSERT INTO `pub_department` VALUES ('D000002', 'cts', '1111', 'D000001', 0, '00000001-chi', '2023-04-01 13:22:10', b'0');
+INSERT INTO `pub_department` VALUES ('D000003', 'It部', '22331', 'D000002', 0, '00000002-admin', '2019-10-08 09:44:16', b'0');
+INSERT INTO `pub_department` VALUES ('D000004', 'CRM', NULL, 'D000002', 0, '00000002-admin', '2019-08-09 15:37:29', b'0');
+INSERT INTO `pub_department` VALUES ('D000005', '博华', NULL, 'D000001', 0, '-', '2018-05-12 11:35:13', b'0');
+INSERT INTO `pub_department` VALUES ('D000008', '订单', '搜索ss', 'D000001', 0, '-', '2018-04-19 15:47:06', b'1');
+INSERT INTO `pub_department` VALUES ('D000009', '搜索', NULL, 'D000001', 0, '-', '2018-04-16 09:48:29', b'1');
+INSERT INTO `pub_department` VALUES ('D000011', '试试', NULL, 'D000001', 0, '-', '2018-04-16 09:55:50', b'1');
+INSERT INTO `pub_department` VALUES ('D000012', '订单', NULL, 'D000003', 0, '-', '2018-04-19 13:31:58', b'1');
+INSERT INTO `pub_department` VALUES ('D000013', '订单', NULL, 'D000001', 0, '-', '2018-04-19 13:34:18', b'1');
+INSERT INTO `pub_department` VALUES ('D000014', '是是是', NULL, 'D000001', 0, '-', '2018-04-19 13:34:22', b'1');
+INSERT INTO `pub_department` VALUES ('D000015', 'dd', NULL, 'D000003', 0, '-', '2018-04-19 14:47:37', b'1');
+INSERT INTO `pub_department` VALUES ('D000016', '1232', '123试试', 'D000003', 0, '-', '2018-04-19 15:23:51', b'1');
+INSERT INTO `pub_department` VALUES ('D000017', 'ss', 'ff', 'D000001', 0, '-', '2018-04-20 13:15:47', b'1');
+INSERT INTO `pub_department` VALUES ('D000018', 'sss', 'ddd', 'D000002', 0, '-', '2018-04-20 13:23:06', b'1');
+INSERT INTO `pub_department` VALUES ('D000019', 'sssfsdf', NULL, 'D000002', 0, '-', '2018-04-20 13:36:28', b'1');
+INSERT INTO `pub_department` VALUES ('D000020', 'ss', 'dd', '', 0, '-', '2018-04-23 13:17:30', b'1');
+INSERT INTO `pub_department` VALUES ('D000021', 'ss4', 'dd', 'D000001', 0, '-', '2018-05-12 10:06:20', b'1');
+INSERT INTO `pub_department` VALUES ('D000022', '试试', NULL, 'D000005', 0, '-', '2018-05-12 09:22:33', b'0');
+INSERT INTO `pub_department` VALUES ('D000023', 'tt2', '试试', 'D000001', 0, '-', '2018-05-12 09:24:56', b'0');
+INSERT INTO `pub_department` VALUES ('D000024', '订单', '搜索', 'D000001', 0, '-', '2018-04-27 10:02:32', b'1');
+INSERT INTO `pub_department` VALUES ('D000025', '是是是', '订单', 'D000001', 0, '-', '2018-04-27 10:02:55', b'1');
+INSERT INTO `pub_department` VALUES ('D000026', '搜索3', 's', 'D000001', 0, '-', '2018-05-12 09:20:14', b'0');
+INSERT INTO `pub_department` VALUES ('D000027', 'dd', '1111', 'D000001', 0, '-', '2018-04-27 10:05:01', b'1');
+INSERT INTO `pub_department` VALUES ('D000028', 'ss', NULL, 'D000001', 0, '-', '2018-04-27 10:07:46', b'1');
+INSERT INTO `pub_department` VALUES ('D000029', '孙菲菲', NULL, 'D000001', 0, '-', '2018-04-27 10:08:11', b'1');
+INSERT INTO `pub_department` VALUES ('D000030', 'd1', NULL, 'D000001', 0, '-', '2018-04-27 10:13:25', b'1');
+INSERT INTO `pub_department` VALUES ('D000031', 'ss', '11', 'D000003', 0, '-', '2018-04-27 10:13:38', b'1');
+INSERT INTO `pub_department` VALUES ('D000032', '111', NULL, 'D000001', 0, '-', '2018-04-27 10:13:49', b'1');
+INSERT INTO `pub_department` VALUES ('D000033', 'ss2', 'dd', 'D000023', 0, '-', '2018-05-12 11:35:19', b'0');
+INSERT INTO `pub_department` VALUES ('D000034', 'fff', 'ss', 'D000023', 0, '-', '2018-05-12 09:28:39', b'0');
+INSERT INTO `pub_department` VALUES ('D000035', 'fsss', 'ddd', 'D000023', 0, '-', '2018-05-11 14:46:05', b'1');
+INSERT INTO `pub_department` VALUES ('D000036', 'sf', 'ss', 'D000023', 0, '-', '2018-05-11 14:54:34', b'1');
+INSERT INTO `pub_department` VALUES ('D000037', 'ss21', '1', 'D000003', 0, '00000001-chi', '2023-04-01 14:56:38', b'0');
+INSERT INTO `pub_department` VALUES ('D000038', 'ss', '111', 'D000003', 0, '-', '2018-05-11 17:16:11', b'1');
+INSERT INTO `pub_department` VALUES ('D000039', '111', NULL, 'D000003', 0, '-', '2018-05-12 10:16:00', b'1');
+INSERT INTO `pub_department` VALUES ('D000040', '112', '22', 'D000023', 0, '00000002-admin', '2018-07-02 17:18:34', b'1');
+INSERT INTO `pub_department` VALUES ('D000041', '11', '22', 'D000026', 0, '00000002-admin', '2018-07-02 17:23:57', b'0');
+INSERT INTO `pub_department` VALUES ('D000042', '11', '22', 'D000026', 0, '00000002-admin', '2018-08-17 11:08:50', b'0');
+INSERT INTO `pub_department` VALUES ('D000043', '1122', '22', 'D000026', 0, '00000002-admin', '2018-08-17 11:09:31', b'0');
+INSERT INTO `pub_department` VALUES ('D000044', '12233', NULL, 'D000026', 0, '00000002-admin', '2018-08-17 11:11:00', b'1');
+INSERT INTO `pub_department` VALUES ('D000045', '11', '33', 'D000026', 0, '00000002-admin', '2018-08-17 11:12:50', b'1');
+INSERT INTO `pub_department` VALUES ('D000046', '2', '333', 'D000026', 0, '00000002-admin', '2018-08-17 11:13:42', b'1');
+INSERT INTO `pub_department` VALUES ('D000047', '112', '222', 'D000003', 0, '00000002-admin', '2019-08-09 14:06:16', b'1');
 INSERT INTO `pub_department` VALUES ('D000048', '123', '11', 'D000002', 0, '00000002-admin', '2019-08-09 15:19:14', NULL);
 INSERT INTO `pub_department` VALUES ('D000049', '123', '11', 'D000002', 0, '00000002-admin', '2019-08-09 15:19:29', NULL);
 INSERT INTO `pub_department` VALUES ('D000050', '122', '111', 'D000003', 0, '00000002-admin', '2019-08-09 15:20:18', NULL);
-INSERT INTO `pub_department` VALUES ('D000051', '111', NULL, 'D000002', 0, '00000002-admin', '2019-08-09 15:26:12', 1);
-INSERT INTO `pub_department` VALUES ('D000052', '121', NULL, 'D000002', 0, '00000002-admin', '2019-08-09 15:37:45', 1);
+INSERT INTO `pub_department` VALUES ('D000051', '111', NULL, 'D000002', 0, '00000002-admin', '2019-08-09 15:26:12', b'1');
+INSERT INTO `pub_department` VALUES ('D000052', '121', NULL, 'D000002', 0, '00000002-admin', '2019-08-09 15:37:45', b'1');
+INSERT INTO `pub_department` VALUES ('D000053', '123', '123232', 'D000037', 0, '00000001-chi', '2023-04-01 14:56:22', b'1');
 
 -- ----------------------------
 -- Table structure for pub_function
@@ -96,8 +97,8 @@ CREATE TABLE `pub_function`  (
   `FunctionChina` varchar(80) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL DEFAULT NULL COMMENT '中文名称',
   `FunctionDescrip` varchar(80) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL DEFAULT NULL COMMENT '说明',
   `ParentCode` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL DEFAULT NULL COMMENT '父节点',
-  `MenuFlag` tinyint(0) NOT NULL COMMENT '是否为菜单 1菜单 0权限',
-  `StopFlag` tinyint(0) NULL DEFAULT NULL COMMENT '是否停用',
+  `MenuFlag` bit(1) NOT NULL COMMENT '是否为菜单 1菜单 0权限',
+  `StopFlag` bit(1) NULL DEFAULT NULL COMMENT '是否停用',
   `URLString` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL DEFAULT NULL COMMENT '组件路径',
   `editdate` datetime(0) NULL DEFAULT NULL COMMENT '创建或修改时间',
   `editor` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL DEFAULT NULL COMMENT '修改人 名字加工号 张三(000001)',
@@ -105,44 +106,44 @@ CREATE TABLE `pub_function`  (
   `target` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL DEFAULT NULL COMMENT 'navTab 嵌套  _blank 新窗口 dialog 弹出窗',
   `MenuIcon` varchar(30) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL DEFAULT NULL COMMENT '菜单图标class',
   `RouterPath` varchar(32) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL DEFAULT NULL COMMENT '路由路径',
-  `IsCache` tinyint(0) NULL DEFAULT NULL COMMENT '是否组件缓存',
+  `IsCache` bit(1) NULL DEFAULT NULL COMMENT '是否组件缓存',
   PRIMARY KEY (`FunctionCode`) USING BTREE
 ) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of pub_function
 -- ----------------------------
-INSERT INTO `pub_function` VALUES ('FC001', 'BASEINFO', '基础信息', NULL, '0', 1, 0, 'Main', '2018-04-04 00:00:00', NULL, 1, 'navTab', 'logo-buffer', '/baseSet', 0);
-INSERT INTO `pub_function` VALUES ('FC001001', 'USERINFO', '用户信息', '12222', 'FC001', 1, 0, 'view/User/List.vue', '2019-10-12 15:06:53', '00000002-admin', 1, NULL, 'md-arrow-dropdown-circle', 'userManage', 1);
-INSERT INTO `pub_function` VALUES ('FC001001001', 'USERINFOLIST', '查看', NULL, 'FC001001', 0, 0, NULL, '2019-10-10 11:04:31', '00000002-admin', 99, NULL, NULL, NULL, 0);
-INSERT INTO `pub_function` VALUES ('FC001001002', 'USERINFOADD', '添加', NULL, 'FC001001', 0, 0, NULL, '2018-05-14 13:41:27', '-', 99, NULL, NULL, NULL, 0);
-INSERT INTO `pub_function` VALUES ('FC001001003', 'USERINFOEDIT', '编辑', NULL, 'FC001001', 0, 0, NULL, '2018-05-14 13:42:06', '-', 99, NULL, NULL, NULL, 0);
-INSERT INTO `pub_function` VALUES ('FC001001004', 'USERINFOREMOVE', '删除', NULL, 'FC001001', 0, 0, NULL, '2018-05-14 13:45:13', '-', 99, NULL, NULL, NULL, 0);
-INSERT INTO `pub_function` VALUES ('FC001001005', 'USERINFOAUTH', '授权', NULL, 'FC001001', 0, 0, NULL, '2018-05-14 13:48:11', '-', 99, NULL, NULL, NULL, 0);
-INSERT INTO `pub_function` VALUES ('FC001002', 'ROLEINFO', '角色信息', NULL, 'FC001', 1, 0, 'view/Role/List.vue', '2022-04-21 15:08:49', '00000002-admin', 2, 'navTab', 'md-trending-up', 'roleManage', 0);
-INSERT INTO `pub_function` VALUES ('FC001002001', 'ROLEINFOLIST', '查看', NULL, 'FC001002', 0, 0, NULL, '2018-05-15 13:09:51', '00000002-admin', 99, NULL, NULL, NULL, 0);
-INSERT INTO `pub_function` VALUES ('FC001002002', 'ROLEINFOADD', '添加', NULL, 'FC001002', 0, 0, NULL, '2018-05-15 13:10:28', '00000002-admin', 99, NULL, NULL, NULL, 0);
-INSERT INTO `pub_function` VALUES ('FC001002003', 'ROLEINFOEDIT', '编辑', NULL, 'FC001002', 0, 0, NULL, '2018-05-15 13:11:29', '00000002-admin', 99, NULL, NULL, NULL, 0);
-INSERT INTO `pub_function` VALUES ('FC001002004', 'ROLEINFOREMOVE', '删除', NULL, 'FC001002', 0, 0, NULL, '2018-05-15 13:12:04', '00000002-admin', 99, NULL, NULL, NULL, 0);
-INSERT INTO `pub_function` VALUES ('FC001002005', 'ROLEINFOAUTH', '授权', NULL, 'FC001002', 0, 0, NULL, '2019-10-08 09:44:05', '00000002-admin', 99, NULL, NULL, NULL, 0);
-INSERT INTO `pub_function` VALUES ('FC001003', 'FUNCTION', '权限信息', NULL, 'FC001', 1, 0, 'view/Permission/List.vue', '2018-05-15 13:18:40', '00000002-admin', 3, NULL, 'ios-infinite', 'functionManage', 0);
-INSERT INTO `pub_function` VALUES ('FC001003001', 'FUNCTIONLIST', '查看', NULL, 'FC001003', 0, 0, NULL, '2018-05-15 13:20:01', '00000002-admin', 99, NULL, NULL, NULL, 0);
-INSERT INTO `pub_function` VALUES ('FC001003002', 'FUNCTIONADD', '添加', NULL, 'FC001003', 0, 0, NULL, '2018-05-15 13:20:21', '00000002-admin', 99, NULL, NULL, NULL, 0);
-INSERT INTO `pub_function` VALUES ('FC001003003', 'FUNCTIONEDIT', '编辑', NULL, 'FC001003', 0, 0, NULL, '2018-05-15 13:20:39', '00000002-admin', 99, NULL, NULL, NULL, 0);
-INSERT INTO `pub_function` VALUES ('FC001003004', 'FUNCTIONREMOVE', '删除', NULL, 'FC001003', 0, 0, NULL, '2018-05-15 13:21:02', '00000002-admin', 99, NULL, NULL, NULL, 0);
-INSERT INTO `pub_function` VALUES ('FC001004', 'DEPARTMENT', '组织信息', NULL, 'FC001', 1, 0, 'view/Dept/List.vue', '2018-05-15 13:22:18', '00000002-admin', 4, NULL, 'ios-people', 'companyManage', 0);
-INSERT INTO `pub_function` VALUES ('FC001004001', 'DEPARTMENTLIST', '查看', NULL, 'FC001004', 0, 0, NULL, '2018-05-15 13:22:40', '00000002-admin', 99, NULL, NULL, NULL, 0);
-INSERT INTO `pub_function` VALUES ('FC001004002', 'DEPARTMENTADD', '添加', NULL, 'FC001004', 0, 0, NULL, '2018-05-15 13:23:00', '00000002-admin', 99, NULL, NULL, NULL, 0);
-INSERT INTO `pub_function` VALUES ('FC001004003', 'DEPARTMENTEDIT', '编辑', NULL, 'FC001004', 0, 0, NULL, '2018-05-15 13:23:17', '00000002-admin', 99, NULL, NULL, NULL, 0);
-INSERT INTO `pub_function` VALUES ('FC001004004', 'DEPARTMENTREMOVE', '删除', NULL, 'FC001004', 0, 0, NULL, '2018-05-15 13:23:36', '00000002-admin', 99, NULL, NULL, NULL, 0);
-INSERT INTO `pub_function` VALUES ('FC001005', 'isnew_EchartTest', 'Echart', NULL, 'FC001', 1, 0, 'view/EchartTest/index1.vue', '2023-03-08 23:21:45', '00000002-admin', 9999, NULL, NULL, 'EchartTest', 0);
-INSERT INTO `pub_function` VALUES ('FC002', 'BUSINESSINFO', '业务信息', NULL, '0', 1, 1, NULL, '2018-04-04 11:36:55', NULL, 2, 'navTab', NULL, NULL, 0);
-INSERT INTO `pub_function` VALUES ('FC002001', 'test', '测试', NULL, 'FC002', 0, 1, NULL, '2018-06-29 16:44:39', '00000002-admin', 99, NULL, NULL, NULL, 0);
-INSERT INTO `pub_function` VALUES ('FC002002', '222', 'tt1', NULL, 'FC002', 0, 1, NULL, '2018-07-02 17:19:05', '00000002-admin', 99, NULL, NULL, NULL, 0);
-INSERT INTO `pub_function` VALUES ('FC002003', '1', '11', '5', '0', 0, 1, '2', '2019-08-13 16:04:46', '00000002-admin', 3, NULL, '4', NULL, 0);
-INSERT INTO `pub_function` VALUES ('FC002004', 'test11', 'test2', NULL, '0', 1, 1, '111', '2019-08-13 16:28:56', '00000002-admin', 99, NULL, NULL, NULL, 0);
-INSERT INTO `pub_function` VALUES ('FC002004001', '222', '11', NULL, 'FC002004', 1, 0, '111', '2019-08-13 16:29:17', '00000002-admin', 22, NULL, NULL, NULL, 0);
-INSERT INTO `pub_function` VALUES ('FC002005', 'test2', 'test2', NULL, 'FC002', 0, 1, NULL, '2018-08-17 11:15:11', '00000002-admin', 99, NULL, NULL, NULL, 0);
+INSERT INTO `pub_function` VALUES ('FC001', 'BASEINFO', '基础信息', NULL, '0', b'1', b'0', 'Main', '2018-04-04 00:00:00', NULL, 1, 'navTab', 'logo-buffer', '/baseSet', b'0');
+INSERT INTO `pub_function` VALUES ('FC001001', 'USERINFO', '用户信息', '12222', 'FC001', b'1', b'0', 'view/User/List.vue', '2019-10-12 15:06:53', '00000002-admin', 1, NULL, 'md-arrow-dropdown-circle', 'userManage', b'1');
+INSERT INTO `pub_function` VALUES ('FC001001001', 'USERINFOLIST', '查看', NULL, 'FC001001', b'0', b'0', NULL, '2019-10-10 11:04:31', '00000002-admin', 99, NULL, NULL, NULL, b'0');
+INSERT INTO `pub_function` VALUES ('FC001001002', 'USERINFOADD', '添加', NULL, 'FC001001', b'0', b'0', NULL, '2018-05-14 13:41:27', '-', 99, NULL, NULL, NULL, b'0');
+INSERT INTO `pub_function` VALUES ('FC001001003', 'USERINFOEDIT', '编辑', NULL, 'FC001001', b'0', b'0', NULL, '2018-05-14 13:42:06', '-', 99, NULL, NULL, NULL, b'0');
+INSERT INTO `pub_function` VALUES ('FC001001004', 'USERINFOREMOVE', '删除', NULL, 'FC001001', b'0', b'0', NULL, '2018-05-14 13:45:13', '-', 99, NULL, NULL, NULL, b'0');
+INSERT INTO `pub_function` VALUES ('FC001001005', 'USERINFOAUTH', '授权', NULL, 'FC001001', b'0', b'0', NULL, '2018-05-14 13:48:11', '-', 99, NULL, NULL, NULL, b'0');
+INSERT INTO `pub_function` VALUES ('FC001002', 'ROLEINFO', '角色信息', NULL, 'FC001', b'1', b'0', 'view/Role/List.vue', '2022-04-21 15:08:49', '00000002-admin', 2, 'navTab', 'md-trending-up', 'roleManage', b'0');
+INSERT INTO `pub_function` VALUES ('FC001002001', 'ROLEINFOLIST', '查看', NULL, 'FC001002', b'0', b'0', NULL, '2018-05-15 13:09:51', '00000002-admin', 99, NULL, NULL, NULL, b'0');
+INSERT INTO `pub_function` VALUES ('FC001002002', 'ROLEINFOADD', '添加', NULL, 'FC001002', b'0', b'0', NULL, '2018-05-15 13:10:28', '00000002-admin', 99, NULL, NULL, NULL, b'0');
+INSERT INTO `pub_function` VALUES ('FC001002003', 'ROLEINFOEDIT', '编辑', NULL, 'FC001002', b'0', b'0', NULL, '2018-05-15 13:11:29', '00000002-admin', 99, NULL, NULL, NULL, b'0');
+INSERT INTO `pub_function` VALUES ('FC001002004', 'ROLEINFOREMOVE', '删除', NULL, 'FC001002', b'0', b'0', NULL, '2018-05-15 13:12:04', '00000002-admin', 99, NULL, NULL, NULL, b'0');
+INSERT INTO `pub_function` VALUES ('FC001002005', 'ROLEINFOAUTH', '授权', NULL, 'FC001002', b'0', b'0', NULL, '2019-10-08 09:44:05', '00000002-admin', 99, NULL, NULL, NULL, b'0');
+INSERT INTO `pub_function` VALUES ('FC001003', 'FUNCTION', '权限信息', NULL, 'FC001', b'1', b'0', 'view/Permission/List.vue', '2018-05-15 13:18:40', '00000002-admin', 3, NULL, 'ios-infinite', 'functionManage', b'0');
+INSERT INTO `pub_function` VALUES ('FC001003001', 'FUNCTIONLIST', '查看', NULL, 'FC001003', b'0', b'0', NULL, '2018-05-15 13:20:01', '00000002-admin', 99, NULL, NULL, NULL, b'0');
+INSERT INTO `pub_function` VALUES ('FC001003002', 'FUNCTIONADD', '添加', NULL, 'FC001003', b'0', b'0', NULL, '2018-05-15 13:20:21', '00000002-admin', 99, NULL, NULL, NULL, b'0');
+INSERT INTO `pub_function` VALUES ('FC001003003', 'FUNCTIONEDIT', '编辑', NULL, 'FC001003', b'0', b'0', NULL, '2018-05-15 13:20:39', '00000002-admin', 99, NULL, NULL, NULL, b'0');
+INSERT INTO `pub_function` VALUES ('FC001003004', 'FUNCTIONREMOVE', '删除', NULL, 'FC001003', b'0', b'0', NULL, '2018-05-15 13:21:02', '00000002-admin', 99, NULL, NULL, NULL, b'0');
+INSERT INTO `pub_function` VALUES ('FC001004', 'DEPARTMENT', '组织信息', NULL, 'FC001', b'1', b'0', 'view/Dept/List.vue', '2018-05-15 13:22:18', '00000002-admin', 4, NULL, 'ios-people', 'companyManage', b'0');
+INSERT INTO `pub_function` VALUES ('FC001004001', 'DEPARTMENTLIST', '查看', NULL, 'FC001004', b'0', b'0', NULL, '2018-05-15 13:22:40', '00000002-admin', 99, NULL, NULL, NULL, b'0');
+INSERT INTO `pub_function` VALUES ('FC001004002', 'DEPARTMENTADD', '添加', NULL, 'FC001004', b'0', b'0', NULL, '2018-05-15 13:23:00', '00000002-admin', 99, NULL, NULL, NULL, b'0');
+INSERT INTO `pub_function` VALUES ('FC001004003', 'DEPARTMENTEDIT', '编辑', NULL, 'FC001004', b'0', b'0', NULL, '2018-05-15 13:23:17', '00000002-admin', 99, NULL, NULL, NULL, b'0');
+INSERT INTO `pub_function` VALUES ('FC001004004', 'DEPARTMENTREMOVE', '删除', NULL, 'FC001004', b'0', b'0', NULL, '2018-05-15 13:23:36', '00000002-admin', 99, NULL, NULL, NULL, b'0');
+INSERT INTO `pub_function` VALUES ('FC001005', 'isnew_EchartTest', 'Echart', NULL, 'FC001', b'1', b'0', 'view/EchartTest/index1.vue', '2023-04-01 13:14:33', '00000001-chi', 9999, NULL, NULL, 'EchartTest', b'0');
+INSERT INTO `pub_function` VALUES ('FC002', 'BUSINESSINFO', '业务信息', NULL, '0', b'1', b'1', NULL, '2018-04-04 11:36:55', NULL, 2, 'navTab', NULL, NULL, b'0');
+INSERT INTO `pub_function` VALUES ('FC002001', 'test', '测试', NULL, 'FC002', b'0', b'1', NULL, '2018-06-29 16:44:39', '00000002-admin', 99, NULL, NULL, NULL, b'0');
+INSERT INTO `pub_function` VALUES ('FC002002', '222', 'tt1', NULL, 'FC002', b'0', b'1', NULL, '2018-07-02 17:19:05', '00000002-admin', 99, NULL, NULL, NULL, b'0');
+INSERT INTO `pub_function` VALUES ('FC002003', '1', '11', '5', '0', b'0', b'1', '2', '2019-08-13 16:04:46', '00000002-admin', 3, NULL, '4', NULL, b'0');
+INSERT INTO `pub_function` VALUES ('FC002004', 'test11', 'test2', NULL, '0', b'1', b'1', '111', '2019-08-13 16:28:56', '00000002-admin', 99, NULL, NULL, NULL, b'0');
+INSERT INTO `pub_function` VALUES ('FC002004001', '222', '11', NULL, 'FC002004', b'1', b'0', '111', '2019-08-13 16:29:17', '00000002-admin', 22, NULL, NULL, NULL, b'0');
+INSERT INTO `pub_function` VALUES ('FC002005', 'test2', 'test2', NULL, 'FC002', b'0', b'1', NULL, '2018-08-17 11:15:11', '00000002-admin', 99, NULL, NULL, NULL, b'0');
 
 -- ----------------------------
 -- Table structure for pub_role
@@ -153,7 +154,7 @@ CREATE TABLE `pub_role`  (
   `RoleCode` varchar(10) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL COMMENT '角色编号',
   `RoleName` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL COMMENT '角色名称',
   `Remark` varchar(200) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL DEFAULT NULL COMMENT '备注',
-  `StopFlag` tinyint(0) NOT NULL COMMENT '停用状态 默认0  未停用 1 停用',
+  `StopFlag` bit(1) NOT NULL COMMENT '停用状态 默认0  未停用 1 停用',
   `Crid` varchar(15) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL DEFAULT NULL COMMENT '创建人',
   `Crdt` datetime(0) NULL DEFAULT NULL COMMENT '创建时间',
   `Lmid` varchar(15) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL DEFAULT NULL COMMENT '最后更新人',
@@ -164,15 +165,15 @@ CREATE TABLE `pub_role`  (
 -- ----------------------------
 -- Records of pub_role
 -- ----------------------------
-INSERT INTO `pub_role` VALUES (1, 'RC000001', '超级管理员', NULL, 0, '00000001', '2018-04-04 00:00:00', '00000001', '2018-04-04 00:00:00');
-INSERT INTO `pub_role` VALUES (2, 'RC000002', '普通管理员', '2221', 0, NULL, NULL, '00000002-admin', '2022-04-12 13:17:26');
-INSERT INTO `pub_role` VALUES (3, 'RC000003', '客服经理', '1111221', 0, NULL, NULL, '00000002-admin', '2019-08-14 10:10:38');
-INSERT INTO `pub_role` VALUES (4, '000004', '销售经理', '12345', 1, '-', '2018-05-10 17:27:24', '-', '2018-05-10 17:27:24');
-INSERT INTO `pub_role` VALUES (5, '000005', '客服专员', NULL, 1, '-', '2018-05-11 09:45:58', '-', '2018-05-11 09:45:58');
-INSERT INTO `pub_role` VALUES (7, 'RC000007', 'tt', 'ss', 1, '-', '2018-05-11 16:27:18', '-', '2018-05-11 16:27:18');
-INSERT INTO `pub_role` VALUES (8, 'RC000008', 'tt', '111', 1, '-', '2018-05-14 10:50:43', '-', '2018-05-14 10:50:43');
-INSERT INTO `pub_role` VALUES (9, 'RC000009', '角色2', '2222', 1, NULL, NULL, '00000002-admin', '2019-08-14 10:10:53');
-INSERT INTO `pub_role` VALUES (10, 'RC000010', '客户专员', NULL, 0, NULL, NULL, '00000002-admin', '2019-08-14 14:49:06');
+INSERT INTO `pub_role` VALUES (1, 'RC000001', '超级管理员', NULL, b'0', '00000001', '2018-04-04 00:00:00', '00000001', '2018-04-04 00:00:00');
+INSERT INTO `pub_role` VALUES (2, 'RC000002', '普通管理员', '2221', b'0', NULL, NULL, '00000002-admin', '2022-04-12 13:17:26');
+INSERT INTO `pub_role` VALUES (3, 'RC000003', '客服经理', '1111221', b'0', NULL, NULL, '00000002-admin', '2019-08-14 10:10:38');
+INSERT INTO `pub_role` VALUES (4, '000004', '销售经理', '12345', b'1', '-', '2018-05-10 17:27:24', '-', '2018-05-10 17:27:24');
+INSERT INTO `pub_role` VALUES (5, '000005', '客服专员', NULL, b'1', '-', '2018-05-11 09:45:58', '-', '2018-05-11 09:45:58');
+INSERT INTO `pub_role` VALUES (7, 'RC000007', 'tt', 'ss', b'1', '-', '2018-05-11 16:27:18', '-', '2018-05-11 16:27:18');
+INSERT INTO `pub_role` VALUES (8, 'RC000008', 'tt', '111', b'1', '-', '2018-05-14 10:50:43', '-', '2018-05-14 10:50:43');
+INSERT INTO `pub_role` VALUES (9, 'RC000009', '角色2', '2222', b'1', NULL, NULL, '00000002-admin', '2019-08-14 10:10:53');
+INSERT INTO `pub_role` VALUES (10, 'RC000010', '客户专员1', NULL, b'0', NULL, NULL, '00000001-chi', '2023-04-01 14:56:11');
 
 -- ----------------------------
 -- Table structure for pub_rolefunction
@@ -186,7 +187,7 @@ CREATE TABLE `pub_rolefunction`  (
   `Lmdt` datetime(0) NULL DEFAULT NULL COMMENT '最后编辑时间',
   `StopFlag` tinyint(0) NULL DEFAULT NULL COMMENT '停用状态 默认0 未停用 1 停用',
   PRIMARY KEY (`Id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 931 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 938 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of pub_rolefunction
@@ -294,12 +295,12 @@ CREATE TABLE `pub_user`  (
   `Wxcode` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL DEFAULT NULL COMMENT '微信openid',
   `HeadUrl` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL DEFAULT NULL COMMENT '头像地址',
   PRIMARY KEY (`Id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 27 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 30 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of pub_user
 -- ----------------------------
-INSERT INTO `pub_user` VALUES (1, '00000001', 'chi', '迟', '123123', 0, NULL, NULL, 'D000001', 0, '152881331161', NULL, NULL, NULL, 0, NULL, NULL, '00000001-chi', '2023-03-11 23:32:08', NULL, NULL, NULL, NULL, NULL, NULL, NULL);
+INSERT INTO `pub_user` VALUES (1, '00000001', 'chi', '迟', '123123', 1, NULL, NULL, 'D000001', 0, '152881331161', NULL, NULL, NULL, 0, NULL, NULL, '00000001-chi', '2023-04-01 13:14:10', NULL, NULL, NULL, NULL, NULL, NULL, NULL);
 INSERT INTO `pub_user` VALUES (2, '00000002', 'admin', 'admin', '123456', 0, NULL, NULL, 'D000002', 0, '15288133116', NULL, NULL, '                        \n                    ', 0, NULL, NULL, '00000002-admin', '2023-03-11 23:18:42', NULL, NULL, NULL, NULL, NULL, NULL, NULL);
 INSERT INTO `pub_user` VALUES (20, '00000004', 'cts', '迟1', '123123', 1, NULL, NULL, 'D000003', 0, '12345678901', NULL, NULL, '123456', 0, '00000002-admin', '2019-08-01 17:29:09', '00000002-admin', '2023-03-11 22:03:57', NULL, NULL, NULL, NULL, '123', NULL, NULL);
 INSERT INTO `pub_user` VALUES (21, '00000005', 'cts2', '111', '1234567890', 1, NULL, NULL, 'D000047', 0, '123123457890', NULL, NULL, '2222', 1, '00000002-admin', '2019-08-01 17:33:36', '00000002-admin', '2019-08-02 15:35:19', NULL, NULL, NULL, NULL, '111', NULL, NULL);
@@ -307,19 +308,19 @@ INSERT INTO `pub_user` VALUES (22, '00000006', 'jack', 'chi', '123456', 1, NULL,
 INSERT INTO `pub_user` VALUES (23, '00000007', '123', NULL, '11111111', 1, NULL, NULL, NULL, 0, NULL, NULL, NULL, NULL, 1, '00000002-admin', '2019-08-02 16:52:01', '00000002-admin', '2019-08-02 16:52:01', NULL, NULL, NULL, NULL, NULL, NULL, NULL);
 INSERT INTO `pub_user` VALUES (24, '00000008', '123', NULL, '11111111', 1, NULL, NULL, NULL, 0, NULL, NULL, NULL, NULL, 1, '00000002-admin', '2019-08-02 16:52:20', '00000002-admin', '2019-08-02 16:52:20', NULL, NULL, NULL, NULL, NULL, NULL, NULL);
 INSERT INTO `pub_user` VALUES (26, '00000010', 'tt1', NULL, '123123', 1, NULL, NULL, NULL, 0, NULL, NULL, NULL, NULL, 1, '00000002-admin', '2022-04-21 15:09:12', '00000002-admin', '2022-04-21 15:09:12', NULL, NULL, NULL, NULL, NULL, NULL, NULL);
-INSERT INTO `pub_user` VALUES (30, '00000014', 'chi1', NULL, '123123', 1, NULL, NULL, NULL, 0, NULL, NULL, NULL, NULL, 0, '00000001-chi', '2023-03-11 23:34:27', '00000001-chi', '2023-03-11 23:34:27', NULL, NULL, NULL, NULL, NULL, NULL, NULL);
+INSERT INTO `pub_user` VALUES (30, '00000014', 'chi2', NULL, '123123', 1, NULL, NULL, NULL, 0, NULL, NULL, NULL, NULL, 0, '00000001-chi', '2023-03-11 23:34:27', '00000001-chi', '2023-04-01 14:56:02', NULL, NULL, NULL, NULL, NULL, NULL, NULL);
 
 -- ----------------------------
 -- Table structure for pub_userfunction
 -- ----------------------------
 DROP TABLE IF EXISTS `pub_userfunction`;
 CREATE TABLE `pub_userfunction`  (
-  `Id` int(0) NOT NULL,
+  `Id` int(0) NOT NULL AUTO_INCREMENT,
   `UserCode` varchar(20) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL COMMENT '用户编号',
   `FunctionCode` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL COMMENT '权限编号',
   `Lmid` varchar(15) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL DEFAULT NULL COMMENT '最后编辑人',
   `Lmdt` datetime(0) NULL DEFAULT NULL COMMENT '最后编辑时间',
-  `StopFlag` tinyint(0) NULL DEFAULT NULL COMMENT '停用状态 默认0 未停用 1 停用',
+  `StopFlag` bit(1) NULL DEFAULT b'0' COMMENT '停用状态 默认0 未停用 1 停用',
   PRIMARY KEY (`Id`) USING BTREE
 ) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci ROW_FORMAT = Dynamic;
 
@@ -334,6 +335,10 @@ INSERT INTO `pub_userfunction` VALUES (138, '00000002', 'FC001004002', NULL, NUL
 INSERT INTO `pub_userfunction` VALUES (139, '00000002', 'FC001004003', NULL, NULL, NULL);
 INSERT INTO `pub_userfunction` VALUES (140, '00000002', 'FC001004004', NULL, NULL, NULL);
 INSERT INTO `pub_userfunction` VALUES (141, '00000002', 'FC001005', NULL, NULL, NULL);
+INSERT INTO `pub_userfunction` VALUES (142, '00000014', 'FC001004001', NULL, NULL, NULL);
+INSERT INTO `pub_userfunction` VALUES (143, '00000014', 'FC001004002', NULL, NULL, NULL);
+INSERT INTO `pub_userfunction` VALUES (144, '00000014', 'FC001004003', NULL, NULL, NULL);
+INSERT INTO `pub_userfunction` VALUES (145, '00000014', 'FC001004004', NULL, NULL, NULL);
 
 -- ----------------------------
 -- Table structure for pub_userrole
@@ -347,7 +352,7 @@ CREATE TABLE `pub_userrole`  (
   `Lmdt` datetime(0) NULL DEFAULT NULL COMMENT '最后编辑时间',
   `StopFlag` tinyint(0) NULL DEFAULT NULL COMMENT '停用状态 默认0 未停用 1 停用',
   PRIMARY KEY (`Id`) USING BTREE
-) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 58 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of pub_userrole
@@ -359,8 +364,8 @@ INSERT INTO `pub_userrole` VALUES (31, '00000005', 'RC000002', NULL, NULL, NULL)
 INSERT INTO `pub_userrole` VALUES (44, '00000009', 'RC000001', NULL, NULL, NULL);
 INSERT INTO `pub_userrole` VALUES (50, '00000004', 'RC000002', NULL, NULL, NULL);
 INSERT INTO `pub_userrole` VALUES (56, '00000002', 'RC000002', NULL, NULL, NULL);
-INSERT INTO `pub_userrole` VALUES (57, '00000001', 'RC000001', NULL, NULL, NULL);
-INSERT INTO `pub_userrole` VALUES (58, '00000001', 'RC000002', NULL, NULL, NULL);
+INSERT INTO `pub_userrole` VALUES (59, '00000001', 'RC000001', NULL, NULL, NULL);
+INSERT INTO `pub_userrole` VALUES (60, '00000001', 'RC000002', NULL, NULL, NULL);
 
 -- ----------------------------
 -- View structure for v_pubdept_parent

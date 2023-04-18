@@ -8,7 +8,8 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using CNet.Web.Api.Model.Request;
-using CNet.BLL;
+using CNet.Main.Model;
+using CNet.Main.BLL;
 using CNet.Model;
 
 namespace CNet.Web.Api.Controllers
@@ -19,9 +20,9 @@ namespace CNet.Web.Api.Controllers
     public class PubUserController : BaseController
     {
         private Pub_UserBLL bll = new Pub_UserBLL();
-        private V_PubUser_DeptBLL userDeptBLL = new V_PubUser_DeptBLL();
-        private Pub_UserRoleBLL userRoleBLL = new Pub_UserRoleBLL();
-        Pub_UserFunctionBLL userFunctionBLL = new Pub_UserFunctionBLL();
+        private V_Pubuser_DeptBLL userDeptBLL = new V_Pubuser_DeptBLL();
+        private Pub_UserroleBLL userRoleBLL = new Pub_UserroleBLL();
+         Pub_UserfunctionBLL userFunctionBLL = new  Pub_UserfunctionBLL();
 
         [HttpGet,Route("GetAccess")]
         public dynamic GetAccess()
@@ -54,18 +55,18 @@ namespace CNet.Web.Api.Controllers
         /// <returns></returns>
         [Route("GetPage")]
         [HttpPost]
-        public PageDateRes<V_PubUser_Dept> GetPage([FromBody]PageDataReq pageReq)
+        public PageDateRes<V_Pubuser_Dept> GetPage([FromBody]PageDataReq pageReq)
         {
             var whereStr = GetWhereStr();
             if (whereStr=="-1")
             {
-                return new PageDateRes<V_PubUser_Dept>() {code=ResCode.Error,msg="查询参数有误！",data=null };
+                return new PageDateRes<V_Pubuser_Dept>() {code=ResCode.Error,msg="查询参数有误！",data=null };
             }
             var users = userDeptBLL.GetPage(whereStr, (pageReq.field + " " + pageReq.order), pageReq.pageNum, pageReq.pageSize);
 
-            //  PageDateRes<V_PubUser_DeptExt> users = usersPage.MapTo<PageDateRes <V_PubUser_Dept>,PageDateRes <V_PubUser_DeptExt>>();
+            //  PageDateRes<V_Pubuser_DeptExt> users = usersPage.MapTo<PageDateRes <V_Pubuser_Dept>,PageDateRes <V_Pubuser_DeptExt>>();
             var userCodes = string.Join("','", users.data.Select(p => p.UserCode));
-            List<Pub_UserRole> userRoles = userRoleBLL.GetList($"userCode in ('{userCodes}')");
+            List<Pub_Userrole> userRoles = userRoleBLL.GetList($"userCode in ('{userCodes}')");
             users.data.ForEach(p =>
             {
                 p.RoleCodes = userRoles.Where(c => c.UserCode == p.UserCode).Select(d => d.RoleCode);
@@ -95,7 +96,7 @@ namespace CNet.Web.Api.Controllers
         /// <returns></returns>
         [Route("Add")]
         [HttpPost]
-        public DataRes<bool> Add([FromBody]V_PubUser_Dept model)
+        public DataRes<bool> Add([FromBody]V_Pubuser_Dept model)
         {
             DataRes<bool> res = new DataRes<bool>() { code = ResCode.Success, data = true };
 
@@ -128,7 +129,7 @@ namespace CNet.Web.Api.Controllers
         /// <returns></returns>
         [Route("Edit")]
         [HttpPost]
-        public DataRes<bool> Edit([FromBody]V_PubUser_Dept model)
+        public DataRes<bool> Edit([FromBody]V_Pubuser_Dept model)
         {
             DataRes<bool> res = new DataRes<bool>() { code = ResCode.Success, data = true };
 
@@ -203,8 +204,8 @@ namespace CNet.Web.Api.Controllers
         {
             DataRes<bool> res = new DataRes<bool>() { code = ResCode.Success, data = true };
 
-            List<Pub_UserFunction> list = new List<Pub_UserFunction>();
-            functions.ForEach(p => { list.Add(new Pub_UserFunction() { FunctionCode = p,UserCode = code }); });
+            List< Pub_Userfunction> list = new List< Pub_Userfunction>();
+            functions.ForEach(p => { list.Add(new  Pub_Userfunction() { FunctionCode = p,UserCode = code }); });
             var r = bll.SaveFunctions(code, list);
             if (!r.Item1)
             {

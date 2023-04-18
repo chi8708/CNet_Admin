@@ -10,7 +10,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Options;
 using Microsoft.IdentityModel.Tokens;
-using CNet.BLL;
+using CNet.Main.BLL;
 using CNet.Common;
 
 namespace CNet.Web.Api.Controllers
@@ -48,8 +48,8 @@ namespace CNet.Web.Api.Controllers
             if (users.Count>0)
             {
                 var user = users.First();
-                //var userFunctions = new  Pub_UserFunctionBLL().GetList($"UserCode='{user.UserCode}'").Select(p=>p.FunctionCode);
-                //var roleFunctions = new Pub_RoleFunctionBLL().GetList($" RoleCode IN(SELECT pur.RoleCode FROM Pub_UserRole AS pur WHERE pur.UserCode='{user.UserCode}' )").Select(p=>p.FunctionCode);
+                //var userFunctions = new   Pub_UserfunctionBLL().GetList($"UserCode='{user.UserCode}'").Select(p=>p.FunctionCode);
+                //var roleFunctions = new Pub_RolefunctionBLL().GetList($" RoleCode IN(SELECT pur.RoleCode FROM Pub_Userrole AS pur WHERE pur.UserCode='{user.UserCode}' )").Select(p=>p.FunctionCode);
                 //var functions = userFunctions.Concat(roleFunctions).Distinct();
                 //var functionsStr = string.Join(',', functions);
                 var claims = new Claim[]
