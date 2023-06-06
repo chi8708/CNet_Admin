@@ -91,7 +91,7 @@ QQ群:851743573
 
 Aigu开发 github热门排行，微信小程序看源码
 -----------------
-<img src="tg.jpg" />
+<img src="tg.jpg" style="width:260px;" />
 
 
 
