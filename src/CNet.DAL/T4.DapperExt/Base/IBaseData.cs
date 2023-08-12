@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace CNet.DAL
 {
-   public  interface IBaseDataDapperContrib<T> where T : class, new()
+   public  interface IBaseData<T> where T : class, new()
     {
         public long Insert(T model);
         public bool InsertBatch(List<T> models);

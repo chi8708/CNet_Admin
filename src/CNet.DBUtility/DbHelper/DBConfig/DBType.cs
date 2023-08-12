@@ -12,12 +12,13 @@ namespace CNet
     {
         SqlServer,
         MySql,
+        SQLite
     }
 
     public class DBTypeConfig
     {
-       private static string defaultDB=  AppConfigurtaionServices.Configuration.GetConnectionString("defaultDB");
-        public static DBType DefatultDBType =>(DBType)Enum.Parse(typeof(DBType), defaultDB, true);
+       private static string main=  AppConfigurtaionServices.Configuration.GetConnectionString("db_Main");
+        public static DBType Main => (DBType)Enum.Parse(typeof(DBType), main, true);
     }
 
 }

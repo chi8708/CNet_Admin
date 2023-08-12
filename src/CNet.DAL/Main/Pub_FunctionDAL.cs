@@ -9,14 +9,14 @@ using CNet.DBUtility;
 namespace CNet.Main.DAL
 {
     public partial class  Pub_FunctionDAL
-    {
+	{
         /// <summary>
         /// 获取用户菜单
         /// </summary>
         /// <returns></returns>
         public List<Pub_Function> GetMenu(string userCode)
         {
-            return DapperHelperFactory.GetInstance().Query<Pub_Function>("P_GetMenu", new { userCode = userCode }, commandType: System.Data.CommandType.StoredProcedure);
+            return DapperHelperFactory.GetInstance_Main().Query<Pub_Function>("P_GetMenu", new { userCode = userCode }, commandType: System.Data.CommandType.StoredProcedure);
         }
 
         /// <summary>
@@ -25,7 +25,7 @@ namespace CNet.Main.DAL
         /// <returns></returns>
         public List<string> GetUserAccess(string userCode)
         {
-            return DapperHelperFactory.GetInstance().Query<string>("P_GetUserAccess", new { userCode = userCode }, commandType: System.Data.CommandType.StoredProcedure);
+            return DapperHelperFactory.GetInstance_Main().Query<string>("P_GetUserAccess", new { userCode = userCode }, commandType: System.Data.CommandType.StoredProcedure);
         }
 
 
@@ -35,7 +35,7 @@ namespace CNet.Main.DAL
         /// <returns></returns>
         public List<V_Pubfunction_Parent> GetChildFunction(string code)
         {
-            return DapperHelperFactory.GetInstance().Query<V_Pubfunction_Parent>("p_SearchChildFunction", new { functionCodeIn = code }, commandType: System.Data.CommandType.StoredProcedure);
+            return DapperHelperFactory.GetInstance_Main().Query<V_Pubfunction_Parent>("p_SearchChildFunction", new { functionCodeIn = code }, commandType: System.Data.CommandType.StoredProcedure);
         }
     }
 }

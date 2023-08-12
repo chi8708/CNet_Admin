@@ -7,7 +7,13 @@ using System.Threading.Tasks;
 
 namespace CNet.Main.DAL
 {
-	public class RepositoryMain<T>:BaseDataDapperContribMySql<T> where T : class,new()
+	public class RepositoryMain<T> : BaseDataDapperContribSqlServer<T> where T : class, new()
 	{
+        public RepositoryMain() : base(Connection.MainStr)
+		{
+
+		}
+		public string ConnStr => Connection.MainStr;
+
 	}
 }

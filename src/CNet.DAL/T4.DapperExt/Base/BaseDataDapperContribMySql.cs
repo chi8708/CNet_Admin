@@ -14,17 +14,17 @@ using CNet.Model;
 
 namespace CNet.DAL
 {
-    public partial class BaseDataDapperContribMySql<T> : IBaseDataDapperContrib<T> where T : class, new()
+    public partial class BaseDataDapperContribMySql<T> : IBaseData<T> where T : class, new()
     {
-		public BaseDataDapperContribMySql():this(DapperHelperMySql.ConnStr)
-		{
-            
-		}
+        //public BaseDataDapperContribMySql() 
+        //{
+        
+        //}
 		public BaseDataDapperContribMySql(string connStr)
 		{
             this.ConnStr = connStr;
 		}
-		public string ConnStr { get; set; } = DapperHelperMySql.ConnStr;
+		public string ConnStr { get;  set; }
 
 		/// <summary>
 		/// 插入
@@ -329,7 +329,7 @@ namespace CNet.DAL
 
             sql += " where " + where;
 
-            return new DapperHelperMySql().Excute(sql) > 0;
+            return new DapperHelperMySql(this.ConnStr).Excute(sql) > 0;
         }
     }
 }

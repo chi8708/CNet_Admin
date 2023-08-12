@@ -23,7 +23,7 @@ namespace CNet.Main.DAL
 
             sql += " where " + where;
 
-            return DapperHelperFactory.GetInstance().Excute(sql, pms) > 0;
+            return DapperHelperFactory.GetInstance_Main().Excute(sql, pms) > 0;
         }
 
         /// <summary>
@@ -37,7 +37,7 @@ namespace CNet.Main.DAL
             string sql = "UPDATE Pub_User SET UserPwd =@UserPwd ";
             var pms = new { UserPwd = pwd };
 
-            return DapperHelperFactory.GetInstance().Excute(sql,pms) > 0;
+            return DapperHelperFactory.GetInstance_Main().Excute(sql,pms) > 0;
         }
 
 
@@ -57,7 +57,7 @@ namespace CNet.Main.DAL
                 Lmid = editor
             };
 
-            return DapperHelperFactory.GetInstance().Excute(sql, pms) > 0;
+            return DapperHelperFactory.GetInstance_Main().Excute(sql, pms) > 0;
         }
 
     }

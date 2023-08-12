@@ -10,21 +10,21 @@ namespace CNet
     public class DapperHelperFactory
     {
         private static IDapperHelper iDapperHelper;
-        public static IDapperHelper GetInstance()
+        public static IDapperHelper GetInstance_Main()
         {
             if (iDapperHelper!=null)
             {
                 return iDapperHelper;
             }
 
-            var defatultDBType = DBTypeConfig.DefatultDBType;
+            var defatultDBType = DBTypeConfig.Main;
             switch (defatultDBType)
             {
                 case DBType.SqlServer:
-                    iDapperHelper = new DapperHelper();
+                    iDapperHelper = new DapperHelperSqlServer(Connection.MainStr);
                     break;
                 case DBType.MySql:
-                    iDapperHelper = new DapperHelperMySql();
+                    iDapperHelper = new DapperHelperMySql(Connection.MainStr);
                     break;
                 default:
                     break;

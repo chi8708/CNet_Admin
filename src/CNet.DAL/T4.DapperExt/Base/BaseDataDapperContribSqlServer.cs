@@ -14,23 +14,20 @@ using CNet.Model;
 
 namespace CNet.DAL
 {
-    public partial class BaseDataDapperContrib<T> : IBaseDataDapperContrib<T> where T : class ,new()
+    public partial class BaseDataDapperContribSqlServer<T> : IBaseData<T> where T : class ,new()
     {
-		public BaseDataDapperContrib() : this(DapperHelper.ConnStr)
-		{
-
-		}
-		public BaseDataDapperContrib(string connStr)
+		
+		public BaseDataDapperContribSqlServer(string connStr)
 		{
 			this.ConnStr = connStr;
 		}
-		public string ConnStr { get; set; } = DapperHelper.ConnStr;
+		public string ConnStr { get; private set; }
 		/// <summary>
 		/// 插入
 		/// </summary>
 		/// <param name="model"></param>
 		/// <returns></returns>
-		public long Insert(T model)
+		public  long Insert(T model)
         {
             dynamic r = null;
             using (SqlConnection cn = new SqlConnection(this.ConnStr))
@@ -48,7 +45,7 @@ namespace CNet.DAL
         /// </summary>
         /// <param name="models"></param>
         /// <returns></returns>
-        public bool InsertBatch(List<T> models)
+        public  bool InsertBatch(List<T> models)
         {
             try
             {
@@ -78,7 +75,7 @@ namespace CNet.DAL
         /// </summary>
         /// <param name="model"></param>
         /// <returns></returns>
-        public bool Update(T model)
+        public  bool Update(T model)
         {
             dynamic r = null;
             using (SqlConnection cn = new SqlConnection(this.ConnStr))
@@ -96,7 +93,7 @@ namespace CNet.DAL
         /// </summary>
         /// <param name="models"></param>
         /// <returns></returns>
-        public bool UpdateBatch(List<T> models)
+        public   bool UpdateBatch(List<T> models)
         {
             try
             {
@@ -125,7 +122,7 @@ namespace CNet.DAL
         /// </summary>
         /// <param name="model"></param>
         /// <returns></returns>
-        public dynamic Delete(T model)
+        public  dynamic Delete(T model)
         {
             dynamic r = null;
             using (SqlConnection cn = new SqlConnection(this.ConnStr))
@@ -143,7 +140,7 @@ namespace CNet.DAL
         /// </summary>
         /// <param name="model"></param>
         /// <returns></returns>
-        public bool DeleteByWhere(string where, object param = null)
+        public  bool DeleteByWhere(string where, object param = null)
         {
             try
             {
@@ -172,7 +169,7 @@ namespace CNet.DAL
         /// </summary>
         /// <param name="models"></param>
         /// <returns></returns>
-        public bool DeleteBatch(List<T> models)
+        public  bool DeleteBatch(List<T> models)
         {
             try
             {
@@ -201,7 +198,7 @@ namespace CNet.DAL
         /// </summary>
         /// <param name="models"></param>
         /// <returns></returns>
-        public T Get(object id)
+        public  T Get(object id)
         {
             T t = default(T); //默认只对int guid主键有作用除非使用ClassMapper
             using (SqlConnection cn = new SqlConnection(this.ConnStr))
@@ -220,7 +217,7 @@ namespace CNet.DAL
         /// </summary>
         /// <param name="models"></param>
         /// <returns></returns>
-        public T Get(object id, string keyName)
+        public  T Get(object id, string keyName)
         {
             var tableName = typeof(T).Name;
             StringBuilder sql = new StringBuilder().AppendFormat("SELECT  TOP 1 * FROM {0} WHERE {1}=@id ", tableName, keyName);
@@ -240,7 +237,7 @@ namespace CNet.DAL
         /// <param name="where"></param>
         /// <param name="sort"></param>
         /// <returns></returns>
-        public List<T> GetList(string where, string sort = null, int limits = -1, string fileds = " * ", string orderby = "")
+        public  List<T> GetList(string where, string sort = null, int limits = -1, string fileds = " * ", string orderby = "")
         {
             var tableName = typeof(T).Name;
             StringBuilder sql = new StringBuilder().AppendFormat("SELECT " + (limits > 0 ? (" TOP " + limits) : " ") + fileds + "  FROM {0} {1} ",
@@ -274,7 +271,7 @@ namespace CNet.DAL
         /// <param name="resultsPerPage">页大小</param>
         /// <param name="fields">查询字段</param>
         /// <returns></returns>
-        public PageDateRes<T> GetPage(string where, string sort, int page, int resultsPerPage, string fields = "*", Type result = null)
+        public  PageDateRes<T> GetPage(string where, string sort, int page, int resultsPerPage, string fields = "*", Type result = null)
         {
             var tableName = typeof(T).Name;
             var p = new DynamicParameters();
@@ -314,7 +311,7 @@ namespace CNet.DAL
         /// <param name="where"></param>
         /// <returns></returns>
         
-        public bool ChangeSotpStatus(string where)
+        public  bool ChangeSotpStatus(string where)
         {
             var tableName = typeof(T).Name;
             string sql = "UPDATE "+tableName+" SET StopFlag =1 ";
@@ -325,7 +322,7 @@ namespace CNet.DAL
 
             sql += " where " + where;
 
-            return new DapperHelper().Excute(sql) > 0;
+            return new DapperHelperSqlServer(this.ConnStr).Excute(sql) > 0;
         }
 	}
 }
