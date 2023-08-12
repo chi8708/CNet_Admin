@@ -12,7 +12,8 @@ namespace CNet
         private static IDapperHelper iDapperHelper;
         public static IDapperHelper GetInstance_Main()
         {
-            if (iDapperHelper!=null)
+			return new DapperHelperSqlServer(Connection.MainStr);
+			if (iDapperHelper!=null)
             {
                 return iDapperHelper;
             }
@@ -31,5 +32,6 @@ namespace CNet
             }
             return iDapperHelper;
         }
+
     }
 }

@@ -4,8 +4,6 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using CNet.DBUtility;
-
 namespace CNet.Main.DAL
 {
     public partial class Pub_DepartmentDAL

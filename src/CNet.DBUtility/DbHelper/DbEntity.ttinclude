@@ -1,11 +1,12 @@
 ﻿<#@ include file="$(SolutionDir)\CNet.DBUtility\DbHelper\MsSqlDbHelper.ttinclude"  #>
 <#@ include file="$(SolutionDir)\CNet.DBUtility\DbHelper\MySqlDbHelper.ttinclude"  #>
+<#@ include file="$(SolutionDir)\CNet.DBUtility\DbHelper\SQLiteDbHelper.ttinclude"  #>
 <#+
  
     public class Config
     {
             //数据库类型
-        public static readonly string DbType = "MySql";//MsSql\MySql
+        public static readonly string DbType = "SQLite";//MsSql\MySql\SQLite
 
         //数据库名sqlserver
         //public static readonly string Server = ".";//"127.0.0.1";
@@ -16,15 +17,16 @@
         //public static readonly string ConnectionString = string.Format("server={0};database={1};uid={2};pwd={3}", Server, DbDatabase, Uid, Pwd);
         
          //数据库名mysql
-       public static readonly string Server = "localhost;port=3306";//"127.0.0.1";
         public static readonly string DbDatabase = "CNet";
-        public static readonly string Uid = "root";
-        public static readonly string Pwd = "123123";
-        public static readonly string ConnectionString = string.Format("server=localhost;database=CNet;uid=root;pwd=123123;charset=utf8;");
+        //public static readonly string ConnectionString = string.Format("server=localhost;database=CNet;uid=root;pwd=123123;charset=utf8;");
+
+        //sqlite数据库连接
+	    public static readonly string ConnectionString = string.Format("Data Source=E:\\Study\\DotNet\\CNet_Admin\\src\\db\\CNet.db");
+
         //命名空间
        public static readonly string Namespace = "CNet.Main";
 		//需要生成的表名，多张表用,分割
-        public static readonly string Tables = null;//"users,rows,titles"
+        public static readonly string Tables = "pub_role";//"users,rows,titles"
     }
     public class DbFactory
     {
@@ -34,6 +36,7 @@
             {
                 case "MsSql": { return new MsSqlDbHelper(); }
                 case "MySql": { return new MySqlDbHelper(); }
+                case "SQLite": { return new SQLiteDbHelper(); }
                 default: return null;
             }
         }

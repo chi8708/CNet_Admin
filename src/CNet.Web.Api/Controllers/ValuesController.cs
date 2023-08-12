@@ -37,22 +37,26 @@ namespace CNet.Web.Api.Controllers
         [HttpGet]
         public string Get()
         {
-            T4.MySqlDbHelper tt = new MySqlDbHelper();
-            tt.GetDbTables();
-            tt.GetDbColumns("Pub_User");
-            //var log= LogFactory.GetLogger(Request.Path);
-            //log.Info("info");
-            //log.Warning("ok");
-            //log.Error("error");
-            //_logger.LogError("ssss");
-            //LogHelper.WrtieRequestLog(Common.LogLevel.Info, "1111");
-            //int a = 0;
-            //int b = 1 / a;
-            // var users = bll.GetList(" 1=1 ");
-            //RedisHelper rd = new RedisHelper();
-            //rd.HashSet("key1", "keyData1",new { id=1,value="2"});
-            //rd.HashSet("key1", "keyData2", new { id = 2, value = "2" });
-            return "1111";
+        //    T4.MySqlDbHelper tt = new MySqlDbHelper();
+        //    tt.GetDbTables();
+        //    tt.GetDbColumns("Pub_User");
+
+            T4.SQLiteDbHelper tt = new SQLiteDbHelper();
+			tt.GetDbTables();
+			tt.GetDbColumns("pub_user");
+			//var log= LogFactory.GetLogger(Request.Path);
+			//log.Info("info");
+			//log.Warning("ok");
+			//log.Error("error");
+			//_logger.LogError("ssss");
+			//LogHelper.WrtieRequestLog(Common.LogLevel.Info, "1111");
+			//int a = 0;
+			//int b = 1 / a;
+			// var users = bll.GetList(" 1=1 ");
+			//RedisHelper rd = new RedisHelper();
+			//rd.HashSet("key1", "keyData1",new { id=1,value="2"});
+			//rd.HashSet("key1", "keyData2", new { id = 2, value = "2" });
+			return "1111";
             //return new Pub_UserBLL().GetList("");
             //return new Pub_UserBLL().GetList("");
         }

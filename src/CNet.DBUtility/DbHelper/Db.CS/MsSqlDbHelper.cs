@@ -59,7 +59,7 @@ namespace T4
             DataTable dt = GetDataTable(sql);
             return dt.Rows.Cast<DataRow>().Select(row => new DbTable
             {
-                TableName = row.Field<string>("tablename"),
+                TableName = ToCamelCase(row.Field<string>("tablename")),
                 SchemaName = row.Field<string>("schemname"),
                 Rows = row.Field<int>("rows"),
                 HasPrimaryKey = row.Field<bool>("HasPrimaryKey")

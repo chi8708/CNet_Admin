@@ -15,16 +15,20 @@ namespace T4
         public static readonly string Uid = "sa";
         public static readonly string Pwd = "123123";
         //数据库类型
-        public static readonly string DbType = "MySql";//MsSql\MySql
+        public static readonly string DbType = "SQLite";//MsSql\MySql\SQLite
 
-        //数据库连接	
-        //public static readonly string ConnectionString = string.Format("server={0};database={1};uid={2};pwd={3}", Server, DbDatabase, Uid, Pwd);
+		//sqlserver数据库连接	
+		//public static readonly string ConnectionString = string.Format("server={0};database={1};uid={2};pwd={3}", Server, DbDatabase, Uid, Pwd);
 
-        public static readonly string ConnectionString = string.Format("server=localhost;port=3306;database=cnet;SslMode=None;uid=root;pwd=123123;Allow User Variables=true;");
-        //命名空间
-        public static readonly string Namespace = "CNet";
+		//mysql数据库连接	
+		//public static readonly string ConnectionString = string.Format("server=localhost;port=3306;database=cnet;SslMode=None;uid=root;pwd=123123;Allow User Variables=true;");
+
+		//sqlite数据库连接
+		public static readonly string ConnectionString = string.Format("Data Source=E:\\Study\\DotNet\\CNet_Admin\\src\\db\\CNet.db");
+		//命名空间
+		public static readonly string Namespace = "CNet";
         //需要生成的表名，多张表用,分割
-        public static readonly string Tables = "Pub_User";//"users,rows,titles"
+        public static readonly string Tables = "pub_user";//"users,rows,titles"
     }
     public class DbFactory
     {
@@ -34,6 +38,7 @@ namespace T4
             {
                 case "MsSql": { return new MsSqlDbHelper(); }
                 case "MySql": { return new MySqlDbHelper(); }
+                case "SQLite": { return new SQLiteDbHelper(); }
                 default: return null;
             }
         }
