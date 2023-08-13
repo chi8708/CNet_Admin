@@ -19,7 +19,7 @@ namespace CNet.DAL
         public T Get(object id);
         public T Get(object id, string keyName);
 
-        public List<T> GetList(string where, string sort = null, int limits = -1, string fileds = " * ", string orderby = "");
+        public List<T> GetList(string where, string orderby = null, int limits = -1, string fileds = " * ");
         public PageDateRes<T> GetPage(string where, string sort, int page, int resultsPerPage, string fields = "*", Type result = null);
         public bool ChangeSotpStatus(string where);
 

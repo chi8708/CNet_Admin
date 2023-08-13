@@ -43,7 +43,7 @@ namespace CNet.Web.Api.Controllers
 
             T4.SQLiteDbHelper tt = new SQLiteDbHelper();
 			tt.GetDbTables();
-			tt.GetDbColumns("pub_user");
+			tt.GetDbColumns("Pub_User");
 			//var log= LogFactory.GetLogger(Request.Path);
 			//log.Info("info");
 			//log.Warning("ok");

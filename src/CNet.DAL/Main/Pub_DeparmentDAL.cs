@@ -10,7 +10,19 @@ namespace CNet.Main.DAL
 	{
 		public List<V_Pubdept_Parent> SearchChildDept(string code = "D000001")
 		{
-			return DapperHelperFactory.GetInstance_Main().Query<V_Pubdept_Parent>("p_SearchChildDept", new { deptCodeIn = code }, commandType: System.Data.CommandType.StoredProcedure);
+
+			string sql = $@"with recursive f as 
+	                        (
+	                        select * FROM Pub_Department AS pd where DeptCode=@code
+	                        union all
+	                        select a.* from Pub_Department as a inner join f as b on a.ParentCode=b.DeptCode
+	                        )
+
+	                        SELECT f.*,a.deptName as parentName FROM  f  LEFT JOIN Pub_Department as a on  f.ParentCode=a.DeptCode
+	                        ";
+
+			return DBHelperFactory.GetInstance_Main().Query<V_Pubdept_Parent>(sql, new { code });
+			//return DBHelperFactory.GetInstance_Main().Query<V_Pubdept_Parent>("p_SearchChildDept", new { deptCodeIn = code }, commandType: System.Data.CommandType.StoredProcedure);
 		}
 	}
 }

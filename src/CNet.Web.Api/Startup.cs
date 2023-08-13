@@ -224,12 +224,12 @@ namespace CNet.Web.Api
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env, ILoggerFactory loggerFactory)
         {
-            if (env.IsDevelopment())
-            {
+            //if (env.IsDevelopment())
+            //{
                 app.UseDeveloperExceptionPage();
                 app.UseSwagger();
                 app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "CNet.Web.Api v1"));
-            }
+            //}
             //Microsfot.Extensions.Logging.Log4Net.AspNetCore 需添加
             //loggerFactory.AddLog4Net(Environment.CurrentDirectory + "//log4net.config");
             //app.UseHttpsRedirection();//会跳转跨域时不要使用

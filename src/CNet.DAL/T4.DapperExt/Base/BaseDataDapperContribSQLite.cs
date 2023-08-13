@@ -9,32 +9,28 @@ using System.Data.SqlClient;
 using System.Text;
 using System.Data;
 using T4;
-using MySql.Data.MySqlClient;
 using CNet.Model;
+using System.Data.SQLite;
 
 namespace CNet.DAL
 {
-    public partial class BaseDataDapperContribMySql<T> : IBaseData<T> where T : class, new()
+    public partial class BaseDataDapperContribSQLite<T> : IBaseData<T> where T : class ,new()
     {
-        //public BaseDataDapperContribMySql() 
-        //{
-        
-        //}
-		public BaseDataDapperContribMySql(string connStr)
+		
+		public BaseDataDapperContribSQLite(string connStr)
 		{
-            this.ConnStr = connStr;
+			this.ConnStr = connStr;
 		}
-		public string ConnStr { get;  set; }
-
+		public string ConnStr { get; private set; }
 		/// <summary>
 		/// 插入
 		/// </summary>
 		/// <param name="model"></param>
 		/// <returns></returns>
-		public long Insert(T model)
+		public  long Insert(T model)
         {
             dynamic r = null;
-            using (MySqlConnection cn = new MySqlConnection(this.ConnStr))
+            using (SQLiteConnection cn = new SQLiteConnection(this.ConnStr))
             {
                 cn.Open();
                 r = cn.Insert(model);
@@ -49,11 +45,11 @@ namespace CNet.DAL
         /// </summary>
         /// <param name="models"></param>
         /// <returns></returns>
-        public bool InsertBatch(List<T> models)
+        public  bool InsertBatch(List<T> models)
         {
             try
             {
-                using (MySqlConnection cn = new MySqlConnection(this.ConnStr))
+                using (SQLiteConnection cn = new SQLiteConnection(this.ConnStr))
                 {
                     cn.Open();
                     foreach (var model in models)
@@ -79,13 +75,13 @@ namespace CNet.DAL
         /// </summary>
         /// <param name="model"></param>
         /// <returns></returns>
-        public bool Update(T model)
+        public  bool Update(T model)
         {
             dynamic r = null;
-            using (MySqlConnection cn = new MySqlConnection(this.ConnStr))
+            using (SQLiteConnection cn = new SQLiteConnection(this.ConnStr))
             {
                 cn.Open();
-                r = cn.Update(model);
+                r = cn.Update<T>(model);
                 cn.Close();
             }
 
@@ -97,16 +93,16 @@ namespace CNet.DAL
         /// </summary>
         /// <param name="models"></param>
         /// <returns></returns>
-        public bool UpdateBatch(List<T> models)
+        public   bool UpdateBatch(List<T> models)
         {
             try
             {
-                using (MySqlConnection cn = new MySqlConnection(this.ConnStr))
+                using (SQLiteConnection cn = new SQLiteConnection(this.ConnStr))
                 {
                     cn.Open();
                     foreach (var model in models)
                     {
-                        cn.Update(model);
+                        cn.Update<T>(model);
                     }
                     cn.Close();
                 }
@@ -126,10 +122,10 @@ namespace CNet.DAL
         /// </summary>
         /// <param name="model"></param>
         /// <returns></returns>
-        public dynamic Delete(T model)
+        public  dynamic Delete(T model)
         {
             dynamic r = null;
-            using (MySqlConnection cn = new MySqlConnection(this.ConnStr))
+            using (SQLiteConnection cn = new SQLiteConnection(this.ConnStr))
             {
                 cn.Open();
                 r = cn.Delete(model);
@@ -144,7 +140,7 @@ namespace CNet.DAL
         /// </summary>
         /// <param name="model"></param>
         /// <returns></returns>
-        public bool DeleteByWhere(string where, object param = null)
+        public  bool DeleteByWhere(string where, object param = null)
         {
             try
             {
@@ -156,7 +152,7 @@ namespace CNet.DAL
                 }
 
                 sql.AppendFormat(" where {0} ", where);
-                using (MySqlConnection cn = new MySqlConnection(this.ConnStr))
+                using (SQLiteConnection cn = new SQLiteConnection(this.ConnStr))
                 {
                     cn.Execute(sql.ToString(), param);
                     return true;
@@ -173,11 +169,11 @@ namespace CNet.DAL
         /// </summary>
         /// <param name="models"></param>
         /// <returns></returns>
-        public bool DeleteBatch(List<T> models)
+        public  bool DeleteBatch(List<T> models)
         {
             try
             {
-                using (MySqlConnection cn = new MySqlConnection(this.ConnStr))
+                using (SQLiteConnection cn = new SQLiteConnection(this.ConnStr))
                 {
                     cn.Open();
                     foreach (var model in models)
@@ -202,10 +198,10 @@ namespace CNet.DAL
         /// </summary>
         /// <param name="models"></param>
         /// <returns></returns>
-        public T Get(object id)
+        public  T Get(object id)
         {
             T t = default(T); //默认只对int guid主键有作用除非使用ClassMapper
-            using (MySqlConnection cn = new MySqlConnection(this.ConnStr))
+            using (SQLiteConnection cn = new SQLiteConnection(this.ConnStr))
             {
                 cn.Open();
                 t = cn.Get<T>(id);
@@ -221,12 +217,12 @@ namespace CNet.DAL
         /// </summary>
         /// <param name="models"></param>
         /// <returns></returns>
-        public T Get(object id, string keyName)
+        public  T Get(object id, string keyName)
         {
             var tableName = typeof(T).Name;
             StringBuilder sql = new StringBuilder().AppendFormat("SELECT  TOP 1 * FROM {0} WHERE {1}=@id ", tableName, keyName);
             var pms = new { id = id };
-            using (MySqlConnection cn = new MySqlConnection(this.ConnStr))
+            using (SQLiteConnection cn = new SQLiteConnection(this.ConnStr))
             {
                 return cn.Query<T>(sql.ToString(), pms).FirstOrDefault();
             }
@@ -241,10 +237,10 @@ namespace CNet.DAL
         /// <param name="where"></param>
         /// <param name="sort"></param>
         /// <returns></returns>
-        public List<T> GetList(string where, string sort = null, int limits = -1, string fileds = " * ")
+        public  List<T> GetList(string where, string sort = null, int limits = -1, string fileds = " * ")
         {
             var tableName = typeof(T).Name;
-            StringBuilder sql = new StringBuilder().AppendFormat("SELECT " + fileds + "  FROM {0}  ",
+            StringBuilder sql = new StringBuilder().AppendFormat("SELECT "  + fileds + "  FROM {0}  ",
                 tableName);
             if (!string.IsNullOrEmpty(where))
             {
@@ -254,12 +250,12 @@ namespace CNet.DAL
             {
                 sql.AppendFormat(" order by {0} ", sort);
             }
-            if (limits>0)
-            {
-                sql.AppendFormat($" limit {limits} ");
-            }
+			if (limits > 0)
+			{
+				sql.AppendFormat($" limit {limits} ");
+			}
 
-            using (MySqlConnection cn = new MySqlConnection(this.ConnStr))
+			using (SQLiteConnection cn = new SQLiteConnection(this.ConnStr))
             {
                 return cn.Query<T>(sql.ToString()).ToList();
             }
@@ -279,30 +275,24 @@ namespace CNet.DAL
         /// <param name="resultsPerPage">页大小</param>
         /// <param name="fields">查询字段</param>
         /// <returns></returns>
-        public PageDateRes<T> GetPage(string where, string sort, int page, int resultsPerPage, string fields = "*", Type result = null)
+        public  PageDateRes<T> GetPage(string where, string sort, int page, int resultsPerPage, string fields = "*", Type result = null)
         {
             var tableName = typeof(T).Name;
-            var p = new DynamicParameters();
-            p.Add("@p_table_name", tableName);
-            p.Add("@p_fields", fields);
-            p.Add("@p_page_size", resultsPerPage);
-            p.Add("@p_page_now", page);
-            p.Add("@p_order_string", sort);
-            p.Add("@p_where_string", where);
-            p.Add("@p_out_rows", 0, direction: ParameterDirection.Output);
+            string sqlCount = @$" select count(1) from {tableName} where {where}";
+            string sqlPager = @$" select  * from {tableName}  where {where} ORDER BY {sort} LIMIT {page-1}*{resultsPerPage},{resultsPerPage}";
 
-            using (MySqlConnection cn = new MySqlConnection(this.ConnStr))
+
+			using (SQLiteConnection cn = new SQLiteConnection(this.ConnStr))
             {
 
-                var data = cn.Query<T>("pr_pager", p, commandType: CommandType.StoredProcedure, commandTimeout: 120);
-               // int totalPage = p.Get<int>("@TotalPage");
-                int totalrow = p.Get<int>("@p_out_rows");
+                int totalrow =Convert.ToInt32(cn.ExecuteScalar(sqlCount));
+                var data = cn.Query<T>(sqlPager); ;
 
                 var rep = new PageDateRes<T>()
                 {
                     code =ResCode.Success,
                     count = totalrow,
-                    totalPage = totalrow%resultsPerPage==0 ? totalrow/ resultsPerPage: totalrow / resultsPerPage+1,
+                    totalPage = (int)Math.Ceiling(totalrow/Convert.ToDouble(resultsPerPage)),
                     data = data.ToList(),
                     PageNum = page,
                     PageSize = resultsPerPage
@@ -318,7 +308,7 @@ namespace CNet.DAL
         /// <param name="where"></param>
         /// <returns></returns>
         
-        public bool ChangeSotpStatus(string where)
+        public  bool ChangeSotpStatus(string where)
         {
             var tableName = typeof(T).Name;
             string sql = "UPDATE "+tableName+" SET StopFlag =1 ";
@@ -329,7 +319,7 @@ namespace CNet.DAL
 
             sql += " where " + where;
 
-            return new DapperHelperMySql(this.ConnStr).Excute(sql) > 0;
+            return new DapperHelperSQLite(this.ConnStr).Excute(sql) > 0;
         }
-    }
+	}
 }

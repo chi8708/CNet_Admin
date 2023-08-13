@@ -7,12 +7,12 @@ using System.Threading.Tasks;
 
 namespace CNet
 {
-    public class DapperHelperFactory
+    public class DBHelperFactory
     {
         private static IDapperHelper iDapperHelper;
         public static IDapperHelper GetInstance_Main()
         {
-			return new DapperHelperSqlServer(Connection.MainStr);
+			return new DapperHelperSQLite(Connection.MainStr);
 			if (iDapperHelper!=null)
             {
                 return iDapperHelper;

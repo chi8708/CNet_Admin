@@ -237,11 +237,11 @@ namespace CNet.DAL
         /// <param name="where"></param>
         /// <param name="sort"></param>
         /// <returns></returns>
-        public  List<T> GetList(string where, string sort = null, int limits = -1, string fileds = " * ", string orderby = "")
+        public  List<T> GetList(string where, string sort = null, int limits = -1, string fileds = " * ")
         {
             var tableName = typeof(T).Name;
-            StringBuilder sql = new StringBuilder().AppendFormat("SELECT " + (limits > 0 ? (" TOP " + limits) : " ") + fileds + "  FROM {0} {1} ",
-                tableName, (string.IsNullOrWhiteSpace(orderby) ? "" : (" order by " + orderby)));
+            StringBuilder sql = new StringBuilder().AppendFormat("SELECT " + (limits > 0 ? (" TOP " + limits) : " ") + fileds + "  FROM {0} ",
+                tableName);
             if (!string.IsNullOrEmpty(where))
             {
                 sql.AppendFormat(" where {0} ", where);

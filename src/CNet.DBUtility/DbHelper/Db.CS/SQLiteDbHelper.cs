@@ -49,7 +49,7 @@ namespace T4
 			#region SQL
 			string sql = string.Format(@"
                                     WITH all_tables AS (SELECT name FROM sqlite_master WHERE type = 'table') 
-										SELECT LOWER(at.name) table_name,
+										SELECT at.name table_name,
                                          pti.cid as ColumnID,pti.pk IsPrimaryKey, pti.name as ColumnName,pti.pk as IsIdentity,
 										 (case 
 										 when instr(pti.type,'(')>0 then
@@ -58,7 +58,7 @@ namespace T4
 										 end) 
 										as ColumnType 
 										,pti.[NOTNULL] as IsNullable,NULL as ByteLength,NULL as CharLength,NULL as Scale,NULL as Remark
-										FROM all_tables at INNER JOIN pragma_table_info(at.name) pti where LOWER(table_name)='{0}'", tableName);
+										FROM all_tables at INNER JOIN pragma_table_info(at.name) pti where LOWER(table_name)=LOWER('{0}')", tableName);
 			#endregion
 			DataTable dt = GetDataTable(sql);
 
