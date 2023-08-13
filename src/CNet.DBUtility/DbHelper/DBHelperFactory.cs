@@ -12,7 +12,7 @@ namespace CNet
         private static IDapperHelper iDapperHelper;
         public static IDapperHelper GetInstance_Main()
         {
-			return new DapperHelperSQLite(Connection.MainStr);
+			return new DapperHelperSqlServer(Connection.MainStr);
 			if (iDapperHelper!=null)
             {
                 return iDapperHelper;

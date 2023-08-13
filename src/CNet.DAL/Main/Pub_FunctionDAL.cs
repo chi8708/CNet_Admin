@@ -18,7 +18,8 @@ namespace CNet.Main.DAL
         /// <returns></returns>
         public List<Pub_Function> GetMenu(string userCode)
         {
-            string sql = $@"WITH recursive f-- recursive 加了就可以，否则报错Table 'cnet.f' doesn't exist
+			//sqlserver 将WITH recursive f 修改为 WITH f 。mysql需要加recursive
+			string sql = $@"WITH  f-- recursive 加了就可以，否则报错Table 'cnet.f' doesn't exist
 	                        AS(
 
 		                        SELECT pf.* FROM Pub_Function AS pf
@@ -63,7 +64,8 @@ namespace CNet.Main.DAL
         /// <returns></returns>
         public List<V_Pubfunction_Parent> GetChildFunction(string code)
         {
-            string sql = $@"with recursive f as 
+			//sqlserver 将WITH recursive f 修改为 WITH f。mysql需要加recursive
+			string sql = $@"with f as 
 	                        (
 	                        select * FROM Pub_Function AS pd where FunctionCode=@code
 	                        union all
