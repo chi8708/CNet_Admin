@@ -37,12 +37,15 @@ namespace CNet.Web.Api.Controllers
         [HttpPost,AllowAnonymous]
         public ActionResult Post([FromBody]LoginViewModel loginViewModel)
         {
-            
+
 
             //if (!ModelState.IsValid)
             //{
             //    return BadRequest();
             //}
+            loginViewModel.Name = QueryHelper.InjectionFilter(loginViewModel.Name);
+            loginViewModel.Password = QueryHelper.InjectionFilter(loginViewModel.Password);
+
             var users = new Pub_UserBLL().GetList($"StopFlag=0 AND UserName='{loginViewModel.Name}' AND UserPwd='{loginViewModel.Password}'", limits: 1);
             
             if (users.Count>0)
