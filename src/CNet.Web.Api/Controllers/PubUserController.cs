@@ -103,10 +103,11 @@ namespace CNet.Web.Api.Controllers
             var oldUser = bll.GetUserByUserName(model.UserName);
             if (oldUser!= null) 
             {
-                res.code = ResCode.NoValidate;
-                res.data = false;
-                res.msg ="用户名已存在，请修改！";
-                return res;
+                //res.code = ResCode.NoValidate;
+                //res.data = false;
+                //res.msg ="用户名已存在，请修改！";
+                //return res;
+                return DataRes<bool>.NoValidate(false, "用户名已存在，请修改!");
             }
 
             model.Crdt = model.Lmdt = DateTime.Now;
@@ -115,9 +116,10 @@ namespace CNet.Web.Api.Controllers
             var r = bll.Add(model);
             if (!r.Item1)
             {
-                res.code = ResCode.Error;
-                res.data = false;
-                res.msg = r.Item2;
+                //res.code = ResCode.Error;
+                //res.data = false;
+                //res.msg = r.Item2;
+                return DataRes<bool>.Error();
             }
 
             return res;

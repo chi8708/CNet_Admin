@@ -70,7 +70,14 @@ export default {
           {
             required: true,
             message: "父级必选",
-            trigger: "blur"
+            trigger: "blur",
+            validator: (rule, value, callback, source, options) => {
+              if (!this.Row.parentName) {
+                return callback(new Error('请选择一个父级'));
+              } else {
+                callback(); return;
+              }
+            },
           }
         ],
         deptName: [
@@ -90,10 +97,12 @@ export default {
     deptChange(code, title) {
       this.Row.parentCode = code;
       this.Row.parentName = title;
-      var itemParent= document.getElementById("item-parentName")
-      itemParent.classList.remove("ivu-form-item-error");
-     itemParent.children[1].children[1].style.display="none";
+      this.$refs.formInline.validateField('parentName');
       this.modelDept = false;
+    //   var itemParent= document.getElementById("item-parentName")
+    //   itemParent.classList.remove("ivu-form-item-error");
+    //  itemParent.children[1].children[1].style.display="none";
+    //   this.modelDept = false;
     },
     save() {
       if (this.parent.isAdd) {
