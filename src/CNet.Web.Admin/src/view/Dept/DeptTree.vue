@@ -74,6 +74,10 @@ export default {
     },
     deptTreeChange(data) {
       var item0 = data[0];
+      if (!item0){
+        this.parent.modelDept=false;
+        return;
+      }
       this.parent.deptChange(item0.value,item0.title);
     }
   },

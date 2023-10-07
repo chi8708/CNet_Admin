@@ -1,8 +1,7 @@
-﻿using Microsoft.Extensions.Configuration;
+﻿
 using StackExchange.Redis;
 using System;
 using System.Collections.Concurrent;
-using System.Configuration;
 
 namespace CNet.Common
 {
@@ -12,10 +11,10 @@ namespace CNet.Common
     public static class RedisConnectionHelper
     {
         //系统自定义Key前缀
-        public static readonly string SysCustomKey = ConfigurationManager.AppSettings["redisKey"] ?? "";
+        public static readonly string SysCustomKey = AppConfigurtaionServices.Configuration.GetSection("redisKey").Value ?? "";
 
         //"127.0.0.1:6379,allowadmin=true
-        public static readonly string RedisConnectionString = AppConfigurtaionServices.Configuration.GetConnectionString("RedisExchangeHosts");
+        public static readonly string RedisConnectionString = AppConfigurtaionServices.Configuration["RedisExchangeHosts"].ToString();
 
         private static readonly object Locker = new object();
         private static ConnectionMultiplexer _instance;
