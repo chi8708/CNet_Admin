@@ -10,12 +10,15 @@
 </style>
 <template>
   <div class="content-main">
-    <Split v-model="split1" max="300" min="300" style="max-height:100%;overflow:auto;">
-      <div slot="left" class="demo-split-pane" >
+    <Split v-model="split1" max="300" min="300" style="max-height:100%;overflow:hidden;">
+      <div slot="left" class="demo-split-pane" style="max-height:100%;overflow:auto;">
         <h3>权限</h3>
-        <function-tree ref="functionTree" :parent="this"></function-tree>
+        <div style="max-height:99%;overflow:auto;">
+          <function-tree ref="functionTree" :parent="this"></function-tree>
+        </div>
+
       </div>
-      <div slot="right" class="demo-split-pane">
+      <div slot="right" class="demo-split-pane" style="max-height:100%;overflow:auto;">
         <h3>同级及下级</h3>
         <div>
           <Button

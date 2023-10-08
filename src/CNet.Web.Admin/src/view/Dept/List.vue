@@ -10,12 +10,14 @@
 </style>
 <template>
   <div class="content-main">
-    <Split v-model="split1" max="300" min="300" style="max-height:100%;overflow:auto;">
-      <div slot="left" class="demo-split-pane" >
+    <Split v-model="split1" max="300" min="300" style="max-height:100%;overflow:hidden;">
+      <div slot="left" class="demo-split-pane"  style="max-height:100%;overflow:auto;" >
         <h3>组织结构</h3>
+        <div style="max-height:97%;overflow:auto;">
         <dept-tree ref="deptTree" :parent="this"></dept-tree>
+        </div>
       </div>
-      <div slot="right" class="demo-split-pane">
+      <div slot="right" class="demo-split-pane"  style="max-height:100%;overflow:auto;">
         <h3>同级及下级</h3>
         <div>
           <Button v-if="userAccess.isAdd" class="search-btn" type="success" size="small" @click="handleAdd">

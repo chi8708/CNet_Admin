@@ -188,7 +188,7 @@ namespace CNet.Web.Api
                 //HttpContext.Current.Request.PhysicalApplicationPath
                 var basePath = Path.GetDirectoryName(typeof(Program).Assembly.Location);//获取应用程序所在目录（绝对，不受工作目录影响，建议采用此方法获取路径）
                 var xmlPath = Path.Combine(basePath, "CNet.Web.Api.xml");
-                c.IncludeXmlComments(xmlPath);
+                c.IncludeXmlComments(xmlPath,true);
             });
         }
 
@@ -215,7 +215,8 @@ namespace CNet.Web.Api
                 {
                     ValidIssuer = jwtSeetings.Issuer,
                     ValidAudience = jwtSeetings.Audience,
-                    IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(jwtSeetings.SecretKey))
+                    IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(jwtSeetings.SecretKey)),
+                    ValidateLifetime=false //验证生命周期
                 };
             });
         }
