@@ -220,6 +220,8 @@ namespace CNet.Web.Api
                     ValidateLifetime=false //验证生命周期
                 };
             });
+
+            services.AddMemoryCache();//内存缓存
         }
 
         //中间件
@@ -253,8 +255,10 @@ namespace CNet.Web.Api
             app.UseAuthentication();//不添加报401
            app.UseCors("default");
             // app.UseCors(anyAllowSpecificOrigins);//支持跨域：允许特定来源的主机访问
-            app.UseResponseCaching();//服务端缓存
+
             app.UseAuthorization();
+            //app.UseResponseCaching();//服务端缓存。客户端禁用缓存后也能缓存。确保 app.UseResponseCaching(); 在app.UseCors("default")后， app.MapControllers前。
+
 
             //request.body的长度总是为0
             app.Use(next => context =>
@@ -265,7 +269,8 @@ namespace CNet.Web.Api
 
             app.UseEndpoints(endpoints =>
             {
-                endpoints.MapControllers().RequireCors("default");
+                endpoints.MapControllers();
+                //endpoints.MapControllers().RequireCors("default");
             });
 
         }

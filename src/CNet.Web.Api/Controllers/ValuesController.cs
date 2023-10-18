@@ -14,6 +14,10 @@ using CNet.Main.Model;
 using Microsoft.Extensions.Logging;
 using MySql.Data.MySqlClient;
 using T4;
+using Microsoft.Extensions.Caching.Memory;
+using System.Drawing;
+using System.Security;
+using Microsoft.Extensions.ObjectPool;
 
 namespace CNet.Web.Api.Controllers
 {
@@ -34,35 +38,62 @@ namespace CNet.Web.Api.Controllers
             
         //    bll = pubbll;
         //}
-        [HttpGet]
-        public string Get()
+        private IMemoryCache _memoryCache;
+         public ValuesController(IMemoryCache cache) 
         {
-        //    T4.MySqlDbHelper tt = new MySqlDbHelper();
-        //    tt.GetDbTables();
-        //    tt.GetDbColumns("Pub_User");
+          this._memoryCache = cache;
+        }
+        [HttpGet]
+        [ResponseCache(Duration =20)]
+        public  string Get()
+        {
+            //    T4.MySqlDbHelper tt = new MySqlDbHelper();
+            //    tt.GetDbTables();
+            //    tt.GetDbColumns("Pub_User");
 
+            //t4 SQLiteDbHelper 实例
             T4.SQLiteDbHelper tt = new SQLiteDbHelper();
 			tt.GetDbTables();
 			tt.GetDbColumns("Pub_User");
-			//var log= LogFactory.GetLogger(Request.Path);
-			//log.Info("info");
-			//log.Warning("ok");
-			//log.Error("error");
-			//_logger.LogError("ssss");
-			//LogHelper.WrtieRequestLog(Common.LogLevel.Info, "1111");
-			//int a = 0;
-			//int b = 1 / a;
-			// var users = bll.GetList(" 1=1 ");
-			//RedisHelper rd = new RedisHelper();
-			//rd.HashSet("key1", "keyData1",new { id=1,value="2"});
-			//rd.HashSet("key1", "keyData2", new { id = 2, value = "2" });
-			return "1111";
-            //return new Pub_UserBLL().GetList("");
-            //return new Pub_UserBLL().GetList("");
+
+            //log4 net 实例
+            //var log= LogFactory.GetLogger(Request.Path);
+            //log.Info("info");
+            //log.Warning("ok");
+            //log.Error("error");
+            //_logger.LogError("ssss");
+            //LogHelper.WrtieRequestLog(Common.LogLevel.Info, "1111");
+            //int a = 0;
+            //int b = 1 / a;
+            // var users = bll.GetList(" 1=1 ");
+
+            // RedisHelper 实例
+            //RedisHelper rd = new RedisHelper();
+            //rd.HashSet("key1", "keyData1",new { id=1,value="2"});
+            //rd.HashSet("key1", "keyData2", new { id = 2, value = "2" });
+
+
+            return "1111";
         }
 
-        // GET api/values/5
-        [HttpGet("{id}")]
+        [HttpGet]
+        [Route("cacheTest")]
+        public async Task<string> CacheTest()
+        {
+
+            // 内存缓存 实例
+            string data = await _memoryCache.GetOrCreateAsync<string>("test", (e) => {
+                e.AbsoluteExpiration = DateTime.Now.AddSeconds(20);//绝对过期时间
+                return Task.FromResult("1233333");
+            });
+
+           // _memoryCache.Remove("test");//删除缓存
+            return data;
+        }
+
+
+            // GET api/values/5
+            [HttpGet("{id}")]
         public string Get(int id)
         {
             LogHelper.WrtieRequestLog(Common.LogLevel.Info, "222");
