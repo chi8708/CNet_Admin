@@ -205,6 +205,18 @@
             </summary>
             <returns></returns>
         </member>
+        <member name="T:CNet.Web.Api.Controllers.UpLoadFileController">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:CNet.Web.Api.Controllers.UpLoadFileController.UploadInterface(System.String)">
+            <summary>
+            上传文件
+            </summary>
+            <param name="SourceType">字段标识符</param>
+            <returns></returns>
+        </member>
         <member name="T:CNet.Web.Api.JwtAuthenticationAttribute">
             <summary>
             异常捕获
