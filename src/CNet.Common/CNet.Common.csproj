@@ -24,6 +24,7 @@
     <PackageReference Include="AutoMapper" Version="6.2.2" />
     <PackageReference Include="log4net" Version="2.0.14" />
     <PackageReference Include="NPOI" Version="2.5.3" />
+    <PackageReference Include="Zack.Commons" Version="1.1.11" />
   </ItemGroup>
   <ItemGroup>
     <Compile Remove="DBHelper.cs" />

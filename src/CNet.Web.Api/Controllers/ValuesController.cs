@@ -18,6 +18,7 @@ using Microsoft.Extensions.Caching.Memory;
 using System.Drawing;
 using System.Security;
 using Microsoft.Extensions.ObjectPool;
+using CNet.Web.Api.Model;
 
 namespace CNet.Web.Api.Controllers
 {
@@ -39,9 +40,11 @@ namespace CNet.Web.Api.Controllers
         //    bll = pubbll;
         //}
         private IMemoryCache _memoryCache;
-         public ValuesController(IMemoryCache cache) 
+        private Pub_UserBLL _userBLL;
+         public ValuesController(IMemoryCache cache, Pub_UserBLL user) 
         {
           this._memoryCache = cache;
+          this._userBLL = user;
         }
         [HttpGet]
         [ResponseCache(Duration =20)]
@@ -83,7 +86,8 @@ namespace CNet.Web.Api.Controllers
 
             // 内存缓存 实例
             string data = await _memoryCache.GetOrCreateAsync<string>("test", (e) => {
-                e.AbsoluteExpiration = DateTime.Now.AddSeconds(20);//绝对过期时间
+                e.AbsoluteExpiration =  DateTime.Now.AddSeconds(20);//绝对过期时间
+                //e.AbsoluteExpirationRelativeToNow=TimeSpan.FromSeconds(20);//滑动过期时间
                 return Task.FromResult("1233333");
             });
 
@@ -91,9 +95,22 @@ namespace CNet.Web.Api.Controllers
             return data;
         }
 
+        /// <summary>
+        /// 依赖注入
+        /// </summary>
+        /// <param name="test"></param>
+        /// <returns></returns>
+        [HttpGet]
+        [Route("DITest/{a}/{b}")]
+        public string DITest([FromServices]DI_Test test, int a,int b)
+        {
+            var result= test.Add(a, b);
+            var userList = _userBLL.GetList("1=1");
+            return result.ToString();
+        }
 
-            // GET api/values/5
-            [HttpGet("{id}")]
+        // GET api/values/5
+        [HttpGet("{id}")]
         public string Get(int id)
         {
             LogHelper.WrtieRequestLog(Common.LogLevel.Info, "222");

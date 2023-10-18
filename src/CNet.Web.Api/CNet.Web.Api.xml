@@ -217,6 +217,13 @@
             <param name="SourceType">字段标识符</param>
             <returns></returns>
         </member>
+        <member name="M:CNet.Web.Api.Controllers.ValuesController.DITest(CNet.Web.Api.Model.DI_Test,System.Int32,System.Int32)">
+            <summary>
+            依赖注入
+            </summary>
+            <param name="test"></param>
+            <returns></returns>
+        </member>
         <member name="T:CNet.Web.Api.JwtAuthenticationAttribute">
             <summary>
             异常捕获

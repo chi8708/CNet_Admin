@@ -28,6 +28,8 @@ using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 using Microsoft.Extensions.FileProviders;
+using CNet.Web.Api.Model;
+using AutoMapper.Internal;
 
 namespace CNet.Web.Api
 {
@@ -112,9 +114,6 @@ namespace CNet.Web.Api
 
             services.AddCors(options =>
             {
-
-                // this defines a CORS policy called "default"
-
                 options.AddPolicy("default", policy =>
                 {
 
@@ -133,18 +132,16 @@ namespace CNet.Web.Api
             //同步读取body的方式需要ConfigureServices中配置允许同步读取IO流，否则可能会抛出异常 Synchronous operations are disallowed. Call ReadAsync or set AllowSynchronousIO to true instead.
             services.Configure<KestrelServerOptions>(x => x.AllowSynchronousIO = true)
                         .Configure<IISServerOptions>(x => x.AllowSynchronousIO = true);
-            //解决跨域
-            //services.AddCors(options =>
-            //{
-            //    options.AddPolicy(anyAllowSpecificOrigins, corsbuilder =>
-            //    {
-            //        var corsPath = Configuration.GetSection("CorsPaths").GetChildren().Select(p => p.Value).ToArray();
-            //        corsbuilder.WithOrigins(corsPath)
-            //        .AllowAnyMethod()
-            //        .AllowAnyHeader()
-            //        .AllowCredentials();//指定处理cookie
-            //    });
-            //});
+
+            services.AddMemoryCache();//内存缓存
+            services.AddScoped<DI_Test>();//依赖注入
+
+            // var assembiles = Zack.Commons.ReflectionHelper.GetAllReferencedAssemblies();//批量依赖注入
+            //var basedir = Path.Combine(Directory.GetCurrentDirectory(), "lib");
+            //var basedir = Path.GetDirectoryName(typeof(Program).Assembly.Location);
+            //var assembiles = Assembly.LoadFile($"{basedir}\\CNet.BLL.dll");
+            var assembiles = typeof(Program).Assembly;//不能将DI_ServiceInit 放在BLL， 因为BLL当前项目引用，注入时提示正在使用。
+            services.RunModuleInitializers(new List<Assembly>() { assembiles });
         }
 
         private static void SwaggerConfig(IServiceCollection services)
@@ -221,7 +218,6 @@ namespace CNet.Web.Api
                 };
             });
 
-            services.AddMemoryCache();//内存缓存
         }
 
         //中间件
