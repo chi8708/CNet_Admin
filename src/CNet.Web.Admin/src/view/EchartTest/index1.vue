@@ -1,19 +1,27 @@
 <template>
-<div id="myChart" :style="{width: '300px', height: '300px'}"></div>
+<!-- <div id="myChart" :style="{width: '300px', height: '300px'}"></div> -->
+<WangEditor ref="WangEditor" :parent="this" :EditContent="msg"></WangEditor>
 </template>
 <script>
-
+  import WangEditor from '../components/wangEditor/Index.vue'
 export default {
   name: 'hello',
+  components:{
+    WangEditor
+  },
   data () {
     return {
       msg: 'Welcome to Your Vue.js App'
     }
   },
   mounted(){
-    this.drawLine();
+    //this.drawLine();
   },
   methods: {
+    WangEditorCallback(html, text) {
+        this.msg = html;
+        this.msg = text
+    },
     drawLine(){
         // 基于准备好的dom，初始化echarts实例
         let myChart = this.$echarts.init(document.getElementById('myChart'))

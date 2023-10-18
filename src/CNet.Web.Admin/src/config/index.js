@@ -22,6 +22,7 @@ export default {
      dev: 'http://localhost:10910/',
      pro: 'http://localhost:8916/'
   },
+  imgurl: 'http://localhost:10910/',
   /**
    * @description 默认打开的首页的路由name值，默认为home
    */

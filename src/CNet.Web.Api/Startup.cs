@@ -27,6 +27,7 @@ using System.Linq;
 using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
+using Microsoft.Extensions.FileProviders;
 
 namespace CNet.Web.Api
 {
@@ -238,11 +239,20 @@ namespace CNet.Web.Api
             app.UseRouting();
             // app.UseMvc();
 
-            app.UseStaticFiles();
+            //app.UseStaticFiles();
+            var basePath = System.IO.Directory.GetCurrentDirectory();
+            app.UseStaticFiles(new StaticFileOptions()
+            {
+                FileProvider = new PhysicalFileProvider(basePath + "\\FileUpload\\"),
+                RequestPath = "/FileUpload"
+            });
+
+         
             ////jwt认证 需要在app.UseMvc()前调用
             app.UseAuthentication();//不添加报401
            app.UseCors("default");
-          // app.UseCors(anyAllowSpecificOrigins);//支持跨域：允许特定来源的主机访问
+            // app.UseCors(anyAllowSpecificOrigins);//支持跨域：允许特定来源的主机访问
+            app.UseResponseCaching();//服务端缓存
             app.UseAuthorization();
 
             //request.body的长度总是为0
