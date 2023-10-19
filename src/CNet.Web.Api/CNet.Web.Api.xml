@@ -315,6 +315,12 @@
             </summary>
             <param name="builder"></param>
         </member>
+        <member name="M:CNet.Web.Api.Startup.Service_DI(Microsoft.Extensions.DependencyInjection.IServiceCollection)">
+            <summary>
+            依赖注入
+            </summary>
+            <param name="services"></param>
+        </member>
         <member name="M:CNet.Web.Api.Startup.JWTConfig(Microsoft.Extensions.DependencyInjection.IServiceCollection)">
             <summary>
             使用 Microsoft.AspNetCore.Authentication.JwtBearer

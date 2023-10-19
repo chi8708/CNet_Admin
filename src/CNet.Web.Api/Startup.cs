@@ -30,6 +30,7 @@ using System.Threading.Tasks;
 using Microsoft.Extensions.FileProviders;
 using CNet.Web.Api.Model;
 using AutoMapper.Internal;
+using System.Text.RegularExpressions;
 
 namespace CNet.Web.Api
 {
@@ -42,7 +43,7 @@ namespace CNet.Web.Api
             LogConfig();
 
         }
-        
+
         //日志配置
         private static void LogConfig()
         {
@@ -114,7 +115,7 @@ namespace CNet.Web.Api
 
             services.AddCors(options =>
             {
-                options.AddPolicy("default", policy =>
+                options.AddPolicy("default", policy =>
                 {
 
                     policy.WithOrigins("*").AllowAnyHeader().AllowAnyMethod();
@@ -128,20 +129,38 @@ namespace CNet.Web.Api
             {
                 //options.Filters.Add(typeof(ApiExceptionFilter));
             });
-            
+
             //同步读取body的方式需要ConfigureServices中配置允许同步读取IO流，否则可能会抛出异常 Synchronous operations are disallowed. Call ReadAsync or set AllowSynchronousIO to true instead.
             services.Configure<KestrelServerOptions>(x => x.AllowSynchronousIO = true)
                         .Configure<IISServerOptions>(x => x.AllowSynchronousIO = true);
 
             services.AddMemoryCache();//内存缓存
-            services.AddScoped<DI_Test>();//依赖注入
+            Service_DI(services);
+        }
 
-            // var assembiles = Zack.Commons.ReflectionHelper.GetAllReferencedAssemblies();//批量依赖注入
+       /// <summary>
+       /// 依赖注入
+       /// </summary>
+       /// <param name="services"></param>
+        private static void Service_DI(IServiceCollection services)
+        {
+            services.AddScoped<DI_Test>();//依赖注入
             //var basedir = Path.Combine(Directory.GetCurrentDirectory(), "lib");
             //var basedir = Path.GetDirectoryName(typeof(Program).Assembly.Location);
-            //var assembiles = Assembly.LoadFile($"{basedir}\\CNet.BLL.dll");
-            var assembiles = typeof(Program).Assembly;//不能将DI_ServiceInit 放在BLL， 因为BLL当前项目引用，注入时提示正在使用。
-            services.RunModuleInitializers(new List<Assembly>() { assembiles });
+
+            Assembly? rootAssembly = Assembly.GetEntryAssembly();
+            if (rootAssembly == null)
+            {
+                rootAssembly = Assembly.GetCallingAssembly();
+            }
+            var assembiles = new List<Assembly>();
+            var assembilesName = rootAssembly.GetReferencedAssemblies().Where(p => p.Name.StartsWith("CNet")).ToList();
+            assembilesName.ForEach(name => { assembiles.Add(Assembly.Load(name)); });
+
+            //批量依赖注入
+            //var assembiles = Zack.Commons.ReflectionHelper.GetAllReferencedAssemblies();
+            //assembiles = assembiles.Where(p => p.FullName.StartsWith("CNet"));
+            services.RunModuleInitializers(assembiles);
         }
 
         private static void SwaggerConfig(IServiceCollection services)
@@ -186,7 +205,7 @@ namespace CNet.Web.Api
                 //HttpContext.Current.Request.PhysicalApplicationPath
                 var basePath = Path.GetDirectoryName(typeof(Program).Assembly.Location);//获取应用程序所在目录（绝对，不受工作目录影响，建议采用此方法获取路径）
                 var xmlPath = Path.Combine(basePath, "CNet.Web.Api.xml");
-                c.IncludeXmlComments(xmlPath,true);
+                c.IncludeXmlComments(xmlPath, true);
             });
         }
 
@@ -214,7 +233,7 @@ namespace CNet.Web.Api
                     ValidIssuer = jwtSeetings.Issuer,
                     ValidAudience = jwtSeetings.Audience,
                     IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(jwtSeetings.SecretKey)),
-                    ValidateLifetime=false //验证生命周期
+                    ValidateLifetime = false //验证生命周期
                 };
             });
 
@@ -246,10 +265,10 @@ namespace CNet.Web.Api
                 RequestPath = "/FileUpload"
             });
 
-         
+
             ////jwt认证 需要在app.UseMvc()前调用
             app.UseAuthentication();//不添加报401
-           app.UseCors("default");
+            app.UseCors("default");
             // app.UseCors(anyAllowSpecificOrigins);//支持跨域：允许特定来源的主机访问
 
             app.UseAuthorization();
