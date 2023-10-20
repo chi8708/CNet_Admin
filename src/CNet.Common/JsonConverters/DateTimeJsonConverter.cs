@@ -2,7 +2,7 @@
 using System.Text.Json;
 using System.Text.Json.Serialization;
 
-namespace Zack.Commons.JsonConverters;
+namespace CNet.Common.JsonConverters;
 public class DateTimeJsonConverter : JsonConverter<DateTime>
 {
     private readonly string _dateFormatString;
@@ -18,10 +18,10 @@ public class DateTimeJsonConverter : JsonConverter<DateTime>
 
     public override DateTime Read(ref Utf8JsonReader reader, Type typeToConvert, JsonSerializerOptions options)
     {
-        string? str = reader.GetString();
+        string str = reader.GetString();
         if (str == null)
         {
-            return default(DateTime);
+            return default;
         }
         else
         {
