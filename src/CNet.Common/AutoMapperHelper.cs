@@ -80,6 +80,7 @@ namespace CNet
             }
             catch (InvalidOperationException)
             {
+                //这里易报错
 				Mapper.Reset();
                 Mapper.Initialize(config =>
                 {

@@ -1,4 +1,5 @@
-﻿using CNet.Main.DAL;
+﻿using CNet.Common;
+using CNet.Main.DAL;
 using CNet.Main.Model;
 using System;
 using System.Collections.Generic;
@@ -17,7 +18,7 @@ namespace CNet.Main.BLL
 
         public Tuple<bool,string> Add(V_Pubuser_Dept model)
         {
-            Pub_User user = model.MapTo<V_Pubuser_Dept, Pub_User>();
+            Pub_User user = model.TinyMapTo<V_Pubuser_Dept, Pub_User>();
 
             user.UserCode = GetCode();
             var r = Insert(user);
@@ -33,7 +34,7 @@ namespace CNet.Main.BLL
 
         public Tuple<bool,string> Edit(V_Pubuser_Dept model)
         {
-            Pub_User user = model.MapTo<V_Pubuser_Dept, Pub_User>();
+            Pub_User user = model.TinyMapTo<V_Pubuser_Dept, Pub_User>();
             var r = Update(user);
             if (!r)
             {
