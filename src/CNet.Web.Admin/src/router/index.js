@@ -3,10 +3,10 @@ import Router from 'vue-router'
 import routes from './routers'
 import store from '@/store'
 import iView from 'iview'
-import {setToken, getToken, setTitle} from '@/libs/util'
+import { setToken, getToken, setTitle } from '@/libs/util'
 import config from '@/config'
 
-const {homeName} = config
+const { homeName } = config
 
 Vue.use(Router)
 const router = new Router({
@@ -15,12 +15,14 @@ const router = new Router({
 })
 const LOGIN_PAGE_NAME = 'login'
 
+const NOTFIND_401 = 'error_401'
+
 //解决 NavigationDuplicated: Avoided redundant navigation to current location: 
 //获取原型对象上的push函数
 const originalPush = Router.prototype.push
 //修改原型对象中的push方法
 Router.prototype.push = function push(location) {
-   return originalPush.call(this, location).catch(err => err)
+  return originalPush.call(this, location).catch(err => err)
 }
 
 const initRouters = (store) => {
@@ -40,7 +42,7 @@ const initRouters = (store) => {
           mode: config.routerModel
         })
         router.matcher = newRouter.matcher;
-       // router.addRoutes(routes);
+        // router.addRoutes(routes);
         //把404加最后面，如果用router.push({name:'xxxx'})这种的话，404页面可能空白，用path:'/aa/bb'
         router.addRoutes(routers.concat([{
           path: '*',
@@ -58,7 +60,13 @@ const initRouters = (store) => {
 router.beforeEach((to, from, next) => {
   iView.LoadingBar.start()
   const token = getToken()
-  if (!token && to.name !== LOGIN_PAGE_NAME) {
+  if (to.name == NOTFIND_401) {
+    console.log(to);
+    // 跳转显示不需要登录的页面
+     next();
+
+  }
+  else if (!token && to.name !== LOGIN_PAGE_NAME) {
     // 未登录且要跳转的页面不是登录页
     next({
       name: LOGIN_PAGE_NAME // 跳转到登录页
