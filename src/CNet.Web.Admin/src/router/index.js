@@ -60,12 +60,15 @@ const initRouters = (store) => {
 router.beforeEach((to, from, next) => {
   iView.LoadingBar.start()
   const token = getToken()
-  if (to.name == NOTFIND_401) {
-    console.log(to);
-    // 跳转显示不需要登录的页面
-     next();
-
+  //跳转显示不需要登录的页面
+  if(to.meta.unAuth){
+    next();
   }
+  // else if (to.name == NOTFIND_401) {
+  //   // 跳转显示不需要登录的页面
+  //    next();
+
+  // }
   else if (!token && to.name !== LOGIN_PAGE_NAME) {
     // 未登录且要跳转的页面不是登录页
     next({

@@ -1,7 +1,7 @@
 import Main from '@/components/main'
 import parentView from '@/components/parent-view'
 import {getMenu} from "@/api/pubFunction"
-
+import MainWiki from '@/view/wiki/main.vue'
 /**
  * iview-admin中meta除了原生参数外可配置的参数:
  * meta: {
@@ -118,7 +118,42 @@ let menus= [
       hideInMenu: true
     },
     component: () => import('@/view/error-page/500.vue')
-  }
+  },
+  {
+    path: '/wiki',
+    name: 'wiki',
+    component:MainWiki,
+    meta: {
+      hideInMenu: true,
+      notCache: true,
+      //title:'知识库'
+    },
+    children: [
+      {
+        path: 'index',
+        name: 'wikiIndex',
+        title: '知识库',
+        meta: {
+          hideInMenu: true,
+          title: '知识库',
+          unAuth:true
+        },
+        component: () => import('@/view/wiki/index.vue')
+      },
+      {
+        path: 'sorttree',
+        name: 'wiki_sortTree',
+        title: '知识库',
+        meta: {
+          hideInMenu: true,
+          title: '知识库',
+          unAuth:true
+        },
+        component: () => import('@/view/wiki/sortTree.vue')
+      }
+    ]
+  },
+
   //刷新会闪404 bug
   // {
   //   path: '*',

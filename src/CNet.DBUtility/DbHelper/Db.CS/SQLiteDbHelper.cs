@@ -98,14 +98,16 @@ namespace T4
 			switch (dbtype)
 			{
 				case "integer": csharpType = "int"; break;
-				case "real": csharpType = "decimal"; break;
+                case "int": csharpType = "int"; break;
+                case "real": csharpType = "decimal"; break;
 				case "text": csharpType = "string"; break;
 				case "nchar": csharpType = "string"; break;
 				case "nvarchar": csharpType = "string"; break;
 				case "char": csharpType = "string"; break;
 				case "varchar": csharpType = "string"; break;
 				case "boolean": csharpType = "bool"; break;
-				case "datetime":csharpType = "DateTime"; break;
+                case "bit": csharpType = "bool"; break;
+                case "datetime":csharpType = "DateTime"; break;
 				default: csharpType = "object";break;
 			}
 			return csharpType;
@@ -119,14 +121,16 @@ namespace T4
 			switch (dbtype)
 			{
 				case "integer": commonType = typeof(int) ; break;
-				case "real": commonType = typeof(decimal); break;
+                case "int": commonType = typeof(int); break;
+                case "real": commonType = typeof(decimal); break;
 				case "text": commonType = typeof(string); break;
 				case "nchar": commonType = typeof(string); break;
 				case "nvarchar": commonType = typeof(string); break;
 				case "char": commonType = typeof(string); break;
 				case "varchar": commonType = typeof(string); break;
 				case "boolean": commonType = typeof(bool); break;
-				case "datetime": commonType = typeof(DateTime); break;
+                case "bit": commonType = typeof(bool); break;
+                case "datetime": commonType = typeof(DateTime); break;
 				default: commonType = typeof(object); break;
 			}
 			return commonType;

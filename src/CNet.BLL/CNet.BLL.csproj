@@ -34,9 +34,6 @@
     </PackageReference>
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Main\" />
-  </ItemGroup>
-  <ItemGroup>
     <None Update="T4.DapperExt\Main\1Service.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>1Service.txt</LastGenOutput>

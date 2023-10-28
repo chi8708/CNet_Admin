@@ -224,6 +224,30 @@
             <param name="test"></param>
             <returns></returns>
         </member>
+        <member name="M:CNet.Web.Api.Controllers.WikiMainController.GetPage(CNet.Web.Api.Model.Request.PageDataReq)">
+            <summary>
+            获取用户分页
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:CNet.Web.Api.Controllers.WikiSortController.Add(CNet.Main.Model.Wiki_Sort)">
+            <summary>
+            添加
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:CNet.Web.Api.Controllers.WikiSortController.Edit(CNet.Main.Model.Wiki_Sort)">
+            <summary>
+            编辑
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:CNet.Web.Api.Controllers.WikiSortController.Delete(System.String)">
+            <summary>
+            删除
+            </summary>
+            <returns></returns>
+        </member>
         <member name="T:CNet.Web.Api.JwtAuthenticationAttribute">
             <summary>
             异常捕获
