@@ -26,7 +26,7 @@
         //命名空间
        public static readonly string Namespace = "CNet.Main";
 		//需要生成的表名，多张表用,分割
-        public static readonly string Tables = "Wiki_main,Wiki_sort,v_Wiki_main_sort";//"users,rows,titles"
+        public static readonly string Tables = "Wiki_sort_parent";//"users,rows,titles"
     }
     public class DbFactory
     {

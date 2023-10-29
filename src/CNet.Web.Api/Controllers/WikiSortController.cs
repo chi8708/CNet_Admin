@@ -20,11 +20,11 @@ namespace CNet.Web.Api.Controllers
         Wiki_MainBLL mainBLL = new Wiki_MainBLL();
         [HttpPost]
         [Route("GetList")]
-        public DataRes<List<Wiki_Sort>> GetList()
+        public DataRes<List<V_Wiki_Sort_Parent>> GetList()
         {
-            var Sorts = bll.GetList("StopFlag=0");
+            var Sorts = new V_Wiki_Sort_ParentBLL().GetList("StopFlag=0");
 
-            return new DataRes<List<Wiki_Sort>>() { data = Sorts };
+            return new DataRes<List<V_Wiki_Sort_Parent>>() { data = Sorts };
         }
 
 
@@ -39,6 +39,7 @@ namespace CNet.Web.Api.Controllers
             DataRes<bool> res = new DataRes<bool>() { code = ResCode.Success, data = true };
 
             model.SortCode = mainBLL.GetSortCode();
+            model.ParentCode = model.ParentCode ?? "";
             model.Lmdt = model.Lmdt = DateTime.Now;
             var user = CNetFactory.GetCNetUser(User);
             model.Lmid = $"{user.UserCode}-{user.UserName}";

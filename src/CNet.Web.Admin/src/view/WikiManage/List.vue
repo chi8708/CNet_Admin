@@ -13,10 +13,7 @@
   <div class="content-main">
     <Split v-model="split1" max="300" min="300" style="max-height:100%;overflow:hidden;">
       <div slot="left" class="demo-split-pane" style="max-height:100%;overflow:auto;">
-        <h3>分类</h3>
-        <div style="max-height:97%;overflow:auto;">
-          <sort-tree ref="sortTree" :parent="this"></sort-tree>
-        </div>
+        <sort-tree ref="sortTree" :parent="this" isManage="true"></sort-tree>
       </div>
       <div slot="right" class="demo-split-pane" style="max-height:100%;overflow:auto;">
         <h3>知识库列表</h3>
@@ -24,7 +21,7 @@
           <Button v-if="userAccess.isAdd" class="search-btn" type="success" size="small" @click="handleAdd">
             <Icon type="md-add" />&nbsp;&nbsp;新增
           </Button>
-          <Table max-height ="700"  ref="tables" border :data="tableData1" v-bind:columns="tableColumns1" stripe>
+          <Table max-height="700" ref="tables" border :data="tableData1" v-bind:columns="tableColumns1" stripe>
             <template slot-scope="{ row, index }" slot="action">
 
               <Button v-if="userAccess.isEdit" type="primary" size="small" icon="md-create" style="margin-right: 5px"

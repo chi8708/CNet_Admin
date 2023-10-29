@@ -32,7 +32,6 @@ namespace CNet.Web.Api.Controllers
             }
             var users = new V_Wiki_Main_SortBLL().GetPage(whereStr, (pageReq.field + " " + pageReq.order), pageReq.pageNum, pageReq.pageSize);
 
-
             return users;
         }
 
