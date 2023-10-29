@@ -18,5 +18,35 @@ export const getPage = ({pageNum ,  pageSize ,  field ,  order,query={}  }) => {
     data,
     method: 'post'
   })
- 
+}
+
+//添加
+export const add=(model)=>{
+  const data=model;
+  return axios.request({
+    url: 'api/WikiMain/Add',
+    headers: {Authorization:"Bearer "+token},
+    data,
+    method: 'post'
+  })
+}
+
+//修改
+export const edit=(model)=>{
+  const data=model;
+  return axios.request({
+    url: 'api/WikiMain/Edit',
+    headers: {Authorization:"Bearer "+token},
+    data,
+    method: 'post'
+  })
+}
+
+//停用
+export const remove=(id)=>{
+  return axios.request({
+    url: 'api/WikiMain/Delete/'+id,
+    headers: {Authorization:"Bearer "+token},
+    method: 'post'
+  })
 }
