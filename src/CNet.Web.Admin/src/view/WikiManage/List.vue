@@ -18,6 +18,24 @@
       <div slot="right" class="demo-split-pane" style="max-height:100%;overflow:auto;">
         <h3>知识库列表</h3>
         <div>
+          <div class="search-con search-con-top">
+            <Form ref="formInline"  label-position="right" :label-width="60" inline>
+              <FormItem label="标题">
+                <Input class="search-input" v-model="queryData.SL_Title" />
+              </FormItem>
+              <FormItem label="关键字"  prop="SL_Keyword">
+                <Input class="search-input" v-model="queryData.SL_Keyword" />
+              </FormItem>
+              <FormItem>
+                <Button class="search-btn" type="primary" @click="queryPage()">
+                  <Icon type="search" />&nbsp;&nbsp;搜索
+                </Button>
+                <!-- <Button   @click="resetForm()" style="margin-left: 30px;">
+                  <Icon type="ios-redo-outline" />&nbsp;&nbsp;重置
+                </Button> -->
+              </FormItem>
+            </Form>
+          </div>
           <Button v-if="userAccess.isAdd" class="search-btn" type="success" size="small" @click="handleAdd">
             <Icon type="md-add" />&nbsp;&nbsp;新增
           </Button>
@@ -50,11 +68,11 @@
 <script>
 import SortTree from "./SortTree"
 import Edit from "./Edit"
-import { remove } from "@/api/wikiSort"
-import { getPage } from "@/api/wikiMain"
+import { getPage,remove } from "@/api/wikiMain"
 import { wiki } from "@/access/wikiMain"
 
 export default {
+  name:'wikiManage',
   data() {
     const userAccessAll = this.$store.state.user.access;
     return {
@@ -64,6 +82,7 @@ export default {
         isMove: userAccessAll.includes(`${wiki.REMOVE}`),
         isAuth: userAccessAll.includes(`${wiki.SORT}`)
       },
+      queryData:{S_SortCode:''},
       split1: "300",
       tableData1: [],
       pageTotal: 0,
@@ -75,24 +94,43 @@ export default {
       tableColumns1: [
         {
           title: "编号",
-          key: "sortCode"
+          key: "id",
+          width:80
         },
         {
-          title: "名称",
-          key: "sortName"
+          title: "标题",
+          key: "title",
+          width:300
         },
+        {
+          title: "关键字",
+          key: "keyword",
+          width: 140
+        },
+        {
+          title: "类别",
+          key: "sortName",
+          width: 160
+        },
+        // {
+        //   title: "路径",
+        //   key: "filePath",
+        //   width:260
+        // },
         {
           title: "修改时间",
-          key: "lmdt"
+          key: "editTime",
+          width: 180
         },
         {
           title: "修改人",
-          key: "lmid"
+          key: "editUser",
+          width: 160
         },
         {
           title: '操作',
           slot: 'action',
-          width: 300,
+          width: 200,
           align: 'center'
         }
       ]
@@ -126,6 +164,10 @@ export default {
         })
         .catch(err => { });
     },
+    queryPage(){
+      this.queryData.S_SortCode='';
+      this.setPageData(1);
+    },
     changePage(page) {
       this.setPageData(page);
     },
@@ -135,7 +177,7 @@ export default {
     handleDelete(row) {
       this.$Modal.confirm({
         title: "提示",
-        content: "<p>确定要删除[" + row.sortCode + "]?</p>",
+        content: "<p>确定要删除[" + row.title + "]?</p>",
         onOk: () => {
           this.remove(row);
         },
@@ -153,7 +195,7 @@ export default {
       this.eidtRow = row;
     },
     remove(row) {
-      var id = row.sortCode;
+      var id = row.id;
       remove(id)
         .then(res => {
           const resData = res.data;
@@ -162,7 +204,7 @@ export default {
           const msg = resData.msg;
           if (code == 1) {
             this.$Message.info("删除成功");
-            this.reloadAll(this.selectedCode);
+            this.setPageData();
           } else {
             this.$Message.error({ content: msg, duration: 10, closable: true });
           }
@@ -173,12 +215,17 @@ export default {
       var row = this.$refs.edit.Row;
     },
     sortChange(code) {
-      this.selectedCode = code;
+      this.queryData.S_SortCode = code;
       this.setPageData();
     },
     reloadAll(parnetCode) {
       this.$refs.sortTree.getSorts();
       this.sortChange(parnetCode);
+    },
+    resetForm(){
+       this.$refs.sortTree.getSorts();
+       this.queryData={S_SortCode:''};
+      //this.$router.go(0);
     }
   },
   mounted() {

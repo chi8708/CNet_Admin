@@ -17,7 +17,7 @@
         <Button type="primary" @click="upload"
         :loading="loadingStatus">{{ loadingStatus ? 'Uploading' : '确认上传' }}</Button>
       <Button style="margin-left: 10px;" v-if="file !== null" type="warning" @click="clearFile">清除文件</Button>
-       <span> 已上传:{{this.uploadFileUrl_Success}}</span>
+       <span> 已上传:{{this.uploadFileUrl_Success||'无'}}</span>
       </div>
 
     </div>
@@ -31,7 +31,8 @@
   
     export default {
       props: {
-        dirType:String
+        dirType:String,
+        //filePath:{type:String,default:''}
       },
       data() {
         return {

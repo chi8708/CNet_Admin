@@ -4,8 +4,8 @@
     <Form ref="formInline" label-position="right" :model="Row" :rules="rule" :label-width="100">
       <Row>
         <Col span="24">
-        <FormItem label="类别" prop="parentName" id="item-parentName">
-          <Input search enter-button v-model="Row.parentName" readonly @on-search="wikiMainSelect" />
+        <FormItem label="类别" prop="sortName" id="item-sortName">
+          <Input search enter-button v-model="Row.sortName" readonly @on-search="wikiMainSelect" />
           <!-- <Tree :data="WikiMainTree"></Tree> -->
           <!-- <Input type="password" v-model="Row.wikiMainCode" /> -->
         </FormItem>
@@ -13,22 +13,23 @@
       </Row>
       <Row>
         <Col span="24">
-        <FormItem label="文件">
-          <upLoadFile @UpLoadFileUrl="UpLoadFileUrl" dirType="wiki"></upLoadFile>
+        <FormItem label="文件" >
+         <!-- <span style="color: #ff0000;">*</span>  -->
+          <upLoadFile @UpLoadFileUrl="UpLoadFileUrl" dirType="wiki" ref="upLoadFile"></upLoadFile>
         </FormItem>
         </Col>
       </Row>
       <Row>
         <Col span="24">
-        <FormItem label="名称" prop="title">
+        <FormItem label="标题" prop="title">
           <Input v-model="Row.title" />
         </FormItem>
         </Col>
       </Row>
       <Row>
         <Col span="24">
-        <FormItem label="备注" prop="Remark">
-          <Input v-model="Row.remark" type="textarea" :autosize="{ minRows: 2, maxRows: 2 }" />
+        <FormItem label="关键字" prop="Remark">
+          <Input v-model="Row.keyword" type="textarea" :autosize="{ minRows: 2, maxRows: 2 }" />
         </FormItem>
         </Col>
       </Row>
@@ -63,13 +64,13 @@ export default {
       Row: {},
       modelWikiMain: false,
       rule: {
-        parentName: [
+        sortName: [
           {
             required: true,
             message: "类别必选",
             trigger: "blur",
             validator: (rule, value, callback, source, options) => {
-              if (!this.Row.parentName) {
+              if (!this.Row.sortName) {
                 return callback(new Error('请选择一个类别'));
               } else {
                 callback(); return;
@@ -92,9 +93,9 @@ export default {
       this.modelWikiMain = true;
     },
     sortChange(code, title) {
-      this.Row.parentCode = code;
-      this.Row.parentName = title;
-      this.$refs.formInline.validateField('parentName');
+      this.Row.sortCode = code;
+      this.Row.sortName = title;
+      this.$refs.formInline.validateField('sortName');
       this.modelWikiMain = false;
     },
     save() {
@@ -116,7 +117,7 @@ export default {
               if (code == 1) {
                 this.$Message.info("添加成功");
                 this.parent.modelEdit = false;
-                this.parent.reloadAll(this.Row.parentCode);
+                this.parent.setPageData(1);
               } else {
                 this.$Message.error({
                   content: msg,
@@ -141,7 +142,7 @@ export default {
               if (code == 1) {
                 this.$Message.info("编辑成功");
                 this.parent.modelEdit = false;
-                this.parent.reloadAll(this.Row.parentCode);
+                this.parent.setPageData();
               } else {
                 this.$Message.error({
                   content: msg,
@@ -159,10 +160,17 @@ export default {
         if (!valid) {
           this.$Message.warning("请检查表单数据！");
           return false;
-        } else {
-          return true;
         }
-      });
+        return true;
+      }).then(r=>{
+          if(!this.Row.filePath){
+            this.$Message.warning("请选择上传的文件");
+            return false;
+          }else{
+            return r;
+          }
+        }
+      );
     },
     handleReset(name = "formInline") {
       this.$refs[name].resetFields();
@@ -181,7 +189,9 @@ export default {
     // }
   },
   mounted() {
-    this.Row = Object.assign({title:'',filePath:''}, this.editRow)
+    //不加默认title 响应式UpLoadFileUrl无效
+    this.Row = Object.assign({title:'',filePath:''}, this.editRow);
+    this.$refs.upLoadFile.uploadFileUrl_Success=this.Row.filePath;
   }
 }
 </script>

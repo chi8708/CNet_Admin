@@ -5,6 +5,7 @@ using CNet.Web.Api.Model.Request;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using NPOI.Util;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -26,7 +27,7 @@ namespace CNet.Web.Api.Controllers
         [HttpPost]
         public PageDateRes<V_Wiki_Main_Sort> GetPage([FromBody] PageDataReq pageReq)
         {
-            var whereStr = GetWhereStr();
+            var whereStr = GetWhereStr(pageReq.query);
             if (whereStr == "-1")
             {
                 return new PageDateRes<V_Wiki_Main_Sort>() { code = ResCode.Error, msg = "查询参数有误！", data = null };
@@ -36,7 +37,7 @@ namespace CNet.Web.Api.Controllers
             return users;
         }
 
-        private string GetWhereStr()
+        private string GetWhereStr(Dictionary<string,object> queryObj)
         {
             StringBuilder sb = new StringBuilder(" 1=1 ");
             sb.Append(" and StopFlag=0 ");
@@ -46,6 +47,19 @@ namespace CNet.Web.Api.Controllers
                 return query;
             }
             sb.AppendFormat(" and {0} ", query);
+            if (!string.IsNullOrWhiteSpace(queryObj["S_SortCode"]?.ToString()))
+            {
+                sb.AppendFormat(" and sortCode in ({0}) ", string.Format(@"with f as
+                            (
+                            select* FROM Wiki_Sort AS pd where SortCode = '{0}'
+
+                            union all
+
+                            select a.* from Wiki_Sort as a inner join f as b on a.ParentCode = b.SortCode
+                            )
+                            SELECT f.SortCode FROM  f LEFT JOIN Wiki_Sort as a on f.ParentCode = a.SortCode"
+                            , queryObj["S_SortCode"]?.ToString()));
+            }
 
             return sb.ToString();
         }

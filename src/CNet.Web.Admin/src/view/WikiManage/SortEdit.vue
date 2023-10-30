@@ -10,7 +10,7 @@
                         <Input search enter-button v-model="Row.parentName" readonly @on-search="sortSelect" />
                     </Col>
                     <Col span="2" >
-                        <Button  icon="ios-close-circle-outline" @click="clearParent"></Button>
+                        <Button  icon="ios-close-circle-outline" @click="clearParent()"></Button>
                     </Col>
                 </Row>
               <!-- <Tree :data="SortTree"></Tree> -->
@@ -180,12 +180,16 @@
       clearParent(){
         this.Row.parentCode="";
         this.Row.parentName="";
+        //this.$set(this.Row,'parentName','');
+        //this.$forceUpdate();
+        //console.log(this.Row);
       }
     },
     watch: {
     },
     mounted() {
-        this.Row = Object.assign({}, this.editRow);
+        //新增时parentName 响应式需要添加默认属性。或者通过this.$forceUpdate()强制更新
+        this.Row = Object.assign({'parentName':''}, this.editRow);
     }
   };
   </script>
