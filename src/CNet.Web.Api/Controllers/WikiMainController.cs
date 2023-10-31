@@ -25,6 +25,7 @@ namespace CNet.Web.Api.Controllers
         /// <returns></returns>
         [Route("GetPage")]
         [HttpPost]
+        [AllowAnonymous]
         public PageDateRes<V_Wiki_Main_Sort> GetPage([FromBody] PageDataReq pageReq)
         {
             var whereStr = GetWhereStr(pageReq.query);
@@ -47,6 +48,12 @@ namespace CNet.Web.Api.Controllers
                 return query;
             }
             sb.AppendFormat(" and {0} ", query);
+
+            if (queryObj.ContainsKey("S_Keyword")&& !string.IsNullOrWhiteSpace(queryObj["S_Keyword"]?.ToString()))
+            {
+                sb.AppendFormat(" and (title like '%{0}%' or keyword like '%{0}%')",QueryHelper.InjectionFilter((queryObj["S_Keyword"]?.ToString())));
+            }
+
             if (!string.IsNullOrWhiteSpace(queryObj["S_SortCode"]?.ToString()))
             {
                 sb.AppendFormat(" and sortCode in ({0}) ", string.Format(@"with f as
@@ -61,7 +68,8 @@ namespace CNet.Web.Api.Controllers
                             , queryObj["S_SortCode"]?.ToString()));
             }
 
-            return sb.ToString();
+
+                return sb.ToString();
         }
 
 

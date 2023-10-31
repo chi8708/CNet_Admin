@@ -401,41 +401,5 @@
             <param name="services"></param>
         </member>
         <!-- Badly formed XML comment ignored for member "T:AuthTokenHeaderParameter" -->
-        <member name="T:GemmyMobile.Web.Api.Controllers.FileUploadController">
-            <summary>
-            对象存储
-            </summary>
-        </member>
-        <member name="M:GemmyMobile.Web.Api.Controllers.FileUploadController.SaveFile(GemmyMobile.Web.Api.Controllers.FileUploadController.FileSectionOption)">
-            <summary>
-            切片上传文件
-            </summary>
-            <param name="fileOption">字段标识符</param>
-            <returns></returns>
-        </member>
-        <member name="M:GemmyMobile.Web.Api.Controllers.FileUploadController.MergeFile(GemmyMobile.Web.Api.Controllers.FileUploadController.MergFileOption)">
-            <summary>
-            合并切片，上传Oss
-            </summary>
-            <param name="fileOption"></param>
-            <returns></returns>
-        </member>
-        <member name="M:GemmyMobile.Web.Api.Controllers.FileUploadController.DeleteSpecifiedPathAllFile(System.String)">
-            <summary>
-            删除指定路径下的所有文件
-            </summary>
-            <param name="filepath">指定路径</param>
-            <returns></returns>
-        </member>
-        <member name="T:GemmyMobile.Web.Api.Controllers.FileUploadController.FileSectionOption">
-            <summary>
-            
-            </summary>
-        </member>
-        <member name="T:GemmyMobile.Web.Api.Controllers.FileUploadController.MergFileOption">
-            <summary>
-            
-            </summary>
-        </member>
     </members>
 </doc>

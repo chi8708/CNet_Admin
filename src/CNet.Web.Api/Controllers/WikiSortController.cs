@@ -20,6 +20,7 @@ namespace CNet.Web.Api.Controllers
         Wiki_MainBLL mainBLL = new Wiki_MainBLL();
         [HttpPost]
         [Route("GetList")]
+        [AllowAnonymous]
         public DataRes<List<V_Wiki_Sort_Parent>> GetList()
         {
             var Sorts = new V_Wiki_Sort_ParentBLL().GetList("StopFlag=0");

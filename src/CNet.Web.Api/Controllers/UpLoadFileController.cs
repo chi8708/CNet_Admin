@@ -7,8 +7,8 @@ using System.IO;
 using System;
 using CNet.Main.Model;
 using System.Threading.Tasks;
-using static GemmyMobile.Web.Api.Controllers.FileUploadController;
 using System.Net;
+using ZstdSharp.Unsafe;
 
 namespace CNet.Web.Api.Controllers
 {
@@ -20,6 +20,9 @@ namespace CNet.Web.Api.Controllers
     [Route("api/UpLoadFile")]
     public class UpLoadFileController : BaseController
     {
+        //AppContext.BaseDirectory
+        static string  currentDir=Directory.GetCurrentDirectory();
+        
         /// <summary>
         /// 上传文件
         /// </summary>
@@ -127,7 +130,7 @@ namespace CNet.Web.Api.Controllers
                 //{
                 //    return Ok("只能上传指定格式文件");
                 //}
-                var folderUrl = AppContext.BaseDirectory + @"\TempFileUpload\" +User.GetCNetUser().UserCode+"\\"+ name.Split('.')[0];
+                var folderUrl = currentDir + @"\TempFileUpload\" +User.GetCNetUser().UserCode+"\\"+ name.Split('.')[0];
                 if (int.Parse(fileOption.fileNum) < 10)
                 {
                     fileOption.fileNum = "0" + fileOption.fileNum;
@@ -171,12 +174,12 @@ namespace CNet.Web.Api.Controllers
             {
 
                 //临时保存分块的目录
-                var dir = Path.Combine(AppContext.BaseDirectory + @"TempFileUpload\\"+ User.GetCNetUser().UserCode + "\\", fileOption.fileName.Split('.')[0]);
+                var dir = Path.Combine(currentDir + @"\\TempFileUpload\\"+ User.GetCNetUser().UserCode + "\\", fileOption.fileName.Split('.')[0]);
                 var files = Directory.GetFiles(dir, "*.*", SearchOption.AllDirectories);
 
                 //重新保存目录；
-                var newFileUrl = $"\\FileUpload\\{fileOption.fileDirName}\\{DateTime.Now.ToString("yyyyMMdd")}";
-                var newFolderUrl= AppContext.BaseDirectory + newFileUrl;
+                var newFileUrl = $"FileUpload\\{fileOption.fileDirName}\\{DateTime.Now.ToString("yyyyMMdd")}";
+                var newFolderUrl= currentDir +"\\"+newFileUrl;
                 if (!Directory.Exists(newFolderUrl))
                 {
                     Directory.CreateDirectory(newFolderUrl);
@@ -216,7 +219,7 @@ namespace CNet.Web.Api.Controllers
                    // result = PutObject(fileDir + "/" + ossDir + "/" + filePathName, stremf);
                 }
                 //删除上传服务器的文件
-                // var delFilePath = AppContext.BaseDirectory + "TempFileUpload";
+                // var delFilePath = currentDir + "TempFileUpload";
                 var delFilePath = dir;
                 DeleteSpecifiedPathAllFile(delFilePath);
                 res.msg = "上传成功";

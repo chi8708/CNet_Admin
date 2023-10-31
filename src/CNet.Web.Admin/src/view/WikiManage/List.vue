@@ -216,7 +216,7 @@ export default {
     },
     sortChange(code) {
       this.queryData.S_SortCode = code;
-      this.setPageData();
+      this.setPageData(1);
     },
     reloadAll(parnetCode) {
       this.$refs.sortTree.getSorts();
