@@ -152,14 +152,30 @@ namespace CNet.Web.Api.Controllers
         [Route("GetDocxFile")]
         [HttpGet]
         [AllowAnonymous]
-        public IActionResult GetDocxFile(string path)
+        public IActionResult GetDocxFile(string filePath)
         {
-            var filePath = currentDir+ path;
-            var fileBytes = System.IO.File.ReadAllBytes(filePath);
+            var fullPath = currentDir+ filePath;
+            var fileBytes = System.IO.File.ReadAllBytes(fullPath);
 
             return File(fileBytes, "application/vnd.openxmlformats-officedocument.wordprocessingml.document", "example.docx");
         }
 
+
+        /// <summary>
+        /// 获取pdf流文件
+        /// </summary>
+        /// <param name="filePath"></param>
+        /// <returns></returns>
+        [Route("GetPdfFile")]
+        [HttpGet]
+        [AllowAnonymous]
+        public IActionResult GetPdfFile(string filePath)
+        {
+            var fullPath = currentDir + filePath;
+            var fileBytes = System.IO.File.ReadAllBytes(fullPath);
+
+            return File(fileBytes, "application/pdf", "example.pdf");
+        }
 
     }
 

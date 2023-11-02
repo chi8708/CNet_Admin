@@ -11,24 +11,24 @@ export default {
 </script>
 <style lang="less">
 // 滚动条样式
-::-webkit-scrollbar {
-  width: 7px;
-  height: 7px;
-}
+// ::-webkit-scrollbar {
+//   width: 7px;
+//   height: 7px;
+// }
 
-::-webkit-scrollbar-thumb {
-  background: #ccc;
-  border-radius: 10px;
-}
+// ::-webkit-scrollbar-thumb {
+//   background: #ccc;
+//   border-radius: 10px;
+// }
 
-::-webkit-scrollbar-track {
-  background: #e1e1e1;
-  border-radius: 10px;
-}
+// ::-webkit-scrollbar-track {
+//   background: #e1e1e1;
+//   border-radius: 10px;
+// }
 
-::-webkit-scrollbar-thumb:hover {
-  background: #999;
-}
+// ::-webkit-scrollbar-thumb:hover {
+//   background: #999;
+// }
 </style>
 <style lang="less">
 .size {

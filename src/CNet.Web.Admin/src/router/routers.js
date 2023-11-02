@@ -184,7 +184,7 @@ let menus= [
           title: '示例',
           unAuth:true
         },
-        component: () => import('@/view/Demo/pdfview.vue')
+        component: () => import('@/view/Demo/PdfView.vue')
       },
       {
         path: 'wordview',

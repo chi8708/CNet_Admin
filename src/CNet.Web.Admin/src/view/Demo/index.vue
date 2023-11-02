@@ -1,7 +1,15 @@
 <template>
     <div>
-        哈哈
-        <Button type="primary" @click="wordView">word预览</Button>
+        <Row>
+            <Col span="2">
+                <Button type="primary" @click="wordView">word预览</Button>
+            </Col>
+            <Col span="2">
+                <Button type="primary" @click="pdfView">pdf预览</Button>
+            </Col>
+        </Row>
+       
+
     </div>
 </template>
 
@@ -20,13 +28,15 @@ export default {
     },
     methods: {
         wordView() {
-            alert("111");
-            this.openNewWindow();
+            this.openNewWindow("/demo/wordview/?filePath=http://localhost:10910/api/WikiMain/GetDocxFile?filePath=/FileUpload/wiki/1.docx");
         },
-        openNewWindow() {
+        pdfView() {
+            this.openNewWindow("/demo/pdfview/?filePath=http://localhost:10910/api/WikiMain/GetPdfFile?filePath=/FileUpload/wiki/1.pdf");
+        },
+        openNewWindow(path) {
             const { href } = this.$router.resolve({
                 //直接访问word
-                path: "/demo/wordview/?filePath=http://localhost:10910/api/WikiMain/GetDocxFile?path=/FileUpload/wiki/1.docx",
+                path,
             });
             window.open(href, "_blank");//, "width=900, height=700"
         },
