@@ -31,6 +31,10 @@ using Microsoft.Extensions.FileProviders;
 using CNet.Web.Api.Model;
 using AutoMapper.Internal;
 using System.Text.RegularExpressions;
+using static NPOI.HSSF.Util.HSSFColor;
+using Microsoft.AspNetCore.StaticFiles;
+using System.Xml.Schema;
+using System.ComponentModel.Design;
 
 namespace CNet.Web.Api
 {
@@ -118,8 +122,7 @@ namespace CNet.Web.Api
                 options.AddPolicy("default", policy =>
                 {
 
-                    policy.WithOrigins("*").AllowAnyHeader().AllowAnyMethod();
-
+                    policy.AllowAnyOrigin().AllowAnyHeader().AllowAnyMethod();
                 });
 
             });

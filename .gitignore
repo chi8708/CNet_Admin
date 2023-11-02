@@ -19,3 +19,5 @@
 /src/CNet.BLL/obj
 bin
 obj
+/src/CNet.Web.Api/FileUpload
+/src/CNet.Web.Api/TempFileUpload

@@ -154,6 +154,52 @@ let menus= [
     ]
   },
 
+  {
+    path: '/demo',
+    name: 'demo',
+    component:MainWiki,
+    meta: {
+      hideInMenu: true,
+      notCache: true,
+      //title:'知识库'
+    },
+    children: [
+      {
+        path: 'index',
+        name: 'DemoIndex',
+        title: '测试示例',
+        meta: {
+          hideInMenu: true,
+          title: '示例',
+          unAuth:true
+        },
+        component: () => import('@/view/Demo/index.vue')
+      },
+      {
+        path: 'pdfview',
+        name: 'pdfview',
+        title: '测试示例',
+        meta: {
+          hideInMenu: true,
+          title: '示例',
+          unAuth:true
+        },
+        component: () => import('@/view/Demo/pdfview.vue')
+      },
+      {
+        path: 'wordview',
+        name: 'wordview',
+        title: 'word浏览',
+        meta: {
+          hideInMenu: true,
+          title: '示例',
+          unAuth:true
+        },
+        component: () => import('@/view/Demo/WordToHtml.vue')
+      }
+    ]
+  },
+
   //刷新会闪404 bug
   // {
   //   path: '*',

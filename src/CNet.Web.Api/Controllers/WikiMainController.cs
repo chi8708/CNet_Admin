@@ -8,6 +8,7 @@ using Microsoft.AspNetCore.Mvc;
 using NPOI.Util;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Text;
 
 namespace CNet.Web.Api.Controllers
@@ -141,6 +142,24 @@ namespace CNet.Web.Api.Controllers
 
             return res;
         }
+
+        static string currentDir = Directory.GetCurrentDirectory();
+        /// <summary>
+        /// 获取word流文件
+        /// </summary>
+        /// <param name="filePath"></param>
+        /// <returns></returns>
+        [Route("GetDocxFile")]
+        [HttpGet]
+        [AllowAnonymous]
+        public IActionResult GetDocxFile(string path)
+        {
+            var filePath = currentDir+ path;
+            var fileBytes = System.IO.File.ReadAllBytes(filePath);
+
+            return File(fileBytes, "application/vnd.openxmlformats-officedocument.wordprocessingml.document", "example.docx");
+        }
+
 
     }
 

@@ -50,3 +50,13 @@ export const remove=(id)=>{
     method: 'post'
   })
 }
+
+//导出word
+export const getDocxFile=(path)=>{
+  return axios.request({
+    url: 'api/WikiMain/GetDocxFile/'+path,
+    method: 'post',
+    data,
+    responseType: 'blob'
+  })
+}

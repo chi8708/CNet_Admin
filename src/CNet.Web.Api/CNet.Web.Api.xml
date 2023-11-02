@@ -279,6 +279,13 @@
             </summary>
             <returns></returns>
         </member>
+        <member name="M:CNet.Web.Api.Controllers.WikiMainController.GetDocxFile(System.String)">
+            <summary>
+            获取word流文件
+            </summary>
+            <param name="filePath"></param>
+            <returns></returns>
+        </member>
         <member name="M:CNet.Web.Api.Controllers.WikiSortController.Add(CNet.Main.Model.Wiki_Sort)">
             <summary>
             添加
