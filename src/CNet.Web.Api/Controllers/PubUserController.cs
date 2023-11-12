@@ -233,5 +233,50 @@ namespace CNet.Web.Api.Controllers
             return res;
         }
 
+
+        /// <summary>
+        /// 修改用户密码
+        /// </summary>
+        /// <returns></returns>
+        [Route("EditPassword")]
+        [HttpPost]
+        public DataRes<bool> EditPassword([FromBody] EditPasswordReq model)
+        {
+            DataRes<bool> res = new DataRes<bool>() { code = ResCode.Success, data = true };
+            var user = ThisUser;
+
+            if (user == null)
+            {
+                res.code = ResCode.NoValidate;
+                res.data = false;
+                res.msg = "用户未登陆";
+
+                return res;
+            }
+            var oldModel = bll.Get(user.Id);
+
+            if (oldModel.UserPwd != model.OldPassword)
+            {
+                res.code = ResCode.NoValidate;
+                res.data = false;
+                res.msg = "原密码不正确";
+
+                return res;
+            }
+
+            bll.EditPassword(user.Id, model.Password, user.UserCode + "-" + user.UserName);
+            if (user == null)
+            {
+                res.code = ResCode.Error;
+                res.data = false;
+                res.msg = "保存失败";
+                return res;
+            }
+
+
+            return res;
+        }
+
+
     }
 }

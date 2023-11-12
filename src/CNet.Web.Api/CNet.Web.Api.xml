@@ -205,6 +205,12 @@
             </summary>
             <returns></returns>
         </member>
+        <member name="M:CNet.Web.Api.Controllers.PubUserController.EditPassword(CNet.Web.Api.EditPasswordReq)">
+            <summary>
+            修改用户密码
+            </summary>
+            <returns></returns>
+        </member>
         <member name="T:CNet.Web.Api.Controllers.UpLoadFileController">
             <summary>
             
@@ -341,6 +347,16 @@
         <member name="P:CNet.Web.Api.LoginViewModel.Password">
             <summary>
             密码
+            </summary>
+        </member>
+        <member name="P:CNet.Web.Api.EditPasswordReq.OldPassword">
+            <summary>
+            原密码
+            </summary>
+        </member>
+        <member name="P:CNet.Web.Api.EditPasswordReq.Password">
+            <summary>
+            新密码
             </summary>
         </member>
         <member name="P:CNet.Web.Api.ResponseObj`1.Code">

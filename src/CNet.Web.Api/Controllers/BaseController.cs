@@ -12,6 +12,6 @@ namespace CNet.Web.Api.Controllers
     [Produces("application/json")]
     public class BaseController:Controller
     {
-       
+       public CNetUser ThisUser=> User.GetCNetUser();
     }
 }
