@@ -22,7 +22,7 @@ namespace CNet.Main.Model
      	/// 
      	/// </summary>
 		[Key]
-		public int? Id { get; set; }
+		public int Id { get; set; }
 
 		/// <summary>
      	/// 
