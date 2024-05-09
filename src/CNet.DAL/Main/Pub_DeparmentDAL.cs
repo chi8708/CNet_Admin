@@ -11,7 +11,7 @@ namespace CNet.Main.DAL
 		public List<V_Pubdept_Parent> SearchChildDept(string code = "D000001")
 		{
 			////sqlserver 将WITH recursive f 修改为 WITH f
-			string sql = $@"with f as 
+			string sql = $@"with recursive f as 
 	                        (
 	                        select * FROM Pub_Department AS pd where DeptCode=@code
 	                        union all

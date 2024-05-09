@@ -19,7 +19,7 @@ namespace CNet.Main.DAL
         public List<Pub_Function> GetMenu(string userCode)
         {
 			//sqlserver 将WITH recursive f 修改为 WITH f 。mysql需要加recursive
-			string sql = $@"WITH  f-- recursive 加了就可以，否则报错Table 'cnet.f' doesn't exist
+			string sql = $@"WITH recursive f -- recursive 加了就可以，否则报错Table 'cnet.f' doesn't exist
 	                        AS(
 
 		                        SELECT pf.* FROM Pub_Function AS pf

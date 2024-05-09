@@ -264,9 +264,11 @@ namespace CNet.Web.Api
             var basePath = System.IO.Directory.GetCurrentDirectory();
             app.UseStaticFiles(new StaticFileOptions()
             {
-                FileProvider = new PhysicalFileProvider(basePath + "\\FileUpload\\"),
+              
+                FileProvider = new PhysicalFileProvider(basePath + "//FileUpload//"),
                 RequestPath = "/FileUpload"
             });
+            
 
 
             ////jwt认证 需要在app.UseMvc()前调用
