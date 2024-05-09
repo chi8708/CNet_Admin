@@ -81,11 +81,11 @@
 
 交流提升
 -------------
-QQ群:851743573
+QQ群:点击加群  <a href='https://jq.qq.com/?_wv=1027&k=4je1frWy' target="_blank" >851743573  </a>
 
 Git笔记公众号
 <br/>
-<img src="tg2.jpg" style="width:260px;" />
+<img src="https://github.com/chi8708/CNet_Admin/blob/main/tg2.jpg" style="width:260px;" />
 
 给Aigu赞赏
 -----------------
