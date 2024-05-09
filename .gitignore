@@ -21,3 +21,5 @@ bin
 obj
 /src/CNet.Web.Api/FileUpload
 /src/CNet.Web.Api/TempFileUpload
+/src/CNet.Web.Api/lib
+/src/CNet.Web.Api/Properties

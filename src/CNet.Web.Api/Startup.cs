@@ -264,10 +264,6 @@ namespace CNet.Web.Api
             var basePath = System.IO.Directory.GetCurrentDirectory();
             app.UseStaticFiles(new StaticFileOptions()
             {
-<<<<<<< HEAD
-              
-=======
->>>>>>> 58aa498712a471d2c18c6be71c88e5b874eadf49
                 FileProvider = new PhysicalFileProvider(basePath + "//FileUpload//"),
                 RequestPath = "/FileUpload"
             });
