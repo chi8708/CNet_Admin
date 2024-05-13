@@ -99,7 +99,8 @@ Aigu开发 github热门排行，微信小程序看源码
 
 ## Stargazers over time
 [![Stargazers over time](https://starchart.cc/chi8708/CNet_Admin.svg?variant=adaptive)](https://starchart.cc/chi8708/CNet_Admin)
-
+[![GitHub stars](https://img.shields.io/github/stars/chi8708/CNet_Admin.svg?style=social&label=Stars)](https://github.com/chi8708/CNet_Admin/stargazers)
+<img src="https://komarev.com/ghpvc/?username=chi8708&label=Views&color=0e75b6&style=flat" alt="访问量统计" />
 
 
 
