@@ -5,6 +5,7 @@
     <RootNamespace>CNet.Model</RootNamespace>
     <AssemblyName>CNet.Model</AssemblyName>
     <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
+    <GenerateDocumentationFile>True</GenerateDocumentationFile>
   </PropertyGroup>
   <ItemGroup>
     <None Remove="T4.DapperExt\Main\Entity.tt" />
