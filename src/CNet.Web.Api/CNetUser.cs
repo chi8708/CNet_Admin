@@ -5,7 +5,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Security.Claims;
 using System.Security.Principal;
-using System.Web;
+using System.Text.RegularExpressions;
+using System.Text;
+
 
 namespace CNet.Web.Api
 {
@@ -92,7 +94,16 @@ namespace CNet.Web.Api
                 return functions;
             }
         }
-    }
 
+
+        public static void UpdateToken(dynamic user)
+        {
+            //写入或更新redis
+            //TimeSpan ts = TimeSpan.FromHours(Convert.ToInt32(Constant.TOKEN_EXPRIE_HOURS));
+            //Constant.redis7.StringSet(Constant.TOKEN_PRE + user.UserCode, user.Token, ts);
+        }
+
+
+    }
    
 }

@@ -8,6 +8,7 @@ using System.Text.RegularExpressions;
 using System.Web;
 using Microsoft.AspNetCore.Http;
 using Newtonsoft.Json;
+using System.Security.Cryptography;
 
 namespace CNet.Web.Api
 {
@@ -277,6 +278,43 @@ namespace CNet.Web.Api
 
 
         #endregion
+
+        public static string StringToMD5Hash(string inputString)
+        {
+
+            MD5CryptoServiceProvider md5 = new MD5CryptoServiceProvider();
+
+            byte[] encryptedBytes = md5.ComputeHash(Encoding.ASCII.GetBytes(inputString));
+
+            StringBuilder sb = new StringBuilder();
+
+            for (int i = 0; i < encryptedBytes.Length; i++)
+            {
+                sb.AppendFormat("{0:x2}", encryptedBytes[i]);
+            }
+
+            return sb.ToString();
+
+        }
+        public static bool isEasyPwd(string pwd)
+        {
+            string newpwd = pwd.Trim();
+            var regex = new Regex(@"(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z]){6,10}", RegexOptions.Multiline | RegexOptions.IgnorePatternWhitespace);
+
+            bool pwdIsMatch = regex.IsMatch(newpwd);
+            if (pwdIsMatch == false)
+            {
+                return true;
+            }
+
+            if (newpwd.Length < 6 || newpwd.Length > 10)
+            {
+                return true;
+            }
+
+            return false;
+
+        }
 
     }
 }

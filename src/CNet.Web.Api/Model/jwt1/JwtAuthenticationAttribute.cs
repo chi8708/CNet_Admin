@@ -29,7 +29,7 @@ namespace CNet.Web.Api
 
             if (user.Identity.IsAuthenticated)
             {
-                //var userCode = user.GetGemmyMobileUser().UserCode;
+                //var userCode = user.GetCNetUser().UserCode;
                 //App_UserToken userToken = tokenBLL.Get(userCode, "UserCode");
                 //if (userToken == null)
                 //{
@@ -61,6 +61,29 @@ namespace CNet.Web.Api
                 //    //更新用户token
                 //    tokenBLL.Update(userToken);
                 //});
+
+
+                //通过Redis判断
+                //var userCode = user.GetCNetUser().UserCode;
+                //var tokenKey = Controllers.Constant.TOKEN_PRE + userCode;
+                //string savedToken = Controllers.Constant.redis7.StringGet(tokenKey);
+                //if (string.IsNullOrEmpty(savedToken))
+                //{
+                //    context.Result = new AuthenticationFailureResult("Miss token in DB", request, response);
+                //    return;
+                //}
+
+                ////判断token是否改变
+                //var token = request.Headers["Authorization"];
+                //if (token != $"Bearer {savedToken}")
+                //{
+                //    context.Result = new AuthenticationFailureResult("Invalid token", request, response);
+                //    return;
+                //}
+
+                //TimeSpan ts = TimeSpan.FromHours(Convert.ToInt32(Controllers.Constant.TOKEN_EXPRIE_HOURS));
+                ////更新token过期时间
+                //Controllers.Constant.redis7.KeyExpire(tokenKey, ts);
 
             }
             else

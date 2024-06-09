@@ -12,6 +12,7 @@ using Microsoft.Extensions.Options;
 using Microsoft.IdentityModel.Tokens;
 using CNet.Main.BLL;
 using CNet.Common;
+using System.Security.Cryptography;
 
 namespace CNet.Web.Api.Controllers
 {
@@ -46,15 +47,20 @@ namespace CNet.Web.Api.Controllers
             loginViewModel.Name = QueryHelper.InjectionFilter(loginViewModel.Name);
             loginViewModel.Password = QueryHelper.InjectionFilter(loginViewModel.Password);
 
-            var users = new Pub_UserBLL().GetList($"StopFlag=0 AND UserName='{loginViewModel.Name}' AND UserPwd='{loginViewModel.Password}'", limits: 1);
+            var users = new Pub_UserBLL().GetList($"StopFlag=0 AND UserName='{loginViewModel.Name}' ", limits: 1);
             
             if (users.Count>0)
             {
                 var user = users.First();
-                //var userFunctions = new   Pub_UserfunctionBLL().GetList($"UserCode='{user.UserCode}'").Select(p=>p.FunctionCode);
-                //var roleFunctions = new Pub_RolefunctionBLL().GetList($" RoleCode IN(SELECT pur.RoleCode FROM Pub_Userrole AS pur WHERE pur.UserCode='{user.UserCode}' )").Select(p=>p.FunctionCode);
-                //var functions = userFunctions.Concat(roleFunctions).Distinct();
-                //var functionsStr = string.Join(',', functions);
+                if (QueryHelper.StringToMD5Hash(user.UserPwd)!= loginViewModel.Password)
+                {
+                    return Ok(new ResponseObj<dynamic>()
+                    {
+                        Code = 0,
+                        Message = "用户名密码错误！"
+                    });
+                }
+
                 var claims = new Claim[]
                 {
                     new Claim(ClaimTypes.Name,user.UserName),
@@ -75,6 +81,11 @@ namespace CNet.Web.Api.Controllers
                    expires,
                     creds
                     );
+
+                //string tokenStr = new JwtSecurityTokenHandler().WriteToken(token);
+                //user.Token = tokenStr;
+                //CNetFactory.UpdateToken(user);
+
                 return Ok(new ResponseObj<dynamic>()
                 {
                     Code = 1,
