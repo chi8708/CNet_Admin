@@ -220,7 +220,7 @@ namespace CNet.DAL
         public  T Get(object id, string keyName)
         {
             var tableName = typeof(T).Name;
-            StringBuilder sql = new StringBuilder().AppendFormat("SELECT  TOP 1 * FROM {0} WHERE {1}=@id ", tableName, keyName);
+            StringBuilder sql = new StringBuilder().AppendFormat("SELECT  * FROM {0} WHERE {1}=@id Limit 1 ", tableName, keyName);
             var pms = new { id = id };
             using (SQLiteConnection cn = new SQLiteConnection(this.ConnStr))
             {
