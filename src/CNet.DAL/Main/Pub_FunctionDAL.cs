@@ -65,7 +65,7 @@ namespace CNet.Main.DAL
         public List<V_Pubfunction_Parent> GetChildFunction(string code)
         {
 			//sqlserver 将WITH recursive f 修改为 WITH f。mysql需要加recursive
-			string sql = $@"with f as 
+			string sql = $@"with recursive f as 
 	                        (
 	                        select * FROM Pub_Function AS pd where FunctionCode=@code
 	                        union all
