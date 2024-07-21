@@ -87,6 +87,12 @@ Git笔记公众号
 <br/>
 ![image](https://github.com/chi8708/CNet_Admin/blob/main/tg2.jpg)
 
+应用案例
+-----------
+AI口红试妆小程序管理后台
+<br/>
+<img src="https://github.com/chi8708/DotNetDemoAll/blob/master/lipStick.jpg" style="width:260px;" />
+
 给Aigu赞赏
 -----------------
 ![image](https://github.com/chi8708/CNet_Admin/blob/main/zs.jpg)
