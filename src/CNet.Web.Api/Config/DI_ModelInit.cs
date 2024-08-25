@@ -1,7 +1,7 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
 using Zack.Commons;
 
-namespace CNet.Web.Api.Model
+namespace CNet.Web.Api.Config
 {
     //public class DI_ModelInit : IModuleInitializer
     //{

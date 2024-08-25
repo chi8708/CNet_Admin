@@ -3,7 +3,7 @@
   <PropertyGroup>
     <ShowAllFiles>true</ShowAllFiles>
     <NameOfLastUsedPublishProfile>E:\Study\DotNet\CNet_Admin\src\CNet.Web.Api\Properties\PublishProfiles\FolderProfile.pubxml</NameOfLastUsedPublishProfile>
-    <ActiveDebugProfile>CNet.Web.Api</ActiveDebugProfile>
+    <ActiveDebugProfile>CNetWiki.Web.Api</ActiveDebugProfile>
     <Controller_SelectedScaffolderID>ApiControllerEmptyScaffolder</Controller_SelectedScaffolderID>
     <Controller_SelectedScaffolderCategoryPath>root/Common/Api</Controller_SelectedScaffolderCategoryPath>
   </PropertyGroup>

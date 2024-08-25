@@ -35,6 +35,9 @@ using static NPOI.HSSF.Util.HSSFColor;
 using Microsoft.AspNetCore.StaticFiles;
 using System.Xml.Schema;
 using System.ComponentModel.Design;
+using Microsoft.Extensions.Options;
+using CNet.Web.Api.Config;
+using CNet.Common.Const;
 
 namespace CNet.Web.Api
 {
@@ -105,7 +108,13 @@ namespace CNet.Web.Api
         {
             //1.全局异常 2.Json 日期格式化
             services
-                .AddMvc(o => { o.Filters.Add(typeof(WebApiExceptionAttribute)); o.EnableEndpointRouting = false; });
+                .AddMvc(o =>
+                {
+                    o.Filters.Add(typeof(WebApiExceptionAttribute));
+                    //Swagger剔除不需要加入api展示的列表
+                    o.Conventions.Add(new ApiExplorerIgnores());
+                    o.EnableEndpointRouting = false;
+                });
             services.AddControllers().AddNewtonsoftJson(options =>
             {
                 options.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore;
@@ -139,12 +148,16 @@ namespace CNet.Web.Api
 
             services.AddMemoryCache();//内存缓存
             Service_DI(services);
+
+            //添加session支持(session依赖于cache进行存储)
+            services.AddSession();
+
         }
 
-       /// <summary>
-       /// 依赖注入
-       /// </summary>
-       /// <param name="services"></param>
+        /// <summary>
+        /// 依赖注入
+        /// </summary>
+        /// <param name="services"></param>
         private static void Service_DI(IServiceCollection services)
         {
             services.AddScoped<DI_Test>();//依赖注入
@@ -250,12 +263,22 @@ namespace CNet.Web.Api
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env, ILoggerFactory loggerFactory)
         {
-            if (env.IsDevelopment())
+            
+            if (!env.IsDevelopment())
             {
-                app.UseDeveloperExceptionPage();
-                app.UseSwagger();
-                app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "CNet.Web.Api v1"));
+                app.UseSwaggerAuthorizedMildd();
             }
+
+            app.UseDeveloperExceptionPage();
+            app.UseSwagger();
+            app.UseSwaggerUI(c =>
+            {
+
+                c.SwaggerEndpoint("/swagger/v1/swagger.json", "CNet.Web.Api v1");
+                    //设置默认跳转到swagger-ui
+                 c.RoutePrefix = AppSettingsConst.SwaggerRoutePrefix;
+            });
+
             //Microsfot.Extensions.Logging.Log4Net.AspNetCore 需添加
             //loggerFactory.AddLog4Net(Environment.CurrentDirectory + "//log4net.config");
             //app.UseHttpsRedirection();//会跳转跨域时不要使用
@@ -271,8 +294,6 @@ namespace CNet.Web.Api
                 FileProvider = new PhysicalFileProvider(basePath + "//FileUpload//"),
                 RequestPath = "/FileUpload"
             });
-            
-
 
             ////jwt认证 需要在app.UseMvc()前调用
             app.UseAuthentication();//不添加报401

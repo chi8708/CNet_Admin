@@ -9,6 +9,29 @@
             异常捕获
             </summary>
         </member>
+        <member name="M:CNet.Web.Api.Config.ApiExplorerIgnores.Apply(Microsoft.AspNetCore.Mvc.ApplicationModels.ActionModel)">
+            <summary>
+            自带的Controller与swagger3.0冲突，在此排除扫描
+            </summary>
+            <param name="action"></param>
+        </member>
+        <member name="T:CNet.Web.Api.Config.MiddlewareHelpers">
+            <summary>
+            中间件
+            </summary>
+        </member>
+        <member name="M:CNet.Web.Api.Config.MiddlewareHelpers.UseSwaggerAuthorizedMildd(Microsoft.AspNetCore.Builder.IApplicationBuilder)">
+            <summary>
+            Swagger授权中间件
+            </summary>
+            <param name="app"></param>
+            <returns></returns>
+        </member>
+        <member name="T:CNet.Web.Api.SwaggerBasicAuthMiddleware">
+            <summary>
+            Swagger授权登录拦截
+            </summary>
+        </member>
         <member name="T:CNet.Web.Api.Controllers.AuthroizeController">
             <summary>
             认证
