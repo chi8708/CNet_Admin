@@ -28,10 +28,10 @@ export default {
     },
     methods: {
         wordView() {
-            this.openNewWindow("/demo/wordview/?filePath=http://localhost:10910/api/WikiMain/GetDocxFile?filePath=/FileUpload/wiki/1.docx");
+            this.openNewWindow("/demo/wordview/?filePath=http://localhost:8916/api/WikiMain/GetDocxFile?filePath=/FileUpload/wiki/1.docx");
         },
         pdfView() {
-            this.openNewWindow("/demo/pdfview/?filePath=http://localhost:10910/api/WikiMain/GetPdfFile?filePath=/FileUpload/wiki/1.pdf");
+            this.openNewWindow("/demo/pdfview/?filePath=http://localhost:8916/api/WikiMain/GetPdfFile?filePath=/FileUpload/wiki/1.pdf");
         },
         openNewWindow(path) {
             const { href } = this.$router.resolve({

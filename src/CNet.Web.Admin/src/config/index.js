@@ -2,7 +2,7 @@ export default {
   /**
    * @description 配置显示在浏览器标签的title
    */
-  title: 'CNet-Admin',
+  title: '异世界重生管理系统-Admin',
   /**
    * @description token在Cookie中存储的天数，默认1天
    */
@@ -19,10 +19,10 @@ export default {
   baseUrl: {
     // dev: 'https://www.easy-mock.com/mock/5add9213ce4d0e69998a6f51/iview-admin/',
     // pro: 'https://www.easy-mock.com/mock/5add9213ce4d0e69998a6f51/iview-admin/'
-     dev: 'http://localhost:10910/',
+     dev: 'http://localhost:8916/',
      pro: 'http://www.gitrk.cn:8916/'
   },
-  imgurl: 'http://localhost:10910/',
+  imgurl: 'http://localhost:8916/',
   /**
    * @description 默认打开的首页的路由name值，默认为home
    */
