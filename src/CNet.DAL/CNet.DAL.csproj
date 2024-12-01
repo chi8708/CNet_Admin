@@ -33,5 +33,10 @@
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>1Repository.txt</LastGenOutput>
     </None>
+    <None Update="T4.DapperExt\Main\1Repository.txt">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>1Repository.tt</DependentUpon>
+    </None>
   </ItemGroup>
 </Project>

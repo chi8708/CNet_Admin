@@ -7,7 +7,7 @@
           <img v-show="!collapsed" :src="maxLogo" key="max-logo" />
           <img v-show="collapsed" :src="minLogo" key="min-logo" />
         </div> -->
-        <h1 style="color:#fff;text-align:center;">CNet</h1>
+        <h2 style="color:#fff;text-align:center;">异世界重生管理系统</h2>
       </side-menu>
     </Sider>
     <Layout>
