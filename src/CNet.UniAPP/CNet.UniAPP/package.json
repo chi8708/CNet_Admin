@@ -1,0 +1,88 @@
+{
+  "id": "uni-tabbar",
+  "name": "底部选项卡模板",
+  "displayName": "底部选项卡模板",
+  "version": "0.0.9",
+  "description": "中间带+号的底部选项卡",
+  "keywords": [
+    "tabbar",
+    "uni-tabbar",
+    "选项卡"
+  ],
+  "dcloudext": {
+    "category": [
+      "前端页面模板",
+      "uni-app前端仓库模板"
+    ],
+    "sale": {
+      "regular": {
+        "price": "0.00"
+      },
+      "sourcecode": {
+        "price": "0.00"
+      }
+    },
+    "contact": {
+      "qq": ""
+    },
+    "declaration": {
+      "ads": "无",
+      "data": "无",
+      "permissions": "无"
+    },
+    "npmurl": ""
+  },
+  "repository": "",
+  "uni_modules": {
+    "platforms": {
+      "cloud": {
+        "tcb": "y",
+        "aliyun": "y"
+      },
+      "client": {
+        "App": {
+          "app-vue": "u",
+          "app-nvue": "u"
+        },
+        "H5-mobile": {
+          "Safari": "u",
+          "Android Browser": "u",
+          "微信浏览器(Android)": "u",
+          "QQ浏览器(Android)": "u"
+        },
+        "H5-pc": {
+          "Chrome": "u",
+          "IE": "u",
+          "Edge": "u",
+          "Firefox": "u",
+          "Safari": "u"
+        },
+        "小程序": {
+          "微信": "u",
+          "阿里": "u",
+          "百度": "u",
+          "字节跳动": "u",
+          "QQ": "u",
+          "京东": "u"
+        },
+        "快应用": {
+          "华为": "u",
+          "联盟": "u"
+        },
+        "Vue": {
+          "vue2": "u",
+          "vue3": "u"
+        }
+      }
+    }
+  },
+  "dependencies": {
+    "highlight.js": "^11.7.0",
+    "marked": "^4.3.0",
+    "uview-ui": "^2.0.31"
+  },
+  "devDependencies": {
+    "sass": "^1.58.0",
+    "sass-loader": "^13.2.0"
+  }
+}

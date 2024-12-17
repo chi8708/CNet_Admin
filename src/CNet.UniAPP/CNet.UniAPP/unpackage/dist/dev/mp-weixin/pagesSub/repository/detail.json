@@ -1,0 +1,10 @@
+{
+  "navigationBarTitleText": "仓库详细",
+  "usingComponents": {
+    "u-icon": "/node-modules/uview-ui/components/u-icon/u-icon",
+    "u-image": "/node-modules/uview-ui/components/u-image/u-image",
+    "u-cell-group": "/node-modules/uview-ui/components/u-cell-group/u-cell-group",
+    "u-cell": "/node-modules/uview-ui/components/u-cell/u-cell",
+    "u-parse": "/node-modules/uview-ui/components/u-parse/u-parse"
+  }
+}

@@ -1,0 +1,85 @@
+@font-face {
+  font-family: "iconfont"; /* Project id 3890252 */
+  /* Color fonts */
+  src: 
+       url('@/static/icon/iconfont.woff2?t=1681735526566') format('woff2'),
+       url('@/static/icon/iconfont.woff?t=1681735526566') format('woff'),
+       url('@/static/icon/iconfont.ttf?t=1681735526566') format('truetype');
+}
+
+.iconfont {
+  font-family: "iconfont" !important;
+  font-size: 16px;
+  font-style: normal;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.icon-24gl-fileText:before {
+  content: "\eabe";
+}
+
+.icon-wenjianjia:before {
+  content: "\e80c";
+}
+
+.icon-file-open:before {
+  content: "\e670";
+}
+
+.icon-shoucang:before {
+  content: "\e61a";
+}
+
+.icon-jushoucang:before {
+  content: "\e643";
+}
+
+.icon-codefork:before {
+  content: "\e698";
+}
+
+.icon-filter:before {
+  content: "\e630";
+}
+
+.icon-star:before {
+  content: "\e7df";
+}
+
+.icon-dian:before {
+  content: "\e621";
+}
+
+.icon-kaifazhezhongxin:before {
+  content: "\e7c2";
+}
+
+.icon-kaifazhezhongxin-copy:before {
+  content: "\e7c6";
+}
+
+.icon-wode1:before {
+  content: "\e632";
+}
+
+.icon-wode1-copy:before {
+  content: "\e7c5";
+}
+
+.icon-xiangmu:before {
+  content: "\e614";
+}
+
+.icon-xiangmu-copy:before {
+  content: "\e7c4";
+}
+
+.icon-remen:before {
+  content: "\e641";
+}
+
+.icon-trend-copy:before {
+  content: "\e7c3";
+}
+

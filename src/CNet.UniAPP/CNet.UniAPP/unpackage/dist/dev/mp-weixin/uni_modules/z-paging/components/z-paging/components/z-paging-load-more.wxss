@@ -1,0 +1,101 @@
+/* [z-paging]公用的静态css资源 */
+.zp-line-loading-image.data-v-ef0d5cb6 {
+	margin-right: 8rpx;
+	width: 28rpx;
+	height: 28rpx;
+
+	-webkit-animation: loading-flower-data-v-ef0d5cb6 1s steps(12) infinite;
+	        animation: loading-flower-data-v-ef0d5cb6 1s steps(12) infinite;
+
+	color: #666666;
+}
+.zp-loading-image-ios.data-v-ef0d5cb6{
+	width: 20px;
+	height: 20px;
+}
+.zp-loading-image-android.data-v-ef0d5cb6{
+	width: 32rpx;
+	height: 32rpx;
+}
+@-webkit-keyframes loading-flower-data-v-ef0d5cb6 {
+0% {
+		-webkit-transform: rotate(0deg);
+		transform: rotate(0deg);
+}
+to {
+		-webkit-transform: rotate(1turn);
+		transform: rotate(1turn);
+}
+}
+@keyframes loading-flower-data-v-ef0d5cb6 {
+0% {
+		-webkit-transform: rotate(0deg);
+		transform: rotate(0deg);
+}
+to {
+		-webkit-transform: rotate(1turn);
+		transform: rotate(1turn);
+}
+}
+.zp-l-container.data-v-ef0d5cb6 {
+	height: 80rpx;
+	font-size: 27rpx;
+
+	clear: both;
+	display: flex;
+
+	flex-direction: row;
+	align-items: center;
+	justify-content: center;
+}
+.zp-l-line-loading-custom-image.data-v-ef0d5cb6 {
+	color: #a4a4a4;
+	margin-right: 8rpx;
+	width: 28rpx;
+	height: 28rpx;
+}
+.zp-l-line-loading-custom-image-animated.data-v-ef0d5cb6{
+
+	-webkit-animation: loading-circle-data-v-ef0d5cb6 1s linear infinite;
+	        animation: loading-circle-data-v-ef0d5cb6 1s linear infinite;
+}
+.zp-l-circle-loading-view.data-v-ef0d5cb6 {
+	margin-right: 8rpx;
+	width: 23rpx;
+	height: 23rpx;
+	border: 3rpx solid #dddddd;
+	border-radius: 50%;
+
+	-webkit-animation: loading-circle-data-v-ef0d5cb6 1s linear infinite;
+	        animation: loading-circle-data-v-ef0d5cb6 1s linear infinite;
+}
+.zp-l-text.data-v-ef0d5cb6 {
+}
+.zp-l-line.data-v-ef0d5cb6 {
+	height: 1px;
+	width: 100rpx;
+	margin: 0rpx 10rpx;
+}
+@-webkit-keyframes loading-circle-data-v-ef0d5cb6 {
+0% {
+		-webkit-transform: rotate(0deg);
+		transform: rotate(0deg);
+}
+100% {
+		-webkit-transform: rotate(360deg);
+		transform: rotate(360deg);
+}
+}
+@keyframes loading-circle-data-v-ef0d5cb6 {
+0% {
+		-webkit-transform: rotate(0deg);
+		transform: rotate(0deg);
+}
+100% {
+		-webkit-transform: rotate(360deg);
+		transform: rotate(360deg);
+}
+}
+
+
+

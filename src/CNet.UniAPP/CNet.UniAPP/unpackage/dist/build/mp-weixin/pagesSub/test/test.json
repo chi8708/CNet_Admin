@@ -1,0 +1,8 @@
+{
+  "navigationBarTitleText": "测试",
+  "enablePullDownRefresh": false,
+  "usingComponents": {
+    "u-swipe-action": "/node-modules/uview-ui/components/u-swipe-action/u-swipe-action",
+    "u-swipe-action-item": "/node-modules/uview-ui/components/u-swipe-action-item/u-swipe-action-item"
+  }
+}

@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 16
-VisualStudioVersion = 16.0.31702.278
+# Visual Studio Version 17
+VisualStudioVersion = 17.9.34701.34
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CNet.DBUtility", "CNet.DBUtility\CNet.DBUtility.csproj", "{94C6F951-EEB4-4503-B7EE-48104DC59CB2}"
 EndProject
@@ -14,6 +14,10 @@ EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CNet.Common", "CNet.Common\CNet.Common.csproj", "{F331C30C-341D-4408-908D-8F47AC17E1DC}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CNet.Web.Api", "CNet.Web.Api\CNet.Web.Api.csproj", "{EFFEF55B-6C73-4E62-86A1-DDFDDCD04E28}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "APP", "APP", "{D2DF2F19-B0E0-4C8F-95D9-25C27928937A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CNet.UniAPP", "CNet.UniAPP\CNet.UniAPP.csproj", "{27EDB1D5-7A54-4DFD-9F4D-49284D7493B3}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -45,9 +49,16 @@ Global
 		{EFFEF55B-6C73-4E62-86A1-DDFDDCD04E28}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{EFFEF55B-6C73-4E62-86A1-DDFDDCD04E28}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{EFFEF55B-6C73-4E62-86A1-DDFDDCD04E28}.Release|Any CPU.Build.0 = Release|Any CPU
+		{27EDB1D5-7A54-4DFD-9F4D-49284D7493B3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{27EDB1D5-7A54-4DFD-9F4D-49284D7493B3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{27EDB1D5-7A54-4DFD-9F4D-49284D7493B3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{27EDB1D5-7A54-4DFD-9F4D-49284D7493B3}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{27EDB1D5-7A54-4DFD-9F4D-49284D7493B3} = {D2DF2F19-B0E0-4C8F-95D9-25C27928937A}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {06A6CF72-65D4-49AD-8A2F-36115C1A3834}

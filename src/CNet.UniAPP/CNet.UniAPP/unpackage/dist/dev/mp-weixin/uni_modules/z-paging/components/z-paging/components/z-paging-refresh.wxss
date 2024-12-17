@@ -1,0 +1,95 @@
+/* [z-paging]公用的静态css资源 */
+.zp-line-loading-image.data-v-9e33a538 {
+	margin-right: 8rpx;
+	width: 28rpx;
+	height: 28rpx;
+
+	-webkit-animation: loading-flower-data-v-9e33a538 1s steps(12) infinite;
+	        animation: loading-flower-data-v-9e33a538 1s steps(12) infinite;
+
+	color: #666666;
+}
+.zp-loading-image-ios.data-v-9e33a538{
+	width: 20px;
+	height: 20px;
+}
+.zp-loading-image-android.data-v-9e33a538{
+	width: 32rpx;
+	height: 32rpx;
+}
+@-webkit-keyframes loading-flower-data-v-9e33a538 {
+0% {
+		-webkit-transform: rotate(0deg);
+		transform: rotate(0deg);
+}
+to {
+		-webkit-transform: rotate(1turn);
+		transform: rotate(1turn);
+}
+}
+@keyframes loading-flower-data-v-9e33a538 {
+0% {
+		-webkit-transform: rotate(0deg);
+		transform: rotate(0deg);
+}
+to {
+		-webkit-transform: rotate(1turn);
+		transform: rotate(1turn);
+}
+}
+.zp-r-container.data-v-9e33a538 {
+
+	display: flex;
+	height: 100%;
+
+	flex-direction: row;
+	justify-content: center;
+	align-items: center;
+}
+.zp-r-container-padding.data-v-9e33a538 {
+}
+.zp-r-left.data-v-9e33a538 {
+
+	display: flex;
+
+	flex-direction: row;
+	align-items: center;
+	overflow: hidden;
+}
+.zp-r-left-image.data-v-9e33a538 {
+	transition-duration: .2s;
+	transition-property: -webkit-transform;
+	transition-property: transform;
+	transition-property: transform, -webkit-transform;
+	color: #666666;
+}
+.zp-r-left-image-pre-size.data-v-9e33a538{
+
+	width: 30rpx;
+	height: 30rpx;
+	overflow: hidden;
+}
+.zp-r-arrow-top.data-v-9e33a538 {
+	-webkit-transform: rotate(0deg);
+	        transform: rotate(0deg);
+}
+.zp-r-arrow-down.data-v-9e33a538 {
+	-webkit-transform: rotate(180deg);
+	        transform: rotate(180deg);
+}
+.zp-r-right.data-v-9e33a538 {
+	font-size: 27rpx;
+
+	display: flex;
+
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+}
+.zp-r-right-text.data-v-9e33a538 {
+}
+.zp-r-right-time-text.data-v-9e33a538 {
+	margin-top: 10rpx;
+	font-size: 24rpx;
+}
+

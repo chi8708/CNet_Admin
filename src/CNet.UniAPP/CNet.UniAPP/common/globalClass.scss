@@ -1,0 +1,106 @@
+/* 行为相关颜色 */
+$color-primary: #007aff;
+$color-success: #4cd964;
+$color-warning: #f0ad4e;
+$color-error: #dd524d;
+
+/* 文字基本颜色 */
+$text-color:#333;//基本色
+$text-color-inverse:#fff;//反色
+$text-color-grey:#999;//辅助灰色，如加载更多的提示信息
+$text-color-placeholder: #808080;
+$text-color-disable:#c0c0c0;
+/* 背景颜色 */
+$bg-color-main:#F0f0f0;
+$bg-color-mask:rgba(0, 0, 0, 0.4);//遮罩颜色
+
+/* 边框颜色 */
+$border-color:#c8c7cc;
+
+
+/*页面基础样式*/
+/*--------------------*/
+page{background-color: #f9f9f9;}
+
+button[type=primary]{
+	background-color: #007aff;
+}
+/*--------------------*/
+
+/*布局*/
+/*--------------------*/
+.container{
+	padding: 5px;
+}
+.flex{
+	display: flex;
+}
+.flex-item-flex_1{
+	flex: 1;
+}
+/*内容垂直水平居中*/
+.flex-item-WVcenter
+{
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+.card-box {
+	border: 2px solid #ebeef5;
+	border-radius: 5px;
+	box-shadow: rgba(0, 0, 0, 0.08) 0px 0px 3px 1px;
+}
+
+
+/*--------------------*/
+
+/*字体文本*/
+/*--------------------*/
+.font-sm {
+	font-size: 0.6rem;
+}
+/*文本单行省略号*/
+.text-ellipsis{
+  overflow:hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  -o-text-overflow:ellipsis;
+}
+@mixin text-ellipsis-lines($lines:1) {
+	overflow:hidden;
+	text-overflow: ellipsis;
+	display: -webkit-box;
+	-webkit-box-orient: vertical;
+	-webkit-line-clamp: $lines;//行数
+}
+/*文本多行省略号*/
+.text-ellipsis-lines{
+   @include text-ellipsis-lines(3);
+}
+
+/*标题样式*/
+.text-title {
+	font-size: 0.9rem;
+	font-weight: bolder;
+}
+/*描述样式*/
+.text-desc {
+	font-size: 0.8rem;
+}
+/*分组标题*/
+.u-cell-group__title__text{
+	font-weight: bolder;
+}
+/*点*/
+.dot {
+	display: block;
+	text-align: center;
+	width: 16px;
+	height: 16px;
+	border-radius: 50%;
+	background-color: #3c9cff;
+	color: #fff;
+	font-size: 0.6rem;
+	//box-shadow: inset 0 3px #111, inset 0 -3px #555;
+  }
+/*--------------------*/

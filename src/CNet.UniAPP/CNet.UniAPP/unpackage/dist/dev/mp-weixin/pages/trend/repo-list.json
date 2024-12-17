@@ -1,0 +1,7 @@
+{
+  "usingComponents": {
+    "z-paging": "/uni_modules/z-paging/components/z-paging/z-paging",
+    "list-item": "/pages/repository/list-item"
+  },
+  "component": true
+}

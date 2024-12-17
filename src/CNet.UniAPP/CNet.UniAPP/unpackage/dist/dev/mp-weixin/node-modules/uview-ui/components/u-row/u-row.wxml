@@ -1,0 +1,1 @@
+<view data-ref="u-row" data-event-opts="{{[['tap',[['clickHandler',['$event']]]]]}}" class="u-row data-v-bf124e26 vue-ref" style="{{$root.s0}}" bindtap="__e"><slot></slot></view>

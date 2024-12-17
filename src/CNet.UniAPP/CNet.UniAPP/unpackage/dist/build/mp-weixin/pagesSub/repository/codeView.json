@@ -1,0 +1,7 @@
+{
+  "navigationBarTitleText": "代码浏览",
+  "enablePullDownRefresh": false,
+  "usingComponents": {
+    "u-parse": "/node-modules/uview-ui/components/u-parse/u-parse"
+  }
+}

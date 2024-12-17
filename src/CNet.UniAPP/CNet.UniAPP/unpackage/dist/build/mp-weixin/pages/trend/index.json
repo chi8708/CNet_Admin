@@ -1,0 +1,9 @@
+{
+  "navigationBarTitleText": "github热门",
+  "usingComponents": {
+    "z-paging-swiper": "/uni_modules/z-paging/components/z-paging-swiper/z-paging-swiper",
+    "z-tabs": "/uni_modules/z-tabs/components/z-tabs/z-tabs",
+    "repo-list": "/pages/trend/repo-list",
+    "user-list": "/pages/trend/user-list"
+  }
+}

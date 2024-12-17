@@ -1,0 +1,235 @@
+/* [z-paging]公共css*/
+.z-paging-content.data-v-0f887f1e {
+	position: relative;
+
+	display: flex;
+	width: 100%;
+	height: 100%;
+	overflow: hidden;
+
+	flex-direction: column;
+}
+.z-paging-content-fixed.data-v-0f887f1e, .zp-loading-fixed.data-v-0f887f1e {
+	position: fixed;
+
+	height: auto;
+	width: auto;
+
+	top: 0;
+	left: 0;
+	bottom: 0;
+	right: 0;
+}
+.zp-page-top.data-v-0f887f1e,.zp-page-bottom.data-v-0f887f1e {
+
+	width: auto;
+
+	position: fixed;
+	left: 0;
+	right: 0;
+	z-index: 999;
+}
+.zp-page-left.data-v-0f887f1e,.zp-page-right.data-v-0f887f1e{
+
+	height: 100%;
+}
+.zp-scroll-view-super.data-v-0f887f1e {
+	flex: 1;
+	position: relative;
+}
+.zp-view-super.data-v-0f887f1e{
+
+	display: flex;
+
+	flex-direction: row;
+}
+.zp-custom-refresher-container.data-v-0f887f1e {
+	overflow: hidden;
+}
+.zp-scroll-view-container.data-v-0f887f1e,.zp-scroll-view.data-v-0f887f1e {
+	position: relative;
+
+	height: 100%;
+	width: 100%;
+}
+.zp-absoulte.data-v-0f887f1e{
+
+	position: absolute;
+	top: 0;
+	width: auto;
+}
+.zp-right.data-v-0f887f1e{
+	right: 0;
+}
+.zp-scroll-view-absolute.data-v-0f887f1e {
+	position: absolute;
+	top: 0;
+	left: 0;
+}
+.zp-scroll-view-hide-scrollbar.data-v-0f887f1e ::-webkit-scrollbar {
+	display: none;
+	-webkit-appearance: none;
+	width: 0 !important;
+	height: 0 !important;
+	background: transparent;
+}
+.zp-paging-touch-view.data-v-0f887f1e {
+	width: 100%;
+	height: 100%;
+	position: relative;
+}
+.zp-fixed-bac-view.data-v-0f887f1e {
+	position: absolute;
+	width: 100%;
+	top: 0;
+	left: 0;
+	height: 200px;
+}
+.zp-paging-main.data-v-0f887f1e {
+	height: 100%;
+
+	display: flex;
+
+	flex-direction: column;
+}
+.zp-paging-container.data-v-0f887f1e {
+	flex: 1;
+	position: relative;
+
+	display: flex;
+
+	flex-direction: column;
+}
+.zp-chat-record-loading-container.data-v-0f887f1e {
+
+	display: flex;
+	width: 100%;
+
+
+
+
+	align-items: center;
+	justify-content: center;
+	height: 60rpx;
+	font-size: 26rpx;
+}
+.zp-chat-record-loading-custom-image.data-v-0f887f1e {
+	width: 35rpx;
+	height: 35rpx;
+
+	-webkit-animation: loading-flower-data-v-0f887f1e 1s linear infinite;
+	        animation: loading-flower-data-v-0f887f1e 1s linear infinite;
+}
+.zp-custom-refresher-container.data-v-0f887f1e {
+
+	display: flex;
+
+	flex-direction: row;
+	justify-content: center;
+	align-items: center;
+}
+.zp-back-to-top.data-v-0f887f1e {
+	width: 76rpx;
+	height: 76rpx;
+	z-index: 999;
+	position: absolute;
+	bottom: 0rpx;
+	right: 25rpx;
+	transition-duration: .3s;
+	transition-property: opacity;
+}
+.zp-back-to-top-show.data-v-0f887f1e {
+	opacity: 1;
+}
+.zp-back-to-top-hide.data-v-0f887f1e {
+	opacity: 0;
+}
+.zp-back-to-top-img.data-v-0f887f1e {
+
+	width: 100%;
+	height: 100%;
+
+
+
+
+	z-index: 999;
+}
+.zp-empty-view.data-v-0f887f1e {
+
+
+
+	flex: 1;
+}
+.zp-empty-view-center.data-v-0f887f1e {
+
+	display: flex;
+
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+}
+.zp-loading-fixed.data-v-0f887f1e {
+	z-index: 9999;
+}
+.zp-safe-area-inset-bottom.data-v-0f887f1e {
+	position: absolute;
+
+	height: env(safe-area-inset-bottom);
+}
+.zp-n-refresh-container.data-v-0f887f1e {
+
+	display: flex;
+
+	justify-content: center;
+	width: 750rpx;
+}
+.zp-n-list-container.data-v-0f887f1e{
+
+	display: flex;
+
+	flex-direction: row;
+	flex: 1;
+}
+
+/* [z-paging]公用的静态css资源 */
+.zp-line-loading-image.data-v-0f887f1e {
+	margin-right: 8rpx;
+	width: 28rpx;
+	height: 28rpx;
+
+	-webkit-animation: loading-flower-data-v-0f887f1e 1s steps(12) infinite;
+	        animation: loading-flower-data-v-0f887f1e 1s steps(12) infinite;
+
+	color: #666666;
+}
+.zp-loading-image-ios.data-v-0f887f1e{
+	width: 20px;
+	height: 20px;
+}
+.zp-loading-image-android.data-v-0f887f1e{
+	width: 32rpx;
+	height: 32rpx;
+}
+@-webkit-keyframes loading-flower-data-v-0f887f1e {
+0% {
+		-webkit-transform: rotate(0deg);
+		transform: rotate(0deg);
+}
+to {
+		-webkit-transform: rotate(1turn);
+		transform: rotate(1turn);
+}
+}
+@keyframes loading-flower-data-v-0f887f1e {
+0% {
+		-webkit-transform: rotate(0deg);
+		transform: rotate(0deg);
+}
+to {
+		-webkit-transform: rotate(1turn);
+		transform: rotate(1turn);
+}
+}
+
+
+

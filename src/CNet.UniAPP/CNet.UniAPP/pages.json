@@ -1,0 +1,171 @@
+{
+	"easycom": {
+		"^u-(.*)": "uview-ui/components/u-$1/u-$1.vue"
+	},
+	// "^uni-(.*)": "@/components/uni-$1.vue" // 匹配components目录内的vue文件
+	//】"^(?!z-paging-refresh|z-paging-load-more)z-paging(.*)": "z-paging/components/z-paging$1/z-paging$1.vue"
+	"pages": [
+		//pages数组中第一项表示应用启动页，参考：https://uniapp.dcloud.io/collocation/pages
+		{
+			"path": "pages/trend/index",
+			"style": {
+				"navigationBarTitleText": "github热门"
+			}
+		},
+		{
+			"path": "pages/repository/index",
+			"style": {
+				"navigationBarTitleText": "仓库"
+			}
+		},
+		{
+			"path": "pages/developer/index",
+			"style": {
+				"navigationBarTitleText": "开发者"
+			}
+		},
+		{
+			"path": "pages/me/index",
+			"style": {
+				"navigationBarTitleText": "我的"
+			}
+		}
+	],
+	"subPackages": [{
+		"root": "pagesSub",
+		"pages": [{
+				"path": "repository/detail",
+				"style": {
+					"navigationBarTitleText": "仓库详细"
+				}
+			},
+			//"enablePullDownRefresh": false
+			//这个-->自定义导航栏
+			//"navigationStyle": "custom"
+			{
+				"path": "developer/detail",
+				"style": {
+					"navigationBarTitleText": "开发者详细"
+				}
+			},
+			{
+				"path": "repository/codeDir",
+				"style": {
+					"navigationBarTitleText": "代码浏览",
+					"enablePullDownRefresh": false
+				}
+			},
+			{
+				"path": "repository/codeView",
+				"style": {
+					"navigationBarTitleText": "代码浏览",
+					"enablePullDownRefresh": false
+				}
+			},
+			{
+				"path": "webView/webView",
+				"style": {
+					"navigationBarTitleText": "",
+					"enablePullDownRefresh": false
+				}
+			},
+			{
+				"path": "me/star/list",
+				"style": {
+					"navigationBarTitleText": "我的收藏",
+					"enablePullDownRefresh": false
+				}
+
+			},
+			{
+				"path": "me/viewHistory/list",
+				"style": {
+					"navigationBarTitleText": "浏览记录",
+					"enablePullDownRefresh": false
+				}
+
+			},
+			{
+				"path": "test/test",
+				"style": {
+					"navigationBarTitleText": "测试",
+					"enablePullDownRefresh": false
+				}
+
+			}, {
+				"path": "me/setting/index",
+				"style": {
+					"navigationBarTitleText": "设置",
+					"enablePullDownRefresh": false
+				}
+
+			}, {
+				"path": "login/login",
+				"style": {
+					"navigationBarTitleText": "登录",
+					"enablePullDownRefresh": false
+				}
+
+			}, {
+				"path": "me/userinfo/index",
+				"style": {
+					"navigationBarTitleText": "用户信息",
+					"enablePullDownRefresh": false
+				}
+
+			}
+		    ,{
+                    "path" : "me/admire",
+                    "style" :                                                                                    
+                {
+                    "navigationBarTitleText": "赞赏",
+                    "enablePullDownRefresh": false
+                }
+                
+                }
+            ]
+	}],
+	"preloadRule": {
+		"pagesSub/repository/detail": {
+			"network": "all",
+			"packages": ["pagesSub"]
+		}
+	},
+	"globalStyle": {
+		"navigationBarTextStyle": "white",
+		"navigationBarTitleText": "uni-app",
+		"navigationBarBackgroundColor": "#3c9cff",
+		"backgroundColor": "#d6d6d5"
+	},
+	"tabBar": {
+		"borderStyle": "black",
+		"backgroundColor": "#fff",
+		"color": "#222",
+		"selectedColor": "#3c9cff",
+		"list": [{
+				"pagePath": "pages/trend/index",
+				"iconPath": "static/img/tabbar/trend.png",
+				"selectedIconPath": "static/img/tabbar/trendactive.png",
+				"text": "热门"
+			},
+			{
+				"pagePath": "pages/repository/index",
+				"iconPath": "static/img/tabbar/repository.png",
+				"selectedIconPath": "static/img/tabbar/repositoryactive.png",
+				"text": "仓库"
+			},
+			{
+				"pagePath": "pages/developer/index",
+				"iconPath": "static/img/tabbar/devloper.png",
+				"selectedIconPath": "static/img/tabbar/devloperactive.png",
+				"text": "开发者"
+			},
+			{
+				"pagePath": "pages/me/index",
+				"iconPath": "static/img/tabbar/me.png",
+				"selectedIconPath": "static/img/tabbar/meactive.png",
+				"text": "我的"
+			}
+		]
+	}
+}

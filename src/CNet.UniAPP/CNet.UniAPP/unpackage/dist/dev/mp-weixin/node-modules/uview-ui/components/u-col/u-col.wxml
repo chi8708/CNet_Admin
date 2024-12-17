@@ -1,0 +1,1 @@
+<view data-ref="u-col" data-event-opts="{{[['tap',[['clickHandler',['$event']]]]]}}" class="{{['u-col','data-v-26dd4db9','vue-ref','u-col-'+span]}}" style="{{$root.s0}}" bindtap="__e"><slot></slot></view>

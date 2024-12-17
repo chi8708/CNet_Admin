@@ -1,0 +1,10 @@
+(global["webpackJsonp"]=global["webpackJsonp"]||[]).push([["components/city"],{"325b":function(n,t,e){"use strict";e.d(t,"b",(function(){return o})),e.d(t,"c",(function(){return c})),e.d(t,"a",(function(){return u}));var u={uPicker:function(){return Promise.all([e.e("common/vendor"),e.e("node-modules/uview-ui/components/u-picker/u-picker")]).then(e.bind(null,"bf64"))}},o=function(){var n=this,t=n.$createElement;n._self._c;n._isMounted||(n.e0=function(t){n.show=!1})},c=[]},3712:function(n,t,e){"use strict";e.r(t);var u=e("325b"),o=e("dd97");for(var c in o)["default"].indexOf(c)<0&&function(n){e.d(t,n,(function(){return o[n]}))}(c);var i=e("f0c5"),r=Object(i["a"])(o["default"],u["b"],u["c"],!1,null,null,null,!1,u["a"],void 0);t["default"]=r.exports},"8c56":function(n,t,e){"use strict";Object.defineProperty(t,"__esModule",{value:!0}),t.default=void 0;var u=e("d3f3"),o={data:function(){return{show:!1,columns:[[]],columnData:[]}},onLoad:function(){},mounted:function(){var n=this,t=u.provinces;t.forEach((function(t,e){n.columns[0].push(t.provinceName),n.columnData.push(t.citys.map((function(n){return n.cityName})))}))},watch:{},methods:{changeHandler:function(n){var t=n.columnIndex,e=(n.value,n.values,n.index),u=n.picker,o=void 0===u?this.$refs.uPicker:u;0===t&&o.setColumnValues(1,this.columnData[e])},confirm:function(n){this.$emit("onClick",n.value[1]||n.value[0]),this.show=!1},open:function(){var n=!(arguments.length>0&&void 0!==arguments[0])||arguments[0];this.show=n},close:function(){this.show=!1}}};t.default=o},dd97:function(n,t,e){"use strict";e.r(t);var u=e("8c56"),o=e.n(u);for(var c in u)["default"].indexOf(c)<0&&function(n){e.d(t,n,(function(){return u[n]}))}(c);t["default"]=o.a}}]);
+;(global["webpackJsonp"] = global["webpackJsonp"] || []).push([
+    'components/city-create-component',
+    {
+        'components/city-create-component':(function(module, exports, __webpack_require__){
+            __webpack_require__('543d')['createComponent'](__webpack_require__("3712"))
+        })
+    },
+    [['components/city-create-component']]
+]);

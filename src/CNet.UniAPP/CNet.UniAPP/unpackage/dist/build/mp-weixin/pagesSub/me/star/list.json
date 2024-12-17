@@ -1,0 +1,10 @@
+{
+  "navigationBarTitleText": "我的收藏",
+  "enablePullDownRefresh": false,
+  "usingComponents": {
+    "z-paging-swiper": "/uni_modules/z-paging/components/z-paging-swiper/z-paging-swiper",
+    "u-tabs": "/node-modules/uview-ui/components/u-tabs/u-tabs",
+    "repo-list": "/pagesSub/me/star/repo-list",
+    "user-list": "/pagesSub/me/star/user-list"
+  }
+}

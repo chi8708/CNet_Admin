@@ -1,0 +1,15 @@
+{
+  "navigationBarTitleText": "开发者",
+  "usingComponents": {
+    "z-paging": "/uni_modules/z-paging/components/z-paging/z-paging",
+    "u-search": "/node-modules/uview-ui/components/u-search/u-search",
+    "u-picker": "/node-modules/uview-ui/components/u-picker/u-picker",
+    "u-number-box": "/node-modules/uview-ui/components/u-number-box/u-number-box",
+    "u-icon": "/node-modules/uview-ui/components/u-icon/u-icon",
+    "u--input": "/node-modules/uview-ui/components/u--input/u--input",
+    "u-popup": "/node-modules/uview-ui/components/u-popup/u-popup",
+    "list-item": "/pages/developer/list-item",
+    "lang": "/pages/repository/language",
+    "city": "/components/city"
+  }
+}
