@@ -1,0 +1,39 @@
+﻿@model CNet.CodeGen.Api.Template.TableModel
+
+//////此代码有CNetCodeGen生成， 作者：cts 生成时间：@System.DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss")
+using System;
+using Dapper.Contrib.Extensions;
+namespace @T4.Config.Namespace
+{
+     /// <summary>
+    /// @Model.TableRemark 
+    ///</summary>
+    [Table("@Model.TableName")]
+    public partial class @Model.TableName
+    {
+@foreach (var column in Model.Columns)
+{
+    <text>
+        /// <summary>
+        /// @column.Remark
+        ///</summary>
+        @if (column.IsPrimaryKey && (column.CSharpType == "int" || column.CSharpType == "long"))
+        {
+        <text>
+        [Key]
+        </text>
+        }
+        else if (column.IsPrimaryKey)
+        {
+
+        <text>
+        [ExplicitKey]
+        </text>
+        }
+
+        public @column.CSharpType @column.ColumnName { get; set; }
+    </text>
+}
+
+   }
+}
