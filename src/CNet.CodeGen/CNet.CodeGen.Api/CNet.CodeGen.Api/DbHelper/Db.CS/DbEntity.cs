@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 
 
-namespace T4
+namespace CNet.CodeGen.DB
 {
     public class Config
     {
@@ -25,10 +25,13 @@ namespace T4
 
 		//sqlite数据库连接
 		public static readonly string ConnectionString = string.Format("Data Source=E:\\Study\\DotNet\\CNet_Admin\\src\\db\\cnet.db; Pooling=true;Min Pool Size=1");
-		//命名空间
-		public static readonly string Namespace = "CNet";
+		//命名空间 必须有.分割
+		public static readonly string Namespace = "CNet.Main";
         //需要生成的表名，多张表用,分割
         public static readonly string Tables = "Pub_User";//"users,rows,titles"
+
+
+        public static string NameSpace2 => Namespace.Split(".")[1];
     }
     public class DbFactory
     {

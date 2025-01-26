@@ -6,7 +6,7 @@ using System.Data;
 using MySql.Data.MySqlClient;
 using System.Data.SqlClient;
 
-namespace T4
+namespace CNet.CodeGen.DB
 {
     //以下代码请勿修改
     public class MySqlDbHelper : BaseDbHelper

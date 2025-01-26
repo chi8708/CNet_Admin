@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Microsoft.Extensions.Configuration;
 
-namespace CNet
+namespace CNet.CodeGen.DB
 {
     public enum DBType
     {

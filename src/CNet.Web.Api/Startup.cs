@@ -176,7 +176,7 @@ namespace CNet.Web.Api
             //批量依赖注入
             //var assembiles = Zack.Commons.ReflectionHelper.GetAllReferencedAssemblies();
             //assembiles = assembiles.Where(p => p.FullName.StartsWith("CNet"));
-            services.RunModuleInitializers(assembiles);
+            //services.RunModuleInitializers(assembiles);
         }
 
         private static void SwaggerConfig(IServiceCollection services)

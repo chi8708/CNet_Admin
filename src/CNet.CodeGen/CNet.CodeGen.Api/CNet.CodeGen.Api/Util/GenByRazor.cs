@@ -43,7 +43,7 @@ namespace CNet.CodeGen.Api.Util
         /// <param name="templatePath"></param>
         /// <param name="saveDir"></param>
         /// <returns></returns>
-        public static (bool, string) CompileModel(string tableName, string saveDir="", string templatePath= "./Template/Model/Entity.cshtml")
+        public static (bool, string) CompileModel(string tableName, string saveDir="", string templatePath= "./Code/Model/1Entity.cshtml")
         {
             var dbHeplper= GetDbHelper();
             var columns = dbHeplper.GetDbColumns(tableName);
@@ -53,7 +53,28 @@ namespace CNet.CodeGen.Api.Util
                 Columns = columns
             };
             string rootPath = Directory.GetCurrentDirectory();
-            var savePath = Path.Combine(rootPath, $"Template/Model/{tableName}.cs");
+            var savePath = Path.Combine(rootPath, $"Code/Model/{DB.Config.NameSpace2}/{tableName}.cs");
+            return Compile(templatePath, savePath, model).Result;
+
+        }
+
+        /// <summary>
+        /// 生成实体BLL层代码
+        /// </summary>
+        /// <param name="tableName"></param>
+        /// <param name="templatePath"></param>
+        /// <param name="saveDir"></param>
+        /// <returns></returns>
+        public static (bool, string) CompileBLL(string tableName, string saveDir = "", string templatePath = "./Code/BLL/1Service.cshtml")
+        {
+            var dbHeplper = GetDbHelper();
+            var model = new TableModel
+            {
+                TableName = tableName,
+                Columns = null
+            };
+            string rootPath = Directory.GetCurrentDirectory();
+            var savePath = Path.Combine(rootPath, $"Code/BLL/{DB.Config.NameSpace2}/{tableName}.cs");
             return Compile(templatePath, savePath, model).Result;
 
         }

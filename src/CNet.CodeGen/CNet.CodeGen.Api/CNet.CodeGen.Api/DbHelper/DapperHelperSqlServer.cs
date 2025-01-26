@@ -7,7 +7,7 @@ using Dapper;
 using System.Data;
 using Microsoft.Extensions.Configuration;
 
-namespace CNet
+namespace CNet.CodeGen.DB
 {
     public  class DapperHelperSqlServer: IDapperHelper
     {

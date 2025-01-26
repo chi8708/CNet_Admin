@@ -8,7 +8,7 @@ using Microsoft.Extensions.Configuration;
 using System.Data;
 using System.Data.SQLite;
 
-namespace CNet
+namespace CNet.CodeGen.DB
 {
     public  class DapperHelperSQLite: IDapperHelper
     {

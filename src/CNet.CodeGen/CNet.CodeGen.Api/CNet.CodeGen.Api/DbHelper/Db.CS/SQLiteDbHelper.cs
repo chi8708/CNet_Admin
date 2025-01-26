@@ -4,7 +4,7 @@ using System.Data;
 using System.Data.SQLite;
 using System.Linq;
 
-namespace T4
+namespace CNet.CodeGen.DB
 {
 	//以下代码请勿修改
 	public class SQLiteDbHelper : BaseDbHelper
