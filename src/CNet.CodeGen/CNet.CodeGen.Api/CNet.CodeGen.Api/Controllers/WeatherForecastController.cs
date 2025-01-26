@@ -2,6 +2,7 @@ using Microsoft.AspNetCore.Mvc;
 using System.IO;
 using Microsoft.AspNetCore.Razor.Language;
 using RazorLight;
+using CNet.CodeGen.Api.Util;
 
 
 namespace CNet.CodeGen.Api.Controllers
