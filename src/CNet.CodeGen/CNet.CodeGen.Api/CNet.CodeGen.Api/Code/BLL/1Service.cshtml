@@ -1,0 +1,12 @@
+﻿@model CNet.CodeGen.Api.Template.TableModel
+@using CNet.CodeGen.DB;
+
+//////此代码有CNetCodeGen生成， 作者：cts 生成时间：@System.DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss")
+using @Config.Namespace@(".Model;")
+using @Config.Namespace@(".DAL;")
+namespace @Config.Namespace@(".BLL")
+{
+    public partial class @(Model.TableName)BLL:Service@(Config.Namespace.Split(".")[1])<@Config.Namespace@(".Model").@Model.TableName>
+    {
+    }
+}
