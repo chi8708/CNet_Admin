@@ -10,7 +10,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Options;
 using Microsoft.IdentityModel.Tokens;
-using CNet.Main.BLL;
+using CNet.BLL.Main;
 using CNet.Common;
 using System.Security.Cryptography;
 

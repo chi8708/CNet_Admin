@@ -51,13 +51,13 @@
             <param name="id"></param>
             <returns></returns>
         </member>
-        <member name="M:CNet.Web.Api.Controllers.PubDeptController.Add(CNet.Main.Model.Pub_Department)">
+        <member name="M:CNet.Web.Api.Controllers.PubDeptController.Add(CNet.Model.Main.Pub_Department)">
             <summary>
             添加
             </summary>
             <returns></returns>
         </member>
-        <member name="M:CNet.Web.Api.Controllers.PubDeptController.Edit(CNet.Main.Model.Pub_Department)">
+        <member name="M:CNet.Web.Api.Controllers.PubDeptController.Edit(CNet.Model.Main.Pub_Department)">
             <summary>
             编辑
             </summary>
@@ -76,13 +76,13 @@
             <param name="id"></param>
             <returns></returns>
         </member>
-        <member name="M:CNet.Web.Api.Controllers.PubFunctionController.Add(CNet.Main.Model.Pub_Function)">
+        <member name="M:CNet.Web.Api.Controllers.PubFunctionController.Add(CNet.Model.Main.Pub_Function)">
             <summary>
             添加
             </summary>
             <returns></returns>
         </member>
-        <member name="M:CNet.Web.Api.Controllers.PubFunctionController.Edit(CNet.Main.Model.Pub_Function)">
+        <member name="M:CNet.Web.Api.Controllers.PubFunctionController.Edit(CNet.Model.Main.Pub_Function)">
             <summary>
             编辑
             </summary>
@@ -100,14 +100,14 @@
             </summary>
             <returns></returns>
         </member>
-        <member name="M:CNet.Web.Api.Controllers.PubFunctionController.GetMenuItem(CNet.Main.Model.Pub_Function)">
+        <member name="M:CNet.Web.Api.Controllers.PubFunctionController.GetMenuItem(CNet.Model.Main.Pub_Function)">
             <summary>
             菜单明细项
             </summary>
             <param name="item"></param>
             <returns></returns>
         </member>
-        <member name="M:CNet.Web.Api.Controllers.PubFunctionController.GetMenuChild(System.Collections.Generic.List{CNet.Main.Model.Pub_Function},System.String)">
+        <member name="M:CNet.Web.Api.Controllers.PubFunctionController.GetMenuChild(System.Collections.Generic.List{CNet.Model.Main.Pub_Function},System.String)">
             <summary>
             菜单子项
             </summary>
@@ -156,13 +156,13 @@
             </summary>
             <returns></returns>
         </member>
-        <member name="M:CNet.Web.Api.Controllers.PubRoleController.Add(CNet.Main.Model.Pub_Role)">
+        <member name="M:CNet.Web.Api.Controllers.PubRoleController.Add(CNet.Model.Main.Pub_Role)">
             <summary>
             添加角色
             </summary>
             <returns></returns>
         </member>
-        <member name="M:CNet.Web.Api.Controllers.PubRoleController.Edit(CNet.Main.Model.Pub_Role)">
+        <member name="M:CNet.Web.Api.Controllers.PubRoleController.Edit(CNet.Model.Main.Pub_Role)">
             <summary>
             编辑角色
             </summary>
@@ -192,13 +192,13 @@
             </summary>
             <returns></returns>
         </member>
-        <member name="M:CNet.Web.Api.Controllers.PubUserController.Add(CNet.Main.Model.V_Pubuser_Dept)">
+        <member name="M:CNet.Web.Api.Controllers.PubUserController.Add(CNet.Model.Main.V_Pubuser_Dept)">
             <summary>
             添加用户
             </summary>
             <returns></returns>
         </member>
-        <member name="M:CNet.Web.Api.Controllers.PubUserController.Edit(CNet.Main.Model.V_Pubuser_Dept)">
+        <member name="M:CNet.Web.Api.Controllers.PubUserController.Edit(CNet.Model.Main.V_Pubuser_Dept)">
             <summary>
             编辑用户
             </summary>
@@ -290,13 +290,13 @@
             </summary>
             <returns></returns>
         </member>
-        <member name="M:CNet.Web.Api.Controllers.WikiMainController.Add(CNet.Main.Model.Wiki_Main)">
+        <member name="M:CNet.Web.Api.Controllers.WikiMainController.Add(CNet.Model.Main.Wiki_Main)">
             <summary>
             添加内容
             </summary>
             <returns></returns>
         </member>
-        <member name="M:CNet.Web.Api.Controllers.WikiMainController.Edit(CNet.Main.Model.Wiki_Main)">
+        <member name="M:CNet.Web.Api.Controllers.WikiMainController.Edit(CNet.Model.Main.Wiki_Main)">
             <summary>
             编辑内容
             </summary>
@@ -322,13 +322,13 @@
             <param name="filePath"></param>
             <returns></returns>
         </member>
-        <member name="M:CNet.Web.Api.Controllers.WikiSortController.Add(CNet.Main.Model.Wiki_Sort)">
+        <member name="M:CNet.Web.Api.Controllers.WikiSortController.Add(CNet.Model.Main.Wiki_Sort)">
             <summary>
             添加
             </summary>
             <returns></returns>
         </member>
-        <member name="M:CNet.Web.Api.Controllers.WikiSortController.Edit(CNet.Main.Model.Wiki_Sort)">
+        <member name="M:CNet.Web.Api.Controllers.WikiSortController.Edit(CNet.Model.Main.Wiki_Sort)">
             <summary>
             编辑
             </summary>

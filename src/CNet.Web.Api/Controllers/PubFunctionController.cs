@@ -2,8 +2,8 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using CNet.Main.BLL;
-using CNet.Main.Model;
+using CNet.BLL.Main;
+using CNet.Model.Main;
 using CNet.Model;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;

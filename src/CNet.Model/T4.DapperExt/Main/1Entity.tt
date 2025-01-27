@@ -27,7 +27,7 @@ foreach(DbTable dbTable in dtList)
 using System;
 using Dapper.Contrib.Extensions;
 
-namespace <#=Config.Namespace#>.Model
+namespace <#=Config.Namespace1#>.Model.<#=Config.Namespace2#>
 {	
    
    [Table("<#=tableName#>")]

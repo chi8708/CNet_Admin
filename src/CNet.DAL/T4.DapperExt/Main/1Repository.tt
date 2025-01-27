@@ -29,9 +29,9 @@ foreach(DbTable dbTable in dtList)
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-using <#=Config.Namespace#>.Model;
+using <#=Config.Namespace1#>.Model.<#=Config.Namespace2#>;
 
-namespace <#=Config.Namespace#>.DAL
+namespace <#=Config.Namespace1#>.DAL.<#=Config.Namespace2#>
 {	
 	public partial class <#=tableName+"DAL"#>:RepositoryMain<<#=tableName#>>
     { 

@@ -30,12 +30,12 @@ foreach(DbTable dbTable in dtList)
 //------------------------------------------------------------------------------
 
 
-using <#=Config.Namespace#>.Model;
-using <#=Config.Namespace#>.DAL;
+using <#=Config.Namespace1#>.Model.<#=Config.Namespace2#>;
+using <#=Config.Namespace1#>.DAL.<#=Config.Namespace2#>;
 
-namespace <#=Config.Namespace#>.BLL
+namespace <#=Config.Namespace1#>.BLL.<#=Config.Namespace2#>
 {	
-	public partial class <#=tableName#>BLL:ServiceMain<Model.<#=tableName#>>
+	public partial class <#=tableName#>BLL:ServiceMain<<#=tableName#>>
     {
      
 

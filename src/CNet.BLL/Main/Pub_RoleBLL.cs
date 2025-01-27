@@ -1,12 +1,12 @@
-﻿using CNet.Main.DAL;
-using CNet.Main.Model;
+﻿using CNet.DAL.Main;
+using CNet.Model.Main;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace CNet.Main.BLL
+namespace CNet.BLL.Main
 {
 
     public partial class Pub_RoleBLL

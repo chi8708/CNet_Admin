@@ -1,4 +1,4 @@
-﻿using CNet.Main.Model;
+﻿using CNet.Model.Main;
 using NPOI.SS.Formula.Functions;
 using NPOI.Util;
 using StackExchange.Redis;
@@ -8,7 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace CNet.Main.DAL
+namespace CNet.DAL.Main
 {
     public partial class  Pub_FunctionDAL
 	{

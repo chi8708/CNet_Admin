@@ -9,12 +9,12 @@
 //------------------------------------------------------------------------------
 
 
-using CNet.Main.Model;
-using CNet.Main.DAL;
+using CNet.Model.Main;
+using CNet.DAL.Main;
 
-namespace CNet.Main.BLL
+namespace CNet.BLL.Main
 {	
-	public partial class V_Wiki_Main_SortBLL:ServiceMain<Model.V_Wiki_Main_Sort>
+	public partial class V_Wiki_Main_SortBLL:ServiceMain<V_Wiki_Main_Sort>
     {
      
 

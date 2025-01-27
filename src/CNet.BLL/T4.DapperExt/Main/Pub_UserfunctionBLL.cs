@@ -9,12 +9,12 @@
 //------------------------------------------------------------------------------
 
 
-using CNet.Main.Model;
-using CNet.Main.DAL;
+using CNet.Model.Main;
+using CNet.DAL.Main;
 
-namespace CNet.Main.BLL
+namespace CNet.BLL.Main
 {	
-	public partial class Pub_UserfunctionBLL:ServiceMain<Model.Pub_Userfunction>
+	public partial class Pub_UserfunctionBLL:ServiceMain<Model.Main.Pub_Userfunction>
     {
      
 

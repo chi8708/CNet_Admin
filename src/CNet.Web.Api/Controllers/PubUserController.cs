@@ -8,8 +8,8 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using CNet.Web.Api.Model.Request;
-using CNet.Main.Model;
-using CNet.Main.BLL;
+using CNet.Model.Main;
+using CNet.BLL.Main;
 using CNet.Model;
 
 namespace CNet.Web.Api.Controllers

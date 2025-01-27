@@ -11,7 +11,7 @@
 using System;
 using Dapper.Contrib.Extensions;
 
-namespace CNet.Main.Model
+namespace CNet.Model.Main
 {	
    
    [Table("Pub_Department")]

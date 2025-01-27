@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace CNet.Main.DAL
+namespace CNet.DAL.Main
 {
     public partial class Pub_UserDAL
     {

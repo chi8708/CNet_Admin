@@ -5,7 +5,7 @@ using Microsoft.AspNetCore.Mvc;
 using System.Collections.Generic;
 using System.IO;
 using System;
-using CNet.Main.Model;
+using CNet.Model.Main;
 using System.Threading.Tasks;
 using System.Net;
 using ZstdSharp.Unsafe;

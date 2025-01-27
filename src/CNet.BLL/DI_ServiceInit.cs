@@ -1,4 +1,4 @@
-﻿using CNet.Main.BLL;
+﻿using CNet.BLL.Main;
 using Microsoft.Extensions.DependencyInjection;
 using Zack.Commons;
 

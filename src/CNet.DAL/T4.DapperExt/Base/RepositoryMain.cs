@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace CNet.Main.DAL
+namespace CNet.DAL.Main
 {
 	public class RepositoryMain<T> : BaseDataDapperContribMySql<T> where T : class, new()
 	{

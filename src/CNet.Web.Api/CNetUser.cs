@@ -1,5 +1,5 @@
-﻿using CNet.Main.BLL;
-using CNet.Main.Model;
+﻿using CNet.BLL.Main;
+using CNet.Model.Main;
 using System;
 using System.Collections.Generic;
 using System.Linq;

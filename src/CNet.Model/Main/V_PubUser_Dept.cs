@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace CNet.Main.Model
+namespace CNet.Model.Main
 {
     public partial class V_Pubuser_Dept 
     {

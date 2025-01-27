@@ -9,12 +9,12 @@
 //------------------------------------------------------------------------------
 
 
-using CNet.Main.Model;
-using CNet.Main.DAL;
+using CNet.Model.Main;
+using CNet.DAL.Main;
 
-namespace CNet.Main.BLL
+namespace CNet.BLL.Main
 {	
-	public partial class V_Pubfunction_ParentBLL:ServiceMain<Model.V_Pubfunction_Parent>
+	public partial class V_Pubfunction_ParentBLL:ServiceMain<V_Pubfunction_Parent>
     {
      
 
