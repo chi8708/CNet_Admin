@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace CNet.CodeGen.DB
+namespace CNet
 {
 	public class Connection
 	{

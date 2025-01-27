@@ -1,6 +1,5 @@
 ﻿using CNet.CodeGen.Api.Template;
 using Microsoft.AspNetCore.Mvc;
-using T4;
 
 namespace CNet.CodeGen.Api.Controllers
 {

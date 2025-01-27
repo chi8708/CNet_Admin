@@ -31,6 +31,22 @@ namespace CNet.Web.Api.Controllers
         }
 
         /// <summary>
+        /// 获取详细
+        /// </summary>
+        /// <returns></returns>
+        [Route("Get/{id}")]
+        [HttpPost]
+        public DataRes<Pub_Role> Get(dynamic id)
+        {
+            DataRes<Pub_Role> res = new DataRes<Pub_Role>() { code = ResCode.Success, data = null };
+
+            var model = bll.Get(id);
+            res.data = model;
+
+            return res;
+        }
+
+        /// <summary>
         /// 获取角色分页
         /// </summary>
         /// <returns></returns>

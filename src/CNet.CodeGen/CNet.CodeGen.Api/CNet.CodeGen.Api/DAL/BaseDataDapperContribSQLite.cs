@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Web;
 using Dapper;
 //using DapperExtensions;
 using Dapper.Contrib;
@@ -9,15 +8,15 @@ using Dapper.Contrib.Extensions;
 using System.Data.SqlClient;
 using System.Text;
 using System.Data;
-using T4;
 using CNet.Model;
+using System.Data.SQLite;
 
 namespace CNet.DAL
 {
-    public partial class BaseDataDapperContribSqlServer<T> : IBaseData<T> where T : class ,new()
+    public partial class BaseDataDapperContribSQLite<T> : IBaseData<T> where T : class ,new()
     {
 		
-		public BaseDataDapperContribSqlServer(string connStr)
+		public BaseDataDapperContribSQLite(string connStr)
 		{
 			this.ConnStr = connStr;
 		}
@@ -30,7 +29,7 @@ namespace CNet.DAL
 		public  long Insert(T model)
         {
             dynamic r = null;
-            using (SqlConnection cn = new SqlConnection(this.ConnStr))
+            using (SQLiteConnection cn = new SQLiteConnection(this.ConnStr))
             {
                 cn.Open();
                 r = cn.Insert(model);
@@ -49,7 +48,7 @@ namespace CNet.DAL
         {
             try
             {
-                using (SqlConnection cn = new SqlConnection(this.ConnStr))
+                using (SQLiteConnection cn = new SQLiteConnection(this.ConnStr))
                 {
                     cn.Open();
                     foreach (var model in models)
@@ -78,10 +77,10 @@ namespace CNet.DAL
         public  bool Update(T model)
         {
             dynamic r = null;
-            using (SqlConnection cn = new SqlConnection(this.ConnStr))
+            using (SQLiteConnection cn = new SQLiteConnection(this.ConnStr))
             {
                 cn.Open();
-                r = cn.Update(model);
+                r = cn.Update<T>(model);
                 cn.Close();
             }
 
@@ -97,12 +96,12 @@ namespace CNet.DAL
         {
             try
             {
-                using (SqlConnection cn = new SqlConnection(this.ConnStr))
+                using (SQLiteConnection cn = new SQLiteConnection(this.ConnStr))
                 {
                     cn.Open();
                     foreach (var model in models)
                     {
-                        cn.Update(model);
+                        cn.Update<T>(model);
                     }
                     cn.Close();
                 }
@@ -125,7 +124,7 @@ namespace CNet.DAL
         public  dynamic Delete(T model)
         {
             dynamic r = null;
-            using (SqlConnection cn = new SqlConnection(this.ConnStr))
+            using (SQLiteConnection cn = new SQLiteConnection(this.ConnStr))
             {
                 cn.Open();
                 r = cn.Delete(model);
@@ -152,7 +151,7 @@ namespace CNet.DAL
                 }
 
                 sql.AppendFormat(" where {0} ", where);
-                using (SqlConnection cn = new SqlConnection(this.ConnStr))
+                using (SQLiteConnection cn = new SQLiteConnection(this.ConnStr))
                 {
                     cn.Execute(sql.ToString(), param);
                     return true;
@@ -173,7 +172,7 @@ namespace CNet.DAL
         {
             try
             {
-                using (SqlConnection cn = new SqlConnection(this.ConnStr))
+                using (SQLiteConnection cn = new SQLiteConnection(this.ConnStr))
                 {
                     cn.Open();
                     foreach (var model in models)
@@ -201,7 +200,7 @@ namespace CNet.DAL
         public  T Get(object id)
         {
             T t = default(T); //默认只对int guid主键有作用除非使用ClassMapper
-            using (SqlConnection cn = new SqlConnection(this.ConnStr))
+            using (SQLiteConnection cn = new SQLiteConnection(this.ConnStr))
             {
                 cn.Open();
                 t = cn.Get<T>(id);
@@ -220,9 +219,9 @@ namespace CNet.DAL
         public  T Get(object id, string keyName)
         {
             var tableName = typeof(T).Name;
-            StringBuilder sql = new StringBuilder().AppendFormat("SELECT  TOP 1 * FROM {0} WHERE {1}=@id ", tableName, keyName);
+            StringBuilder sql = new StringBuilder().AppendFormat("SELECT  * FROM {0} WHERE {1}=@id Limit 1 ", tableName, keyName);
             var pms = new { id = id };
-            using (SqlConnection cn = new SqlConnection(this.ConnStr))
+            using (SQLiteConnection cn = new SQLiteConnection(this.ConnStr))
             {
                 return cn.Query<T>(sql.ToString(), pms).FirstOrDefault();
             }
@@ -240,7 +239,7 @@ namespace CNet.DAL
         public  List<T> GetList(string where, string sort = null, int limits = -1, string fileds = " * ")
         {
             var tableName = typeof(T).Name;
-            StringBuilder sql = new StringBuilder().AppendFormat("SELECT " + (limits > 0 ? (" TOP " + limits) : " ") + fileds + "  FROM {0} ",
+            StringBuilder sql = new StringBuilder().AppendFormat("SELECT "  + fileds + "  FROM {0}  ",
                 tableName);
             if (!string.IsNullOrEmpty(where))
             {
@@ -250,8 +249,12 @@ namespace CNet.DAL
             {
                 sql.AppendFormat(" order by {0} ", sort);
             }
+			if (limits > 0)
+			{
+				sql.AppendFormat($" limit {limits} ");
+			}
 
-            using (SqlConnection cn = new SqlConnection(this.ConnStr))
+			using (SQLiteConnection cn = new SQLiteConnection(this.ConnStr))
             {
                 return cn.Query<T>(sql.ToString()).ToList();
             }
@@ -274,28 +277,21 @@ namespace CNet.DAL
         public  PageDateRes<T> GetPage(string where, string sort, int page, int resultsPerPage, string fields = "*", Type result = null)
         {
             var tableName = typeof(T).Name;
-            var p = new DynamicParameters();
-            p.Add("@TableName", tableName);
-            p.Add("@Fields", fields);
-            p.Add("@OrderField", sort);
-            p.Add("@sqlWhere", where);
-            p.Add("@pageSize", resultsPerPage);
-            p.Add("@pageIndex", page);
-            p.Add("@TotalPage", 0, direction: ParameterDirection.Output);
-            p.Add("@Totalrow", 0, direction: ParameterDirection.Output);
+            string sqlCount = @$" select count(1) from {tableName} where {where}";
+            string sqlPager = @$" select  * from {tableName}  where {where} ORDER BY {sort} LIMIT {page-1}*{resultsPerPage},{resultsPerPage}";
 
-            using (SqlConnection cn = new SqlConnection(this.ConnStr))
+
+			using (SQLiteConnection cn = new SQLiteConnection(this.ConnStr))
             {
 
-                var data = cn.Query<T>("P_ZGrid_PagingLarge", p, commandType: CommandType.StoredProcedure, commandTimeout: 120);
-                int totalPage = p.Get<int>("@TotalPage");
-                int totalrow = p.Get<int>("@Totalrow");
+                int totalrow =Convert.ToInt32(cn.ExecuteScalar(sqlCount));
+                var data = cn.Query<T>(sqlPager); ;
 
                 var rep = new PageDateRes<T>()
                 {
                     code =ResCode.Success,
                     count = totalrow,
-                    totalPage = totalPage,
+                    totalPage = (int)Math.Ceiling(totalrow/Convert.ToDouble(resultsPerPage)),
                     data = data.ToList(),
                     pageNum = page,
                     pageSize = resultsPerPage
@@ -322,7 +318,7 @@ namespace CNet.DAL
 
             sql += " where " + where;
 
-            return new DapperHelperSqlServer(this.ConnStr).Excute(sql) > 0;
+            return new DapperHelperSQLite(this.ConnStr).Excute(sql) > 0;
         }
 	}
 }

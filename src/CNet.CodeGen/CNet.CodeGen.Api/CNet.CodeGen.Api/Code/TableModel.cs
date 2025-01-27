@@ -1,5 +1,4 @@
-﻿using T4;
-namespace CNet.CodeGen.Api.Template
+﻿namespace CNet.CodeGen.Api.Template
 {
     public class TableModel
     {

@@ -5,7 +5,7 @@ using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 
-namespace CNet.CodeGen.DB
+namespace CNet
 {
     //以下代码请勿修改
     public class MsSqlDbHelper : BaseDbHelper

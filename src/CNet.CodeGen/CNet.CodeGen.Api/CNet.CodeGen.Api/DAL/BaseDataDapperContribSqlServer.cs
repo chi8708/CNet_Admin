@@ -9,7 +9,6 @@ using Dapper.Contrib.Extensions;
 using System.Data.SqlClient;
 using System.Text;
 using System.Data;
-using T4;
 using CNet.Model;
 
 namespace CNet.DAL

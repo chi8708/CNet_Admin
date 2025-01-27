@@ -150,6 +150,12 @@
             权限列表
             </summary>
         </member>
+        <member name="M:CNet.Web.Api.Controllers.PubRoleController.Get(System.Object)">
+            <summary>
+            获取详细
+            </summary>
+            <returns></returns>
+        </member>
         <member name="M:CNet.Web.Api.Controllers.PubRoleController.GetPage(CNet.Web.Api.Model.Request.PageDataReq)">
             <summary>
             获取角色分页

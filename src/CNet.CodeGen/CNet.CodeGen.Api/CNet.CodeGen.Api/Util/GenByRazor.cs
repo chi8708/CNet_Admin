@@ -1,6 +1,5 @@
 ﻿using CNet.CodeGen.Api.Template;
 using RazorLight;
-using T4;
 
 namespace CNet.CodeGen.Api.Util
 {
@@ -37,7 +36,7 @@ namespace CNet.CodeGen.Api.Util
         }
 
         /// <summary>
-        /// 生成实体Model层代码
+        /// 生成Model层代码
         /// </summary>
         /// <param name="tableName"></param>
         /// <param name="templatePath"></param>
@@ -53,13 +52,13 @@ namespace CNet.CodeGen.Api.Util
                 Columns = columns
             };
             string rootPath = Directory.GetCurrentDirectory();
-            var savePath = Path.Combine(rootPath, $"Code/Model/{DB.Config.NameSpace2}/{tableName}.cs");
+            var savePath = Path.Combine(rootPath, $"Code/Model/{Config.Namespace2}/{tableName}.cs");
             return Compile(templatePath, savePath, model).Result;
 
         }
 
         /// <summary>
-        /// 生成实体BLL层代码
+        /// 生成BLL层代码
         /// </summary>
         /// <param name="tableName"></param>
         /// <param name="templatePath"></param>
@@ -74,7 +73,28 @@ namespace CNet.CodeGen.Api.Util
                 Columns = null
             };
             string rootPath = Directory.GetCurrentDirectory();
-            var savePath = Path.Combine(rootPath, $"Code/BLL/{DB.Config.NameSpace2}/{tableName}.cs");
+            var savePath = Path.Combine(rootPath, $"Code/BLL/{Config.Namespace2}/{tableName}.cs");
+            return Compile(templatePath, savePath, model).Result;
+
+        }
+
+        /// <summary>
+        /// 生成Controllers层代码
+        /// </summary>
+        /// <param name="tableName"></param>
+        /// <param name="templatePath"></param>
+        /// <param name="saveDir"></param>
+        /// <returns></returns>
+        public static (bool, string) CompileAdminController(string tableName, string saveDir = "", string templatePath = "./Code/AdminController/1Controller.cshtml")
+        {
+            var dbHeplper = GetDbHelper();
+            var model = new TableModel
+            {
+                TableName = tableName,
+                Columns = null
+            };
+            string rootPath = Directory.GetCurrentDirectory();
+            var savePath = Path.Combine(rootPath, $"Code/AdminController/{tableName}Controller.cs");
             return Compile(templatePath, savePath, model).Result;
 
         }

@@ -8,7 +8,7 @@ using Microsoft.Extensions.Configuration;
 using System.Data;
 using MySql.Data.MySqlClient;
 
-namespace CNet.CodeGen.DB
+namespace CNet
 {
     public  class DapperHelperMySql: IDapperHelper
     {

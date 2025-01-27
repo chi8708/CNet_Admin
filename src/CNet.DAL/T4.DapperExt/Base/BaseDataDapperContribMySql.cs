@@ -304,8 +304,8 @@ namespace CNet.DAL
                     count = totalrow,
                     totalPage = totalrow%resultsPerPage==0 ? totalrow/ resultsPerPage: totalrow / resultsPerPage+1,
                     data = data.ToList(),
-                    PageNum = page,
-                    PageSize = resultsPerPage
+                    pageNum = page,
+                    pageSize = resultsPerPage
                 };
 
                 return rep;
