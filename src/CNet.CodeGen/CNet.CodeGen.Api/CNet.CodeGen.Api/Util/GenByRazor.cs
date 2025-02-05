@@ -1,5 +1,8 @@
-﻿using CNet.CodeGen.Api.Template;
+﻿using CNet.BLL.Main;
+using CNet.CodeGen.Api.Template;
+using CNet.Model.Main;
 using RazorLight;
+using System.Collections.Generic;
 
 namespace CNet.CodeGen.Api.Util
 {
@@ -98,6 +101,230 @@ namespace CNet.CodeGen.Api.Util
             return Compile(templatePath, savePath, model).Result;
 
         }
+
+
+        /// <summary>
+        /// 生成UI代码
+        /// </summary>
+        /// <param name="tableName"></param>
+        /// <param name="templatePath"></param>
+        /// <param name="saveDir"></param>
+        /// <returns></returns>
+        public static (bool, string) CompileAdminUI(string tableName)
+        {
+            var functionCode = CompileUI_InsertFunction(tableName).Item2;
+            //根据模板生成代码
+            CompileAdminUI_access(tableName, functionCode);
+            CompileAdminUI_api(tableName, functionCode);
+            CompileAdminUI_view(tableName, functionCode);
+
+            return (true, functionCode);
+
+        }
+
+        /// <summary>
+        /// 生成UI代码_access
+        /// </summary>
+        /// <param name="tableName"></param>
+        /// <param name="templatePath"></param>
+        /// <param name="saveDir"></param>
+        /// <returns></returns>
+        public static (bool, string) CompileAdminUI_access(string tableName,string functionCode , string saveDir = "", string templatePath = "./Code/AdminUI/1access.cshtml")
+        {
+
+            var dbHeplper = GetDbHelper();
+            var model = new TableModel
+            {
+                TableName = tableName,
+                Columns = null,
+                RootFunction = functionCode
+            };
+            string rootPath = Directory.GetCurrentDirectory();
+            var savePath = Path.Combine(rootPath, $"Code/AdminUI/access/{tableName}.js");
+            return Compile(templatePath, savePath, model).Result;
+        }
+
+        /// <summary>
+        /// 生成UI代码_api
+        /// </summary>
+        /// <param name="tableName"></param>
+        /// <param name="templatePath"></param>
+        /// <param name="saveDir"></param>
+        /// <returns></returns>
+        public static (bool, string) CompileAdminUI_api(string tableName, string functionCode, string saveDir = "", string templatePath = "./Code/AdminUI/1api.cshtml")
+        {
+
+            var dbHeplper = GetDbHelper();
+            var model = new TableModel
+            {
+                TableName = tableName,
+                Columns = null,
+                RootFunction = functionCode
+            };
+            string rootPath = Directory.GetCurrentDirectory();
+            var savePath = Path.Combine(rootPath, $"Code/AdminUI/api/{tableName}.js");
+            return Compile(templatePath, savePath, model).Result;
+        }
+
+
+        /// <summary>
+        /// 生成UI代码_view
+        /// </summary>
+        /// <param name="tableName"></param>
+        /// <param name="templatePath"></param>
+        /// <param name="saveDir"></param>
+        /// <returns></returns>
+        public static (bool, string) CompileAdminUI_view(string tableName, string functionCode)
+        {
+
+            var resultList= CompileAdminUI_view_List(tableName, functionCode);
+            var resultEdit = CompileAdminUI_view_Edit(tableName, functionCode);
+
+            return resultList;
+        }
+
+
+        /// <summary>
+        /// 生成UI代码_view_List
+        /// </summary>
+        /// <param name="tableName"></param>
+        /// <param name="templatePath"></param>
+        /// <param name="saveDir"></param>
+        /// <returns></returns>
+        public static (bool, string) CompileAdminUI_view_List(string tableName, string functionCode, string saveDir = "", string templatePath = "./Code/AdminUI/1viewList.cshtml")
+        {
+
+            var dbHeplper = GetDbHelper();
+            var columns = dbHeplper.GetDbColumns(tableName);
+            var model = new TableModel
+            {
+                TableName = tableName,
+                Columns = columns,
+                RootFunction = functionCode
+            };
+            string rootPath = Directory.GetCurrentDirectory();
+            var saveDirPath = Path.Combine(rootPath, $"Code/AdminUI/view/{tableName}");
+            if (!Directory.Exists(saveDirPath))
+            {
+                Directory.CreateDirectory(saveDirPath);
+            }
+            var savePath = Path.Combine(rootPath, $"{saveDirPath}/List.vue");
+            return Compile(templatePath, savePath, model).Result;
+        }
+
+        /// <summary>
+        /// 生成UI代码_view_List
+        /// </summary>
+        /// <param name="tableName"></param>
+        /// <param name="templatePath"></param>
+        /// <param name="saveDir"></param>
+        /// <returns></returns>
+        public static (bool, string) CompileAdminUI_view_Edit(string tableName, string functionCode, string saveDir = "", string templatePath = "./Code/AdminUI/1viewEdit.cshtml")
+        {
+
+            var dbHeplper = GetDbHelper();
+            var columns = dbHeplper.GetDbColumns(tableName);
+            var model = new TableModel
+            {
+                TableName = tableName,
+                Columns = columns,
+                RootFunction = functionCode
+            };
+            string rootPath = Directory.GetCurrentDirectory();
+            var saveDirPath = Path.Combine(rootPath, $"Code/AdminUI/view/{tableName}");
+            if (!Directory.Exists(saveDirPath))
+            {
+                Directory.CreateDirectory(saveDirPath);
+            }
+            var savePath = Path.Combine(rootPath, $"{saveDirPath}/Edit.vue");
+            return Compile(templatePath, savePath, model).Result;
+        }
+
+        /// <summary>
+        /// 插入权限表
+        /// </summary>
+        /// <param name="tableName"></param>
+        /// <returns></returns>
+        public static (bool, string) CompileUI_InsertFunction(string tableName)
+        {
+            Pub_FunctionBLL bll = new Pub_FunctionBLL();
+
+            var list= bll.GetList($"FunctionEnglish='{tableName}'");
+            if (list.Count>0)
+            {
+                return (false, list[0].FunctionCode);
+            }
+            //根权限
+            Pub_Function rootModel = new Pub_Function();
+            rootModel.ParentCode = "FC002";
+            rootModel.FunctionCode = bll.GetCode(rootModel.ParentCode);
+            rootModel.FunctionChina = tableName;
+            rootModel.FunctionEnglish  = tableName;
+            rootModel.editdate = DateTime.Now;
+            rootModel.editor = string.Format("000000-系统自动");
+            rootModel.StopFlag = false;
+            rootModel.MenuIcon = "ios - people";
+            rootModel.sortidx = 99;
+            rootModel.MenuFlag = true;
+            rootModel.URLString = $"view/{tableName}/List.vue";
+            rootModel.RouterPath = tableName;
+
+
+            //查询
+            Pub_Function listModel = new Pub_Function();
+            listModel.ParentCode = rootModel.FunctionCode;
+            listModel.FunctionCode = rootModel.FunctionCode+"001";
+            listModel.FunctionChina ="查询";
+            listModel.FunctionEnglish = tableName+"_List";
+            listModel.editdate = DateTime.Now;
+            listModel.editor = string.Format("000000-系统自动");
+            listModel.StopFlag = false;
+            listModel.sortidx = 99;
+            listModel.MenuFlag = false;
+
+            //新增
+            Pub_Function addModel = new Pub_Function();
+            addModel.ParentCode = rootModel.FunctionCode;
+            addModel.FunctionCode = rootModel.FunctionCode + "002";
+            addModel.FunctionChina = "新增";
+            addModel.FunctionEnglish = tableName + "_Add";
+            addModel.editdate = DateTime.Now;
+            addModel.editor = string.Format("000000-系统自动");
+            addModel.StopFlag = false;
+            addModel.sortidx = 99;
+            addModel.MenuFlag = false;
+
+            //编辑
+            Pub_Function editModel = new Pub_Function();
+            editModel.ParentCode = rootModel.FunctionCode;
+            editModel.FunctionCode = rootModel.FunctionCode + "003";
+            editModel.FunctionChina = "编辑";
+            editModel.FunctionEnglish = tableName + "_Edit";
+            editModel.editdate = DateTime.Now;
+            editModel.editor = string.Format("000000-系统自动");
+            editModel.StopFlag = false;
+            editModel.sortidx = 99;
+            editModel.MenuFlag = false;
+
+            //停用
+            Pub_Function removeModel = new Pub_Function();
+            removeModel.ParentCode = rootModel.FunctionCode;
+            removeModel.FunctionCode = rootModel.FunctionCode + "004";
+            removeModel.FunctionChina = "删除";
+            removeModel.FunctionEnglish = tableName + "_Remove";
+            removeModel.editdate = DateTime.Now;
+            removeModel.editor = string.Format("000000-系统自动");
+            removeModel.StopFlag = false;
+            removeModel.sortidx = 99;
+            removeModel.MenuFlag = false;
+
+            var r= bll.InsertBatch(new List<Pub_Function>() {rootModel,listModel,addModel,editModel,removeModel });
+
+            return (r, rootModel.FunctionCode);
+
+
+        }
+
 
         private static BaseDbHelper GetDbHelper()
         {

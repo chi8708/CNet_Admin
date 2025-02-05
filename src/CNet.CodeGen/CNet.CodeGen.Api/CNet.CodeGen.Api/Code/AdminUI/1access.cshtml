@@ -1,0 +1,11 @@
+﻿@model CNet.CodeGen.Api.Template.TableModel
+@using CNet;
+
+//////此代码由CNetCodeGen生成， 作者：cts 生成时间：@System.DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss")
+export const @Model.TableName= {
+   'INFO':'@Model.RootFunction',
+   'LIST':'@(Model.RootFunction+"001")',
+   'ADD':'@(Model.RootFunction + "002")',
+   'EDIT':'@(Model.RootFunction + "003")',
+   'REMOVE':'@(Model.RootFunction + "004")'
+}

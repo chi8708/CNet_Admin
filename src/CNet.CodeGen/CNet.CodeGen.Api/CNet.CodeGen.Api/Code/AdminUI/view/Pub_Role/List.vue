@@ -1,15 +1,41 @@
 
+
+        <!-- 此代码由CNetCodeGen生成， 作者：cts 生成时间：2025-02-05 16:07:13 -->
+    
 <template>
-  <!-- <div class="content-main"> -->
+  <div class="content-main">
     <div class="search-con search-con-top">
       <Form ref="formInline" label-position="right" :label-width="60" inline>
-        <FormItem label="角色名">
-          <Input class="search-input" v-model="queryData.SL_RoleName" />
-        </FormItem>
+                  <FormItem label="">
+                            <Input class="search-input" v-model="queryData.SL_Id" />
+                  </FormItem>
+                  <FormItem label="">
+                            <Input class="search-input" v-model="queryData.SL_RoleCode" />
+                  </FormItem>
+                  <FormItem label="">
+                            <Input class="search-input" v-model="queryData.SL_RoleName" />
+                  </FormItem>
+                  <FormItem label="">
+                            <Input class="search-input" v-model="queryData.SL_Remark" />
+                  </FormItem>
+                  <FormItem label="">
+                            <Input class="search-input" v-model="queryData.SL_StopFlag" />
+                  </FormItem>
+                  <FormItem label="">
+                            <Input class="search-input" v-model="queryData.SL_Crid" />
+                  </FormItem>
+                  <FormItem label="">
+                            <Input class="search-input" v-model="queryData.SL_Crdt" />
+                  </FormItem>
+                  <FormItem label="">
+                            <Input class="search-input" v-model="queryData.SL_Lmid" />
+                  </FormItem>
+                  <FormItem label="">
+                            <Input class="search-input" v-model="queryData.SL_Lmdt" />
+                  </FormItem>
           <Button class="search-btn" type="primary" @click="setPageData(1)">
             <Icon type="search" />&nbsp;&nbsp;搜索
           </Button>
-        </FormItem>
       </Form>
     </div>
 
@@ -21,12 +47,10 @@
       </div>
       <Table ref="tables" :data="tableData1" v-bind:columns="tableColumns1" stripe>
         <template slot-scope="{ row, index }" slot="action">
-            <Button v-if="userAccess.isAuth" type="default"  size="small" icon="md-key" style="margin-right: 5px" @click="handlePermission(row)">授权</Button>
             <Button v-if="userAccess.isEdit" type="primary" size="small" icon="md-create" style="margin-right: 5px" @click="handleEdit(row)">编辑</Button>
             <Button v-if="userAccess.isMove" type="error"  size="small" icon="md-trash" @click="handleDelete(row)">删除</Button>
         </template>
       </Table>
-      <!-- <tables ref="tables" editable v-model="tableData1" :columns="tableColumns1" @on-delete="handleDelete" stripe /> -->
       <div style="margin: 10px;overflow: hidden">
         <div style="float: right;">
           <Page
@@ -54,74 +78,85 @@
     >
       <Edit ref="edit" :parent="this" :edit-row="eidtRow"></Edit>
     </Modal>
-
-      <Modal
-      title="授权"
-      :mask-closable="false"
-      v-model="modelPermission"
-      width="300"
-      scrollable
-      footer-hide
-    >
-      <Permission ref="Permission" :parent="this" :edit-row="eidtRow"></Permission>
-    </Modal>
   </div>
 </template>
 <script>
-//import Tables from '_c/tables'
-//import "@/assets/css/util.less";
 import Edit from "./Edit";
-import Permission from "./Permission";
-import { getPage, remove} from "@/api/pubRole";
-import { pubRole } from "@/access/pubRole"
+import { getPage, remove } from "@/api/Pub_Role";
+import { Pub_Role } from "@/access/Pub_Role"
 export default {
-  //  name: 'tables_page',
-  name: 'ROLEINFO',//与 router.js notCache:fasle且name相同 将缓存组件。
+  name: 'Pub_Role',//与 router.js notCache:fasle且name相同 将缓存组件。
   components: {
-    // Tables
     Edit,
-    Permission
   },
   data() {
     const userAccessAll=this.$store.state.user.access;
     return {
       userAccess:{
-        isAdd:userAccessAll.includes(`${pubRole.ADD}`),
-        isEdit:userAccessAll.includes(`${pubRole.EDIT}`),
-        isMove:userAccessAll.includes(`${pubRole.REMOVE}`),
-        isAuth:userAccessAll.includes(`${pubRole.AUTH}`)
+        isAdd: userAccessAll.includes(`${Pub_Role.ADD}`),
+        isEdit: userAccessAll.includes(`${Pub_Role.EDIT}`),
+        isMove: userAccessAll.includes(`${Pub_Role.EDIT}`),
       },
       tableData1: [],
       queryData: {},
       pageTotal: 0,
       pageCurrent: 1,
       modelEdit: false,
-      modelPermission:false,
       isAdd: true,
       eidtRow: {},
       tableColumns1: [
-        {
-          title: "编号",
-          key: "roleCode"
-        },
-        {
-          title: "角色名",
-          key: "roleName"
-        },
-        {
-          title: "修改时间",
-          key: "lmdt"
-        },
-        {
-          title: "修改人",
-          key: "lmid"
-        },
-        {
-              title: '操作',
-              slot: 'action',
-              width: 300,
-              align: 'center'
+
+            {
+                title:"",
+                key: "Id"
+             },
+           
+            {
+                title:"",
+                key: "RoleCode"
+             },
+           
+            {
+                title:"",
+                key: "RoleName"
+             },
+           
+            {
+                title:"",
+                key: "Remark"
+             },
+           
+            {
+                title:"",
+                key: "StopFlag"
+             },
+           
+            {
+                title:"",
+                key: "Crid"
+             },
+           
+            {
+                title:"",
+                key: "Crdt"
+             },
+           
+            {
+                title:"",
+                key: "Lmid"
+             },
+           
+            {
+                title:"",
+                key: "Lmdt"
+             },
+                   {
+         title: '操作',
+         slot: 'action',
+         width: 300,
+         align: 'center'
         }
+        
       ]
     };
   },
@@ -132,7 +167,7 @@ export default {
         pageNum: pageNum,
         pageSize: pageSize,
         field: "Id",
-        order: "asc",
+        order: "desc",
         query: this.queryData
       })
         .then(res => {
@@ -150,14 +185,6 @@ export default {
         })
         .catch(err => {});
     },
-    formatDate(date) {
-      const y = date.getFullYear();
-      let m = date.getMonth() + 1;
-      m = m < 10 ? "0" + m : m;
-      let d = date.getDate();
-      d = d < 10 ? "0" + d : d;
-      return y + "-" + m + "-" + d;
-    },
     changePage(page) {
       this.setPageData(page);
     },
@@ -167,9 +194,8 @@ export default {
     handleDelete(row) {
       this.$Modal.confirm({
         title: "提示",
-        content: "<p>确定要删除[" + row.id + "]?</p>",
+        content: "<p>确定要删除[" + row.Id+ "]?</p>",
         onOk: () => {
-          // this.$Message.info("Clicked ok");
           this.remove(row);
         },
         onCancel: row => {}
@@ -186,12 +212,8 @@ export default {
       this.isAdd = false;
       this.eidtRow = row;
     },
-    handlePermission(row) {
-      this.modelPermission = true;
-      this.eidtRow = row;
-    },
     remove(row) {
-      var id = row.id;
+      var id = row.Id;
       remove(id)
         .then(res => {
           const resData = res.data;

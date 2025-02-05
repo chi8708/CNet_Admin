@@ -28,7 +28,8 @@ namespace CNet.CodeGen.Api.Controllers
             // Razor 模板文件路径
             //GenByRazor.CompileModel("Pub_Role", "");
             //GenByRazor.CompileBLL("Pub_Role","");
-            GenByRazor.CompileAdminController("Pub_Role", "");
+            // GenByRazor.CompileAdminController("Pub_Role", "");
+            GenByRazor.CompileAdminUI("Pub_Role");
 
             return Enumerable.Range(1, 5).Select(index => new WeatherForecast
             {

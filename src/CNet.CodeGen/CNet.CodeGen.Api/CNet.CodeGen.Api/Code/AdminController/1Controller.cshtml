@@ -1,7 +1,7 @@
 ﻿@model CNet.CodeGen.Api.Template.TableModel
 @using CNet;
 
-//////此代码有CNetCodeGen生成， 作者：cts 生成时间：@System.DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss")
+//////此代码由CNetCodeGen生成， 作者：cts 生成时间：@System.DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss")
     using System;
     using System.Collections.Generic;
     using System.Linq;
@@ -128,9 +128,9 @@
             /// 删除
             /// </summary>
             /// <returns></returns>
-            [Route("Delete/{id}")]
+            [Route("Remove/{id}")]
             [HttpPost]
-            public DataRes<bool> Delete(long id)
+            public DataRes<bool> Remove(long id)
             {
                 DataRes<bool> res = new DataRes<bool>() { code = ResCode.Success, data = true };
 
