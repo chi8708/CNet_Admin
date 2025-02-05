@@ -1,10 +1,24 @@
 
 
-        <!-- 此代码由CNetCodeGen生成， 作者：cts 生成时间：2025-02-05 16:07:20 -->
+        <!-- 此代码由CNetCodeGen生成， 作者：cts 生成时间：2025-02-05 17:39:05 -->
     
 <template>
   <div>
     <Form ref="formInline" label-position="right" :model="Row" :rules="rule" :label-width="100">
+              <Row>
+                <Col span="24">
+                <FormItem label="创建时间" prop="Crdt">
+                    <Input v-model="Row.Crdt" />
+                </FormItem>
+                </Col>
+             </Row>
+              <Row>
+                <Col span="24">
+                <FormItem label="创建人" prop="Crid">
+                    <Input v-model="Row.Crid" />
+                </FormItem>
+                </Col>
+             </Row>
               <Row>
                 <Col span="24">
                 <FormItem label="" prop="Id">
@@ -14,57 +28,43 @@
              </Row>
               <Row>
                 <Col span="24">
-                <FormItem label="" prop="RoleCode">
-                    <Input v-model="Row.RoleCode" />
+                <FormItem label="最后更新时间" prop="Lmdt">
+                    <Input v-model="Row.Lmdt" />
                 </FormItem>
                 </Col>
              </Row>
               <Row>
                 <Col span="24">
-                <FormItem label="" prop="RoleName">
-                    <Input v-model="Row.RoleName" />
-                </FormItem>
-                </Col>
-             </Row>
-              <Row>
-                <Col span="24">
-                <FormItem label="" prop="Remark">
-                    <Input v-model="Row.Remark" />
-                </FormItem>
-                </Col>
-             </Row>
-              <Row>
-                <Col span="24">
-                <FormItem label="" prop="StopFlag">
-                    <Input v-model="Row.StopFlag" />
-                </FormItem>
-                </Col>
-             </Row>
-              <Row>
-                <Col span="24">
-                <FormItem label="" prop="Crid">
-                    <Input v-model="Row.Crid" />
-                </FormItem>
-                </Col>
-             </Row>
-              <Row>
-                <Col span="24">
-                <FormItem label="" prop="Crdt">
-                    <Input v-model="Row.Crdt" />
-                </FormItem>
-                </Col>
-             </Row>
-              <Row>
-                <Col span="24">
-                <FormItem label="" prop="Lmid">
+                <FormItem label="最后更新人" prop="Lmid">
                     <Input v-model="Row.Lmid" />
                 </FormItem>
                 </Col>
              </Row>
               <Row>
                 <Col span="24">
-                <FormItem label="" prop="Lmdt">
-                    <Input v-model="Row.Lmdt" />
+                <FormItem label="备注" prop="Remark">
+                    <Input v-model="Row.Remark" />
+                </FormItem>
+                </Col>
+             </Row>
+              <Row>
+                <Col span="24">
+                <FormItem label="角色编号" prop="RoleCode">
+                    <Input v-model="Row.RoleCode" />
+                </FormItem>
+                </Col>
+             </Row>
+              <Row>
+                <Col span="24">
+                <FormItem label="角色名称" prop="RoleName">
+                    <Input v-model="Row.RoleName" />
+                </FormItem>
+                </Col>
+             </Row>
+              <Row>
+                <Col span="24">
+                <FormItem label="停用状态 默认0  未停用 1 停用" prop="StopFlag">
+                    <Input v-model="Row.StopFlag" />
                 </FormItem>
                 </Col>
              </Row>

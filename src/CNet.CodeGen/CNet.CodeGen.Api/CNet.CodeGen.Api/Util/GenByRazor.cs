@@ -21,6 +21,7 @@ namespace CNet.CodeGen.Api.Util
                 // 创建 RazorLight 引擎
                 var engine = new RazorLightEngineBuilder()
                     .UseMemoryCachingProvider() // 使用内存缓存
+                    .DisableEncoding() // 禁用编码
                     .Build();
 
                 // 解析模板并生成代码

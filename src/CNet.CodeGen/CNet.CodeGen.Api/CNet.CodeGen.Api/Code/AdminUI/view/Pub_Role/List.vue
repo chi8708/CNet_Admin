@@ -1,37 +1,37 @@
 
 
-        <!-- 此代码由CNetCodeGen生成， 作者：cts 生成时间：2025-02-05 16:07:13 -->
+        <!-- 此代码由CNetCodeGen生成， 作者：cts 生成时间：2025-02-05 17:39:05 -->
     
 <template>
   <div class="content-main">
     <div class="search-con search-con-top">
       <Form ref="formInline" label-position="right" :label-width="60" inline>
-                  <FormItem label="">
-                            <Input class="search-input" v-model="queryData.SL_Id" />
+                  <FormItem label="创建时间">
+                            <Input class="search-input" v-model="queryData.SL_Crdt" />
                   </FormItem>
-                  <FormItem label="">
-                            <Input class="search-input" v-model="queryData.SL_RoleCode" />
-                  </FormItem>
-                  <FormItem label="">
-                            <Input class="search-input" v-model="queryData.SL_RoleName" />
-                  </FormItem>
-                  <FormItem label="">
-                            <Input class="search-input" v-model="queryData.SL_Remark" />
-                  </FormItem>
-                  <FormItem label="">
-                            <Input class="search-input" v-model="queryData.SL_StopFlag" />
-                  </FormItem>
-                  <FormItem label="">
+                  <FormItem label="创建人">
                             <Input class="search-input" v-model="queryData.SL_Crid" />
                   </FormItem>
                   <FormItem label="">
-                            <Input class="search-input" v-model="queryData.SL_Crdt" />
+                            <Input class="search-input" v-model="queryData.SL_Id" />
                   </FormItem>
-                  <FormItem label="">
+                  <FormItem label="最后更新时间">
+                            <Input class="search-input" v-model="queryData.SL_Lmdt" />
+                  </FormItem>
+                  <FormItem label="最后更新人">
                             <Input class="search-input" v-model="queryData.SL_Lmid" />
                   </FormItem>
-                  <FormItem label="">
-                            <Input class="search-input" v-model="queryData.SL_Lmdt" />
+                  <FormItem label="备注">
+                            <Input class="search-input" v-model="queryData.SL_Remark" />
+                  </FormItem>
+                  <FormItem label="角色编号">
+                            <Input class="search-input" v-model="queryData.SL_RoleCode" />
+                  </FormItem>
+                  <FormItem label="角色名称">
+                            <Input class="search-input" v-model="queryData.SL_RoleName" />
+                  </FormItem>
+                  <FormItem label="停用状态 默认0  未停用 1 停用">
+                            <Input class="search-input" v-model="queryData.SL_StopFlag" />
                   </FormItem>
           <Button class="search-btn" type="primary" @click="setPageData(1)">
             <Icon type="search" />&nbsp;&nbsp;搜索
@@ -107,48 +107,48 @@ export default {
       tableColumns1: [
 
             {
-                title:"",
-                key: "Id"
+                title:"创建时间",
+                key: "Crdt"
              },
            
             {
-                title:"",
-                key: "RoleCode"
-             },
-           
-            {
-                title:"",
-                key: "RoleName"
-             },
-           
-            {
-                title:"",
-                key: "Remark"
-             },
-           
-            {
-                title:"",
-                key: "StopFlag"
-             },
-           
-            {
-                title:"",
+                title:"创建人",
                 key: "Crid"
              },
            
             {
                 title:"",
-                key: "Crdt"
+                key: "Id"
              },
            
             {
-                title:"",
+                title:"最后更新时间",
+                key: "Lmdt"
+             },
+           
+            {
+                title:"最后更新人",
                 key: "Lmid"
              },
            
             {
-                title:"",
-                key: "Lmdt"
+                title:"备注",
+                key: "Remark"
+             },
+           
+            {
+                title:"角色编号",
+                key: "RoleCode"
+             },
+           
+            {
+                title:"角色名称",
+                key: "RoleName"
+             },
+           
+            {
+                title:"停用状态 默认0  未停用 1 停用",
+                key: "StopFlag"
              },
                    {
          title: '操作',
