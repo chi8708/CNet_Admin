@@ -240,6 +240,41 @@
             </summary>
             <returns></returns>
         </member>
+        <member name="M:CNet.Web.Api.Controllers.Pub_RoleController.GetList">
+             <summary>
+             获取所有
+            </summary>
+        </member>
+        <member name="M:CNet.Web.Api.Controllers.Pub_RoleController.Get(System.Int64)">
+            <summary>
+            获取详细
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:CNet.Web.Api.Controllers.Pub_RoleController.GetPage(CNet.Web.Api.Model.Request.PageDataReq)">
+            <summary>
+            获取分页
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:CNet.Web.Api.Controllers.Pub_RoleController.Add(CNet.Model.Main.Pub_Role)">
+            <summary>
+            添加角色
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:CNet.Web.Api.Controllers.Pub_RoleController.Edit(CNet.Model.Main.Pub_Role)">
+            <summary>
+            编辑
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:CNet.Web.Api.Controllers.Pub_RoleController.Delete(System.Int64)">
+            <summary>
+            删除
+            </summary>
+            <returns></returns>
+        </member>
         <member name="T:CNet.Web.Api.Controllers.UpLoadFileController">
             <summary>
             

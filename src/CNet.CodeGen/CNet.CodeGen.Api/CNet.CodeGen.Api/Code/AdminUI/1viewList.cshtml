@@ -1,6 +1,7 @@
 ﻿@model CNet.CodeGen.Api.Template.TableModel
 @using CNet;
 @using System.Linq;
+@using CNet.CodeGen.Api.Util;
 
 @{
     <text>
@@ -96,7 +97,7 @@ export default {
             <text>
             {
                 title:"@column.Remark",
-                key: "@column.ColumnName"
+                key: "@GenByRazor.ToLowerPascalCase(column.ColumnName)"
              },
            </text>
         }

@@ -1,6 +1,7 @@
 @model CNet.CodeGen.Api.Template.TableModel
 @using CNet;
 @using System.Linq;
+@using CNet.CodeGen.Api.Util;
 
 @{
     <text>
@@ -12,29 +13,48 @@
 <template>
   <div>
     <Form ref="formInline" label-position="right" :model="Row" :rules="rule" :label-width="100">
-            @foreach (var column in Model.Columns)
-            {
-              @:<Row>
-                <Col span="24">
-                <FormItem label="@column.Remark" prop="@column.ColumnName">
-                    <Input v-model="Row.@column.ColumnName" />
-                </FormItem>
-                @:</Col>
-             @:</Row>
-            }
-            <Row>
-                <Col span="24">
-                <div style="text-align:center;">
-                    <Button @@click="parent.modelEdit=false">取消</Button>
-                    <Button style="margin-left:20px;" type="primary" @@click="save('formInline')">保存</Button>
-                </div>
-                </Col>
-            </Row>
+    @foreach (var column in Model.Columns)
+    {
+        if (column.ColumnName!=primaryKeyName)
+        {
+      @:<FormItem label="@column.Remark" prop="@GenByRazor.ToLowerPascalCase(column.ColumnName)">
+        @:<Row>
+          <Col span="24">
+        @if (column.CSharpType == "DateTime")
+        {
+            <DatePicker type="date" placeholder="请选择日期" v-model="Row.@GenByRazor.ToLowerPascalCase(column.ColumnName)"></DatePicker>
+        }
+        else if (column.CSharpType == "bool")
+        {
+            <i-switch v-model="Row.@GenByRazor.ToLowerPascalCase(column.ColumnName)" size="large">
+                <template #open><span>是</span></template>
+                <template #close><span>否</span></template>
+            </i-switch>
+        }
+        else
+        {
+            <Input v-model="Row.@GenByRazor.ToLowerPascalCase(column.ColumnName)" />
+        }
+        @:</Col>
+       @:</Row>
+      @:</FormItem>
+
+        }
+
+    }
+     <Row>
+        <Col span="24">
+        <div style="text-align:center;">
+            <Button @@click="parent.modelEdit=false">取消</Button>
+            <Button style="margin-left:20px;" type="primary" @@click="save('formInline')">保存</Button>
+        </div>
+        </Col>
+     </Row>
     </Form>
   </div>
 </template>
 <script>
-import { add , edit } from "@@/api/pubRole";
+import { add , edit } from "@@/api/@Model.TableName";
 export default {
   props: { editRow: Object, parent: Object },
   computed: {},
@@ -42,14 +62,22 @@ export default {
     return {
       Row: {},
       rule: {
-        roleName: [
-          {
-            required: true,
-            message: "角色名必填",
-            trigger: "blur"
-          }
-        ]
-      }
+            @foreach (var column in Model.Columns)
+            {
+                if (column.ColumnName!=primaryKeyName&&!column.IsNullable&&column.CSharpType != "bool")
+                {
+        <text>
+            @GenByRazor.ToLowerPascalCase(column.ColumnName): [
+               {
+                required: true,
+                message: "@column.Remark 必填",
+                trigger: "blur"
+                }
+            ],
+        </text>
+               }
+            }
+   }
     };
   },
   methods: {

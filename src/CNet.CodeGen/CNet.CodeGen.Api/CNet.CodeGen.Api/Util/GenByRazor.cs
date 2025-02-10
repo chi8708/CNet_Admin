@@ -3,6 +3,7 @@ using CNet.CodeGen.Api.Template;
 using CNet.Model.Main;
 using RazorLight;
 using System.Collections.Generic;
+using System.Globalization;
 
 namespace CNet.CodeGen.Api.Util
 {
@@ -267,6 +268,7 @@ namespace CNet.CodeGen.Api.Util
             rootModel.MenuIcon = "ios - people";
             rootModel.sortidx = 99;
             rootModel.MenuFlag = true;
+            rootModel.IsCache = false;
             rootModel.URLString = $"view/{tableName}/List.vue";
             rootModel.RouterPath = tableName;
 
@@ -291,6 +293,7 @@ namespace CNet.CodeGen.Api.Util
             addModel.FunctionEnglish = tableName + "_Add";
             addModel.editdate = DateTime.Now;
             addModel.editor = string.Format("000000-系统自动");
+            rootModel.IsCache = false;
             addModel.StopFlag = false;
             addModel.sortidx = 99;
             addModel.MenuFlag = false;
@@ -303,6 +306,7 @@ namespace CNet.CodeGen.Api.Util
             editModel.FunctionEnglish = tableName + "_Edit";
             editModel.editdate = DateTime.Now;
             editModel.editor = string.Format("000000-系统自动");
+            rootModel.IsCache = false;
             editModel.StopFlag = false;
             editModel.sortidx = 99;
             editModel.MenuFlag = false;
@@ -315,6 +319,7 @@ namespace CNet.CodeGen.Api.Util
             removeModel.FunctionEnglish = tableName + "_Remove";
             removeModel.editdate = DateTime.Now;
             removeModel.editor = string.Format("000000-系统自动");
+            rootModel.IsCache = false;
             removeModel.StopFlag = false;
             removeModel.sortidx = 99;
             removeModel.MenuFlag = false;
@@ -332,6 +337,35 @@ namespace CNet.CodeGen.Api.Util
             var dbType = Config.DbType;
             var db = DbFactory.CreatDb(dbType);
             return db;
+        }
+
+        /// <summary>
+        /// 转为小驼峰命名 HELLO_WORLD转为helloWorld
+        /// </summary>
+        /// <param name="input"></param>
+        /// <returns></returns>
+
+        public static string ToLowerPascalCase(string input)
+        {
+            return input.First().ToString().ToLower() + input.Substring(1);
+            //if (string.IsNullOrEmpty(input))
+            //{
+            //    return input;
+            //}
+
+            //// 将字符串转换为小写并分割单词
+            //string[] words = input.ToLower().Split(new[] { '_', ' ', '-' }, StringSplitOptions.RemoveEmptyEntries);
+
+            //// 将第一个单词的首字母保持小写
+            //string result = words[0];
+
+            //// 将后续单词的首字母大写
+            //for (int i = 1; i < words.Length; i++)
+            //{
+            //    result += CultureInfo.CurrentCulture.TextInfo.ToTitleCase(words[i]);
+            //}
+
+            //return result;
         }
     }
 }
