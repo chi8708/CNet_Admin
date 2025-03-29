@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MySqlX.XDevAPI.Relational;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -31,6 +32,23 @@ namespace CNet
                     break;
             }
             return iDapperHelper;
+        }
+
+        public static List<dynamic> GetTables_Main()
+        {
+            string sql = string.Format(@"SELECT a.TABLE_SCHEMA schemname,a.TABLE_NAME tablename,a.TABLE_ROWS `rows`,CAST(!ISNULL(b.HasPrimaryKey) AS SIGNED) HasPrimaryKey
+                        FROM information_schema.`TABLES` AS a
+                        LEFT JOIN (
+	                        SELECT TABLE_NAME, COUNT(COLUMN_NAME) AS HasPrimaryKey
+	                        FROM information_schema.key_column_usage
+	                        WHERE CONSTRAINT_NAME = 'PRIMARY' AND TABLE_SCHEMA = '{0}' GROUP BY TABLE_NAME
+                        ) AS b ON a.TABLE_NAME = b.TABLE_NAME
+                        WHERE a.TABLE_SCHEMA = '{0}'", "cnet");
+
+
+            return GetInstance_Main().Query<dynamic>(sql);
+
+
         }
 
     }

@@ -23,3 +23,6 @@ obj
 /src/CNet.Web.Api/TempFileUpload
 /src/CNet.Web.Api/lib
 /src/CNet.Web.Api/Properties
+/src/CNet.CodeGen/CNet.CodeGen.Api/.vs
+/src/CNet.Web.Admin/node_modules
+/src/CNet.CodeGen/CNet.CodeGen.UI/node_modules

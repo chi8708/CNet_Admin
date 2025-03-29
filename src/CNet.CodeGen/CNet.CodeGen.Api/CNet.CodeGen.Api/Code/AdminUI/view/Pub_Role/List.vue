@@ -1,13 +1,28 @@
 
 
-        <!-- 此代码由CNetCodeGen生成， 作者：cts 生成时间：2025-02-10 15:50:06 -->
+        <!-- 此代码由CNetCodeGen生成， 作者：cts 生成时间：2025-03-29 13:51:29 -->
     
 <template>
   <div class="content-main">
     <div class="search-con search-con-top">
       <Form ref="formInline" label-position="right" :label-width="60" inline>
+                  <FormItem label="创建时间">
+                            <Input class="search-input" v-model="queryData.SL_Crdt" />
+                  </FormItem>
+                  <FormItem label="创建人">
+                            <Input class="search-input" v-model="queryData.SL_Crid" />
+                  </FormItem>
                   <FormItem label="">
                             <Input class="search-input" v-model="queryData.SL_Id" />
+                  </FormItem>
+                  <FormItem label="最后更新时间">
+                            <Input class="search-input" v-model="queryData.SL_Lmdt" />
+                  </FormItem>
+                  <FormItem label="最后更新人">
+                            <Input class="search-input" v-model="queryData.SL_Lmid" />
+                  </FormItem>
+                  <FormItem label="备注">
+                            <Input class="search-input" v-model="queryData.SL_Remark" />
                   </FormItem>
                   <FormItem label="角色编号">
                             <Input class="search-input" v-model="queryData.SL_RoleCode" />
@@ -15,23 +30,8 @@
                   <FormItem label="角色名称">
                             <Input class="search-input" v-model="queryData.SL_RoleName" />
                   </FormItem>
-                  <FormItem label="备注">
-                            <Input class="search-input" v-model="queryData.SL_Remark" />
-                  </FormItem>
                   <FormItem label="停用状态 默认0  未停用 1 停用">
                             <Input class="search-input" v-model="queryData.SL_StopFlag" />
-                  </FormItem>
-                  <FormItem label="创建人">
-                            <Input class="search-input" v-model="queryData.SL_Crid" />
-                  </FormItem>
-                  <FormItem label="创建时间">
-                            <Input class="search-input" v-model="queryData.SL_Crdt" />
-                  </FormItem>
-                  <FormItem label="最后更新人">
-                            <Input class="search-input" v-model="queryData.SL_Lmid" />
-                  </FormItem>
-                  <FormItem label="最后更新时间">
-                            <Input class="search-input" v-model="queryData.SL_Lmdt" />
                   </FormItem>
           <Button class="search-btn" type="primary" @click="setPageData(1)">
             <Icon type="search" />&nbsp;&nbsp;搜索
@@ -107,8 +107,33 @@ export default {
       tableColumns1: [
 
             {
+                title:"创建时间",
+                key: "crdt"
+             },
+           
+            {
+                title:"创建人",
+                key: "crid"
+             },
+           
+            {
                 title:"",
                 key: "id"
+             },
+           
+            {
+                title:"最后更新时间",
+                key: "lmdt"
+             },
+           
+            {
+                title:"最后更新人",
+                key: "lmid"
+             },
+           
+            {
+                title:"备注",
+                key: "remark"
              },
            
             {
@@ -122,33 +147,8 @@ export default {
              },
            
             {
-                title:"备注",
-                key: "remark"
-             },
-           
-            {
                 title:"停用状态 默认0  未停用 1 停用",
                 key: "stopFlag"
-             },
-           
-            {
-                title:"创建人",
-                key: "crid"
-             },
-           
-            {
-                title:"创建时间",
-                key: "crdt"
-             },
-           
-            {
-                title:"最后更新人",
-                key: "lmid"
-             },
-           
-            {
-                title:"最后更新时间",
-                key: "lmdt"
              },
                    {
          title: '操作',

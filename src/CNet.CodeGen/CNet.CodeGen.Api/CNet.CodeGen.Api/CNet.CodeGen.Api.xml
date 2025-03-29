@@ -1,0 +1,1291 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>CNet.CodeGen.Api</name>
+    </assembly>
+    <members>
+        <member name="M:CNet.BLL.Main.Pub_FunctionBLL.GetCode(System.String)">
+            <summary>
+            获取编号
+            </summary>
+            <param name="pCode"></param>
+            <returns></returns>
+        </member>
+        <member name="M:CNet.Web.Api.Controllers.Pub_RoleController.GetList">
+             <summary>
+             获取所有
+            </summary>
+        </member>
+        <member name="M:CNet.Web.Api.Controllers.Pub_RoleController.Get(System.Int64)">
+            <summary>
+            获取详细
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:CNet.Web.Api.Controllers.Pub_RoleController.GetPage(CNet.Model.PageDataReq)">
+            <summary>
+            获取分页
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:CNet.Web.Api.Controllers.Pub_RoleController.Add(CNet.Model.Main.Pub_Role)">
+            <summary>
+            添加角色
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:CNet.Web.Api.Controllers.Pub_RoleController.Edit(CNet.Model.Main.Pub_Role)">
+            <summary>
+            编辑
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:CNet.Web.Api.Controllers.Pub_RoleController.Delete(System.Int64)">
+            <summary>
+            删除
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:CNet.Web.Api.Controllers.testgenController.GetList">
+             <summary>
+             获取所有
+            </summary>
+        </member>
+        <member name="M:CNet.Web.Api.Controllers.testgenController.Get(System.Int64)">
+            <summary>
+            获取详细
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:CNet.Web.Api.Controllers.testgenController.GetPage(CNet.Model.PageDataReq)">
+            <summary>
+            获取分页
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:CNet.Web.Api.Controllers.testgenController.Add(CNet.Model.Main.testgen)">
+            <summary>
+            添加角色
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:CNet.Web.Api.Controllers.testgenController.Edit(CNet.Model.Main.testgen)">
+            <summary>
+            编辑
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:CNet.Web.Api.Controllers.testgenController.Remove(System.Int64)">
+            <summary>
+            删除
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="T:CNet.Web.Api.QueryHelper">
+            <summary>
+            搜索条件
+            </summary>
+        </member>
+        <member name="M:CNet.Web.Api.QueryHelper.GetWhereStr(Microsoft.AspNetCore.Http.HttpContext)">
+            <summary>
+            获取搜索query
+            </summary>
+        </member>
+        <member name="M:CNet.Web.Api.QueryHelper.SqlFilter(System.String)">
+            <summary>
+            过滤危险的字符（SQL注入）
+            </summary>
+            <param name="str"></param>
+            <returns></returns>
+        </member>
+        <member name="M:CNet.Web.Api.QueryHelper.InjectionFilter(System.String)">
+            <summary>
+             过滤危险字符
+            </summary>
+            <param name="inputString">需要过滤字符串</param>
+            <returns>过滤后的字符串</returns>
+        </member>
+        <!-- Badly formed XML comment ignored for member "M:CNet.Web.Api.QueryHelper.XSSFilter(System.String)" -->
+        <member name="M:CNet.Web.Api.QueryHelper.FlashFilter(System.String)">
+            <summary>
+             过滤字符串中注入Flash代码
+            </summary>
+            <param name="htmlCode">输入字符串</param>
+            <returns>过滤后的字符串</returns>
+        </member>
+        <member name="T:CNet.Model.Main.Pub_Role">
+             <summary>
+              
+            </summary>
+        </member>
+        <member name="P:CNet.Model.Main.Pub_Role.Id">
+             <summary>
+             
+            </summary>
+        </member>
+        <member name="P:CNet.Model.Main.Pub_Role.RoleCode">
+             <summary>
+             
+            </summary>
+        </member>
+        <member name="P:CNet.Model.Main.Pub_Role.RoleName">
+             <summary>
+             
+            </summary>
+        </member>
+        <member name="P:CNet.Model.Main.Pub_Role.Remark">
+             <summary>
+             
+            </summary>
+        </member>
+        <member name="P:CNet.Model.Main.Pub_Role.StopFlag">
+             <summary>
+             
+            </summary>
+        </member>
+        <member name="P:CNet.Model.Main.Pub_Role.Crid">
+             <summary>
+             
+            </summary>
+        </member>
+        <member name="P:CNet.Model.Main.Pub_Role.Crdt">
+             <summary>
+             
+            </summary>
+        </member>
+        <member name="P:CNet.Model.Main.Pub_Role.Lmid">
+             <summary>
+             
+            </summary>
+        </member>
+        <member name="P:CNet.Model.Main.Pub_Role.Lmdt">
+             <summary>
+             
+            </summary>
+        </member>
+        <member name="T:CNet.Model.Main.testgen">
+             <summary>
+              
+            </summary>
+        </member>
+        <member name="P:CNet.Model.Main.testgen.Crdt">
+             <summary>
+             创建时间
+            </summary>
+        </member>
+        <member name="P:CNet.Model.Main.testgen.Crid">
+             <summary>
+             创建人
+            </summary>
+        </member>
+        <member name="P:CNet.Model.Main.testgen.Id">
+             <summary>
+             
+            </summary>
+        </member>
+        <member name="P:CNet.Model.Main.testgen.Lmdt">
+             <summary>
+             最后更新时间
+            </summary>
+        </member>
+        <member name="P:CNet.Model.Main.testgen.Lmid">
+             <summary>
+             最后更新人
+            </summary>
+        </member>
+        <member name="P:CNet.Model.Main.testgen.Remark">
+             <summary>
+             备注
+            </summary>
+        </member>
+        <member name="P:CNet.Model.Main.testgen.RoleCode">
+             <summary>
+             角色编号
+            </summary>
+        </member>
+        <member name="P:CNet.Model.Main.testgen.RoleName">
+             <summary>
+             角色名称
+            </summary>
+        </member>
+        <member name="P:CNet.Model.Main.testgen.StopFlag">
+             <summary>
+             停用状态 默认0  未停用 1 停用
+            </summary>
+        </member>
+        <member name="P:CNet.Model.Main.Pub_Function.FunctionCode">
+            <summary>
+            权限编号
+            </summary>
+        </member>
+        <member name="P:CNet.Model.Main.Pub_Function.FunctionEnglish">
+            <summary>
+            英文编号
+            </summary>
+        </member>
+        <member name="P:CNet.Model.Main.Pub_Function.FunctionChina">
+            <summary>
+            中文名称
+            </summary>
+        </member>
+        <member name="P:CNet.Model.Main.Pub_Function.FunctionDescrip">
+            <summary>
+            说明
+            </summary>
+        </member>
+        <member name="P:CNet.Model.Main.Pub_Function.ParentCode">
+            <summary>
+            父节点
+            </summary>
+        </member>
+        <member name="P:CNet.Model.Main.Pub_Function.MenuFlag">
+            <summary>
+            是否为菜单 1菜单 0权限
+            </summary>
+        </member>
+        <member name="P:CNet.Model.Main.Pub_Function.StopFlag">
+            <summary>
+            是否停用
+            </summary>
+        </member>
+        <member name="P:CNet.Model.Main.Pub_Function.URLString">
+            <summary>
+            组件路径
+            </summary>
+        </member>
+        <member name="P:CNet.Model.Main.Pub_Function.editdate">
+            <summary>
+            创建或修改时间
+            </summary>
+        </member>
+        <member name="P:CNet.Model.Main.Pub_Function.editor">
+            <summary>
+            修改人 名字加工号 张三(000001)
+            </summary>
+        </member>
+        <member name="P:CNet.Model.Main.Pub_Function.sortidx">
+            <summary>
+            排序字段
+            </summary>
+        </member>
+        <member name="P:CNet.Model.Main.Pub_Function.target">
+            <summary>
+            navTab 嵌套  _blank 新窗口 dialog 弹出窗
+            </summary>
+        </member>
+        <member name="P:CNet.Model.Main.Pub_Function.MenuIcon">
+            <summary>
+            菜单图标class
+            </summary>
+        </member>
+        <member name="P:CNet.Model.Main.Pub_Function.RouterPath">
+            <summary>
+            路由路径
+            </summary>
+        </member>
+        <member name="P:CNet.Model.Main.Pub_Function.IsCache">
+            <summary>
+            是否组件缓存
+            </summary>
+        </member>
+        <member name="F:CNet.Model.ResCode.Error">
+            <summary>
+            错误
+            </summary>
+        </member>
+        <member name="F:CNet.Model.ResCode.NoValidate">
+            <summary>
+            验证未通过
+            </summary>
+        </member>
+        <member name="F:CNet.Model.ResCode.Success">
+            <summary>
+            成功
+            </summary>
+        </member>
+        <member name="F:CNet.Model.ResCode.Unauthorized">
+            <summary>
+            授权失败
+            </summary>
+        </member>
+        <member name="T:CNet.CodeGen.Api.Controllers.CodeGenController">
+            <summary>
+            代码生成器控制器
+            </summary>
+        </member>
+        <member name="M:CNet.CodeGen.Api.Controllers.CodeGenController.GetTables">
+            <summary>
+            获取所有数据表
+            </summary>
+            <returns>数据表列表</returns>
+        </member>
+        <member name="M:CNet.CodeGen.Api.Controllers.CodeGenController.GenerateCode(CNet.CodeGen.Api.Controllers.GenerateCodeRequest)">
+            <summary>
+            生成代码
+            </summary>
+            <param name="request">生成代码请求</param>
+            <returns>生成结果</returns>
+        </member>
+        <member name="M:CNet.CodeGen.Api.Controllers.CodeGenController.GetGeneratedCodes(System.Int32,System.Int32,System.String)">
+            <summary>
+            获取已生成的代码列表
+            </summary>
+            <param name="page">页码</param>
+            <param name="size">每页大小</param>
+            <param name="keyword">搜索关键词</param>
+            <returns>分页的代码列表</returns>
+        </member>
+        <member name="M:CNet.CodeGen.Api.Controllers.CodeGenController.ViewCode(System.String)">
+            <summary>
+            查看指定数据表的生成代码
+            </summary>
+            <param name="tableName">数据表名称</param>
+            <returns>生成的代码内容</returns>
+        </member>
+        <member name="M:CNet.CodeGen.Api.Controllers.CodeGenController.DownloadCode(System.String)">
+            <summary>
+            下载指定数据表的生成代码
+            </summary>
+            <param name="tableName">数据表名称</param>
+            <returns>代码压缩包文件</returns>
+        </member>
+        <member name="M:CNet.CodeGen.Api.Controllers.CodeGenController.ReadCodeFileAsync(System.String)">
+            <summary>
+            读取代码文件内容
+            </summary>
+            <param name="relativePath">相对路径</param>
+            <returns>文件内容</returns>
+        </member>
+        <member name="T:CNet.CodeGen.Api.Controllers.DataRes`1">
+            <summary>
+            通用数据响应类
+            </summary>
+        </member>
+        <member name="P:CNet.CodeGen.Api.Controllers.DataRes`1.Code">
+            <summary>
+            状态码，200表示成功
+            </summary>
+        </member>
+        <member name="P:CNet.CodeGen.Api.Controllers.DataRes`1.Msg">
+            <summary>
+            消息
+            </summary>
+        </member>
+        <member name="P:CNet.CodeGen.Api.Controllers.DataRes`1.Data">
+            <summary>
+            数据
+            </summary>
+        </member>
+        <member name="M:CNet.CodeGen.Api.Controllers.DataRes`1.Success(`0,System.String)">
+            <summary>
+            创建成功响应
+            </summary>
+            <param name="data">数据</param>
+            <param name="msg">消息</param>
+            <returns>成功响应</returns>
+        </member>
+        <member name="M:CNet.CodeGen.Api.Controllers.DataRes`1.Fail(System.String,System.Int32)">
+            <summary>
+            创建失败响应
+            </summary>
+            <param name="msg">错误消息</param>
+            <param name="code">错误码</param>
+            <returns>失败响应</returns>
+        </member>
+        <member name="T:CNet.CodeGen.Api.Controllers.PageResult`1">
+            <summary>
+            分页结果
+            </summary>
+        </member>
+        <member name="P:CNet.CodeGen.Api.Controllers.PageResult`1.Total">
+            <summary>
+            总记录数
+            </summary>
+        </member>
+        <member name="P:CNet.CodeGen.Api.Controllers.PageResult`1.Items">
+            <summary>
+            当前页数据
+            </summary>
+        </member>
+        <member name="T:CNet.CodeGen.Api.Controllers.GenerateCodeRequest">
+            <summary>
+            生成代码请求
+            </summary>
+        </member>
+        <member name="P:CNet.CodeGen.Api.Controllers.GenerateCodeRequest.Tables">
+            <summary>
+            要生成代码的数据表列表
+            </summary>
+        </member>
+        <member name="P:CNet.CodeGen.Api.Controllers.GenerateCodeRequest.Options">
+            <summary>
+            代码生成选项
+            </summary>
+        </member>
+        <member name="T:CNet.CodeGen.Api.Controllers.CodeGenOptions">
+            <summary>
+            代码生成选项
+            </summary>
+        </member>
+        <member name="P:CNet.CodeGen.Api.Controllers.CodeGenOptions.Frontend">
+            <summary>
+            前端代码生成选项
+            </summary>
+        </member>
+        <member name="P:CNet.CodeGen.Api.Controllers.CodeGenOptions.Backend">
+            <summary>
+            后端代码生成选项
+            </summary>
+        </member>
+        <member name="T:CNet.CodeGen.Api.Controllers.FrontendOptions">
+            <summary>
+            前端代码生成选项
+            </summary>
+        </member>
+        <member name="P:CNet.CodeGen.Api.Controllers.FrontendOptions.Access">
+            <summary>
+            是否生成Access
+            </summary>
+        </member>
+        <member name="P:CNet.CodeGen.Api.Controllers.FrontendOptions.Api">
+            <summary>
+            是否生成API
+            </summary>
+        </member>
+        <member name="P:CNet.CodeGen.Api.Controllers.FrontendOptions.Views">
+            <summary>
+            是否生成Views
+            </summary>
+        </member>
+        <member name="T:CNet.CodeGen.Api.Controllers.BackendOptions">
+            <summary>
+            后端代码生成选项
+            </summary>
+        </member>
+        <member name="P:CNet.CodeGen.Api.Controllers.BackendOptions.Model">
+            <summary>
+            是否生成Model
+            </summary>
+        </member>
+        <member name="P:CNet.CodeGen.Api.Controllers.BackendOptions.Bll">
+            <summary>
+            是否生成BLL
+            </summary>
+        </member>
+        <member name="P:CNet.CodeGen.Api.Controllers.BackendOptions.Controllers">
+            <summary>
+            是否生成Controllers
+            </summary>
+        </member>
+        <member name="T:CNet.CodeGen.Api.Controllers.GeneratedCodeResult">
+            <summary>
+            生成的代码结果
+            </summary>
+        </member>
+        <member name="P:CNet.CodeGen.Api.Controllers.GeneratedCodeResult.TableName">
+            <summary>
+            数据表名称
+            </summary>
+        </member>
+        <member name="P:CNet.CodeGen.Api.Controllers.GeneratedCodeResult.Code">
+            <summary>
+            代码内容预览
+            </summary>
+        </member>
+        <member name="P:CNet.CodeGen.Api.Controllers.GeneratedCodeResult.GeneratedTime">
+            <summary>
+            生成时间
+            </summary>
+        </member>
+        <member name="T:CNet.CodeGen.Api.Controllers.CodeContent">
+            <summary>
+            代码内容
+            </summary>
+        </member>
+        <member name="P:CNet.CodeGen.Api.Controllers.CodeContent.access">
+            <summary>
+            Access代码
+            </summary>
+        </member>
+        <member name="P:CNet.CodeGen.Api.Controllers.CodeContent.api">
+            <summary>
+            API代码
+            </summary>
+        </member>
+        <member name="P:CNet.CodeGen.Api.Controllers.CodeContent.view_list">
+            <summary>
+            列表视图代码
+            </summary>
+        </member>
+        <member name="P:CNet.CodeGen.Api.Controllers.CodeContent.view_edit">
+            <summary>
+            编辑视图代码
+            </summary>
+        </member>
+        <member name="P:CNet.CodeGen.Api.Controllers.CodeContent.model">
+            <summary>
+            模型代码
+            </summary>
+        </member>
+        <member name="P:CNet.CodeGen.Api.Controllers.CodeContent.bll">
+            <summary>
+            业务逻辑层代码
+            </summary>
+        </member>
+        <member name="P:CNet.CodeGen.Api.Controllers.CodeContent.dal">
+            <summary>
+            数据访问层代码
+            </summary>
+        </member>
+        <member name="M:CNet.CodeGen.Api.Controllers.HomeController.GetData(System.String)">
+            <summary>
+            生成实体Model层代码
+            </summary>
+            <param name="tableName"></param>
+            <param name="templatePath"></param>
+            <param name="saveDir"></param>
+            <returns></returns>
+        </member>
+        <member name="M:CNet.CodeGen.Api.Util.GenByRazor.CompileModel(System.String,System.String,System.String)">
+            <summary>
+            生成Model层代码
+            </summary>
+            <param name="tableName"></param>
+            <param name="templatePath"></param>
+            <param name="saveDir"></param>
+            <returns></returns>
+        </member>
+        <member name="M:CNet.CodeGen.Api.Util.GenByRazor.ReplaceFile(System.String,System.String)">
+            <summary>
+            替换源代码文件
+            </summary>
+            <param name="saveDir">要替换的项目目录</param>
+            <param name="codeFilePath">代码文件路径</param>
+            <returns></returns>
+        </member>
+        <member name="M:CNet.CodeGen.Api.Util.GenByRazor.CompileBLL(System.String,System.String,System.String)">
+            <summary>
+            生成BLL层代码
+            </summary>
+            <param name="tableName"></param>
+            <param name="templatePath"></param>
+            <param name="saveDir"></param>
+            <returns></returns>
+        </member>
+        <member name="M:CNet.CodeGen.Api.Util.GenByRazor.CompileAdminController(System.String,System.String,System.String)">
+            <summary>
+            生成Controllers层代码
+            </summary>
+            <param name="tableName"></param>
+            <param name="templatePath"></param>
+            <param name="saveDir"></param>
+            <returns></returns>
+        </member>
+        <member name="M:CNet.CodeGen.Api.Util.GenByRazor.CompileAdminUI(System.String)">
+            <summary>
+            生成UI代码
+            </summary>
+            <param name="tableName"></param>
+            <param name="templatePath"></param>
+            <param name="saveDir"></param>
+            <returns></returns>
+        </member>
+        <member name="M:CNet.CodeGen.Api.Util.GenByRazor.CompileAdminUI_access(System.String,System.String,System.String,System.String)">
+            <summary>
+            生成UI代码_access
+            </summary>
+            <param name="tableName"></param>
+            <param name="templatePath"></param>
+            <param name="saveDir"></param>
+            <returns></returns>
+        </member>
+        <member name="M:CNet.CodeGen.Api.Util.GenByRazor.CompileAdminUI_api(System.String,System.String,System.String,System.String)">
+            <summary>
+            生成UI代码_api
+            </summary>
+            <param name="tableName"></param>
+            <param name="templatePath"></param>
+            <param name="saveDir"></param>
+            <returns></returns>
+        </member>
+        <member name="M:CNet.CodeGen.Api.Util.GenByRazor.CompileAdminUI_view(System.String,System.String,System.String)">
+            <summary>
+            生成UI代码_view
+            </summary>
+            <param name="tableName"></param>
+            <param name="templatePath"></param>
+            <param name="saveDir"></param>
+            <returns></returns>
+        </member>
+        <member name="M:CNet.CodeGen.Api.Util.GenByRazor.CompileAdminUI_view_List(System.String,System.String,System.String,System.String)">
+            <summary>
+            生成UI代码_view_List
+            </summary>
+            <param name="tableName"></param>
+            <param name="templatePath"></param>
+            <param name="saveDir"></param>
+            <returns></returns>
+        </member>
+        <member name="M:CNet.CodeGen.Api.Util.GenByRazor.CompileAdminUI_view_Edit(System.String,System.String,System.String,System.String)">
+            <summary>
+            生成UI代码_view_List
+            </summary>
+            <param name="tableName"></param>
+            <param name="templatePath"></param>
+            <param name="saveDir"></param>
+            <returns></returns>
+        </member>
+        <member name="M:CNet.CodeGen.Api.Util.GenByRazor.Compile_InsertFunction(System.String)">
+            <summary>
+            插入权限表
+            </summary>
+            <param name="tableName"></param>
+            <returns></returns>
+        </member>
+        <member name="M:CNet.CodeGen.Api.Util.GenByRazor.ToLowerPascalCase(System.String)">
+            <summary>
+            转为小驼峰命名 HELLO_WORLD转为helloWorld
+            </summary>
+            <param name="input"></param>
+            <returns></returns>
+        </member>
+        <member name="M:CNet.DAL.BaseDataDapperContribMySql`1.Insert(`0)">
+            <summary>
+            插入
+            </summary>
+            <param name="model"></param>
+            <returns></returns>
+        </member>
+        <member name="M:CNet.DAL.BaseDataDapperContribMySql`1.InsertBatch(System.Collections.Generic.List{`0})">
+            <summary>
+            批量插入
+            </summary>
+            <param name="models"></param>
+            <returns></returns>
+        </member>
+        <member name="M:CNet.DAL.BaseDataDapperContribMySql`1.Update(`0)">
+            <summary>
+            更新
+            </summary>
+            <param name="model"></param>
+            <returns></returns>
+        </member>
+        <member name="M:CNet.DAL.BaseDataDapperContribMySql`1.UpdateBatch(System.Collections.Generic.List{`0})">
+            <summary>
+            批量更新
+            </summary>
+            <param name="models"></param>
+            <returns></returns>
+        </member>
+        <member name="M:CNet.DAL.BaseDataDapperContribMySql`1.Delete(`0)">
+             <summary>
+            根据实体删除
+             </summary>
+             <param name="model"></param>
+             <returns></returns>
+        </member>
+        <member name="M:CNet.DAL.BaseDataDapperContribMySql`1.DeleteByWhere(System.String,System.Object)">
+            <summary>
+            根据条件删除
+            </summary>
+            <param name="model"></param>
+            <returns></returns>
+        </member>
+        <member name="M:CNet.DAL.BaseDataDapperContribMySql`1.DeleteBatch(System.Collections.Generic.List{`0})">
+            <summary>
+            根据实体删除
+            </summary>
+            <param name="models"></param>
+            <returns></returns>
+        </member>
+        <member name="M:CNet.DAL.BaseDataDapperContribMySql`1.Get(System.Object)">
+            <summary>
+            根据一个实体对象
+            </summary>
+            <param name="models"></param>
+            <returns></returns>
+        </member>
+        <member name="M:CNet.DAL.BaseDataDapperContribMySql`1.Get(System.Object,System.String)">
+            <summary>
+            获取一个实体对象
+            </summary>
+            <param name="models"></param>
+            <returns></returns>
+        </member>
+        <member name="M:CNet.DAL.BaseDataDapperContribMySql`1.GetList(System.String,System.String,System.Int32,System.String)">
+            <summary>
+            根据条件查询实体列表
+            </summary>
+            <param name="where"></param>
+            <param name="sort"></param>
+            <returns></returns>
+        </member>
+        <member name="M:CNet.DAL.BaseDataDapperContribMySql`1.GetPage(System.String,System.String,System.Int32,System.Int32,System.String,System.Type)">
+            <summary>
+            存储过程分页查询
+            </summary>
+            <param name="where">条件</param>
+            <param name="sort">分类</param>
+            <param name="page">页索引</param>
+            <param name="resultsPerPage">页大小</param>
+            <param name="fields">查询字段</param>
+            <returns></returns>
+        </member>
+        <member name="M:CNet.DAL.BaseDataDapperContribMySql`1.ChangeSotpStatus(System.String)">
+            <summary>
+            修改删除状态
+            </summary>
+            <param name="where"></param>
+            <returns></returns>
+        </member>
+        <member name="M:CNet.DAL.BaseDataDapperContribSQLite`1.Insert(`0)">
+            <summary>
+            插入
+            </summary>
+            <param name="model"></param>
+            <returns></returns>
+        </member>
+        <member name="M:CNet.DAL.BaseDataDapperContribSQLite`1.InsertBatch(System.Collections.Generic.List{`0})">
+            <summary>
+            批量插入
+            </summary>
+            <param name="models"></param>
+            <returns></returns>
+        </member>
+        <member name="M:CNet.DAL.BaseDataDapperContribSQLite`1.Update(`0)">
+            <summary>
+            更新
+            </summary>
+            <param name="model"></param>
+            <returns></returns>
+        </member>
+        <member name="M:CNet.DAL.BaseDataDapperContribSQLite`1.UpdateBatch(System.Collections.Generic.List{`0})">
+            <summary>
+            批量更新
+            </summary>
+            <param name="models"></param>
+            <returns></returns>
+        </member>
+        <member name="M:CNet.DAL.BaseDataDapperContribSQLite`1.Delete(`0)">
+             <summary>
+            根据实体删除
+             </summary>
+             <param name="model"></param>
+             <returns></returns>
+        </member>
+        <member name="M:CNet.DAL.BaseDataDapperContribSQLite`1.DeleteByWhere(System.String,System.Object)">
+            <summary>
+            根据条件删除
+            </summary>
+            <param name="model"></param>
+            <returns></returns>
+        </member>
+        <member name="M:CNet.DAL.BaseDataDapperContribSQLite`1.DeleteBatch(System.Collections.Generic.List{`0})">
+            <summary>
+            根据实体删除
+            </summary>
+            <param name="models"></param>
+            <returns></returns>
+        </member>
+        <member name="M:CNet.DAL.BaseDataDapperContribSQLite`1.Get(System.Object)">
+            <summary>
+            根据一个实体对象
+            </summary>
+            <param name="models"></param>
+            <returns></returns>
+        </member>
+        <member name="M:CNet.DAL.BaseDataDapperContribSQLite`1.Get(System.Object,System.String)">
+            <summary>
+            获取一个实体对象
+            </summary>
+            <param name="models"></param>
+            <returns></returns>
+        </member>
+        <member name="M:CNet.DAL.BaseDataDapperContribSQLite`1.GetList(System.String,System.String,System.Int32,System.String)">
+            <summary>
+            根据条件查询实体列表
+            </summary>
+            <param name="where"></param>
+            <param name="sort"></param>
+            <returns></returns>
+        </member>
+        <member name="M:CNet.DAL.BaseDataDapperContribSQLite`1.GetPage(System.String,System.String,System.Int32,System.Int32,System.String,System.Type)">
+            <summary>
+            存储过程分页查询
+            </summary>
+            <param name="where">条件</param>
+            <param name="sort">分类</param>
+            <param name="page">页索引</param>
+            <param name="resultsPerPage">页大小</param>
+            <param name="fields">查询字段</param>
+            <returns></returns>
+        </member>
+        <member name="M:CNet.DAL.BaseDataDapperContribSQLite`1.ChangeSotpStatus(System.String)">
+            <summary>
+            修改删除状态
+            </summary>
+            <param name="where"></param>
+            <returns></returns>
+        </member>
+        <member name="M:CNet.DAL.BaseDataDapperContribSqlServer`1.Insert(`0)">
+            <summary>
+            插入
+            </summary>
+            <param name="model"></param>
+            <returns></returns>
+        </member>
+        <member name="M:CNet.DAL.BaseDataDapperContribSqlServer`1.InsertBatch(System.Collections.Generic.List{`0})">
+            <summary>
+            批量插入
+            </summary>
+            <param name="models"></param>
+            <returns></returns>
+        </member>
+        <member name="M:CNet.DAL.BaseDataDapperContribSqlServer`1.Update(`0)">
+            <summary>
+            更新
+            </summary>
+            <param name="model"></param>
+            <returns></returns>
+        </member>
+        <member name="M:CNet.DAL.BaseDataDapperContribSqlServer`1.UpdateBatch(System.Collections.Generic.List{`0})">
+            <summary>
+            批量更新
+            </summary>
+            <param name="models"></param>
+            <returns></returns>
+        </member>
+        <member name="M:CNet.DAL.BaseDataDapperContribSqlServer`1.Delete(`0)">
+             <summary>
+            根据实体删除
+             </summary>
+             <param name="model"></param>
+             <returns></returns>
+        </member>
+        <member name="M:CNet.DAL.BaseDataDapperContribSqlServer`1.DeleteByWhere(System.String,System.Object)">
+            <summary>
+            根据条件删除
+            </summary>
+            <param name="model"></param>
+            <returns></returns>
+        </member>
+        <member name="M:CNet.DAL.BaseDataDapperContribSqlServer`1.DeleteBatch(System.Collections.Generic.List{`0})">
+            <summary>
+            根据实体删除
+            </summary>
+            <param name="models"></param>
+            <returns></returns>
+        </member>
+        <member name="M:CNet.DAL.BaseDataDapperContribSqlServer`1.Get(System.Object)">
+            <summary>
+            根据一个实体对象
+            </summary>
+            <param name="models"></param>
+            <returns></returns>
+        </member>
+        <member name="M:CNet.DAL.BaseDataDapperContribSqlServer`1.Get(System.Object,System.String)">
+            <summary>
+            获取一个实体对象
+            </summary>
+            <param name="models"></param>
+            <returns></returns>
+        </member>
+        <member name="M:CNet.DAL.BaseDataDapperContribSqlServer`1.GetList(System.String,System.String,System.Int32,System.String)">
+            <summary>
+            根据条件查询实体列表
+            </summary>
+            <param name="where"></param>
+            <param name="sort"></param>
+            <returns></returns>
+        </member>
+        <member name="M:CNet.DAL.BaseDataDapperContribSqlServer`1.GetPage(System.String,System.String,System.Int32,System.Int32,System.String,System.Type)">
+            <summary>
+            存储过程分页查询
+            </summary>
+            <param name="where">条件</param>
+            <param name="sort">分类</param>
+            <param name="page">页索引</param>
+            <param name="resultsPerPage">页大小</param>
+            <param name="fields">查询字段</param>
+            <returns></returns>
+        </member>
+        <member name="M:CNet.DAL.BaseDataDapperContribSqlServer`1.ChangeSotpStatus(System.String)">
+            <summary>
+            修改删除状态
+            </summary>
+            <param name="where"></param>
+            <returns></returns>
+        </member>
+        <member name="M:CNet.DapperHelperMySql.Excute(System.String,System.Object,System.Data.IDbTransaction,System.Nullable{System.Int32},System.Nullable{System.Data.CommandType})">
+            <summary>
+            Excute返回受影响行数
+            </summary>
+            <param name="sql"></param>
+            <param name="param"></param>
+            <returns></returns>
+        </member>
+        <member name="M:CNet.DapperHelperMySql.ExecuteReaderToTable(System.String,System.Object,System.Data.IDbTransaction,System.Nullable{System.Int32},System.Nullable{System.Data.CommandType})">
+             <summary>
+            返回table数据
+             </summary>
+             <returns></returns>
+        </member>
+        <member name="M:CNet.DapperHelperMySql.Query``1(System.String,System.Object,System.Data.IDbTransaction,System.Boolean,System.Nullable{System.Int32},System.Nullable{System.Data.CommandType})">
+            <summary>
+            查询返回list
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="sql"></param>
+            <param name="param"></param>
+            <returns></returns>
+        </member>
+        <member name="M:CNet.DapperHelperMySql.QueryFirst``1(System.String,System.Object,System.Data.IDbTransaction,System.Nullable{System.Int32},System.Nullable{System.Data.CommandType})">
+            <summary>
+            查询返回第一个元素
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="sql"></param>
+            <param name="param"></param>
+            <returns></returns>
+        </member>
+        <member name="M:CNet.DapperHelperMySql.QueryMultiple(System.String,System.Object,System.Data.IDbTransaction,System.Boolean,System.Nullable{System.Int32},System.Nullable{System.Data.CommandType})">
+            <summary>
+            查询返回多个列表结果
+            </summary>
+            <param name="sql"></param>
+            <param name="param"></param>
+            <param name="transaction"></param>
+            <param name="buffered"></param>
+            <param name="commandTimeout"></param>
+            <param name="commandType"></param>
+            <returns></returns>
+        </member>
+        <member name="M:CNet.DapperHelperMySql.ExecuteScalar(System.String,System.Object,System.Data.IDbTransaction,System.Nullable{System.Int32},System.Nullable{System.Data.CommandType})">
+            <summary>
+            返回受影响第一列
+            </summary>
+            <param name="sql"></param>
+            <param name="param"></param>
+            <returns></returns>
+        </member>
+        <member name="M:CNet.DapperHelperMySql.FirstOrDefault``1(System.String,System.Object)">
+            <summary>
+            符合条件的第一行数据
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="sql"></param>
+            <param name="param"></param>
+            <returns></returns>
+        </member>
+        <member name="M:CNet.DapperHelperMySql.ExecTransaction(System.Collections.Generic.Dictionary{System.String,System.Object},System.Collections.Generic.List{System.String})">
+            <summary>
+            执行事务
+            </summary>
+            <param name="dic"></param>
+            <param name="proName"></param>
+            <returns></returns>
+        </member>
+        <member name="M:CNet.DapperHelperSQLite.Excute(System.String,System.Object,System.Data.IDbTransaction,System.Nullable{System.Int32},System.Nullable{System.Data.CommandType})">
+            <summary>
+            Excute返回受影响行数
+            </summary>
+            <param name="sql"></param>
+            <param name="param"></param>
+            <returns></returns>
+        </member>
+        <member name="M:CNet.DapperHelperSQLite.ExecuteReaderToTable(System.String,System.Object,System.Data.IDbTransaction,System.Nullable{System.Int32},System.Nullable{System.Data.CommandType})">
+             <summary>
+            返回table数据
+             </summary>
+             <returns></returns>
+        </member>
+        <member name="M:CNet.DapperHelperSQLite.Query``1(System.String,System.Object,System.Data.IDbTransaction,System.Boolean,System.Nullable{System.Int32},System.Nullable{System.Data.CommandType})">
+            <summary>
+            查询返回list
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="sql"></param>
+            <param name="param"></param>
+            <returns></returns>
+        </member>
+        <member name="M:CNet.DapperHelperSQLite.QueryFirst``1(System.String,System.Object,System.Data.IDbTransaction,System.Nullable{System.Int32},System.Nullable{System.Data.CommandType})">
+            <summary>
+            查询返回第一个元素
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="sql"></param>
+            <param name="param"></param>
+            <returns></returns>
+        </member>
+        <member name="M:CNet.DapperHelperSQLite.QueryMultiple(System.String,System.Object,System.Data.IDbTransaction,System.Boolean,System.Nullable{System.Int32},System.Nullable{System.Data.CommandType})">
+            <summary>
+            查询返回多个列表结果
+            </summary>
+            <param name="sql"></param>
+            <param name="param"></param>
+            <param name="transaction"></param>
+            <param name="buffered"></param>
+            <param name="commandTimeout"></param>
+            <param name="commandType"></param>
+            <returns></returns>
+        </member>
+        <member name="M:CNet.DapperHelperSQLite.ExecuteScalar(System.String,System.Object,System.Data.IDbTransaction,System.Nullable{System.Int32},System.Nullable{System.Data.CommandType})">
+            <summary>
+            返回受影响第一列
+            </summary>
+            <param name="sql"></param>
+            <param name="param"></param>
+            <returns></returns>
+        </member>
+        <member name="M:CNet.DapperHelperSQLite.FirstOrDefault``1(System.String,System.Object)">
+            <summary>
+            符合条件的第一行数据
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="sql"></param>
+            <param name="param"></param>
+            <returns></returns>
+        </member>
+        <member name="M:CNet.DapperHelperSQLite.ExecTransaction(System.Collections.Generic.Dictionary{System.String,System.Object},System.Collections.Generic.List{System.String})">
+            <summary>
+            执行事务
+            </summary>
+            <param name="dic"></param>
+            <param name="proName"></param>
+            <returns></returns>
+        </member>
+        <member name="M:CNet.DapperHelperSqlServer.Excute(System.String,System.Object,System.Data.IDbTransaction,System.Nullable{System.Int32},System.Nullable{System.Data.CommandType})">
+            <summary>
+            Excute返回受影响行数
+            </summary>
+            <param name="sql"></param>
+            <param name="param"></param>
+            <returns></returns>
+        </member>
+        <member name="M:CNet.DapperHelperSqlServer.ExecuteReaderToTable(System.String,System.Object,System.Data.IDbTransaction,System.Nullable{System.Int32},System.Nullable{System.Data.CommandType})">
+             <summary>
+            返回table数据
+             </summary>
+             <returns></returns>
+        </member>
+        <member name="M:CNet.DapperHelperSqlServer.Query``1(System.String,System.Object,System.Data.IDbTransaction,System.Boolean,System.Nullable{System.Int32},System.Nullable{System.Data.CommandType})">
+            <summary>
+            查询返回list
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="sql"></param>
+            <param name="param"></param>
+            <returns></returns>
+        </member>
+        <member name="M:CNet.DapperHelperSqlServer.QueryFirst``1(System.String,System.Object,System.Data.IDbTransaction,System.Nullable{System.Int32},System.Nullable{System.Data.CommandType})">
+            <summary>
+            查询返回第一个元素
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="sql"></param>
+            <param name="param"></param>
+            <returns></returns>
+        </member>
+        <member name="M:CNet.DapperHelperSqlServer.QueryMultiple(System.String,System.Object,System.Data.IDbTransaction,System.Boolean,System.Nullable{System.Int32},System.Nullable{System.Data.CommandType})">
+            <summary>
+            查询返回多个列表结果
+            </summary>
+            <param name="sql"></param>
+            <param name="param"></param>
+            <param name="transaction"></param>
+            <param name="buffered"></param>
+            <param name="commandTimeout"></param>
+            <param name="commandType"></param>
+            <returns></returns>
+        </member>
+        <member name="M:CNet.DapperHelperSqlServer.ExecuteScalar(System.String,System.Object,System.Data.IDbTransaction,System.Nullable{System.Int32},System.Nullable{System.Data.CommandType})">
+            <summary>
+            返回受影响第一列
+            </summary>
+            <param name="sql"></param>
+            <param name="param"></param>
+            <returns></returns>
+        </member>
+        <member name="M:CNet.DapperHelperSqlServer.FirstOrDefault``1(System.String,System.Object)">
+            <summary>
+            符合条件的第一行数据
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="sql"></param>
+            <param name="param"></param>
+            <returns></returns>
+        </member>
+        <member name="M:CNet.DapperHelperSqlServer.ExecTransaction(System.Collections.Generic.Dictionary{System.String,System.Object},System.Collections.Generic.List{System.String})">
+            <summary>
+            执行事务
+            </summary>
+            <param name="dic"></param>
+            <param name="proName"></param>
+            <returns></returns>
+        </member>
+        <member name="T:CNet.DbTable">
+            <summary>
+            表结构
+            </summary>
+        </member>
+        <member name="P:CNet.DbTable.TableName">
+            <summary>
+            表名称
+            </summary>
+        </member>
+        <member name="P:CNet.DbTable.SchemaName">
+            <summary>
+            表的架构
+            </summary>
+        </member>
+        <member name="P:CNet.DbTable.Rows">
+            <summary>
+            表的记录数
+            </summary>
+        </member>
+        <member name="P:CNet.DbTable.HasPrimaryKey">
+            <summary>
+            是否含有主键
+            </summary>
+        </member>
+        <member name="T:CNet.DbColumn">
+            <summary>
+            表字段结构
+            </summary>
+        </member>
+        <member name="P:CNet.DbColumn.ColumnID">
+            <summary>
+            字段ID
+            </summary>
+        </member>
+        <member name="P:CNet.DbColumn.IsPrimaryKey">
+            <summary>
+            是否主键
+            </summary>
+        </member>
+        <member name="P:CNet.DbColumn.ColumnName">
+            <summary>
+            字段名称
+            </summary>
+        </member>
+        <member name="P:CNet.DbColumn.ColumnType">
+            <summary>
+            字段类型
+            </summary>
+        </member>
+        <member name="P:CNet.DbColumn.CSharpType">
+            <summary>
+            数据库类型对应的C#类型
+            </summary>
+        </member>
+        <member name="P:CNet.DbColumn.IsNullCSharpType">
+            <summary>
+            数据库类型对应的C#类型
+            </summary>
+        </member>
+        <member name="P:CNet.DbColumn.CommonType">
+            <summary>
+            类型
+            </summary>
+        </member>
+        <member name="P:CNet.DbColumn.ByteLength">
+            <summary>
+            字节长度
+            </summary>
+        </member>
+        <member name="P:CNet.DbColumn.CharLength">
+            <summary>
+            字符长度
+            </summary>
+        </member>
+        <member name="P:CNet.DbColumn.Scale">
+            <summary>
+            小数位
+            </summary>
+        </member>
+        <member name="P:CNet.DbColumn.IsIdentity">
+            <summary>
+            是否自增列
+            </summary>
+        </member>
+        <member name="P:CNet.DbColumn.IsNullable">
+            <summary>
+            是否允许空
+            </summary>
+        </member>
+        <member name="P:CNet.DbColumn.Remark">
+            <summary>
+            描述
+            </summary>
+        </member>
+        <member name="M:CNet.IDapperHelper.Excute(System.String,System.Object,System.Data.IDbTransaction,System.Nullable{System.Int32},System.Nullable{System.Data.CommandType})">
+            <summary>
+            Excute返回受影响行数
+            </summary>
+            <param name="sql"></param>
+            <param name="param"></param>
+            <returns></returns>
+        </member>
+        <member name="M:CNet.IDapperHelper.ExecuteReaderToTable(System.String,System.Object,System.Data.IDbTransaction,System.Nullable{System.Int32},System.Nullable{System.Data.CommandType})">
+             <summary>
+            返回table数据
+             </summary>
+             <returns></returns>
+        </member>
+        <member name="M:CNet.IDapperHelper.Query``1(System.String,System.Object,System.Data.IDbTransaction,System.Boolean,System.Nullable{System.Int32},System.Nullable{System.Data.CommandType})">
+            <summary>
+            查询返回list
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="sql"></param>
+            <param name="param"></param>
+            <returns></returns>
+        </member>
+        <member name="M:CNet.IDapperHelper.QueryFirst``1(System.String,System.Object,System.Data.IDbTransaction,System.Nullable{System.Int32},System.Nullable{System.Data.CommandType})">
+            <summary>
+            查询返回第一个元素
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="sql"></param>
+            <param name="param"></param>
+            <returns></returns>
+        </member>
+        <member name="M:CNet.IDapperHelper.QueryMultiple(System.String,System.Object,System.Data.IDbTransaction,System.Boolean,System.Nullable{System.Int32},System.Nullable{System.Data.CommandType})">
+            <summary>
+            查询返回多个列表结果
+            </summary>
+            <param name="sql"></param>
+            <param name="param"></param>
+            <param name="transaction"></param>
+            <param name="buffered"></param>
+            <param name="commandTimeout"></param>
+            <param name="commandType"></param>
+            <returns></returns>
+        </member>
+        <member name="M:CNet.IDapperHelper.ExecuteScalar(System.String,System.Object,System.Data.IDbTransaction,System.Nullable{System.Int32},System.Nullable{System.Data.CommandType})">
+            <summary>
+            返回受影响第一列
+            </summary>
+            <param name="sql"></param>
+            <param name="param"></param>
+            <returns></returns>
+        </member>
+        <member name="M:CNet.IDapperHelper.FirstOrDefault``1(System.String,System.Object)">
+            <summary>
+            符合条件的第一行数据
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="sql"></param>
+            <param name="param"></param>
+            <returns></returns>
+        </member>
+        <member name="M:CNet.IDapperHelper.ExecTransaction(System.Collections.Generic.Dictionary{System.String,System.Object},System.Collections.Generic.List{System.String})">
+            <summary>
+            执行事务
+            </summary>
+            <param name="dic"></param>
+            <param name="proName"></param>
+            <returns></returns>
+        </member>
+    </members>
+</doc>

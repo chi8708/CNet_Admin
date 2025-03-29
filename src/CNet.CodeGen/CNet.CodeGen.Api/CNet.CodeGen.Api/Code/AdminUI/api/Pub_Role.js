@@ -1,5 +1,5 @@
 
-//////此代码由CNetCodeGen生成， 作者：cts 生成时间：2025-02-10 15:50:06
+//////此代码由CNetCodeGen生成， 作者：cts 生成时间：2025-03-29 13:51:29
 import axios from '@/libs/api.request'
 import store from '@/store'
 

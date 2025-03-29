@@ -1,0 +1,17 @@
+其中CNet.CodeGen.Api是后端.net6接口代码，CNet.CodeGen.UI是前端element代码。学习这两个文件夹下面的代码风格。
+帮我生成下面界面代码，包含前端界面和后端接口。这个界面主要有下面功能 
+1.进入界面后调用接口获取数据表，并绑定在下拉框，注意下拉框要有搜索和多选功能
+2.选择数据表点击生成代码后调用后端接口生成代码 ，生成代码的逻辑我已经写好了是GenByRazor.CompileAdminUI("Pub_Role");
+3.生成成功后再列表显示，列表代搜索和分页功能。并点击具体的某一行可以下载和查看代码。注意生成的代码一个数据表有多个文件，
+所以查看的时候有多个选项卡分别是前端access、api、view、后端Model、DAL、BLL。代码内容为CNet.CodeGen.Api\Code下面对应文件。
+上面功能举例：比如数据表选择了Pub_Role 点击生成后调用GenByRazor.CompileAdminUI("Pub_Role")。列表就出现Pub_Role行，点击查看后
+弹出层有多个选项卡（access、api、view_List、view_Edit、Model、DAL、BLL）可以查看代码，其中代码内容如下
+access代码内容为CNet.CodeGen.Api\Code\AdminUI\access\Pub_Role.js、
+api代码内容为CNet.CodeGen.Api\Code\AdminUI\api\Pub_Role.js
+view_List代码内容为CNet.CodeGen.Api\Code\AdminUI\view\Pub_Role\List.vue、
+view_Edit代码内容为CNet.CodeGen.Api\Code\AdminUI\view\Pub_Role\Edit.vue、
+Model代码内容为CNet.CodeGen.Api\Code\Model\Main\Pub_Role.cs、
+DAL代码内容为CNet.CodeGen.Api\Code\DAL\Main\Pub_Role.cs、
+DLL代码内容为CNet.CodeGen.Api\Code\BLL\Main\Pub_Role.cs、
+
+

@@ -49,7 +49,7 @@ namespace CNet.CodeGen.Api.Util
         /// <returns></returns>
         public static (bool, string) CompileModel(string tableName, string saveDir="", string templatePath= "./Code/Model/1Entity.cshtml")
         {
-            var dbHeplper= GetDbHelper();
+            var dbHeplper = GetDbHelper();
             var columns = dbHeplper.GetDbColumns(tableName);
             var model = new TableModel
             {
@@ -58,8 +58,36 @@ namespace CNet.CodeGen.Api.Util
             };
             string rootPath = Directory.GetCurrentDirectory();
             var savePath = Path.Combine(rootPath, $"Code/Model/{Config.Namespace2}/{tableName}.cs");
-            return Compile(templatePath, savePath, model).Result;
 
+            return CompileToFile( saveDir, templatePath, model, savePath);
+
+        }
+
+        private static (bool, string) CompileToFile(string saveDir, string templatePath, TableModel model, string codeFilePath)
+        {
+            var r = Compile(templatePath, codeFilePath, model).Result;
+            if (r.Item1)
+            {
+                ReplaceFile(saveDir, codeFilePath);
+            }
+            return r;
+        }
+
+        /// <summary>
+        /// 替换源代码文件
+        /// </summary>
+        /// <param name="saveDir">要替换的项目目录</param>
+        /// <param name="codeFilePath">代码文件路径</param>
+        /// <returns></returns>
+        public static bool ReplaceFile(string saveDir, string codeFilePath) 
+        {
+            if (!string.IsNullOrWhiteSpace(saveDir) && Directory.Exists(saveDir))
+            {
+                string fileName = codeFilePath.Substring(codeFilePath.LastIndexOf("/"));
+                System.IO.File.Copy(codeFilePath, $"{saveDir}/{fileName}", true);
+            }
+
+            return true;
         }
 
         /// <summary>
@@ -78,8 +106,8 @@ namespace CNet.CodeGen.Api.Util
                 Columns = null
             };
             string rootPath = Directory.GetCurrentDirectory();
-            var savePath = Path.Combine(rootPath, $"Code/BLL/{Config.Namespace2}/{tableName}.cs");
-            return Compile(templatePath, savePath, model).Result;
+            var savePath = Path.Combine(rootPath, $"Code/BLL/{Config.Namespace2}/{tableName}BLL.cs");
+            return CompileToFile(saveDir, templatePath, model, savePath);
 
         }
 
@@ -100,7 +128,7 @@ namespace CNet.CodeGen.Api.Util
             };
             string rootPath = Directory.GetCurrentDirectory();
             var savePath = Path.Combine(rootPath, $"Code/AdminController/{tableName}Controller.cs");
-            return Compile(templatePath, savePath, model).Result;
+            return CompileToFile( saveDir, templatePath, model, savePath);
 
         }
 
@@ -114,7 +142,7 @@ namespace CNet.CodeGen.Api.Util
         /// <returns></returns>
         public static (bool, string) CompileAdminUI(string tableName)
         {
-            var functionCode = CompileUI_InsertFunction(tableName).Item2;
+            var functionCode = Compile_InsertFunction(tableName).Item2;
             //根据模板生成代码
             CompileAdminUI_access(tableName, functionCode);
             CompileAdminUI_api(tableName, functionCode);
@@ -143,7 +171,7 @@ namespace CNet.CodeGen.Api.Util
             };
             string rootPath = Directory.GetCurrentDirectory();
             var savePath = Path.Combine(rootPath, $"Code/AdminUI/access/{tableName}.js");
-            return Compile(templatePath, savePath, model).Result;
+            return CompileToFile(saveDir, templatePath, model, savePath);
         }
 
         /// <summary>
@@ -165,7 +193,7 @@ namespace CNet.CodeGen.Api.Util
             };
             string rootPath = Directory.GetCurrentDirectory();
             var savePath = Path.Combine(rootPath, $"Code/AdminUI/api/{tableName}.js");
-            return Compile(templatePath, savePath, model).Result;
+            return CompileToFile(saveDir, templatePath, model, savePath);
         }
 
 
@@ -176,11 +204,20 @@ namespace CNet.CodeGen.Api.Util
         /// <param name="templatePath"></param>
         /// <param name="saveDir"></param>
         /// <returns></returns>
-        public static (bool, string) CompileAdminUI_view(string tableName, string functionCode)
+        public static (bool, string) CompileAdminUI_view(string tableName, string functionCode, string saveDir = "")
         {
 
-            var resultList= CompileAdminUI_view_List(tableName, functionCode);
-            var resultEdit = CompileAdminUI_view_Edit(tableName, functionCode);
+            var viewDir = "";
+            if (!string.IsNullOrWhiteSpace(saveDir))
+            {
+                viewDir = $"{saveDir}\\{tableName}";
+                if (!Directory.Exists(viewDir))
+                {
+                    Directory.CreateDirectory(viewDir);
+                }
+            }
+            var resultList= CompileAdminUI_view_List(tableName, functionCode, viewDir);
+            var resultEdit = CompileAdminUI_view_Edit(tableName, functionCode, viewDir);
 
             return resultList;
         }
@@ -211,7 +248,7 @@ namespace CNet.CodeGen.Api.Util
                 Directory.CreateDirectory(saveDirPath);
             }
             var savePath = Path.Combine(rootPath, $"{saveDirPath}/List.vue");
-            return Compile(templatePath, savePath, model).Result;
+            return CompileToFile(saveDir, templatePath, model, savePath);
         }
 
         /// <summary>
@@ -239,7 +276,7 @@ namespace CNet.CodeGen.Api.Util
                 Directory.CreateDirectory(saveDirPath);
             }
             var savePath = Path.Combine(rootPath, $"{saveDirPath}/Edit.vue");
-            return Compile(templatePath, savePath, model).Result;
+           return CompileToFile(saveDir, templatePath, model, savePath);
         }
 
         /// <summary>
@@ -247,7 +284,7 @@ namespace CNet.CodeGen.Api.Util
         /// </summary>
         /// <param name="tableName"></param>
         /// <returns></returns>
-        public static (bool, string) CompileUI_InsertFunction(string tableName)
+        public static (bool, string) Compile_InsertFunction(string tableName)
         {
             Pub_FunctionBLL bll = new Pub_FunctionBLL();
 

@@ -1,10 +1,45 @@
 
 
-        <!-- 此代码由CNetCodeGen生成， 作者：cts 生成时间：2025-02-10 15:50:07 -->
+        <!-- 此代码由CNetCodeGen生成， 作者：cts 生成时间：2025-03-29 13:51:29 -->
     
 <template>
   <div>
     <Form ref="formInline" label-position="right" :model="Row" :rules="rule" :label-width="100">
+      <FormItem label="创建时间" prop="crdt">
+        <Row>
+          <Col span="24">
+            <DatePicker type="date" placeholder="请选择日期" v-model="Row.crdt"></DatePicker>
+        </Col>
+       </Row>
+      </FormItem>
+      <FormItem label="创建人" prop="crid">
+        <Row>
+          <Col span="24">
+            <Input v-model="Row.crid" />
+        </Col>
+       </Row>
+      </FormItem>
+      <FormItem label="最后更新时间" prop="lmdt">
+        <Row>
+          <Col span="24">
+            <DatePicker type="date" placeholder="请选择日期" v-model="Row.lmdt"></DatePicker>
+        </Col>
+       </Row>
+      </FormItem>
+      <FormItem label="最后更新人" prop="lmid">
+        <Row>
+          <Col span="24">
+            <Input v-model="Row.lmid" />
+        </Col>
+       </Row>
+      </FormItem>
+      <FormItem label="备注" prop="remark">
+        <Row>
+          <Col span="24">
+            <Input v-model="Row.remark" />
+        </Col>
+       </Row>
+      </FormItem>
       <FormItem label="角色编号" prop="roleCode">
         <Row>
           <Col span="24">
@@ -19,13 +54,6 @@
         </Col>
        </Row>
       </FormItem>
-      <FormItem label="备注" prop="remark">
-        <Row>
-          <Col span="24">
-            <Input v-model="Row.remark" />
-        </Col>
-       </Row>
-      </FormItem>
       <FormItem label="停用状态 默认0  未停用 1 停用" prop="stopFlag">
         <Row>
           <Col span="24">
@@ -33,34 +61,6 @@
                 <template #open><span>是</span></template>
                 <template #close><span>否</span></template>
             </i-switch>
-        </Col>
-       </Row>
-      </FormItem>
-      <FormItem label="创建人" prop="crid">
-        <Row>
-          <Col span="24">
-            <Input v-model="Row.crid" />
-        </Col>
-       </Row>
-      </FormItem>
-      <FormItem label="创建时间" prop="crdt">
-        <Row>
-          <Col span="24">
-            <DatePicker type="date" placeholder="请选择日期" v-model="Row.crdt"></DatePicker>
-        </Col>
-       </Row>
-      </FormItem>
-      <FormItem label="最后更新人" prop="lmid">
-        <Row>
-          <Col span="24">
-            <Input v-model="Row.lmid" />
-        </Col>
-       </Row>
-      </FormItem>
-      <FormItem label="最后更新时间" prop="lmdt">
-        <Row>
-          <Col span="24">
-            <DatePicker type="date" placeholder="请选择日期" v-model="Row.lmdt"></DatePicker>
         </Col>
        </Row>
       </FormItem>
