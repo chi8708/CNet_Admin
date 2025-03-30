@@ -1,66 +1,28 @@
 
 
-        <!-- 此代码由CNetCodeGen生成， 作者：cts 生成时间：2025-03-30 22:08:29 -->
+        <!-- 此代码由CNetCodeGen生成， 作者：cts 生成时间：2025-03-30 20:48:14 -->
     
 <template>
   <div>
     <Form ref="formInline" label-position="right" :model="Row" :rules="rule" :label-width="100">
-      <FormItem label="创建时间" prop="crdt">
+      <FormItem label="创建时间" prop="createTime">
         <Row>
           <Col span="24">
-            <DatePicker type="date" placeholder="请选择日期" v-model="Row.crdt"></DatePicker>
+            <DatePicker type="date" placeholder="请选择日期" v-model="Row.createTime"></DatePicker>
         </Col>
        </Row>
       </FormItem>
-      <FormItem label="创建人" prop="crid">
+      <FormItem label="" prop="genInfo">
         <Row>
           <Col span="24">
-            <Input v-model="Row.crid" />
+            <Input v-model="Row.genInfo" />
         </Col>
        </Row>
       </FormItem>
-      <FormItem label="最后更新时间" prop="lmdt">
+      <FormItem label="" prop="status">
         <Row>
           <Col span="24">
-            <DatePicker type="date" placeholder="请选择日期" v-model="Row.lmdt"></DatePicker>
-        </Col>
-       </Row>
-      </FormItem>
-      <FormItem label="最后更新人" prop="lmid">
-        <Row>
-          <Col span="24">
-            <Input v-model="Row.lmid" />
-        </Col>
-       </Row>
-      </FormItem>
-      <FormItem label="备注" prop="remark">
-        <Row>
-          <Col span="24">
-            <Input v-model="Row.remark" />
-        </Col>
-       </Row>
-      </FormItem>
-      <FormItem label="角色编号" prop="roleCode">
-        <Row>
-          <Col span="24">
-            <Input v-model="Row.roleCode" />
-        </Col>
-       </Row>
-      </FormItem>
-      <FormItem label="角色名称" prop="roleName">
-        <Row>
-          <Col span="24">
-            <Input v-model="Row.roleName" />
-        </Col>
-       </Row>
-      </FormItem>
-      <FormItem label="停用状态 默认0  未停用 1 停用" prop="stopFlag">
-        <Row>
-          <Col span="24">
-            <i-switch v-model="Row.stopFlag" size="large">
-                <template #open><span>是</span></template>
-                <template #close><span>否</span></template>
-            </i-switch>
+            <Input v-model="Row.status" />
         </Col>
        </Row>
       </FormItem>
@@ -76,7 +38,7 @@
   </div>
 </template>
 <script>
-import { add , edit } from "@/api/testgen";
+import { add , edit } from "@/api/gen_log";
 export default {
   props: { editRow: Object, parent: Object },
   computed: {},
@@ -84,23 +46,7 @@ export default {
     return {
       Row: {},
       rule: {
-
-            roleCode: [
-               {
-                required: true,
-                message: "角色编号 必填",
-                trigger: "blur"
-                }
-            ],
-        
-            roleName: [
-               {
-                required: true,
-                message: "角色名称 必填",
-                trigger: "blur"
-                }
-            ],
-           }
+   }
     };
   },
   methods: {

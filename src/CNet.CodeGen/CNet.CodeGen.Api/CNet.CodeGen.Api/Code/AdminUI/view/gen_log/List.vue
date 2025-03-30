@@ -1,37 +1,22 @@
 
 
-        <!-- 此代码由CNetCodeGen生成， 作者：cts 生成时间：2025-03-30 22:08:29 -->
+        <!-- 此代码由CNetCodeGen生成， 作者：cts 生成时间：2025-03-30 20:48:14 -->
     
 <template>
   <div class="content-main">
     <div class="search-con search-con-top">
       <Form ref="formInline" label-position="right" :label-width="60" inline>
                   <FormItem label="创建时间">
-                            <Input class="search-input" v-model="queryData.SL_Crdt" />
+                            <Input class="search-input" v-model="queryData.SL_CreateTime" />
                   </FormItem>
-                  <FormItem label="创建人">
-                            <Input class="search-input" v-model="queryData.SL_Crid" />
+                  <FormItem label="">
+                            <Input class="search-input" v-model="queryData.SL_GenInfo" />
                   </FormItem>
                   <FormItem label="">
                             <Input class="search-input" v-model="queryData.SL_Id" />
                   </FormItem>
-                  <FormItem label="最后更新时间">
-                            <Input class="search-input" v-model="queryData.SL_Lmdt" />
-                  </FormItem>
-                  <FormItem label="最后更新人">
-                            <Input class="search-input" v-model="queryData.SL_Lmid" />
-                  </FormItem>
-                  <FormItem label="备注">
-                            <Input class="search-input" v-model="queryData.SL_Remark" />
-                  </FormItem>
-                  <FormItem label="角色编号">
-                            <Input class="search-input" v-model="queryData.SL_RoleCode" />
-                  </FormItem>
-                  <FormItem label="角色名称">
-                            <Input class="search-input" v-model="queryData.SL_RoleName" />
-                  </FormItem>
-                  <FormItem label="停用状态 默认0  未停用 1 停用">
-                            <Input class="search-input" v-model="queryData.SL_StopFlag" />
+                  <FormItem label="">
+                            <Input class="search-input" v-model="queryData.SL_Status" />
                   </FormItem>
           <Button class="search-btn" type="primary" @click="setPageData(1)">
             <Icon type="search" />&nbsp;&nbsp;搜索
@@ -82,10 +67,10 @@
 </template>
 <script>
 import Edit from "./Edit";
-import { getPage, remove } from "@/api/testgen";
-import { testgen } from "@/access/testgen"
+import { getPage, remove } from "@/api/gen_log";
+import { gen_log } from "@/access/gen_log"
 export default {
-  name: 'testgen',//与 router.js notCache:fasle且name相同 将缓存组件。
+  name: 'gen_log',//与 router.js notCache:fasle且name相同 将缓存组件。
   components: {
     Edit,
   },
@@ -93,9 +78,9 @@ export default {
     const userAccessAll=this.$store.state.user.access;
     return {
       userAccess:{
-        isAdd: userAccessAll.includes(`${testgen.ADD}`),
-        isEdit: userAccessAll.includes(`${testgen.EDIT}`),
-        isMove: userAccessAll.includes(`${testgen.EDIT}`),
+        isAdd: userAccessAll.includes(`${gen_log.ADD}`),
+        isEdit: userAccessAll.includes(`${gen_log.EDIT}`),
+        isMove: userAccessAll.includes(`${gen_log.EDIT}`),
       },
       tableData1: [],
       queryData: {},
@@ -108,12 +93,12 @@ export default {
 
             {
                 title:"创建时间",
-                key: "crdt"
+                key: "createTime"
              },
            
             {
-                title:"创建人",
-                key: "crid"
+                title:"",
+                key: "genInfo"
              },
            
             {
@@ -122,33 +107,8 @@ export default {
              },
            
             {
-                title:"最后更新时间",
-                key: "lmdt"
-             },
-           
-            {
-                title:"最后更新人",
-                key: "lmid"
-             },
-           
-            {
-                title:"备注",
-                key: "remark"
-             },
-           
-            {
-                title:"角色编号",
-                key: "roleCode"
-             },
-           
-            {
-                title:"角色名称",
-                key: "roleName"
-             },
-           
-            {
-                title:"停用状态 默认0  未停用 1 停用",
-                key: "stopFlag"
+                title:"",
+                key: "status"
              },
                    {
          title: '操作',

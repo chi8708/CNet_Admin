@@ -1,5 +1,5 @@
 
-//////此代码由CNetCodeGen生成， 作者：cts 生成时间：2025-03-30 22:08:29
+//////此代码由CNetCodeGen生成， 作者：cts 生成时间：2025-03-30 20:48:13
     using System;
     using System.Collections.Generic;
     using System.Linq;
@@ -16,21 +16,21 @@
     namespace  CNet.Web.Api.Controllers
     {
         [Produces("application/json")]
-        [Route("api/testgen")]
+        [Route("api/gen_log")]
         [Authorize]
-        public class testgenController : BaseController
+        public class gen_logController : BaseController
         {
-            testgenBLL bll = new testgenBLL();
+            gen_logBLL bll = new gen_logBLL();
             /// <summary>
             /// 获取所有
             ///</summary>
             [Route("GetList")]
             [HttpPost]
-            public DataRes<List<testgen>> GetList()
+            public DataRes<List<gen_log>> GetList()
             {
                 var roles = bll.GetList("");
 
-                return new DataRes<List<testgen>> { data= roles} ;
+                return new DataRes<List<gen_log>> { data= roles} ;
             }
 
               /// <summary>
@@ -39,9 +39,9 @@
             /// <returns></returns>
             [Route("Get/{id}")]
             [HttpPost]
-            public DataRes<testgen> Get(long id)
+            public DataRes<gen_log> Get(long id)
             {
-                DataRes<testgen> res = new DataRes<testgen>() { code = ResCode.Success, data = null };
+                DataRes<gen_log> res = new DataRes<gen_log>() { code = ResCode.Success, data = null };
 
                 var model = bll.Get(id);
                 res.data = model;
@@ -55,12 +55,12 @@
             /// <returns></returns>
             [Route("GetPage")]
             [HttpPost]
-            public PageDateRes<testgen> GetPage([FromBody]PageDataReq pageReq)
+            public PageDateRes<gen_log> GetPage([FromBody]PageDataReq pageReq)
             {
                 var whereStr = GetWhereStr();
                 if (whereStr == "-1")
                 {
-                    return new PageDateRes<testgen>() { code = ResCode.Error, msg = "查询参数有误！", data = null };
+                    return new PageDateRes<gen_log>() { code = ResCode.Error, msg = "查询参数有误！", data = null };
                 }
                 var list = bll.GetPage(whereStr, (pageReq.field + " " + pageReq.order), pageReq.pageNum, pageReq.pageSize);
 
@@ -88,7 +88,7 @@
             /// <returns></returns>
             [Route("Add")]
             [HttpPost]
-            public DataRes<bool> Add([FromBody]testgen model)
+            public DataRes<bool> Add([FromBody]gen_log model)
             {
                 DataRes<bool> res = new DataRes<bool>() { code = ResCode.Success, data = true };
 
@@ -108,7 +108,7 @@
             /// <returns></returns>
             [Route("Edit")]
             [HttpPost]
-            public DataRes<bool> Edit([FromBody]testgen model)
+            public DataRes<bool> Edit([FromBody]gen_log model)
             {
                 DataRes<bool> res = new DataRes<bool>() { code = ResCode.Success, data = true };
 

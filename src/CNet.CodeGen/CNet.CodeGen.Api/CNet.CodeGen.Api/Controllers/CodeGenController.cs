@@ -1,9 +1,14 @@
+using CNet.BLL.Main;
 using CNet.CodeGen.Api.Util;
+using CNet.Model;
+using CNet.Model.Main;
+using CNet.Web.Api;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Text;
 using System.Threading.Tasks;
 
 namespace CNet.CodeGen.Api.Controllers
@@ -17,12 +22,13 @@ namespace CNet.CodeGen.Api.Controllers
     {
         private readonly string _codeBasePath = "Code";
         private readonly string baseDir = "E:\\Study\\DotNet\\CNet_Admin\\src\\";
+        gen_logBLL genLogBLL = new gen_logBLL();
 
-        /// <summary>
-        /// 获取所有数据表
-        /// </summary>
-        /// <returns>数据表列表</returns>
-        [HttpGet("tables")]
+      /// <summary>
+      /// 获取所有数据表
+      /// </summary>
+      /// <returns>数据表列表</returns>
+      [HttpGet("tables")]
         public async Task<DataRes<List<string>>> GetTables()
         {
             try
@@ -72,12 +78,45 @@ namespace CNet.CodeGen.Api.Controllers
                     GenByRazor.CompileAdminController(table, request.Options.Backend.Controllers ? @$"{baseDir}\CNet.Web.Api\Controllers" : "");
                     GenByRazor.CompileAdminUI_access(table,functionCode ,request.Options.Frontend.Access ? @$"{baseDir}\CNet.Web.Admin\src\access" : "");
                     GenByRazor.CompileAdminUI_api(table, functionCode, request.Options.Frontend.Api ? @$"{baseDir}\CNet.Web.Admin\src\api" : "");
-                    GenByRazor.CompileAdminUI_view(table, functionCode, request.Options.Frontend.Views ? @$"{baseDir}\CNet.Web.Admin\src\view" : "");
+                    var r= GenByRazor.CompileAdminUI_view(table, functionCode, request.Options.Frontend.Views ? @$"{baseDir}\CNet.Web.Admin\src\view" : "");
+
+                    List<string> codeInfos = new List<string>() { };
+                    if (request.Options.Backend.Model)
+                    {
+                        codeInfos.Add("Model");
+                    }
+                    if (request.Options.Backend.Bll)
+                    {
+                        codeInfos.Add("Bll");
+                    }
+                    if (request.Options.Backend.Controllers)
+                    {
+                        codeInfos.Add("Controllers");
+                    }
+                    if (request.Options.Frontend.Access)
+                    {
+                        codeInfos.Add("Access");
+                    }
+                    if (request.Options.Frontend.Api)
+                    {
+                        codeInfos.Add("Api");
+                    }
+                    if (request.Options.Frontend.Views)
+                    {
+                        codeInfos.Add("Views");
+                    }
+                    genLogBLL.Insert(new Model.Main.gen_log { 
+                        TableName=table,
+                        CreateTime = DateTime.Now,
+                         GenInfo = $"{string.Join("、", codeInfos)}",
+                         Status=r.Item1?1:-1
+                    });
+
                     // 创建生成结果记录
                     var result = new GeneratedCodeResult
                     {
                         TableName = table,
-                        Code = $"export class {table}Model {{ /* 属性将根据数据库表结构生成 */ }}",
+                        Code = $"{string.Join("、", codeInfos)}",
                         GeneratedTime = DateTime.Now
                     };
 
@@ -94,56 +133,31 @@ namespace CNet.CodeGen.Api.Controllers
             }
         }
 
-        /// <summary>
-        /// 获取已生成的代码列表
-        /// </summary>
-        /// <param name="page">页码</param>
-        /// <param name="size">每页大小</param>
-        /// <param name="keyword">搜索关键词</param>
-        /// <returns>分页的代码列表</returns>
-        [HttpGet("codes")]
-        public async Task<DataRes<PageResult<GeneratedCodeResult>>> GetGeneratedCodes(int page = 1, int size = 10, string keyword = "")
+        [Route("GetPage")]
+        [HttpPost]
+        public PageDateRes<gen_log> GetPage([FromBody] PageDataReq pageReq)
         {
-            try
+            var whereStr = GetWhereStr();
+            if (whereStr == "-1")
             {
-                // 模拟数据，实际应用中应从数据库获取
-                var codes = new List<GeneratedCodeResult>
-                {
-                    new GeneratedCodeResult { TableName = "Pub_Role", Code = "export class RoleModel { id: number; name: string; }", GeneratedTime = DateTime.Now.AddDays(-1) },
-                    new GeneratedCodeResult { TableName = "Pub_User", Code = "export class UserModel { id: number; username: string; email: string; }", GeneratedTime = DateTime.Now },
-                    new GeneratedCodeResult { TableName = "Pub_Department", Code = "export class DepartmentModel { id: number; name: string; parentId: number; }", GeneratedTime = DateTime.Now.AddHours(-5) }
-                };
-
-                // 应用搜索过滤
-                if (!string.IsNullOrEmpty(keyword))
-                {
-                    codes = codes.Where(c => 
-                        c.TableName.Contains(keyword, StringComparison.OrdinalIgnoreCase) ||
-                        c.Code.Contains(keyword, StringComparison.OrdinalIgnoreCase)
-                    ).ToList();
-                }
-
-                // 计算总数
-                var total = codes.Count;
-
-                // 应用分页
-                var pagedCodes = codes
-                    .Skip((page - 1) * size)
-                    .Take(size)
-                    .ToList();
-
-                var result = new PageResult<GeneratedCodeResult>
-                {
-                    Total = total,
-                    Items = pagedCodes
-                };
-
-                return DataRes<PageResult<GeneratedCodeResult>>.Success(result);
+                return new PageDateRes<gen_log>() { code = ResCode.Error, msg = "查询参数有误！", data = null };
             }
-            catch (Exception ex)
+            var list = genLogBLL.GetPage(whereStr, (pageReq.field + " " + pageReq.order), pageReq.pageNum, pageReq.pageSize);
+
+            return list;
+        }
+
+        private string GetWhereStr()
+        {
+            StringBuilder sb = new StringBuilder(" 1=1 ");
+            var query = this.HttpContext.GetWhereStr();
+            if (query == "-1")
             {
-                return DataRes<PageResult<GeneratedCodeResult>>.Fail($"获取代码列表失败: {ex.Message}");
+                return query;
             }
+            sb.AppendFormat(" and {0} ", query);
+
+            return sb.ToString();
         }
 
         /// <summary>

@@ -101,6 +101,17 @@ if (app.Environment.IsDevelopment())
 //    app.UseExceptionHandler("/Home/Error");
 //    app.UseHsts();
 //}
+// 添加请求缓冲中间件（内联方式）
+app.Use(async (context, next) =>
+{
+    // 启用请求体缓冲
+    context.Request.EnableBuffering();
+
+    // 调用下一个中间件
+    await next.Invoke();
+});
+
+
 
 app.UseHttpsRedirection();
 app.UseStaticFiles(); // 启用静态文件支持（如 CSS、JS 等）

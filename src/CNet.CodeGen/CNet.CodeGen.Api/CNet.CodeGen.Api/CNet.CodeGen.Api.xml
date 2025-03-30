@@ -11,6 +11,41 @@
             <param name="pCode"></param>
             <returns></returns>
         </member>
+        <member name="M:CNet.Web.Api.Controllers.gen_logController.GetList">
+             <summary>
+             获取所有
+            </summary>
+        </member>
+        <member name="M:CNet.Web.Api.Controllers.gen_logController.Get(System.Int64)">
+            <summary>
+            获取详细
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:CNet.Web.Api.Controllers.gen_logController.GetPage(CNet.Model.PageDataReq)">
+            <summary>
+            获取分页
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:CNet.Web.Api.Controllers.gen_logController.Add(CNet.Model.Main.gen_log)">
+            <summary>
+            添加角色
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:CNet.Web.Api.Controllers.gen_logController.Edit(CNet.Model.Main.gen_log)">
+            <summary>
+            编辑
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:CNet.Web.Api.Controllers.gen_logController.Remove(System.Int64)">
+            <summary>
+            删除
+            </summary>
+            <returns></returns>
+        </member>
         <member name="M:CNet.Web.Api.Controllers.Pub_RoleController.GetList">
              <summary>
              获取所有
@@ -112,6 +147,31 @@
             </summary>
             <param name="htmlCode">输入字符串</param>
             <returns>过滤后的字符串</returns>
+        </member>
+        <member name="T:CNet.Model.Main.gen_log">
+             <summary>
+              
+            </summary>
+        </member>
+        <member name="P:CNet.Model.Main.gen_log.CreateTime">
+             <summary>
+             创建时间
+            </summary>
+        </member>
+        <member name="P:CNet.Model.Main.gen_log.GenInfo">
+             <summary>
+             
+            </summary>
+        </member>
+        <member name="P:CNet.Model.Main.gen_log.Id">
+             <summary>
+             
+            </summary>
+        </member>
+        <member name="P:CNet.Model.Main.gen_log.Status">
+             <summary>
+             
+            </summary>
         </member>
         <member name="T:CNet.Model.Main.Pub_Role">
              <summary>
@@ -325,15 +385,6 @@
             </summary>
             <param name="request">生成代码请求</param>
             <returns>生成结果</returns>
-        </member>
-        <member name="M:CNet.CodeGen.Api.Controllers.CodeGenController.GetGeneratedCodes(System.Int32,System.Int32,System.String)">
-            <summary>
-            获取已生成的代码列表
-            </summary>
-            <param name="page">页码</param>
-            <param name="size">每页大小</param>
-            <param name="keyword">搜索关键词</param>
-            <returns>分页的代码列表</returns>
         </member>
         <member name="M:CNet.CodeGen.Api.Controllers.CodeGenController.ViewCode(System.String)">
             <summary>
