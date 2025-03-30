@@ -1,5 +1,5 @@
 
-//////此代码由CNetCodeGen生成， 作者：cts 生成时间：2025-03-30 20:48:13
+//////此代码由CNetCodeGen生成， 作者：cts 生成时间：2025-03-30 23:43:15
 export const gen_log= {
    'INFO':'FC002003',
    'LIST':'FC002003001',

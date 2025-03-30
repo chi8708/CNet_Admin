@@ -1,6 +1,6 @@
 
 
-        <!-- 此代码由CNetCodeGen生成， 作者：cts 生成时间：2025-03-30 20:48:14 -->
+        <!-- 此代码由CNetCodeGen生成， 作者：cts 生成时间：2025-03-30 23:43:15 -->
     
 <template>
   <div>
@@ -23,6 +23,13 @@
         <Row>
           <Col span="24">
             <Input v-model="Row.status" />
+        </Col>
+       </Row>
+      </FormItem>
+      <FormItem label="" prop="tableName">
+        <Row>
+          <Col span="24">
+            <Input v-model="Row.tableName" />
         </Col>
        </Row>
       </FormItem>

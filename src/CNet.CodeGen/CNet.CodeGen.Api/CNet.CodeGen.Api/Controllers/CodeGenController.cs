@@ -75,7 +75,7 @@ namespace CNet.CodeGen.Api.Controllers
                     // 实际应用中，这里会根据options中的选项决定生成哪些代码
                     GenByRazor.CompileModel(table, request.Options.Backend.Model? @$"{baseDir}CNet.Model\T4.DapperExt\Main" : "");
                     GenByRazor.CompileBLL(table, request.Options.Backend.Bll ? @$"{baseDir}CNet.BLL\\T4.DapperExt\Main" : "");
-                    GenByRazor.CompileAdminController(table, request.Options.Backend.Controllers ? @$"{baseDir}\CNet.Web.Api\Controllers" : "");
+                    GenByRazor.CompileAdminController(table, request.Options.Backend.Controller ? @$"{baseDir}\CNet.Web.Api\Controllers" : "");
                     GenByRazor.CompileAdminUI_access(table,functionCode ,request.Options.Frontend.Access ? @$"{baseDir}\CNet.Web.Admin\src\access" : "");
                     GenByRazor.CompileAdminUI_api(table, functionCode, request.Options.Frontend.Api ? @$"{baseDir}\CNet.Web.Admin\src\api" : "");
                     var r= GenByRazor.CompileAdminUI_view(table, functionCode, request.Options.Frontend.Views ? @$"{baseDir}\CNet.Web.Admin\src\view" : "");
@@ -87,11 +87,11 @@ namespace CNet.CodeGen.Api.Controllers
                     }
                     if (request.Options.Backend.Bll)
                     {
-                        codeInfos.Add("Bll");
+                        codeInfos.Add("BLL");
                     }
-                    if (request.Options.Backend.Controllers)
+                    if (request.Options.Backend.Controller)
                     {
-                        codeInfos.Add("Controllers");
+                        codeInfos.Add("Controller");
                     }
                     if (request.Options.Frontend.Access)
                     {
@@ -179,8 +179,8 @@ namespace CNet.CodeGen.Api.Controllers
                     view_list = await ReadCodeFileAsync($"AdminUI/view/{tableName}/List.vue"),
                     view_edit = await ReadCodeFileAsync($"AdminUI/view/{tableName}/Edit.vue"),
                     model = await ReadCodeFileAsync($"Model/Main/{tableName}.cs"),
-                    bll = await ReadCodeFileAsync($"BLL/Main/{tableName}.cs"),
-                    dal = await ReadCodeFileAsync($"DAL/Main/{tableName}.cs")
+                    bll = await ReadCodeFileAsync($"BLL/Main/{tableName}BLL.cs"),
+                    controller= await ReadCodeFileAsync($"AdminController/{tableName}Controller.cs")
                 };
 
                 return DataRes<CodeContent>.Success(codeContent);
@@ -381,9 +381,9 @@ namespace CNet.CodeGen.Api.Controllers
         public bool Bll { get; set; }
 
         /// <summary>
-        /// 是否生成Controllers
+        /// 是否生成Controller
         /// </summary>
-        public bool Controllers { get; set; }
+        public bool Controller { get; set; }
     }
 
     /// <summary>
@@ -443,8 +443,8 @@ namespace CNet.CodeGen.Api.Controllers
         public string bll { get; set; }
 
         /// <summary>
-        /// 数据访问层代码
+        /// 控制器代码
         /// </summary>
-        public string dal { get; set; }
+        public string controller { get; set; }
     }
 } 

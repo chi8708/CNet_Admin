@@ -1,6 +1,6 @@
 
 
-        <!-- 此代码由CNetCodeGen生成， 作者：cts 生成时间：2025-03-30 20:48:14 -->
+        <!-- 此代码由CNetCodeGen生成， 作者：cts 生成时间：2025-03-30 23:43:15 -->
     
 <template>
   <div class="content-main">
@@ -17,6 +17,9 @@
                   </FormItem>
                   <FormItem label="">
                             <Input class="search-input" v-model="queryData.SL_Status" />
+                  </FormItem>
+                  <FormItem label="">
+                            <Input class="search-input" v-model="queryData.SL_TableName" />
                   </FormItem>
           <Button class="search-btn" type="primary" @click="setPageData(1)">
             <Icon type="search" />&nbsp;&nbsp;搜索
@@ -109,6 +112,11 @@ export default {
             {
                 title:"",
                 key: "status"
+             },
+           
+            {
+                title:"",
+                key: "tableName"
              },
                    {
          title: '操作',

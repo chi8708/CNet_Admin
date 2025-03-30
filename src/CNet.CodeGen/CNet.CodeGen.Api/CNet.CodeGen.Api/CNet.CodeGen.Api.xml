@@ -173,6 +173,11 @@
              
             </summary>
         </member>
+        <member name="P:CNet.Model.Main.gen_log.TableName">
+             <summary>
+             
+            </summary>
+        </member>
         <member name="T:CNet.Model.Main.Pub_Role">
              <summary>
               
@@ -523,9 +528,9 @@
             是否生成BLL
             </summary>
         </member>
-        <member name="P:CNet.CodeGen.Api.Controllers.BackendOptions.Controllers">
+        <member name="P:CNet.CodeGen.Api.Controllers.BackendOptions.Controller">
             <summary>
-            是否生成Controllers
+            是否生成Controller
             </summary>
         </member>
         <member name="T:CNet.CodeGen.Api.Controllers.GeneratedCodeResult">
@@ -583,9 +588,9 @@
             业务逻辑层代码
             </summary>
         </member>
-        <member name="P:CNet.CodeGen.Api.Controllers.CodeContent.dal">
+        <member name="P:CNet.CodeGen.Api.Controllers.CodeContent.controller">
             <summary>
-            数据访问层代码
+            控制器代码
             </summary>
         </member>
         <member name="M:CNet.CodeGen.Api.Controllers.HomeController.GetData(System.String)">

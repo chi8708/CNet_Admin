@@ -119,7 +119,7 @@ namespace CNet
                 case "nvarchar": csharpType = "string"; break;
                 case "real": csharpType = "Single"; break;
                 case "smalldatetime": csharpType = "DateTime"; break;
-                case "smallint": csharpType = "short"; break;
+                case "smallint": csharpType = "int"; break;
                 case "smallmoney": csharpType = "decimal"; break;
                 case "sql_variant": csharpType = "object"; break;
                 case "sysname": csharpType = "object"; break;

@@ -7,7 +7,6 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using CNet.Web.Api.Model.Request;
 using CNet.Model.Main;
 using CNet.BLL.Main;
 using CNet.Model;

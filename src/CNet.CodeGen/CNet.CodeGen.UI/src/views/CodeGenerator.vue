@@ -17,7 +17,7 @@
         <el-checkbox-group v-model="backendOptions" @change="handleBackendOptionsChange" class="checkbox-group">
           <el-checkbox label="Model">Model</el-checkbox>
           <el-checkbox label="BLL">BLL</el-checkbox>
-          <el-checkbox label="Controllers">Controllers</el-checkbox>
+          <el-checkbox label="Controller">Controller</el-checkbox>
         </el-checkbox-group>
         
         <div class="option-label frontend-label">前端替换选项</div>
@@ -29,9 +29,9 @@
         </el-checkbox-group>
         
         <div class="action-button">
-          <el-button type="primary" @click="generateCode">
+          <el-button type="primary" @click="generateCode" :loading="isGenerating" :disabled="isGenerating">
             <i class="el-icon-download"></i>
-            生成代码
+            {{ isGenerating ? '正在生成...' : '生成代码' }}
           </el-button>
         </div>
       </div>
@@ -82,6 +82,45 @@
           layout="prev, pager, next, jumper" @current-change="handlePageChange" />
       </div>
     </div>
+
+    <!-- 添加代码预览弹窗 -->
+    <el-dialog 
+      v-model="codePreviewVisible" 
+      title="代码预览" 
+      width="80%" 
+      top="5vh"
+      :before-close="handleCloseCodePreview"
+      class="code-preview-dialog">
+      <el-tabs v-model="activeTab" type="card">
+        <el-tab-pane label="后端Model" name="model">
+          <pre class="code-block"><code>{{ codeContent.model }}</code></pre>
+        </el-tab-pane>
+        <el-tab-pane label="后端BLL" name="bll">
+          <pre class="code-block"><code>{{ codeContent.bll }}</code></pre>
+        </el-tab-pane>
+        <el-tab-pane label="后端Controller" name="controller">
+          <pre class="code-block"><code>{{ codeContent.controller }}</code></pre>
+        </el-tab-pane>
+        <el-tab-pane label="前端Access" name="access">
+          <pre class="code-block"><code>{{ codeContent.access }}</code></pre>
+        </el-tab-pane>
+        <el-tab-pane label="前端API" name="api">
+          <pre class="code-block"><code>{{ codeContent.api }}</code></pre>
+        </el-tab-pane>
+        <el-tab-pane label="前端Views_List" name="view_list">
+          <pre class="code-block"><code>{{ codeContent.view_list }}</code></pre>
+        </el-tab-pane>
+        <el-tab-pane label="前端Views_Edit" name="view_edit">
+          <pre class="code-block"><code>{{ codeContent.view_edit }}</code></pre>
+        </el-tab-pane>
+      </el-tabs>
+      <template #footer>
+        <span class="dialog-footer">
+          <el-button @click="codePreviewVisible = false">关闭</el-button>
+          <el-button type="primary" @click="downloadCurrentCode">下载当前代码</el-button>
+        </span>
+      </template>
+    </el-dialog>
   </div>
 </template>
 
@@ -91,6 +130,8 @@ import { ElMessage } from 'element-plus';
 import request from '@/utils/request';
 
 // 定义接口返回数据类型
+
+
 interface DataRes<T> {
   code: number;
   msg: string;
@@ -121,13 +162,15 @@ const total = ref(0);
 const totalPage = ref(0);
 const backendSelectAll = ref(true);
 const frontendSelectAll = ref(false);
-const backendOptions = ref(['Model', 'BLL', 'Controllers']);
-const frontendOptions = ref([]);
+const backendOptions = ref<string[]>(['Model', 'BLL', 'Controller']);
+const frontendOptions = ref<string[]>([]);
 const searchKeyword = ref('');
 const goToPage = ref('');
 const queryData =reactive({
   SL_TableName: ''
 });
+const isGenerating = ref(false);
+
 const fetchTables = async () => {
   try {
     const res = await request<DataRes<string[]>>({
@@ -151,6 +194,8 @@ const generateCode = async () => {
     return;
   }
 
+  isGenerating.value = true;
+
   try {
     const res = await request<DataRes<any>>({
       url: '/api/codegen/generate',
@@ -161,7 +206,7 @@ const generateCode = async () => {
           backend: {
             model: backendOptions.value.includes('Model'),
             bll: backendOptions.value.includes('BLL'),
-            controllers: backendOptions.value.includes('Controllers')
+            controller: backendOptions.value.includes('Controllers')
           },
           frontend: {
             access: frontendOptions.value.includes('Access'),
@@ -180,6 +225,8 @@ const generateCode = async () => {
     }
   } catch (error) {
     ElMessage.error('代码生成失败');
+  } finally {
+    isGenerating.value = false;
   }
 };
 
@@ -219,17 +266,41 @@ interface CodeContent {
   dal: string;
 }
 
+// 代码预览相关
+const codePreviewVisible = ref(false);
+const activeTab = ref('model');
+const currentTableName = ref('');
+const codeContent = reactive({
+  model: '',
+  bll: '',
+  controller: '',
+  access: '',
+  api: '',
+  view_list: '',
+  view_edit: ''
+});
+
+// 查看代码
 const viewCode = async (row: GeneratedCodeResult) => {
   try {
-    const res = await request<DataRes<CodeContent>>({
+    currentTableName.value = row.tableName;
+    const res = await request<DataRes<any>>({
       url: `/api/codegen/view/${row.tableName}`,
       method: 'get'
     });
 
     if (res.code === 200) {
-      // 处理查看代码的逻辑
-      console.log(res.data);
-      // 这里可以添加显示代码的弹窗逻辑
+      // 更新代码内容
+      codeContent.model = res.data.model || '无内容';
+      codeContent.bll = res.data.bll || '无内容';
+      codeContent.controller = res.data.controller || '无内容';
+      codeContent.access = res.data.access || '无内容';
+      codeContent.api = res.data.api || '无内容';
+      codeContent.view_list = res.data.view_list || '无内容';
+      codeContent.view_edit = res.data.view_edit || '无内容';
+      
+      // 显示弹窗
+      codePreviewVisible.value = true;
     } else {
       ElMessage.error(res.msg || '获取代码内容失败');
     }
@@ -261,7 +332,7 @@ const formatDateTime = (dateTimeStr: string) => {
 
 // 后端选项全选
 const handleBackendSelectAllChange = (val: boolean) => {
-  backendOptions.value = val ? ['Model', 'BLL', 'Controllers'] : [];
+  backendOptions.value = val ? ['Model', 'BLL', 'Controller'] : [];
 };
 
 // 前端选项全选
@@ -271,7 +342,7 @@ const handleFrontendSelectAllChange = (val: boolean) => {
 
 // 根据选择情况更新全选状态
 const handleBackendOptionsChange = (value: string[]) => {
-  const allBackendOptions = ['Model', 'BLL', 'Controllers'];
+  const allBackendOptions = ['Model', 'BLL', 'Controller'];
   backendSelectAll.value = value.length === allBackendOptions.length;
 };
 
@@ -279,6 +350,35 @@ const handleBackendOptionsChange = (value: string[]) => {
 const handleFrontendOptionsChange = (value: string[]) => {
   const allFrontendOptions = ['Access', 'API', 'Views'];
   frontendSelectAll.value = value.length === allFrontendOptions.length;
+};
+
+// 关闭弹窗处理
+const handleCloseCodePreview = () => {
+  codePreviewVisible.value = false;
+};
+
+// 下载当前选中的代码
+const downloadCurrentCode = () => {
+  const codeMap = {
+    'model': '后端Model',
+    'bll': '后端BLL',
+    'controller': '后端Controller',
+    'access': '前端Access',
+    'api': '前端API',
+    'view_list': '前端Views_List',
+    'view_edit': '前端Views_Edit'
+  };
+  
+  const content = codeContent[activeTab.value as keyof typeof codeContent];
+  const fileName = `${currentTableName.value}_${codeMap[activeTab.value as keyof typeof codeMap]}.txt`;
+  
+  const blob = new Blob([content], { type: 'text/plain' });
+  const url = URL.createObjectURL(blob);
+  const link = document.createElement('a');
+  link.href = url;
+  link.download = fileName;
+  link.click();
+  URL.revokeObjectURL(url);
 };
 
 onMounted(() => {
@@ -413,5 +513,28 @@ onMounted(() => {
   font-size: 16px;
   font-weight: 500;
   color: #303133;
+}
+
+.code-preview-dialog :deep(.el-dialog__body) {
+  padding-top: 10px;
+  max-height: 75vh;
+  overflow-y: auto;
+}
+
+.code-block {
+  background-color: #f5f7fa;
+  border-radius: 4px;
+  padding: 16px;
+  overflow: auto;
+  max-height: 65vh;
+  white-space: pre-wrap;
+  font-family: Consolas, Monaco, 'Andale Mono', monospace;
+  font-size: 14px;
+  line-height: 1.5;
+}
+
+.dialog-footer {
+  display: flex;
+  justify-content: flex-end;
 }
 </style>
