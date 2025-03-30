@@ -83,41 +83,47 @@
       </div>
     </div>
 
-    <!-- 添加代码预览弹窗 -->
+    <!-- 添加基本代码预览弹窗 -->
     <el-dialog 
       v-model="codePreviewVisible" 
       title="代码预览" 
       width="80%" 
       top="5vh"
       :before-close="handleCloseCodePreview"
-      class="code-preview-dialog">
-      <el-tabs v-model="activeTab" type="card">
+      class="code-preview-dialog"
+      :key="`code-dialog-${dialogKey}`">
+      <el-tabs v-model="activeTab" type="card" @tab-click="applyHighlight">
         <el-tab-pane label="后端Model" name="model">
-          <pre class="code-block"><code>{{ codeContent.model }}</code></pre>
+          <pre class="code-block"><code :key="`model-${dialogKey}`" class="language-csharp">{{ codeContent.model }}</code></pre>
         </el-tab-pane>
         <el-tab-pane label="后端BLL" name="bll">
-          <pre class="code-block"><code>{{ codeContent.bll }}</code></pre>
+          <pre class="code-block"><code :key="`bll-${dialogKey}`" class="language-csharp">{{ codeContent.bll }}</code></pre>
         </el-tab-pane>
         <el-tab-pane label="后端Controller" name="controller">
-          <pre class="code-block"><code>{{ codeContent.controller }}</code></pre>
+          <pre class="code-block"><code :key="`controller-${dialogKey}`" class="language-csharp">{{ codeContent.controller }}</code></pre>
         </el-tab-pane>
         <el-tab-pane label="前端Access" name="access">
-          <pre class="code-block"><code>{{ codeContent.access }}</code></pre>
+          <pre class="code-block"><code :key="`access-${dialogKey}`" class="language-javascript">{{ codeContent.access }}</code></pre>
         </el-tab-pane>
         <el-tab-pane label="前端API" name="api">
-          <pre class="code-block"><code>{{ codeContent.api }}</code></pre>
+          <pre class="code-block"><code :key="`api-${dialogKey}`" class="language-javascript">{{ codeContent.api }}</code></pre>
         </el-tab-pane>
         <el-tab-pane label="前端Views_List" name="view_list">
-          <pre class="code-block"><code>{{ codeContent.view_list }}</code></pre>
+          <pre class="code-block"><code :key="`view_list-${dialogKey}`" class="language-html">{{ codeContent.view_list }}</code></pre>
         </el-tab-pane>
         <el-tab-pane label="前端Views_Edit" name="view_edit">
-          <pre class="code-block"><code>{{ codeContent.view_edit }}</code></pre>
+          <pre class="code-block"><code :key="`view_edit-${dialogKey}`" class="language-html">{{ codeContent.view_edit }}</code></pre>
         </el-tab-pane>
       </el-tabs>
       <template #footer>
         <span class="dialog-footer">
           <el-button @click="codePreviewVisible = false">关闭</el-button>
-          <el-button type="primary" @click="downloadCurrentCode">下载当前代码</el-button>
+          <el-button type="info" @click="copyCurrentCode">
+            <i class="el-icon-document-copy"></i> 复制当前代码
+          </el-button>
+          <el-button type="primary" @click="downloadCurrentCode">
+            <i class="el-icon-download"></i> 下载当前代码
+          </el-button>
         </span>
       </template>
     </el-dialog>
@@ -125,13 +131,13 @@
 </template>
 
 <script setup lang="ts">
-import { ref, onMounted, reactive } from 'vue';
+import { ref, onMounted, reactive, nextTick, watch, onUnmounted } from 'vue';
 import { ElMessage } from 'element-plus';
 import request from '@/utils/request';
+import hljs from 'highlight.js';
+import 'highlight.js/styles/vs2015.css';
 
 // 定义接口返回数据类型
-
-
 interface DataRes<T> {
   code: number;
   msg: string;
@@ -206,7 +212,7 @@ const generateCode = async () => {
           backend: {
             model: backendOptions.value.includes('Model'),
             bll: backendOptions.value.includes('BLL'),
-            controller: backendOptions.value.includes('Controllers')
+            controller: backendOptions.value.includes('Controller')
           },
           frontend: {
             access: frontendOptions.value.includes('Access'),
@@ -264,6 +270,7 @@ interface CodeContent {
   model: string;
   bll: string;
   dal: string;
+  controller: string;
 }
 
 // 代码预览相关
@@ -280,10 +287,29 @@ const codeContent = reactive({
   view_edit: ''
 });
 
-// 查看代码
+// 给每个弹窗添加唯一key，强制重新渲染
+const dialogKey = ref(0);
+
+// 查看代码功能 - 强化高亮
 const viewCode = async (row: GeneratedCodeResult) => {
   try {
+    // 重置内容并增加dialogKey强制Vue重新渲染整个弹窗
     currentTableName.value = row.tableName;
+    codeContent.model = '';
+    codeContent.bll = '';
+    codeContent.controller = '';
+    codeContent.access = '';
+    codeContent.api = '';
+    codeContent.view_list = '';
+    codeContent.view_edit = '';
+    
+    // 增加dialogKey强制重新渲染弹窗
+    dialogKey.value += 1;
+    
+    // 先打开弹窗
+    codePreviewVisible.value = true;
+    
+    // 然后请求数据
     const res = await request<DataRes<any>>({
       url: `/api/codegen/view/${row.tableName}`,
       method: 'get'
@@ -299,8 +325,11 @@ const viewCode = async (row: GeneratedCodeResult) => {
       codeContent.view_list = res.data.view_list || '无内容';
       codeContent.view_edit = res.data.view_edit || '无内容';
       
-      // 显示弹窗
-      codePreviewVisible.value = true;
+      // 等待内容渲染后应用高亮
+      nextTick(() => {
+        setTimeout(applyHighlight, 50);
+        setTimeout(applyHighlight, 200);
+      });
     } else {
       ElMessage.error(res.msg || '获取代码内容失败');
     }
@@ -381,9 +410,47 @@ const downloadCurrentCode = () => {
   URL.revokeObjectURL(url);
 };
 
+// 添加复制代码功能
+const copyCurrentCode = () => {
+  const content = codeContent[activeTab.value as keyof typeof codeContent];
+  navigator.clipboard.writeText(content)
+    .then(() => {
+      ElMessage.success('代码已复制到剪贴板');
+    })
+    .catch(() => {
+      ElMessage.error('复制失败，请手动复制');
+    });
+};
+
+// 强化高亮功能
+const applyHighlight = () => {
+  document.querySelectorAll('.code-block code').forEach((block) => {
+    // 先移除可能存在的高亮，然后重新应用
+    block.className = block.className.replace(/hljs/g, '');
+    
+    // 根据tab类型应用不同的语言类
+    const tabName = activeTab.value;
+    if (['model', 'bll', 'controller'].includes(tabName)) {
+      block.className = 'language-csharp';
+    } else if (['access', 'api'].includes(tabName)) {
+      block.className = 'language-javascript';
+    } else {
+      block.className = 'language-html';
+    }
+    
+    // 应用高亮
+    hljs.highlightElement(block as HTMLElement);
+  });
+};
+
 onMounted(() => {
   fetchTables();
   fetchGeneratedCode();
+});
+
+// 在组件卸载时清除定时器
+onUnmounted(() => {
+  highlightTimeouts.forEach(timeout => clearTimeout(timeout));
 });
 </script>
 
@@ -522,19 +589,67 @@ onMounted(() => {
 }
 
 .code-block {
-  background-color: #f5f7fa;
+  background-color: #1E1E1E;
   border-radius: 4px;
   padding: 16px;
   overflow: auto;
   max-height: 65vh;
-  white-space: pre-wrap;
+  position: relative;
+  user-select: text;
+}
+
+.code-block code {
   font-family: Consolas, Monaco, 'Andale Mono', monospace;
   font-size: 14px;
   line-height: 1.5;
+  white-space: pre;
+  display: block;
+  width: 100%;
+  tab-size: 4;
+  color: #DCDCDC;
 }
 
 .dialog-footer {
   display: flex;
   justify-content: flex-end;
+  gap: 10px;
+}
+
+.dialog-footer .el-button {
+  display: inline-flex;
+  align-items: center;
+}
+
+.dialog-footer .el-button i {
+  margin-right: 5px;
+}
+
+/* 应用highlight.js样式的辅助类 */
+:deep(.hljs) {
+  background: transparent !important;
+  padding: 0 !important;
+}
+</style>
+
+<style>
+/* 注意: 这里没有使用scoped，确保可以影响动态创建的元素 */
+.hljs {
+  background: #1E1E1E !important;
+  color: #DCDCDC !important;
+  padding: 0 !important;
+}
+
+/* 加强其他高亮样式 */
+.hljs-keyword, .hljs-selector-tag, .hljs-tag {
+  color: #569CD6 !important;
+}
+.hljs-comment {
+  color: #608B4E !important;
+}
+.hljs-string, .hljs-attribute, .hljs-selector-attr {
+  color: #CE9178 !important;
+}
+.hljs-name, .hljs-type {
+  color: #4EC9B0 !important;
 }
 </style>

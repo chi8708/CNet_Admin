@@ -1,5 +1,6 @@
 ﻿@model CNet.CodeGen.Api.Template.TableModel
 @using CNet;
+@using System.Linq;
 
 //////此代码由CNetCodeGen生成， 作者：cts 生成时间：@System.DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss")
 using System;
@@ -12,8 +13,11 @@ namespace @Config.Namespace1@(".Model.")@Config.Namespace2
     [Table("@Model.TableName")]
     public partial class @Model.TableName
     {
-@foreach (var column in Model.Columns)
-{
+@{
+    var columns_Primary = Model.Columns.Where(p => p.IsPrimaryKey);
+    var columns_Other = Model.Columns.Where(p => !p.IsPrimaryKey);
+    foreach (var column in columns_Primary)
+    {
     <text>
         /// <summary>
         /// @column.Remark
@@ -30,8 +34,18 @@ namespace @Config.Namespace1@(".Model.")@Config.Namespace2
         [ExplicitKey]
         </text>
         }
+    public @column.CSharpType @column.ColumnName { get; set; }
+    </text>
+    }
+    foreach (var column in columns_Other)
+    {
+    <text>
+        /// <summary>
+        /// @column.Remark
+        ///</summary>
         public @column.CSharpType @column.ColumnName { get; set; }
     </text>
+    }
 }
 
    }
