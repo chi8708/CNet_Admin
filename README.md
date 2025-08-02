@@ -1,6 +1,6 @@
 一、框架概述 
 -------------
-1. CNet_Admin_Vue是一个.Net7+Vue前后端分离通用权限系统， 用vs2022开发工具。
+1. CNet_Admin_Vue是一个.Net6+Vue前后端分离通用权限系统， 用vs2022开发工具。
 2. 后端标准三层结构：
    1. Repository（DAL仓储层）使用Dapper.Contrib+Dapper开发。
    2. api使用asp.net webapi,jwt身份认证。
